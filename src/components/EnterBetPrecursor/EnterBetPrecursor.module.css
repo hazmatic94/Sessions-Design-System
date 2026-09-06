@@ -1,0 +1,26 @@
+.root {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  border: var(--border-width-default) solid var(--joker-black-300);
+  border-radius: var(--radius-sm);
+  background: var(--joker-black-600);
+  color: var(--joker-white-50);
+  padding: var(--spacing-8) 14px;
+  font-family: var(--font);
+  text-align: center;
+}
+
+.root[hidden] {
+  display: none;
+}
+
+.text {
+  display: block;
+  font-size: var(--text-body-12);
+  font-weight: var(--text-body-weight);
+  line-height: var(--text-body-line-height);
+}

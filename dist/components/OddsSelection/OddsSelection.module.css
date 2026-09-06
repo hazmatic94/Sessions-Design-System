@@ -1,0 +1,21 @@
+.group {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  max-width: 100%;
+}
+
+.labels,
+.panels {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.labels {
+  border-bottom: var(--border-width-default) solid var(--joker-black-300);
+}
+
+.panels {
+  border-bottom: var(--border-width-default) solid var(--joker-black-300);
+}

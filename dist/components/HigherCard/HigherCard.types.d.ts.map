@@ -1,0 +1,1 @@
+{"version":3,"file":"HigherCard.types.d.ts","sourceRoot":"","sources":["../../../src/components/HigherCard/HigherCard.types.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,cAAc,EAAE,SAAS,EAAE,MAAM,OAAO,CAAC;AAEvD,MAAM,MAAM,eAAe,GAAG,cAAc,CAAC,cAAc,CAAC,GAAG;IAC7D,QAAQ,CAAC,EAAE,SAAS,CAAC;IACrB,WAAW,CAAC,EAAE,SAAS,CAAC;IACxB,UAAU,CAAC,EAAE,SAAS,CAAC;CACxB,CAAC"}

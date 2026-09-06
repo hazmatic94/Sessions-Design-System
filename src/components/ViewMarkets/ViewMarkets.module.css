@@ -1,0 +1,42 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--joker-black-50);
+  transition: color 140ms ease, transform 140ms ease;
+  font-family: var(--font);
+  font-size: var(--text-body-14);
+  font-weight: var(--text-body-weight);
+  line-height: var(--text-body-line-height);
+  cursor: pointer;
+}
+
+.root:hover {
+  color: var(--joker-white-50);
+  transform: translateX(var(--spacing-4));
+}
+
+.label {
+  min-width: 0;
+}
+
+.chevron {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+}
+
+.chevron svg {
+  display: block;
+  width: var(--spacing-16);
+  height: var(--spacing-16);
+  stroke: currentColor;
+  fill: none;
+  stroke-width: var(--icon-stroke-bold);
+}

@@ -1,0 +1,1 @@
+{"version":3,"file":"GameCard.types.d.ts","sourceRoot":"","sources":["../../../src/components/GameCard/GameCard.types.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,cAAc,EAAE,SAAS,EAAE,MAAM,OAAO,CAAC;AAEvD,MAAM,MAAM,aAAa,GAAG,cAAc,CAAC,cAAc,CAAC,GAAG;IAC3D,QAAQ,CAAC,EAAE,SAAS,CAAC;CACtB,CAAC"}

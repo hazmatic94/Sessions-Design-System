@@ -1,0 +1,1 @@
+{"version":3,"file":"EnterBetPrecursor.types.d.ts","sourceRoot":"","sources":["../../../src/components/EnterBetPrecursor/EnterBetPrecursor.types.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,cAAc,EAAE,SAAS,EAAE,MAAM,OAAO,CAAC;AAEvD,MAAM,MAAM,sBAAsB,GAAG,IAAI,CAAC,cAAc,CAAC,cAAc,CAAC,EAAE,UAAU,CAAC,GAAG;IACtF,OAAO,CAAC,EAAE,SAAS,CAAC;CACrB,CAAC"}

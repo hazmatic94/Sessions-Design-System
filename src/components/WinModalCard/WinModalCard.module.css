@@ -1,0 +1,358 @@
+@property --balance-pill-trace-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0turn;
+}
+
+.root {
+  --win-modal-icon-size: 112px;
+  --win-modal-section-gap: var(--spacing-24);
+  --win-modal-icon-copy-gap: var(--spacing-8);
+  --win-modal-balance-gap: var(--spacing-32);
+  --win-modal-close-gap: calc(var(--spacing-8) + var(--spacing-4) / 2);
+  --win-modal-celebration-duration: calc(var(--motion-slow) + var(--motion-slow) + var(--motion-slow) + var(--motion-fast) + var(--motion-fast));
+
+  position: relative;
+  width: min(100%, var(--betting-panel-max-width));
+  box-sizing: border-box;
+  transform-origin: center center;
+  transition: transform var(--motion-fast) var(--ease-standard);
+}
+
+.root:has(.dismiss:hover) {
+  transform: scale(0.99);
+}
+
+.card {
+  position: relative;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--win-modal-section-gap);
+  border: var(--border-width-default) solid var(--joker-black-300);
+  border-radius: var(--radius-card);
+  background: var(--joker-black-800);
+  color: var(--joker-white-50);
+  padding-block: var(--spacing-24);
+  padding-inline: 28px;
+  text-align: center;
+  transform-origin: center center;
+  animation: winModalCardPulse var(--win-modal-celebration-duration) var(--ease-emphasized) both;
+}
+
+.dismiss {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  display: grid;
+  width: var(--spacing-32);
+  height: var(--spacing-32);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--joker-black-50);
+  cursor: pointer;
+  place-items: center;
+}
+
+.dismiss svg {
+  display: block;
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
+}
+
+.dismiss:hover {
+  color: var(--joker-white-50);
+}
+
+.iconWrap {
+  display: grid;
+  flex: none;
+  width: var(--win-modal-icon-size);
+  height: var(--win-modal-icon-size);
+  margin-bottom: calc(var(--win-modal-icon-copy-gap) - var(--win-modal-section-gap));
+  place-items: center;
+  animation: winModalIconPulse var(--win-modal-celebration-duration) var(--ease-emphasized) both;
+}
+
+.iconVideo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 120ms var(--ease-out);
+}
+
+.iconVideoIsPlaying {
+  opacity: 1;
+}
+
+.icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.copy {
+  display: grid;
+  justify-items: center;
+  gap: 0;
+  width: 100%;
+}
+
+.amount {
+  margin: 0;
+  color: var(--joker-gold-400);
+  font-family: var(--font-heading);
+  font-size: 52px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 48px;
+  text-shadow: 0 0 var(--spacing-12) color-mix(in srgb, var(--joker-gold-400) 28%, transparent);
+  text-transform: uppercase;
+  animation:
+    winModalAmountGlow var(--win-modal-celebration-duration) var(--ease-emphasized) both,
+    winModalAmountGlowPulse 2.8s var(--ease-in-out) var(--win-modal-celebration-duration) infinite;
+}
+
+.message {
+  max-width: var(--modal-body-max-width);
+  margin: 0;
+  color: var(--modal-body-color);
+  font-family: var(--font);
+  font-size: var(--text-body-16);
+  font-weight: var(--modal-body-font-weight);
+  line-height: var(--modal-body-line-height);
+  letter-spacing: var(--modal-body-letter-spacing);
+}
+
+.messageHighlight {
+  color: var(--joker-gold-400);
+  font-weight: 600;
+}
+
+.balancePill {
+  --balance-pill-trace-angle: 0turn;
+  --balance-pill-trace-duration: 4.2s;
+  /* ~32px arc on typical pill perimeter; fixed deg for Safari (px/perimeter calc is invalid) */
+  --balance-pill-trace-sweep: 32deg;
+  --balance-pill-trace-fade: 5deg;
+  display: inline-flex;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin-top: calc(var(--win-modal-balance-gap) - var(--win-modal-section-gap));
+  padding: var(--border-width-default);
+  border: var(--border-width-default) solid transparent;
+  border-radius: var(--spacing-8);
+  background-color: var(--joker-gold-1000);
+  background-image:
+    linear-gradient(var(--joker-gold-1000), var(--joker-gold-1000)),
+    conic-gradient(
+      from var(--balance-pill-trace-angle),
+      transparent 0deg,
+      var(--joker-gold-400) var(--balance-pill-trace-fade),
+      var(--joker-gold-400) calc(var(--balance-pill-trace-sweep) - var(--balance-pill-trace-fade)),
+      transparent var(--balance-pill-trace-sweep),
+      transparent 360deg
+    ),
+    linear-gradient(var(--joker-gold-500), var(--joker-gold-500));
+  background-repeat: no-repeat;
+  background-origin: padding-box, border-box, border-box;
+  background-clip: padding-box, border-box, border-box;
+  animation: balancePillBorderTrace var(--balance-pill-trace-duration) ease-in-out infinite;
+}
+
+.balancePillInner {
+  display: inline-flex;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-8);
+  padding: var(--spacing-12) var(--spacing-16);
+  border-radius: calc(var(--spacing-8) - var(--border-width-default) - var(--border-width-default));
+  background: var(--joker-gold-1000);
+  color: var(--joker-white-50);
+  font-family: var(--font);
+  font-size: var(--text-body-16);
+  font-weight: var(--text-body-weight);
+  line-height: var(--text-body-line-height);
+  letter-spacing: var(--text-body-letter-spacing);
+  font-variant-numeric: tabular-nums;
+}
+
+.balanceCoin {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex: none;
+}
+
+.footerActions {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  width: 100%;
+  margin-top: calc(var(--win-modal-close-gap) - var(--win-modal-section-gap));
+}
+
+.cancelGhost {
+  color: var(--joker-black-50);
+}
+
+.cancelGhost:not(:disabled):hover {
+  color: var(--joker-white-50);
+}
+
+.flyingCoins {
+  position: fixed;
+  z-index: 10000;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.flyingCoin {
+  position: fixed;
+  left: var(--coin-origin-x);
+  top: var(--coin-origin-y);
+  width: var(--spacing-12);
+  height: var(--spacing-12);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.32);
+  animation: winModalCoinFly 760ms var(--ease-out) both;
+  filter: drop-shadow(0 0 var(--spacing-4) color-mix(in srgb, var(--joker-gold-400) 45%, transparent));
+}
+
+@keyframes winModalCardPulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+
+  38% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+
+  68% {
+    transform: scale(0.99);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes winModalIconPulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.74);
+  }
+
+  38% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  68% {
+    transform: scale(0.96);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes winModalAmountGlow {
+  0% {
+    text-shadow: 0 0 0 color-mix(in srgb, var(--joker-gold-400) 0%, transparent);
+  }
+
+  38% {
+    text-shadow:
+      0 0 var(--spacing-16) color-mix(in srgb, var(--joker-gold-400) 55%, transparent),
+      0 0 var(--spacing-32) color-mix(in srgb, var(--joker-gold-400) 22%, transparent);
+  }
+
+  68% {
+    text-shadow: 0 0 var(--spacing-12) color-mix(in srgb, var(--joker-gold-400) 32%, transparent);
+  }
+
+  100% {
+    text-shadow: 0 0 var(--spacing-12) color-mix(in srgb, var(--joker-gold-400) 28%, transparent);
+  }
+}
+
+@keyframes winModalAmountGlowPulse {
+  0%,
+  100% {
+    text-shadow: 0 0 var(--spacing-12) color-mix(in srgb, var(--joker-gold-400) 28%, transparent);
+  }
+
+  50% {
+    text-shadow:
+      0 0 var(--spacing-20) color-mix(in srgb, var(--joker-gold-400) 46%, transparent),
+      0 0 var(--spacing-40) color-mix(in srgb, var(--joker-gold-400) 16%, transparent);
+  }
+}
+
+@keyframes balancePillBorderTrace {
+  to {
+    --balance-pill-trace-angle: 1turn;
+  }
+}
+
+@keyframes winModalCoinFly {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.28);
+  }
+
+  16% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.58);
+  }
+
+  72% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--coin-delta-x)), calc(-50% + var(--coin-delta-y))) scale(0.24);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .iconWrap,
+  .amount,
+  .flyingCoin,
+  .balancePill {
+    animation: none;
+  }
+
+  .amount {
+    text-shadow: 0 0 var(--spacing-12) color-mix(in srgb, var(--joker-gold-400) 28%, transparent);
+  }
+
+  .balancePill {
+    background-color: var(--joker-gold-1000);
+    background-image:
+      linear-gradient(var(--joker-gold-1000), var(--joker-gold-1000)),
+      linear-gradient(var(--joker-gold-500), var(--joker-gold-500));
+    background-repeat: no-repeat;
+    background-origin: padding-box, border-box;
+    background-clip: padding-box, border-box;
+  }
+}

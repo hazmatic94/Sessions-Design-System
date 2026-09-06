@@ -1,0 +1,61 @@
+.root {
+  display: flex;
+  width: 100%;
+  height: var(--button-height);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: var(--border-width-default) solid var(--joker-black-300);
+  background: var(--joker-black-700);
+  color: var(--joker-white-50);
+  font-family: var(--font);
+  font-size: var(--text-body-14);
+  font-weight: var(--text-body-weight);
+  line-height: var(--text-heading-line-height-compact);
+  padding: 0 var(--spacing-16);
+}
+
+.group,
+.title,
+.fairPlay {
+  display: inline-flex;
+  align-items: center;
+}
+
+.group {
+  min-width: 0;
+  gap: var(--spacing-16);
+}
+
+.title,
+.fairPlay {
+  gap: calc(var(--spacing-8) - 2px);
+}
+
+.title,
+.gameIcon {
+  color: var(--joker-gold-400);
+}
+
+.info {
+  color: var(--joker-white-50);
+}
+
+.info svg,
+.gameIcon,
+.gameIcon:global(.nav-inline-icon),
+.fairPlayIcon,
+.fairPlayIcon :global(svg) {
+  display: block;
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+  flex-shrink: 0;
+}
+
+.info svg path {
+  fill: currentColor;
+}
+
+.fairPlay {
+  color: var(--joker-white-50);
+}

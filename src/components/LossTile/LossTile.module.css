@@ -1,0 +1,208 @@
+.root {
+  --loss-tile-overlay-opacity: 0.2;
+  --loss-tile-overlay-gradient: linear-gradient(
+    138deg,
+    rgb(234 114 114 / 0.04) 0%,
+    rgb(218 33 33 / 0.12) 49%,
+    rgb(234 114 114 / 0.04) 100%
+  );
+  --loss-tile-reveal-duration: 720ms;
+  --loss-tile-smoke-duration: 920ms;
+  --tile-size: var(--game-tile-size, 120px);
+  --tile-radius: calc(var(--tile-size) / 15);
+  --tile-image-size: calc(var(--tile-size) * 5 / 6);
+  --tile-stack-lift: 100;
+  position: relative;
+  z-index: var(--tile-stack-index, 1);
+  isolation: isolate;
+  display: inline-flex;
+  width: var(--tile-size);
+  height: var(--tile-size);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border: var(--border-width-default) solid var(--joker-black-200);
+  border-radius: var(--tile-radius);
+  background: var(--joker-black-600);
+}
+
+.unrevealed {
+  cursor: pointer;
+}
+
+.unrevealed::before {
+  content: none;
+}
+
+.revealed {
+  border-color: var(--joker-red-400);
+}
+
+.revealed::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: var(--loss-tile-overlay-opacity);
+  background: var(--loss-tile-overlay-gradient);
+}
+
+.isRevealing {
+  overflow: visible;
+  z-index: calc(var(--tile-stack-index, 1) + var(--tile-stack-lift));
+}
+
+.smoke {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.smokePuff {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--smoke-size, var(--spacing-16));
+  height: var(--smoke-size, var(--spacing-16));
+  border-radius: 50%;
+  background: rgb(214 214 214 / 0.42);
+  filter: blur(4px);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.35);
+  animation: joker-loss-tile-smoke-burst var(--loss-tile-smoke-duration) var(--ease-out) both;
+}
+
+.smokePuff:nth-child(1) {
+  --smoke-size: calc(var(--spacing-16) + var(--spacing-4));
+  --smoke-x: calc(var(--spacing-8) * -1);
+  --smoke-y: calc(var(--spacing-32) * -1);
+}
+
+.smokePuff:nth-child(2) {
+  --smoke-size: var(--spacing-24);
+  --smoke-x: var(--spacing-16);
+  --smoke-y: calc(var(--spacing-40) * -1);
+  animation-delay: var(--motion-instant);
+}
+
+.smokePuff:nth-child(3) {
+  --smoke-size: calc(var(--spacing-16) + var(--spacing-8));
+  --smoke-x: calc(var(--spacing-24) * -1);
+  --smoke-y: calc(var(--spacing-24) * -1);
+  animation-delay: var(--motion-fast);
+}
+
+.smokePuff:nth-child(4) {
+  --smoke-size: calc(var(--spacing-16) + var(--spacing-4));
+  --smoke-x: var(--spacing-24);
+  --smoke-y: calc(var(--spacing-16) * -1);
+  animation-delay: var(--motion-instant);
+}
+
+.smokePuff:nth-child(5) {
+  --smoke-size: calc(var(--spacing-16) + var(--spacing-4));
+  --smoke-x: calc(var(--spacing-32) * -1);
+  --smoke-y: calc(var(--spacing-8) * -1);
+}
+
+.smokePuff:nth-child(6) {
+  --smoke-size: var(--spacing-24);
+  --smoke-x: var(--spacing-32);
+  --smoke-y: calc(var(--spacing-12) * -1);
+  animation-delay: var(--motion-fast);
+}
+
+.smokePuff:nth-child(7) {
+  --smoke-size: calc(var(--spacing-16) + var(--spacing-4));
+  --smoke-x: calc(var(--spacing-12) * -1);
+  --smoke-y: calc(var(--spacing-40) * -1);
+  animation-delay: var(--motion-instant);
+}
+
+.smokePuff:nth-child(8) {
+  --smoke-size: calc(var(--spacing-16) + var(--spacing-8));
+  --smoke-x: var(--spacing-12);
+  --smoke-y: calc(var(--spacing-32) * -1);
+  animation-delay: var(--motion-fast);
+}
+
+.icon {
+  position: relative;
+  z-index: 1;
+  display: block;
+  flex: 0 0 auto;
+  width: var(--tile-image-size);
+  height: var(--tile-image-size);
+  object-fit: contain;
+  opacity: 0;
+  transform: scale(0.35);
+}
+
+.iconRevealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.iconRevealing {
+  animation: joker-loss-tile-icon-pop var(--loss-tile-reveal-duration) var(--ease-emphasized) both;
+}
+
+@keyframes joker-loss-tile-icon-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.35);
+  }
+
+  42% {
+    opacity: 1;
+    transform: scale(1.14);
+  }
+
+  72% {
+    transform: scale(0.94);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes joker-loss-tile-smoke-burst {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.35);
+  }
+
+  18% {
+    opacity: 0.72;
+  }
+
+  62% {
+    opacity: 0.48;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--smoke-x)), calc(-50% + var(--smoke-y))) scale(1.55);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iconRevealing,
+  .smokePuff {
+    animation: none;
+  }
+
+  .iconRevealed,
+  .iconRevealing {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

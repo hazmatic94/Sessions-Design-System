@@ -1,0 +1,67 @@
+.root {
+  --hilo-ellipse-size: 32px;
+  --hilo-ellipse-bg: var(--joker-black-900);
+  --hilo-ellipse-icon-color: var(--joker-white-50);
+  --hilo-ellipse-chevron-size: 12px;
+  box-sizing: border-box;
+  display: inline-flex;
+  width: var(--hilo-ellipse-size);
+  height: var(--hilo-ellipse-size);
+  min-width: var(--hilo-ellipse-size);
+  min-height: var(--hilo-ellipse-size);
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--hilo-ellipse-bg);
+  color: var(--hilo-ellipse-icon-color);
+  cursor: pointer;
+  transition:
+    transform var(--button-transition-duration) var(--button-transition-ease),
+    opacity var(--button-transition-duration) var(--button-transition-ease);
+}
+
+.root:not(:disabled):active {
+  transform: var(--button-press-transform);
+}
+
+.root:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.root--higher {
+  --hilo-ellipse-icon-color: var(--joker-green-400);
+  --hilo-ellipse-chevron-size: 12px;
+}
+
+.root--lower {
+  --hilo-ellipse-icon-color: var(--joker-red-400);
+  --hilo-ellipse-chevron-size: 12px;
+}
+
+.chevron {
+  display: block;
+  width: var(--hilo-ellipse-chevron-size);
+  height: var(--hilo-ellipse-chevron-size);
+  flex: 0 0 auto;
+}
+
+.root--skip .chevron {
+  transform: rotate(90deg);
+}
+
+.chevron path {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.root--skip .chevron path,
+.root--higher .chevron path,
+.root--lower .chevron path {
+  stroke-width: 2;
+}

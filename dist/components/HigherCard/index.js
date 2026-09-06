@@ -1,0 +1,1 @@
+export { HigherCard } from "./HigherCard";

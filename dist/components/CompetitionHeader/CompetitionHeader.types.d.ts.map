@@ -1,0 +1,1 @@
+{"version":3,"file":"CompetitionHeader.types.d.ts","sourceRoot":"","sources":["../../../src/components/CompetitionHeader/CompetitionHeader.types.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,cAAc,EAAE,SAAS,EAAE,MAAM,OAAO,CAAC;AAEvD,MAAM,MAAM,sBAAsB,GAAG,cAAc,CAAC,cAAc,CAAC,GAAG;IACpE,QAAQ,CAAC,EAAE,SAAS,CAAC;CACtB,CAAC"}

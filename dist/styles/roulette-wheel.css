@@ -1,0 +1,453 @@
+.joker-roulette-wheel {
+  --roulette-wheel-native-width: 1111px;
+  --roulette-wheel-native-height: 1162px;
+  --roulette-wheel-native-inset-top: 40px;
+  --roulette-wheel-size: 1111px;
+
+  /* Aliased to joker primitives — override here to theme the wheel */
+  --roulette-white: var(--joker-white-50);
+  --roulette-black: var(--joker-black-900);
+
+  --roulette-pocket-red-light: #e73540;
+  --roulette-pocket-red: #d0202c;
+  --roulette-pocket-red-dark: #931420;
+
+  --roulette-pocket-black-light: #242424;
+  --roulette-pocket-black: #171717;
+  --roulette-pocket-black-dark: #0b0b0b;
+
+  --roulette-pocket-green-light: #22a147;
+  --roulette-pocket-green: #0e8632;
+  --roulette-pocket-green-dark: #06511f;
+
+  --roulette-gold-lip-0: var(--joker-gold-200);
+  --roulette-gold-lip-22: var(--joker-gold-300);
+  --roulette-gold-lip-55: var(--joker-gold-400);
+  --roulette-gold-lip-82: var(--joker-gold-500);
+  --roulette-gold-lip-100: var(--joker-gold-600);
+
+  --roulette-bronze-wall-0: var(--joker-gold-800);
+  --roulette-bronze-wall-45: var(--joker-gold-900);
+  --roulette-bronze-wall-100: var(--joker-gold-1000);
+
+  --roulette-track-0: var(--joker-black-300);
+  --roulette-track-35: var(--joker-black-500);
+  --roulette-track-68: var(--joker-black-700);
+  --roulette-track-100: var(--joker-black-900);
+
+  --roulette-bowl-0: var(--joker-black-400);
+  --roulette-bowl-58: var(--joker-black-600);
+  --roulette-bowl-100: var(--joker-black-900);
+
+  --roulette-spindle-0: var(--joker-black-200);
+  --roulette-spindle-55: var(--joker-black-400);
+  --roulette-spindle-100: var(--joker-black-700);
+
+  --roulette-spindle-cap-0: var(--joker-gold-300);
+  --roulette-spindle-cap-55: var(--joker-gold-600);
+  --roulette-spindle-cap-100: var(--joker-gold-800);
+
+  --roulette-pointer-fill: var(--joker-gold-400);
+  --roulette-pointer-outline: var(--joker-black-600);
+  --roulette-pointer-outline-outer: var(--joker-black-300);
+
+  --roulette-ball-0: var(--joker-white-50);
+  --roulette-ball-55: #f0f0f0;
+  --roulette-ball-100: #cfcfcf;
+  --roulette-ball-specular: var(--joker-white-50);
+  --roulette-ball-shade: var(--joker-black-200);
+
+  --roulette-rim-shadow: var(--joker-black-900);
+  --roulette-rim-base-outer: var(--joker-black-900);
+  --roulette-rim-base-mid: var(--joker-black-800);
+  --roulette-rim-base-inner: var(--joker-black-700);
+
+  --roulette-rim-gold-top-edge: #ffe9ad;
+  --roulette-rim-gold-top: #f6d27c;
+  --roulette-rim-gold-upper: #e0af52;
+  --roulette-rim-gold-mid: #b98b3e;
+  --roulette-rim-gold-lower: #7d5a26;
+  --roulette-rim-gold-bottom: #57391b;
+  --roulette-rim-edge-light: #fff3cd;
+  --roulette-rim-edge-bottom: #c9a35a;
+
+  --roulette-groove: var(--joker-black-900);
+  --roulette-bowl-rim: var(--joker-black-600);
+
+  --roulette-gold-ambient-shadow: var(--joker-gold-500);
+  --roulette-bronze-shadow: var(--joker-gold-900);
+
+  --roulette-number: var(--joker-white-50);
+  --roulette-spindle-highlight: var(--joker-gold-400);
+
+  --roulette-pocket-divider: color-mix(in srgb, var(--joker-black-900) 82%, transparent);
+  --roulette-separator-groove: var(--joker-black-900);
+  --roulette-track-highlight: color-mix(in srgb, var(--joker-white-50) 7%, transparent);
+  --roulette-track-inner-highlight: color-mix(in srgb, var(--joker-white-50) 5.5%, transparent);
+  --roulette-bowl-inner-highlight: color-mix(in srgb, var(--joker-white-50) 3.5%, transparent);
+  --roulette-spindle-ring: color-mix(in srgb, var(--joker-black-900) 45%, transparent);
+  --roulette-spindle-inner-ring: color-mix(in srgb, var(--joker-white-50) 5%, transparent);
+  --roulette-ball-shadow: color-mix(in srgb, var(--joker-black-900) 28%, transparent);
+  --roulette-ball-stroke: color-mix(in srgb, var(--joker-white-50) 22%, transparent);
+  --roulette-bowl-shadow: color-mix(in srgb, var(--joker-black-900) 28%, transparent);
+  --roulette-spindle-cap-highlight: color-mix(in srgb, var(--joker-gold-400) 20%, transparent);
+
+  --roulette-pocket-well-shade: color-mix(in srgb, var(--joker-black-900) 72%, transparent);
+  --roulette-pocket-well-rim: color-mix(in srgb, var(--joker-black-900) 58%, transparent);
+  --roulette-pocket-well-rim-highlight: color-mix(in srgb, var(--joker-white-50) 10%, transparent);
+  --roulette-pocket-fret-shadow: color-mix(in srgb, var(--joker-black-900) 42%, transparent);
+  --roulette-pocket-fret-highlight: color-mix(in srgb, var(--joker-gold-300) 72%, transparent);
+
+  --roulette-ambient-glow-strong: color-mix(in srgb, var(--joker-gold-300) 28%, transparent);
+  --roulette-ambient-glow-mid: color-mix(in srgb, var(--joker-gold-400) 14%, transparent);
+  --roulette-ambient-glow-soft: color-mix(in srgb, var(--joker-gold-500) 5%, transparent);
+
+  --roulette-wheel-rotation: 0deg;
+  --roulette-spin-origin-x: 49.965%;
+  --roulette-spin-origin-y: 49.966%;
+  --roulette-ball-size: calc(var(--roulette-wheel-size) * 20 / 1116);
+  --roulette-ball-image:
+    radial-gradient(
+      circle at 30% 26%,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(255, 255, 255, 0) 26%
+    ),
+    radial-gradient(
+      circle at 34% 30%,
+      var(--roulette-rim-gold-top-edge) 0%,
+      var(--roulette-rim-gold-top) 24%,
+      var(--roulette-rim-gold-upper) 48%,
+      var(--roulette-rim-gold-mid) 68%,
+      var(--roulette-rim-gold-lower) 86%,
+      var(--roulette-rim-gold-bottom) 100%
+    );
+  --roulette-ball-bounce-scale: 1;
+  --roulette-ball-bounce-lift: 0px;
+
+  display: inline-flex;
+  width: var(--roulette-wheel-size);
+  height: calc(var(--roulette-wheel-size) * 1162 / 1111);
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+}
+
+.joker-roulette-wheel::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 86%;
+  height: 38%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    var(--roulette-ambient-glow-strong) 0%,
+    var(--roulette-ambient-glow-mid) 34%,
+    var(--roulette-ambient-glow-soft) 56%,
+    transparent 74%
+  );
+  filter: blur(10px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.joker-roulette-wheel__stage,
+.joker-roulette-wheel__svg {
+  transform: translateZ(0);
+}
+
+.joker-roulette-wheel__svg {
+  shape-rendering: geometricPrecision;
+  text-rendering: geometricPrecision;
+}
+
+.joker-roulette-wheel__svg path,
+.joker-roulette-wheel__svg circle,
+.joker-roulette-wheel__svg line,
+.joker-roulette-wheel__svg ellipse {
+  shape-rendering: geometricPrecision;
+}
+
+.joker-roulette-wheel__stage {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  contain: layout style;
+  overflow: visible;
+}
+
+.joker-roulette-wheel__defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.joker-roulette-wheel__svg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  user-select: none;
+}
+
+.joker-roulette-wheel__svg--static {
+  z-index: 1;
+}
+
+.joker-roulette-wheel__wheel-spinner {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  transform: rotate(var(--roulette-wheel-rotation)) translateZ(0);
+  transform-origin: var(--roulette-spin-origin-x) var(--roulette-spin-origin-y);
+  will-change: transform;
+}
+
+.joker-roulette-wheel__svg--spinner {
+  z-index: 2;
+}
+
+.joker-roulette-wheel__svg--outer-track {
+  z-index: 3;
+}
+
+.joker-roulette-wheel__ball {
+  position: absolute;
+  z-index: 4;
+  width: 0;
+  height: 0;
+  transform: translate(-50%, -50%);
+  will-change: left, top;
+  pointer-events: none;
+}
+
+.joker-roulette-wheel__ball-shadow {
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  width: calc(var(--roulette-ball-size) * 1.04);
+  height: calc(var(--roulette-ball-size) * 0.38);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--roulette-ball-shadow);
+  opacity: 0.55;
+  filter: blur(0.5px);
+}
+
+.joker-roulette-wheel__ball-orb {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--roulette-ball-size);
+  height: var(--roulette-ball-size);
+  transform: translate(-50%, calc(-50% - var(--roulette-ball-bounce-lift))) scale(var(--roulette-ball-bounce-scale));
+  border-radius: 50%;
+  background-color: transparent;
+  background-image: var(--roulette-ball-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border: none;
+  box-shadow:
+    0 1px 2px color-mix(in srgb, var(--joker-black-900) 35%, transparent),
+    inset 0 -1px 2px color-mix(in srgb, var(--joker-black-900) 30%, transparent);
+  filter: drop-shadow(0 0.5px 0.75px color-mix(in srgb, var(--joker-black-900) 16%, transparent));
+}
+
+.joker-roulette-wheel__svg--pointer {
+  z-index: 6;
+}
+
+.joker-roulette-wheel__pocket-wells,
+.joker-roulette-wheel__pocket-side-walls,
+.joker-roulette-wheel__pocket-ring-outline,
+.joker-roulette-wheel__pocket-frets,
+.joker-roulette-wheel__pocket-well-ribs,
+.joker-roulette-wheel__pocket-divider-shadows,
+.joker-roulette-wheel__pocket-bounce-wedges,
+.joker-roulette-wheel__number-track {
+  pointer-events: none;
+}
+
+.joker-roulette-wheel__number {
+  font-variant-numeric: tabular-nums;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  paint-order: stroke fill;
+  stroke: color-mix(in srgb, var(--joker-black-900) 78%, transparent);
+  stroke-width: 0.7px;
+  stroke-linejoin: round;
+}
+
+.joker-roulette-wheel__debug-visual {
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .joker-roulette-wheel__wheel-spinner,
+  .joker-roulette-wheel__ball {
+    transition: none !important;
+  }
+}
+
+.joker-roulette-wheel.is-performance-mode::before {
+  display: none;
+}
+
+.joker-roulette-wheel.is-performance-mode .joker-roulette-wheel__pocket-side-walls,
+.joker-roulette-wheel.is-performance-mode .joker-roulette-wheel__pocket-well-ribs,
+.joker-roulette-wheel.is-performance-mode .joker-roulette-wheel__pocket-wells,
+.joker-roulette-wheel.is-performance-mode .joker-roulette-wheel__pocket-frets,
+.joker-roulette-wheel.is-performance-mode .joker-roulette-wheel__pocket-well-shade,
+.joker-roulette-wheel.is-performance-mode .joker-roulette-wheel__svg--outer-track {
+  display: none;
+}
+
+.joker-roulette-wheel.is-performance-mode .joker-roulette-wheel__pocket-ring,
+.joker-roulette-wheel.is-performance-mode .joker-roulette-wheel__pocket-inset,
+.joker-roulette-wheel.is-performance-mode .joker-roulette-wheel__numbers,
+.joker-roulette-wheel.is-performance-mode .joker-roulette-wheel__spinner-assembly {
+  filter: none !important;
+}
+
+.joker-roulette-wheel.is-performance-mode .joker-roulette-wheel__center-bowl,
+.joker-roulette-wheel.is-performance-mode .joker-roulette-wheel__spindle,
+.joker-roulette-wheel.is-performance-mode .joker-roulette-wheel__pocket-well-lower {
+  display: none;
+}
+
+.joker-roulette-wheel-viewport {
+  --roulette-wheel-viewport-area-inset-top: 40px;
+  --roulette-wheel-viewport-pointer-bleed: calc(var(--roulette-wheel-size) * 18 / 1116);
+  --roulette-wheel-viewport-offset-y: 0px;
+
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.joker-roulette-wheel-area {
+  --roulette-wheel-viewport-area-inset-top: 40px;
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: var(--roulette-wheel-viewport-area-inset-top, 40px);
+  overflow: hidden;
+}
+
+.joker-roulette-wheel-area > .joker-roulette-wheel-viewport {
+  flex: 1 1 auto;
+  align-self: stretch;
+  min-height: 0;
+  width: 100%;
+}
+
+.joker-roulette-wheel-viewport__slot {
+  position: absolute;
+  top: var(--roulette-wheel-viewport-offset-y, 0px);
+  left: 50%;
+  width: max-content;
+  max-width: none;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.joker-roulette-wheel-viewport__slot > .joker-roulette-wheel {
+  display: block;
+  pointer-events: auto;
+}
+
+.joker-roulette-wheel-viewport__slot > .joker-roulette-wheel-composition {
+  display: block;
+  width: var(--roulette-wheel-size);
+  height: calc(var(--roulette-wheel-size) * 1162 / 1111);
+  pointer-events: auto;
+}
+
+.joker-roulette-wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  padding-top: var(--roulette-wheel-native-inset-top, 40px);
+}
+
+.joker-roulette-wrapper__wheel-slot {
+  box-sizing: border-box;
+  position: relative;
+  left: 50%;
+  width: var(--roulette-wheel-native-width, 1111px);
+  height: var(--roulette-wheel-native-height, 1162px);
+  flex-shrink: 0;
+  transform: translateX(-50%);
+}
+
+.joker-roulette-wrapper__wheel-slot > .joker-roulette-wheel,
+.joker-roulette-wrapper__wheel-slot > .joker-roulette-wheel-composition {
+  --roulette-wheel-size: var(--roulette-wheel-native-width, 1111px);
+  display: block;
+  width: var(--roulette-wheel-native-width, 1111px);
+  height: var(--roulette-wheel-native-height, 1162px);
+  flex: 0 0 auto;
+  pointer-events: auto;
+}
+
+.roulette-wheel-docs-fit {
+  width: 100%;
+  max-width: 1111px;
+  max-height: 400px;
+  margin-inline: auto;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.roulette-wheel-docs-fit .joker-roulette-wheel,
+.roulette-wheel-docs-fit .joker-roulette-wheel-composition {
+  flex: 0 0 auto;
+}
+
+[data-roulette-wheel-demo] {
+  display: grid;
+  gap: 16px;
+  justify-items: center;
+  width: 100%;
+}
+
+.roulette-wheel-viewport-demo {
+  width: 100%;
+}
+
+.roulette-wheel-viewport-demo__canvas {
+  width: 100%;
+  height: 500px;
+  max-height: 500px;
+  min-height: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: var(--border-width-default) solid var(--joker-black-300);
+  border-radius: var(--radius-sm);
+  background: var(--joker-black-800);
+}

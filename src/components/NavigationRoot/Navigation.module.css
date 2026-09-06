@@ -1,0 +1,22 @@
+.root {
+  --navigation-breakpoint-mobile: 1000px;
+  --navigation-breakpoint-desktop: 1300px;
+  display: block;
+  min-width: 0;
+  min-height: 100dvh;
+  background: var(--joker-black-800);
+  color: var(--joker-white-50);
+  font-family: var(--font);
+}
+
+.root,
+.root *,
+.root *::before,
+.root *::after {
+  box-sizing: border-box;
+}
+
+.root button,
+.root input {
+  font: inherit;
+}

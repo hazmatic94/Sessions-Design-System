@@ -1,0 +1,104 @@
+.dropdown {
+  position: relative;
+}
+
+.control {
+  width: 100%;
+  appearance: none;
+  cursor: pointer;
+  font-family: var(--font);
+  text-align: left;
+}
+
+.value {
+  display: inline-flex;
+  min-width: 0;
+  flex: 1;
+  align-items: center;
+  overflow: hidden;
+  color: var(--joker-white-50);
+  font-size: var(--text-body-14);
+  line-height: var(--text-body-line-height);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.open :global(.joker-input-control),
+.open:hover :global(.joker-input-control) {
+  border-color: var(--input-control-border-focus);
+  background: var(--input-control-bg-focus);
+  box-shadow: var(--button-hi-lo-shadow-selected);
+}
+
+.open :global(.joker-input-label) {
+  color: var(--input-label-text-focus);
+}
+
+.open :global(.joker-input-icon.trailing) {
+  transform: rotate(180deg);
+}
+
+.dropdown :global(.joker-input-icon.trailing) {
+  width: var(--spacing-16);
+  min-width: var(--spacing-16);
+  height: var(--spacing-16);
+  color: var(--joker-white-50);
+  transition: transform var(--motion-fast) var(--ease-standard);
+}
+
+.dropdown :global(.joker-input-icon.trailing svg) {
+  width: var(--spacing-16);
+  height: var(--spacing-16);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + var(--spacing-8));
+  right: 0;
+  left: 0;
+  z-index: 4;
+  display: none;
+  max-height: 220px;
+  overflow: hidden;
+  overflow-y: auto;
+  border: var(--input-control-border-width) solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  background: var(--input-control-bg);
+  box-shadow:
+    var(--input-status-shadow-hover),
+    0 18px 42px color-mix(in srgb, var(--joker-black-900) 38%, transparent);
+}
+
+.open .menu {
+  display: grid;
+}
+
+.option {
+  display: flex;
+  min-height: var(--spacing-40);
+  align-items: center;
+  border: 0;
+  border-bottom: var(--input-control-border-width) solid var(--color-border-subtle);
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: var(--text-body-14);
+  font-weight: var(--text-body-weight);
+  padding: 0 var(--spacing-16);
+  text-align: left;
+}
+
+.option:last-child {
+  border-bottom: 0;
+}
+
+.option:hover {
+  background: var(--input-control-bg-hover);
+  color: var(--joker-white-50);
+}
+
+.option[aria-selected="true"] {
+  background: var(--joker-black-600);
+  color: var(--joker-white-50);
+}

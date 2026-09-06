@@ -1,0 +1,1 @@
+export { GameCardFace } from "./GameCardFace";

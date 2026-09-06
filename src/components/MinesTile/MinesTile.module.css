@@ -1,0 +1,57 @@
+.root {
+  --mines-tile-icon-inner-shadow-color: #121111;
+  --mines-tile-background-gradient: linear-gradient(145deg, #1b1b1b 0%, #1c1b1b 100%);
+  --mines-tile-hover-scale: 0.985;
+  --tile-size: var(--game-tile-size, 120px);
+  --tile-radius: calc(var(--tile-size) / 15);
+  --tile-gem-size: calc(var(--tile-size) * 13 / 30);
+  --tile-stack-lift: 100;
+  position: relative;
+  z-index: var(--tile-stack-index, 1);
+  isolation: isolate;
+  display: inline-flex;
+  width: var(--tile-size);
+  height: var(--tile-size);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border: var(--border-width-default) solid var(--joker-black-200);
+  border-radius: var(--tile-radius);
+  background: var(--mines-tile-background-gradient);
+  transition: transform var(--motion-fast) var(--ease-standard);
+  cursor: pointer;
+}
+
+.unselected {
+  background: var(--joker-black-700);
+  border-color: var(--joker-black-400);
+  transition: none;
+  cursor: not-allowed;
+}
+
+@media (hover: hover) {
+  .root:not(.unselected):hover {
+    transform: scale(var(--mines-tile-hover-scale));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root:not(.unselected) {
+    transition: none;
+  }
+
+  .root:not(.unselected):hover {
+    transform: none;
+  }
+}
+
+.icon {
+  position: relative;
+  z-index: 1;
+  display: block;
+  flex: 0 0 auto;
+  width: var(--tile-gem-size);
+  height: var(--tile-gem-size);
+}

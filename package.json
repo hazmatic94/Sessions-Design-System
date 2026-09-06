@@ -1,0 +1,90 @@
+{
+  "name": "@joker/design-system",
+  "version": "0.1.67",
+  "private": true,
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist",
+    "src/styles/*.css",
+    "assets/jokerCoin.svg",
+    "assets/JokerGoldLogoV3.mp4",
+    "assets/joker-originals-icon.svg",
+    "assets/jokerLogo.svg",
+    "assets/bomb.png",
+    "assets/goldBar.png",
+    "assets/goldBars.webp",
+    "assets/dynamite.webp",
+    "assets/shield.webp",
+    "assets/bomb.mp3",
+    "assets/mineClick.mp3",
+    "assets/mineGold.mp3",
+    "assets/shield.mp3",
+    "assets/buttonClick.mp3",
+    "assets/coinFlip.mp3",
+    "assets/coinWhoosh.mp3",
+    "assets/gameOver.mp3",
+    "assets/winStreak.mp3",
+    "assets/roulette-wheel-roll.mp3",
+    "assets/roulette-marble-bounce.mp3",
+    "assets/hiloCardTexture.png",
+    "assets/suits/*.svg",
+    "assets/minus-control.svg",
+    "assets/plus-control.svg",
+    "assets/win-card-modal.svg",
+    "assets/win-modal-coin-spin.mov",
+    "assets/coin-flip-head.svg",
+    "assets/coin-flip-tails.svg",
+    "assets/roulette-wheel.svg",
+    "assets/roulette-chip-black.svg",
+    "assets/roulette-chip-green.svg",
+    "assets/roulette-chip-red.svg",
+    "assets/game-icons/fair-play.svg",
+    "assets/game-rails/*.svg",
+    "assets/user.png",
+    "src/components/Button.css",
+    "src/components/Input.css",
+    "src/components/ShowroomCard/ShowroomCard.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./components/RouletteWheel": {
+      "types": "./dist/components/RouletteWheel/index.d.ts",
+      "import": "./dist/components/RouletteWheel/index.js"
+    },
+    "./components/RouletteWheel/rouletteWheelPaths": {
+      "types": "./dist/components/RouletteWheel/rouletteWheelPaths.d.ts",
+      "import": "./dist/components/RouletteWheel/rouletteWheelPaths.js"
+    },
+    "./styles.css": "./src/styles/index.css",
+    "./styles/*.css": "./src/styles/*.css",
+    "./components/Button.css": "./src/components/Button.css",
+    "./components/Input.css": "./src/components/Input.css",
+    "./components/ShowroomCard/ShowroomCard.css": "./src/components/ShowroomCard/ShowroomCard.css",
+    "./assets/*": "./assets/*"
+  },
+  "scripts": {
+    "build": "python3 scripts/sync-roulette-pocket-angles.py && python3 scripts/bake-roulette-wheel-svg.py && tsc -p tsconfig.json && node scripts/copy-css-modules.mjs",
+    "build:showroom-demos": "node scripts/build-showroom-react-demos.mjs",
+    "clean": "rm -rf dist",
+    "dev": "python3 serve-dev.py 4173",
+    "dev:showroom": "node scripts/build-showroom-react-demos.mjs && python3 serve-dev.py 4174"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "esbuild": "^0.25.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "typescript": "^5.5.0"
+  }
+}

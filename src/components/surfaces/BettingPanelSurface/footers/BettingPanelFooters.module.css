@@ -1,0 +1,22 @@
+.submitGroup {
+  display: grid;
+  width: 100%;
+  gap: var(--spacing-4);
+  justify-items: center;
+}
+
+.dualActionGroup {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-8);
+  align-items: stretch;
+  justify-items: stretch;
+}
+
+.submit {
+  min-width: 0;
+  align-self: end;
+}
+
+.dualActionGroup .submit {
+  width: 100%;
+}

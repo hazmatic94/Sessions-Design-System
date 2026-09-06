@@ -1,0 +1,363 @@
+.root {
+  --safe-tile-overlay-gradient: linear-gradient(
+    138deg,
+    rgb(213 188 158 / 0.3) 0%,
+    rgb(213 188 158 / 0.12) 49%,
+    rgb(213 188 158 / 0.3) 100%
+  );
+  --safe-tile-border-gradient: linear-gradient(
+    to top right,
+    #d6bc9e 0%,
+    #ffeec0 49%,
+    #d6bc9e 99%
+  );
+  --safe-tile-bomb-reveal-duration: 720ms;
+  --safe-tile-bomb-smoke-duration: 920ms;
+  --safe-tile-shield-reveal-duration: 720ms;
+  --safe-tile-pulse-duration: 880ms;
+  --safe-tile-chrome-duration: 420ms;
+  --safe-tile-shield-delay: 500ms;
+  --tile-size: var(--game-tile-size, 120px);
+  --tile-radius: calc(var(--tile-size) / 15);
+  --tile-image-size: calc(var(--tile-size) * 5 / 6);
+  --tile-stack-lift: 100;
+  --tile-opened-opacity: 0.9;
+  --tile-opened-fade-duration: 320ms;
+  position: relative;
+  z-index: var(--tile-stack-index, 1);
+  isolation: isolate;
+  display: inline-flex;
+  width: var(--tile-size);
+  height: var(--tile-size);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border: var(--border-width-default) solid var(--joker-black-200);
+  border-radius: var(--tile-radius);
+  background: var(--joker-black-600);
+  opacity: 1;
+  transition: opacity var(--tile-opened-fade-duration) var(--ease-out);
+}
+
+.opened {
+  opacity: var(--tile-opened-opacity);
+}
+
+.unrevealed {
+  cursor: pointer;
+}
+
+.settled {
+  border-color: transparent;
+  background:
+    linear-gradient(var(--joker-black-600), var(--joker-black-600)) padding-box,
+    var(--safe-tile-border-gradient) border-box;
+  transition:
+    background var(--safe-tile-chrome-duration) var(--ease-out),
+    border-color var(--safe-tile-chrome-duration) var(--ease-out);
+  cursor: default;
+}
+
+.isRevealing {
+  overflow: visible;
+  z-index: calc(var(--tile-stack-index, 1) + var(--tile-stack-lift));
+}
+
+.smoke {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.smokePuff {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--smoke-size, var(--spacing-16));
+  height: var(--smoke-size, var(--spacing-16));
+  border-radius: 50%;
+  background: rgb(214 214 214 / 0.42);
+  filter: blur(4px);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.35);
+  animation: joker-safe-tile-smoke-burst var(--safe-tile-bomb-smoke-duration) var(--ease-out) both;
+}
+
+.smokePuff:nth-child(1) {
+  --smoke-size: calc(var(--spacing-16) + var(--spacing-4));
+  --smoke-x: calc(var(--spacing-8) * -1);
+  --smoke-y: calc(var(--spacing-32) * -1);
+}
+
+.smokePuff:nth-child(2) {
+  --smoke-size: var(--spacing-24);
+  --smoke-x: var(--spacing-16);
+  --smoke-y: calc(var(--spacing-40) * -1);
+  animation-delay: var(--motion-instant);
+}
+
+.smokePuff:nth-child(3) {
+  --smoke-size: calc(var(--spacing-16) + var(--spacing-8));
+  --smoke-x: calc(var(--spacing-24) * -1);
+  --smoke-y: calc(var(--spacing-24) * -1);
+  animation-delay: var(--motion-fast);
+}
+
+.smokePuff:nth-child(4) {
+  --smoke-size: calc(var(--spacing-16) + var(--spacing-4));
+  --smoke-x: var(--spacing-24);
+  --smoke-y: calc(var(--spacing-16) * -1);
+  animation-delay: var(--motion-instant);
+}
+
+.smokePuff:nth-child(5) {
+  --smoke-size: calc(var(--spacing-16) + var(--spacing-4));
+  --smoke-x: calc(var(--spacing-32) * -1);
+  --smoke-y: calc(var(--spacing-8) * -1);
+}
+
+.smokePuff:nth-child(6) {
+  --smoke-size: var(--spacing-24);
+  --smoke-x: var(--spacing-32);
+  --smoke-y: calc(var(--spacing-12) * -1);
+  animation-delay: var(--motion-fast);
+}
+
+.smokePuff:nth-child(7) {
+  --smoke-size: calc(var(--spacing-16) + var(--spacing-4));
+  --smoke-x: calc(var(--spacing-12) * -1);
+  --smoke-y: calc(var(--spacing-40) * -1);
+  animation-delay: var(--motion-instant);
+}
+
+.smokePuff:nth-child(8) {
+  --smoke-size: calc(var(--spacing-16) + var(--spacing-8));
+  --smoke-x: var(--spacing-12);
+  --smoke-y: calc(var(--spacing-32) * -1);
+  animation-delay: var(--motion-fast);
+}
+
+.bombIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  display: block;
+  width: var(--tile-image-size);
+  height: var(--tile-image-size);
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+}
+
+.bombIconRevealing {
+  animation: joker-safe-tile-bomb-pop var(--safe-tile-bomb-reveal-duration) var(--ease-emphasized) both;
+}
+
+.bombIconSettled {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(circle at center, rgb(255 238 192 / 0.42) 0%, transparent 72%);
+  opacity: 0;
+  transform: scale(0.72);
+  animation: joker-safe-tile-glow-flash var(--safe-tile-shield-reveal-duration) var(--ease-out) both;
+}
+
+.pulses {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.pulseRing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(var(--tile-size) / 3);
+  height: calc(var(--tile-size) / 3);
+  border: 2px solid rgb(255 238 192 / 0.82);
+  border-radius: 50%;
+  box-shadow: 0 0 var(--spacing-12) rgb(255 238 192 / 0.28);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.24);
+  animation: joker-safe-tile-pulse-ring var(--safe-tile-pulse-duration) var(--ease-out) both;
+}
+
+.pulseRing:nth-child(2) {
+  animation-delay: var(--motion-fast);
+}
+
+.pulseRing:nth-child(3) {
+  animation-delay: calc(var(--motion-fast) + var(--motion-instant));
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: var(--safe-tile-overlay-gradient);
+  transition: opacity var(--safe-tile-chrome-duration) var(--ease-out);
+}
+
+.overlayVisible {
+  opacity: 1;
+}
+
+.shieldIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  display: block;
+  width: var(--tile-image-size);
+  height: var(--tile-image-size);
+  object-fit: contain;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.35);
+}
+
+.shieldIconVisible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.shieldIconRevealing {
+  animation: joker-safe-tile-shield-pop var(--safe-tile-shield-reveal-duration) var(--ease-emphasized) both;
+}
+
+@keyframes joker-safe-tile-bomb-pop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.35);
+  }
+
+  42% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.14);
+  }
+
+  72% {
+    transform: translate(-50%, -50%) scale(0.94);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes joker-safe-tile-shield-pop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.35);
+  }
+
+  42% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.14);
+  }
+
+  72% {
+    transform: translate(-50%, -50%) scale(0.94);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes joker-safe-tile-smoke-burst {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.35);
+  }
+
+  18% {
+    opacity: 0.72;
+  }
+
+  62% {
+    opacity: 0.48;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--smoke-x)), calc(-50% + var(--smoke-y))) scale(1.55);
+  }
+}
+
+@keyframes joker-safe-tile-pulse-ring {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.24);
+  }
+
+  18% {
+    opacity: 0.9;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.85);
+  }
+}
+
+@keyframes joker-safe-tile-glow-flash {
+  0% {
+    opacity: 0;
+    transform: scale(0.72);
+  }
+
+  34% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .settled {
+    transition: none;
+  }
+
+  .bombIconRevealing,
+  .shieldIconRevealing,
+  .smokePuff,
+  .pulseRing,
+  .glow {
+    animation: none;
+  }
+
+  .bombIcon,
+  .bombIconSettled,
+  .shieldIconVisible,
+  .shieldIconRevealing {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .overlayVisible {
+    opacity: 1;
+    transition: none;
+  }
+}

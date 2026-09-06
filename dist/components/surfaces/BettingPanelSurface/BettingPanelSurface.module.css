@@ -1,0 +1,149 @@
+.root {
+  --input-control-bg: var(--joker-black-800);
+  --input-control-bg-hover: var(--joker-black-700);
+  --input-control-height: var(--input-control-height-docs);
+  --input-control-gap: var(--input-control-gap-docs);
+  --input-icon-size: var(--input-icon-size-docs);
+  display: grid;
+  width: min(100%, var(--betting-panel-max-width));
+  min-width: min(100%, var(--betting-panel-min-width));
+  max-width: var(--betting-panel-max-width);
+  container-type: inline-size;
+  container-name: betting-panel;
+  box-sizing: border-box;
+  overflow-y: auto;
+  scrollbar-width: none;
+  border-right: var(--border-width-default) solid var(--joker-black-300);
+  background: var(--joker-black-700);
+  color: var(--joker-white-50);
+}
+
+.root:not(.mobile) {
+  height: 100%;
+  min-height: 0;
+  max-height: 100%;
+  row-gap: 0;
+  grid-template-rows: minmax(0, 1fr) auto;
+  padding: var(--spacing-24);
+}
+
+.root:global(.joker-betting-panel-surface):not(.mobile) {
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.inGame:not(.mobile) {
+  grid-template-rows: minmax(0, 1fr);
+  overflow: hidden;
+}
+
+.inGame {
+  overflow: hidden;
+}
+
+.inGame .main {
+  opacity: 0.42;
+  filter: blur(var(--border-width-default));
+  pointer-events: none;
+}
+
+.root::-webkit-scrollbar {
+  display: none;
+}
+
+.mobile {
+  grid-template-rows: auto auto minmax(0, 1fr);
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  height: 100%;
+  min-height: 0;
+  max-height: 100%;
+  row-gap: 0;
+  border-right: 0;
+  border-top: var(--border-width-default) solid var(--joker-black-300);
+  border-radius: 0;
+  padding: var(--spacing-24);
+  padding-bottom: calc(var(--spacing-40) + var(--spacing-12));
+}
+
+@media (max-width: 860px) {
+  .root {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+  }
+}
+
+.mobile > .divider {
+  margin-block: var(--spacing-24);
+}
+
+.main {
+  display: grid;
+  gap: var(--spacing-24);
+  min-height: 0;
+}
+
+.root:not(.mobile) .main {
+  grid-template-rows: auto auto minmax(0, 1fr);
+}
+
+.mobile .main {
+  min-height: 0;
+}
+
+.mobile .fields {
+  grid-template-rows: auto auto minmax(0, 1fr);
+  min-height: 0;
+  height: 100%;
+}
+
+.actions {
+  display: grid;
+  gap: var(--spacing-24);
+}
+
+.divider {
+  display: block;
+  height: var(--border-width-default);
+  border-top: var(--border-width-default) dashed var(--joker-black-300);
+}
+
+.fields,
+.gameFields {
+  display: grid;
+  gap: var(--spacing-24);
+  min-height: 0;
+  align-content: start;
+  align-items: start;
+  width: 100%;
+}
+
+.root :global(.joker-bet-field > .joker-input-label) {
+  color: var(--joker-black-50);
+  font-family: var(--font);
+  font-size: var(--input-label-size);
+  line-height: var(--input-label-line-height);
+}
+
+.root :global(.joker-input-control) {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.root :global(.joker-input-control input) {
+  color: var(--joker-white-50);
+  font-family: var(--font);
+  font-size: var(--text-body-14);
+  font-weight: var(--text-body-weight);
+  line-height: var(--text-heading-line-height-compact);
+}
+
+.mobile :global(.joker-input-control input) {
+  font-size: var(--text-body-16);
+}
+
+.root :global(.joker-input-field),
+.root :global(.joker-cta-preview) {
+  width: 100%;
+}

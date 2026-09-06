@@ -1,0 +1,149 @@
+.root {
+  --input-control-bg: var(--joker-black-800);
+  --input-control-bg-hover: var(--joker-black-700);
+  --input-control-height: var(--input-control-height-docs);
+  --input-control-gap: var(--input-control-gap-docs);
+  --input-icon-size: var(--input-icon-size-docs);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  width: min(100%, var(--betting-panel-max-width));
+  min-width: min(100%, var(--betting-panel-min-width));
+  max-width: var(--betting-panel-max-width);
+  container-type: inline-size;
+  container-name: betting-panel;
+  height: 100%;
+  min-height: 0;
+  max-height: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+  row-gap: 0;
+  scrollbar-width: none;
+  border-right: var(--border-width-default) solid var(--joker-black-300);
+  background: var(--joker-black-700);
+  color: var(--joker-white-50);
+  padding: var(--spacing-24);
+}
+
+.root::-webkit-scrollbar {
+  display: none;
+}
+
+.mobile {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  border-right: 0;
+  border-top: var(--border-width-default) solid var(--joker-black-300);
+  border-radius: 0;
+  padding-bottom: calc(var(--spacing-40) + var(--spacing-12));
+}
+
+.mobile .main,
+.fields {
+  display: grid;
+  gap: var(--spacing-24);
+}
+
+.actions {
+  display: grid;
+  gap: var(--spacing-24);
+}
+
+.divider {
+  display: block;
+  height: var(--border-width-default);
+  border-top: var(--border-width-default) dashed var(--joker-black-300);
+}
+
+.submitSpacer {
+  min-height: 0;
+}
+
+.submitSpacer + .divider {
+  margin-bottom: var(--spacing-24);
+}
+
+.mobile > .divider {
+  margin-block: var(--spacing-24);
+}
+
+.submitGroup {
+  display: grid;
+  width: 100%;
+  gap: var(--spacing-4);
+  justify-items: stretch;
+}
+
+.inGameSubmitGroup {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-8);
+  align-items: stretch;
+  justify-items: stretch;
+}
+
+.inGameSubmitGroup .submit {
+  width: 100%;
+  min-width: 0;
+  align-self: stretch;
+}
+
+.submit {
+  min-width: 0;
+  align-self: end;
+}
+
+.root :global(.joker-bet-field > .joker-input-label) {
+  color: var(--joker-black-50);
+  font-family: var(--font);
+  font-size: var(--input-label-size);
+  line-height: var(--input-label-line-height);
+}
+
+.root :global(.joker-odds-button-group-field > .joker-input-label) {
+  color: var(--joker-black-50);
+  font-family: var(--font);
+  font-size: var(--input-label-size);
+  line-height: var(--input-label-line-height);
+}
+
+.root :global(.joker-odds-button-group button:disabled) {
+  border-color: var(--button-hi-lo-border);
+  background: var(--button-hi-lo-bg);
+  box-shadow: none;
+  color: var(--button-hi-lo-text);
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.root :global(.joker-rounds-to-win-option:disabled),
+.root :global(.joker-rounds-to-win-field.disabled .joker-rounds-to-win-option) {
+  border-color: var(--input-control-border);
+  background: var(--input-control-bg);
+  box-shadow: none;
+  color: var(--joker-white-50);
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.root :global(.joker-input-control) {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.root :global(.joker-input-control input) {
+  color: var(--joker-white-50);
+  font-family: var(--font);
+  font-size: var(--text-body-14);
+  font-weight: var(--text-body-weight);
+  line-height: var(--text-heading-line-height-compact);
+}
+
+.mobile :global(.joker-input-control input) {
+  font-size: var(--text-body-16);
+}
+
+.root :global(.joker-input-field),
+.root :global(.joker-cta-preview) {
+  width: 100%;
+}

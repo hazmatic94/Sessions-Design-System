@@ -1,0 +1,27 @@
+.group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-12);
+  max-width: 100%;
+}
+
+@media (max-width: 999px) {
+  .group {
+    flex-wrap: nowrap;
+    width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding-left: var(--spacing-32);
+    padding-right: 0;
+    scroll-padding-left: var(--spacing-32);
+    scrollbar-width: none;
+  }
+
+  .group::-webkit-scrollbar {
+    display: none;
+  }
+
+  .group :global(.joker-showroom-pill) {
+    flex: 0 0 auto;
+  }
+}

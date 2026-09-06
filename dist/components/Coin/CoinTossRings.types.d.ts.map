@@ -1,0 +1,1 @@
+{"version":3,"file":"CoinTossRings.types.d.ts","sourceRoot":"","sources":["../../../src/components/Coin/CoinTossRings.types.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,cAAc,EAAE,MAAM,OAAO,CAAC;AAE5C,MAAM,MAAM,kBAAkB,GAAG,cAAc,CAAC,cAAc,CAAC,GAAG;IAChE,8CAA8C;IAC9C,IAAI,CAAC,EAAE,MAAM,CAAC;IACd,yEAAyE;IACzE,UAAU,CAAC,EAAE,MAAM,CAAC;CACrB,CAAC"}

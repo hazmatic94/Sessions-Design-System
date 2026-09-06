@@ -1,0 +1,122 @@
+.card {
+  --mines-ingame-card-radius: calc(var(--radius-sm) + var(--radius-sm));
+  --mines-ingame-card-coin-size: var(--spacing-16);
+  --mines-ingame-card-center-track: var(--spacing-32);
+  --mines-ingame-card-chevron-size: calc(var(--spacing-16) + var(--spacing-4));
+  display: grid;
+  width: 100%;
+  max-width: none;
+  overflow: hidden;
+  border: var(--border-width-default) solid var(--joker-black-300);
+  border-radius: var(--mines-ingame-card-radius);
+  background: var(--joker-black-300);
+  color: var(--joker-white-50);
+}
+
+.top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--mines-ingame-card-center-track) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--spacing-12);
+  box-sizing: border-box;
+  min-height: var(--button-height);
+  background: var(--joker-black-700);
+  padding: var(--spacing-8) var(--spacing-16);
+}
+
+.stack {
+  display: grid;
+  width: 100%;
+  gap: var(--spacing-8);
+  min-width: 0;
+  justify-items: center;
+  text-align: center;
+}
+
+.label {
+  color: var(--joker-black-50);
+  font-family: var(--font);
+  font-size: var(--text-body-12);
+  font-weight: var(--text-body-weight);
+  line-height: 1.2;
+}
+
+.value {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-4);
+  color: var(--joker-white-50);
+  font-family: var(--font);
+  font-size: var(--text-body-14);
+  font-weight: var(--text-body-weight);
+  line-height: 1.2;
+}
+
+.profit {
+  color: var(--joker-green-400);
+}
+
+.next .coin {
+  color: var(--joker-gold-400);
+}
+
+.coin {
+  display: inline-block;
+  width: var(--mines-ingame-card-coin-size);
+  height: var(--mines-ingame-card-coin-size);
+  flex: 0 0 auto;
+  background: currentColor;
+  mask: url("../../../assets/jokerCoin.svg") center / contain no-repeat;
+  -webkit-mask: url("../../../assets/jokerCoin.svg") center / contain no-repeat;
+}
+
+.chevron {
+  display: inline-grid;
+  width: var(--spacing-32);
+  height: var(--spacing-32);
+  justify-self: center;
+  place-items: center;
+  border: var(--border-width-default) solid var(--joker-black-300);
+  border-radius: var(--radius-pill);
+  color: var(--joker-white-50);
+}
+
+.chevron svg {
+  width: var(--mines-ingame-card-chevron-size);
+  height: var(--mines-ingame-card-chevron-size);
+  stroke-width: var(--icon-stroke-bold);
+}
+
+.bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--mines-ingame-card-center-track) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--spacing-12);
+  box-sizing: border-box;
+  min-height: var(--button-height);
+  height: var(--button-height);
+  border-top: var(--border-width-default) dashed var(--joker-black-300);
+  background: var(--joker-black-500);
+  padding: 0 var(--spacing-16);
+}
+
+.multiplier {
+  display: inline-flex;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  color: var(--joker-white-50);
+  font-family: var(--font);
+  font-size: var(--text-body-14);
+  font-weight: var(--text-body-weight);
+  line-height: 1.2;
+}
+
+.divider {
+  display: block;
+  width: var(--border-width-default);
+  height: var(--spacing-24);
+  justify-self: center;
+  background: var(--joker-black-200);
+}

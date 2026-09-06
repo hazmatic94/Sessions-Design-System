@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <title>Home</title>
+    <meta
+      name="description"
+      content="A design system built to create consistent products through reusable foundations, components, and game patterns." />
+    <meta name="theme-color" content="#131313" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Joker Design System" />
+    <meta property="og:title" content="Home" />
+    <meta
+      property="og:description"
+      content="A design system built to create consistent products through reusable foundations, components, and game patterns." />
+    <meta property="og:image" content="/assets/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Joker Design System" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Home" />
+    <meta
+      name="twitter:description"
+      content="A design system built to create consistent products through reusable foundations, components, and game patterns." />
+    <meta name="twitter:image" content="/assets/og-image.jpg" />
+    <link rel="icon" href="./assets/favicon.svg?v=joker-mark-gold-v3" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Teko:wght@500;600;700&family=Geist+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="./src/styles/tokens.css?v=topbar-60-v1" />
+    <link
+      rel="stylesheet"
+      href="./src/styles/button.css?v=showroom-button-shell-v1" />
+    <link
+      rel="stylesheet"
+      href="./src/styles/auth-card.css?v=auth-card-video-text-24-v1" />
+    <link
+      rel="stylesheet"
+      href="./src/styles/showroom-card.css?v=showroom-card-mobile-hover-v1" />
+    <link
+      rel="stylesheet"
+      href="./src/styles/legacy-cta-preview.css?v=primary-shine-v1" />
+    <link
+      rel="stylesheet"
+      href="./src/styles/inputs.css?v=input-label-lh-100-v1" />
+    <link
+      rel="stylesheet"
+      href="./src/styles/globals.css?v=docs-split-v2" />
+    <link
+      rel="stylesheet"
+      href="./src/styles/docs.css?v=home-body-padding-v1" />
+    <link
+      rel="stylesheet"
+      href="./src/styles/components.css?v=win-modal-copy-16-v1" />
+    <link
+      rel="stylesheet"
+      href="./src/styles/roulette-wheel.css?v=game-container-fix-v1" />
+    <link
+      rel="stylesheet"
+      href="./src/styles/shell.css?v=mines-ingame-gap-v7" />
+  </head>
+  <body>
+    <div class="showroom-shell">
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <div class="sidebar-scroll">
+          <div class="sidebar-header">
+            <a
+              class="brand-logo"
+              href="#/home"
+              aria-label="Joker Design System home">
+              <span class="brand-logo-mark" aria-hidden="true">
+                <video
+                  class="brand-logo-video"
+                  src="./assets/JokerGoldLogoV2-loop.mp4?v=joker-gold-logo-loop-v1"
+                  autoplay
+                  muted
+                  playsinline
+                  preload="auto"></video>
+              </span>
+              <span class="brand-logo-version">v1.0</span>
+            </a>
+
+            <div class="theme-toggle" role="group" aria-label="Theme">
+              <button
+                class="theme-toggle-button is-disabled"
+                type="button"
+                data-theme-mode="light"
+                aria-label="Light mode"
+                aria-pressed="false"
+                aria-disabled="true"
+                tabindex="-1">
+                <span data-lucide="sun" aria-hidden="true"></span>
+              </button>
+              <button
+                class="theme-toggle-button is-active"
+                type="button"
+                data-theme-mode="dark"
+                aria-label="Dark mode"
+                aria-pressed="true">
+                <span data-lucide="moon" aria-hidden="true"></span>
+              </button>
+              <span class="theme-toggle-divider" aria-hidden="true"></span>
+              <button
+                id="sidebar-close"
+                class="sidebar-close-button"
+                type="button"
+                aria-label="Close navigation">
+                <span data-lucide="x" aria-hidden="true"></span>
+              </button>
+            </div>
+          </div>
+
+          <nav id="primary-nav" class="nav-groups"></nav>
+        </div>
+
+        <div
+          class="custom-scrollbar custom-scrollbar--sidebar"
+          aria-hidden="true">
+          <span class="custom-scrollbar-line is-outer-left"></span>
+          <div class="custom-scrollbar-thumb"></div>
+          <span class="custom-scrollbar-line is-outer-right"></span>
+        </div>
+      </aside>
+
+      <div class="workspace">
+        <header class="mobile-header mobile-only">
+          <a
+            class="brand-logo"
+            href="#/home"
+            aria-label="Joker Design System home">
+            <span class="brand-logo-mark" aria-hidden="true">
+              <video
+                class="brand-logo-video"
+                src="./assets/JokerGoldLogoV2-loop.mp4?v=joker-gold-logo-loop-v1"
+                autoplay
+                muted
+                playsinline
+                preload="auto"></video>
+            </span>
+          </a>
+          <button
+            id="sidebar-toggle"
+            class="icon-button"
+            type="button"
+            aria-label="Toggle navigation">
+            <span data-lucide="menu" aria-hidden="true"></span>
+          </button>
+        </header>
+
+        <main id="content" class="content" tabindex="-1"></main>
+
+        <div id="scroll-cue" class="scroll-cue" aria-hidden="false">
+          <button
+            class="scroll-cue-button"
+            type="button"
+            aria-label="Scroll down one screen">
+            <span data-lucide="chevron-down" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="custom-scrollbar custom-scrollbar--workspace"
+      aria-hidden="true">
+      <span class="custom-scrollbar-line is-outer-left"></span>
+      <div class="custom-scrollbar-thumb"></div>
+      <span class="custom-scrollbar-line is-outer-right"></span>
+    </div>
+    </div>
+
+    <script src="./app.js?v=home-logo-v5-loop" type="module"></script>
+  </body>
+</html>

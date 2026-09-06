@@ -1,0 +1,17 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  color: var(--joker-black-50);
+  font-family: var(--font);
+  font-size: var(--text-body-14);
+  font-weight: var(--text-body-weight);
+  line-height: var(--text-body-line-height);
+}
+
+.label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -1,0 +1,3 @@
+import type { HiLoBettingPanelProps } from "./HiLoBettingPanel.types.js";
+export declare function HiLoBettingPanel({ layout, onPlaceBet, onLowerSame, onHigherSame, betAmount, defaultBetAmount, onBetAmountChange, lowerLabel, higherLabel, lowerOdds, higherOdds, placeBetLabel, cashoutLabel, skipLabel, inGame, onSkipCard, onCashout, disablePlaceBetUntilBetAmount, selectedOddsValue, className, }: HiLoBettingPanelProps): import("react").JSX.Element;
+//# sourceMappingURL=HiLoBettingPanel.d.ts.map

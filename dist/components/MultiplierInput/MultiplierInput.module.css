@@ -1,0 +1,58 @@
+.control {
+  padding-right: var(--input-control-gap);
+}
+
+.control input {
+  color: var(--joker-white-50);
+  font-size: var(--text-body-14);
+}
+
+.actions {
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  width: calc(var(--spacing-32) + var(--border-width-default) + var(--border-width-default));
+  min-width: calc(var(--spacing-32) + var(--border-width-default) + var(--border-width-default));
+  height: calc(var(--spacing-24) + var(--spacing-4));
+  overflow: hidden;
+  border: var(--input-control-border-width) solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  background: var(--input-control-bg-hover);
+}
+
+.button {
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+  height: auto;
+  place-items: center;
+  border: 0;
+  border-bottom: var(--input-control-border-width) solid var(--color-border-default);
+  background: transparent;
+  color: var(--joker-white-50);
+  cursor: pointer;
+  padding: 0;
+  transition:
+    background-color var(--motion-fast) var(--ease-standard),
+    color var(--motion-fast) var(--ease-standard);
+}
+
+.button:last-child {
+  border-bottom: 0;
+}
+
+.button:hover {
+  background: var(--color-bg-control-hover);
+  color: var(--input-icon-leading);
+}
+
+.button svg {
+  display: block;
+  width: var(--spacing-12);
+  height: var(--spacing-12);
+  stroke-width: var(--icon-stroke-bold);
+}
+
+.root:focus-within .actions {
+  border-color: var(--input-control-border);
+  background: var(--input-control-bg-focus);
+}

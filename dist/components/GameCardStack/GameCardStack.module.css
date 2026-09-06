@@ -1,0 +1,121 @@
+.root {
+  box-sizing: border-box;
+  display: inline-flex;
+  width: fit-content;
+  padding: var(--spacing-24);
+  border: var(--border-width-default) solid color-mix(in srgb, var(--joker-white-50) 10%, transparent);
+  border-radius: var(--spacing-12);
+  background: var(--joker-black-600);
+}
+
+.stack {
+  --game-card-stack-width: 248px;
+  --game-card-stack-height: 338px;
+  --game-card-stack-step-middle: 8px;
+  --game-card-stack-step-back: 14px;
+  --game-card-stack-scale-middle: 0.99;
+  --game-card-stack-scale-back: 0.98;
+  --game-card-stack-opacity-middle: 0.5;
+  --game-card-stack-opacity-back: 0.32;
+  --game-card-stack-opacity-middle-hover: 0.38;
+  --game-card-stack-opacity-back-hover: 0.2;
+  --game-card-stack-hover-duration: 220ms;
+  --game-card-stack-hover-ease: var(--ease-out);
+  --game-card-stack-hover-lift: -2px;
+  --game-card-stack-hover-shift: 2px;
+  --game-card-stack-hover-tilt: 0.4deg;
+  --game-card-stack-hover-shadow: 0 4px 12px rgb(0 0 0 / 0.12), 0 1px 3px rgb(0 0 0 / 0.08);
+  --game-card-stack-hover-card-shadow: none;
+  --game-card-stack-hover-overlay-opacity: 0.92;
+
+  --game-card-stack-extent: calc(
+    var(--game-card-stack-step-back) + (var(--game-card-stack-height) * var(--game-card-stack-scale-back))
+  );
+
+  position: relative;
+  width: var(--game-card-stack-width);
+  height: var(--game-card-stack-extent);
+}
+
+.hoverZone {
+  position: absolute;
+  top: 0;
+  z-index: 4;
+  width: 50%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.hoverZoneLeft {
+  left: 0;
+}
+
+.hoverZoneRight {
+  right: 0;
+}
+
+.layer {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: var(--game-card-stack-width);
+  transform-origin: top center;
+}
+
+.layerBack {
+  z-index: 1;
+  top: var(--game-card-stack-step-back);
+  transform: translateX(-50%) scale(var(--game-card-stack-scale-back));
+  opacity: calc(
+    var(--game-card-stack-opacity-back) * (1 - var(--game-card-stack-hover-active, 0)) +
+      var(--game-card-stack-opacity-back-hover) * var(--game-card-stack-hover-active, 0)
+  );
+  transition: opacity var(--game-card-stack-hover-duration) var(--game-card-stack-hover-ease);
+}
+
+.layerMiddle {
+  z-index: 2;
+  top: var(--game-card-stack-step-middle);
+  transform: translateX(-50%) scale(var(--game-card-stack-scale-middle));
+  opacity: calc(
+    var(--game-card-stack-opacity-middle) * (1 - var(--game-card-stack-hover-active, 0)) +
+      var(--game-card-stack-opacity-middle-hover) * var(--game-card-stack-hover-active, 0)
+  );
+  transition: opacity var(--game-card-stack-hover-duration) var(--game-card-stack-hover-ease);
+}
+
+.layerFront {
+  z-index: 3;
+  top: 0;
+  transform: translateX(calc(-50% + var(--game-card-stack-hover-shift-factor, 0) * var(--game-card-stack-hover-shift)))
+    translateY(calc(var(--game-card-stack-hover-active, 0) * var(--game-card-stack-hover-lift)))
+    rotateZ(calc(var(--game-card-stack-hover-shift-factor, 0) * var(--game-card-stack-hover-tilt)))
+    scale(1);
+  transform-origin: center 90%;
+  opacity: 1;
+  transition: transform var(--game-card-stack-hover-duration) var(--game-card-stack-hover-ease);
+}
+
+.layerFront :global(.joker-game-card) {
+  box-shadow: var(--game-card-stack-hover-card-shadow, none);
+  transition: box-shadow var(--game-card-stack-hover-duration) var(--game-card-stack-hover-ease);
+}
+
+.layerFront :global(.joker-game-card__surface-overlay) {
+  opacity: var(--game-card-stack-hover-overlay-opacity, 0.92);
+  transition: opacity var(--game-card-stack-hover-duration) var(--game-card-stack-hover-ease);
+}
+
+.stack:has(.hoverZoneRight:hover) {
+  --game-card-stack-hover-shift-factor: 1;
+  --game-card-stack-hover-active: 1;
+  --game-card-stack-hover-card-shadow: var(--game-card-stack-hover-shadow);
+  --game-card-stack-hover-overlay-opacity: 0.96;
+}
+
+.stack:has(.hoverZoneLeft:hover) {
+  --game-card-stack-hover-shift-factor: -1;
+  --game-card-stack-hover-active: 1;
+  --game-card-stack-hover-card-shadow: var(--game-card-stack-hover-shadow);
+  --game-card-stack-hover-overlay-opacity: 0.96;
+}

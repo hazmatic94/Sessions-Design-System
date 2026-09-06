@@ -1,0 +1,75 @@
+.root {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  --game-card-face-suit-color: var(--joker-black-800);
+}
+
+.red {
+  --game-card-face-suit-color: var(--joker-red-400);
+}
+
+.center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-16);
+}
+
+.cornerTop,
+.cornerBottom {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.cornerTop {
+  top: 0;
+  left: 0;
+}
+
+.cornerBottom {
+  right: 0;
+  bottom: 0;
+  transform: rotate(180deg);
+}
+
+.rank,
+.cornerRank {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  line-height: 0.9;
+  color: var(--joker-black-800);
+}
+
+.rank {
+  font-size: 82px;
+}
+
+.cornerRank {
+  font-size: 30px;
+}
+
+.suit,
+.cornerSuit {
+  flex-shrink: 0;
+  color: var(--game-card-face-suit-color);
+  display: block;
+}
+
+.suit {
+  width: 72px;
+  height: 72px;
+}
+
+.cornerSuit {
+  width: 30px;
+  height: 30px;
+}

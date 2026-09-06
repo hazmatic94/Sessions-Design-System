@@ -1,0 +1,3 @@
+export { Chip } from "./Chip";
+export type { ChipProps, ChipVariant } from "./Chip.types";
+//# sourceMappingURL=index.d.ts.map

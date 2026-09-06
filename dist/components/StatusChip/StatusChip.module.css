@@ -1,0 +1,57 @@
+.root {
+  --status-chip-height: 30px;
+  --status-chip-padding-x: var(--spacing-8);
+  --status-chip-gap: var(--spacing-8);
+  --status-chip-dot-size: 8px;
+
+  box-sizing: border-box;
+  display: inline-flex;
+  height: var(--status-chip-height);
+  align-items: center;
+  gap: var(--status-chip-gap);
+  max-width: 100%;
+  padding: 0 var(--status-chip-padding-x);
+  border: var(--border-width-default) solid var(--joker-black-300);
+  border-radius: 999px;
+  background: var(--joker-black-800);
+  color: var(--joker-white-50);
+  font-family: var(--font);
+  font-size: var(--text-body-14);
+  font-weight: var(--text-body-weight);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.dot {
+  position: relative;
+  flex: 0 0 auto;
+  width: var(--status-chip-dot-size);
+  height: var(--status-chip-dot-size);
+  border-radius: 50%;
+  background: var(--joker-green-400);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--joker-green-400) 24%, transparent);
+  animation: joker-status-chip-dot-pulse 1.8s var(--ease-standard) infinite;
+}
+
+.label {
+  min-width: 0;
+}
+
+@keyframes joker-status-chip-dot-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--joker-green-400) 24%, transparent);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 3px color-mix(in srgb, var(--joker-green-400) 12%, transparent),
+      0 0 0 7px color-mix(in srgb, var(--joker-green-400) 18%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dot {
+    animation: none;
+  }
+}

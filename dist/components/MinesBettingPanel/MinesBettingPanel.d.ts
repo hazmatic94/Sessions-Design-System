@@ -1,0 +1,3 @@
+import type { MinesBettingPanelProps } from "./MinesBettingPanel.types.js";
+export declare function MinesBettingPanel({ layout, onPlaceBet, onCashout, inGame, cashoutLabel, inGameCardProps, betAmount, defaultBetAmount, onBetAmountChange, disablePlaceBetUntilBetAmount, minesAmountOptions, minesAmount, defaultMinesAmount, onMinesAmountChange, className, }: MinesBettingPanelProps): import("react").JSX.Element;
+//# sourceMappingURL=MinesBettingPanel.d.ts.map

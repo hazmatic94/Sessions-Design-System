@@ -1,0 +1,1 @@
+{"version":3,"file":"GameCardStack.types.d.ts","sourceRoot":"","sources":["../../../src/components/GameCardStack/GameCardStack.types.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,cAAc,EAAE,SAAS,EAAE,MAAM,OAAO,CAAC;AAEvD,MAAM,MAAM,kBAAkB,GAAG,cAAc,CAAC,cAAc,CAAC,GAAG;IAChE,QAAQ,CAAC,EAAE,SAAS,CAAC;CACtB,CAAC"}

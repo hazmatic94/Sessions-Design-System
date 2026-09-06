@@ -1,0 +1,64 @@
+.field {
+  display: grid;
+  width: 100%;
+  gap: var(--input-field-gap);
+  text-align: left;
+}
+
+.label {
+  color: var(--input-label-text);
+  font-size: var(--input-label-size);
+  line-height: var(--input-label-line-height);
+  text-align: left;
+}
+
+.root {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  gap: var(--odds-inline-gap, var(--spacing-8));
+}
+
+.inline {
+  --odds-inline-gap: var(--spacing-8);
+  --odds-inline-button-padding: var(--spacing-16);
+  --odds-inline-button-inner-gap: var(--spacing-8);
+  --odds-inline-icon-size: var(--icon-size-md);
+  --odds-inline-font-size: var(--text-body-14);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.root:global(.is-three-up) {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.inline:global(.is-three-up) {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.inline > * {
+  min-width: 0;
+  padding: 0 var(--odds-inline-button-padding);
+  font-size: var(--odds-inline-font-size);
+}
+
+.root button:not(:disabled):active {
+  transform: scale(0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root button:not(:disabled):active {
+    transform: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .inline {
+    --odds-inline-gap: var(--spacing-8);
+    --odds-inline-button-padding: var(--spacing-8);
+    --odds-inline-button-inner-gap: var(--spacing-4);
+    --odds-inline-icon-size: var(--spacing-16);
+    --odds-inline-font-size: var(--text-body-12);
+  }
+}

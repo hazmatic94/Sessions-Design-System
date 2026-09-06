@@ -1,0 +1,3 @@
+import type { RouletteBettingPanelProps } from './RouletteBettingPanel.types.js';
+export declare function RouletteBettingPanel({ layout, betAmount, defaultBetAmount, onBetAmountChange, oddsOptions, oddsLayout, showOdds, selectedOddsValue, defaultSelectedOddsValue, onOddsValueChange, onPlaceBet, onCashout, inGame, disablePlaceBetUntilBetAmount, submitLabel, spinWheelLabel, cashoutLabel, className, }: RouletteBettingPanelProps): import("react").JSX.Element;
+//# sourceMappingURL=RouletteBettingPanel.d.ts.map
