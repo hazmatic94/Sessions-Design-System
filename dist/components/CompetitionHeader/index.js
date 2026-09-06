@@ -1,1 +1,0 @@
-export { CompetitionHeader } from "./CompetitionHeader";

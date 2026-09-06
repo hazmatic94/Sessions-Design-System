@@ -1,1 +1,0 @@
-{"version":3,"file":"CoinFaceIcon.d.ts","sourceRoot":"","sources":["../../../src/components/Coin/CoinFaceIcon.tsx"],"names":[],"mappings":"AAIA,OAAO,KAAK,EAAE,QAAQ,EAAE,MAAM,cAAc,CAAC;AAE7C,KAAK,iBAAiB,GAAG;IACvB,IAAI,CAAC,EAAE,QAAQ,CAAC;IAChB,SAAS,CAAC,EAAE,MAAM,CAAC;CACpB,CAAC;AA8BF,wBAAgB,YAAY,CAAC,EAAE,IAAc,EAAE,SAAS,EAAE,EAAE,iBAAiB,+BAiD5E"}

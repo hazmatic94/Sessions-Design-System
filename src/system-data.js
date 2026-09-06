@@ -25,29 +25,12 @@ export const navGroups = [
   {
     title: 'Components',
     items: [
-      {label: 'Button', route: '/components/buttons'},
-      {label: 'Inputs', route: '/components/inputs'},
-      {label: 'Navigation', route: '/components/navigation'},
-      {label: 'Chips', route: '/components/chips'},
-      {label: 'Betting Panel', route: '/components/betting-panel'},
-      {label: 'Cards', route: '/components/cards'},
-      {label: 'Modals', route: '/components/modals'},
-      {label: 'Game Rails', route: '/components/game-rails'},
+      {
+        label: 'Overview',
+        icon: 'box',
+        route: '/components',
+      },
     ],
-  },
-  {
-    title: 'Games',
-    items: [
-      {label: 'Sportsbook'},
-      {label: 'Coin Flip'},
-      {label: 'Hilo'},
-      {label: 'Mines'},
-      {label: 'Roulette'},
-    ],
-  },
-  {
-    title: 'Templates',
-    items: [{label: 'Game Container'}],
   },
 ];
 
@@ -304,7 +287,7 @@ export const iconStrokeTokens = [
   {
     name: 'iconStrokeDefault',
     value: '1.75px',
-    usage: 'Default Joker DS stroke weight for product icons.',
+    usage: 'Default Sessions DS stroke weight for product icons.',
     icon: 'minus',
   },
   {
@@ -354,181 +337,6 @@ export const iconUsageTokens = [
   },
 ];
 
-export const buttonStateTokens = [
-  {
-    label: 'Default',
-    token: '--button-cta-default',
-    output: 'primary action bg / inner highlight / on-primary text',
-    state: 'default',
-  },
-  {
-    label: 'Hover',
-    token: '--button-cta-hover',
-    output: 'primary hover bg / lifted shadow / focus border',
-    state: 'hover',
-  },
-  {
-    label: 'Disabled',
-    token: '--button-cta-disabled',
-    output: 'disabled bg / inner shadow / muted text',
-    state: 'disabled',
-  },
-];
-
-export const buttonFoundationTokens = [
-  {label: 'Primary height', token: '--button-height', output: '48px'},
-  {
-    label: 'Primary min width',
-    token: '--button-primary-min-width',
-    output: '272px',
-  },
-  {
-    label: 'Secondary height',
-    token: '--button-secondary-height',
-    output: '40px',
-  },
-  {label: 'Hi-Lo height', token: '--button-hi-lo-height', output: '48px'},
-  {label: 'Hi-Lo fill', token: '--button-hi-lo-bg', output: 'inputControlBg'},
-  {
-    label: 'Hi-Lo hover fill',
-    token: '--button-hi-lo-bg-hover',
-    output: 'inputControlBgHover',
-  },
-  {
-    label: 'Hi-Lo border',
-    token: '--button-hi-lo-border',
-    output: 'inputControlBorder',
-  },
-  {
-    label: 'Hi-Lo down chevron',
-    token: '--button-hi-lo-chevron-down',
-    output: 'jokerRed400',
-  },
-  {
-    label: 'Hi-Lo up chevron',
-    token: '--button-hi-lo-chevron-up',
-    output: 'jokerGreen400',
-  },
-  {
-    label: 'Hi-Lo skip fill',
-    token: '--button-hi-lo-skip-bg',
-    output: 'jokerGold1000',
-  },
-  {
-    label: 'Hi-Lo skip hover fill',
-    token: '--button-hi-lo-skip-bg-hover',
-    output: 'jokerGold1000',
-  },
-  {
-    label: 'Hi-Lo skip border',
-    token: '--button-hi-lo-skip-border',
-    output: 'jokerGold400',
-  },
-  {
-    label: 'Hi-Lo skip hover border',
-    token: '--button-hi-lo-skip-border-hover',
-    output: 'jokerGold400',
-  },
-  {label: 'Radius', token: '--button-radius', output: '4px'},
-  {
-    label: 'Horizontal padding',
-    token: '--button-padding-inline',
-    output: 'spacing 24',
-  },
-  {
-    label: 'Primary typography',
-    token: '--text-heading-h3',
-    output: 'Heading H3 / Teko 24px / 500',
-  },
-  {
-    label: 'Secondary typography',
-    token: '--text-body-14',
-    output: 'Body 14 / Inter 14px / 400',
-  },
-  {label: 'Duration', token: '--button-transition-duration', output: '120ms'},
-  {
-    label: 'Easing',
-    token: '--button-transition-ease',
-    output: 'cubic-bezier(0.2, 0, 0, 1)',
-  },
-  {
-    label: 'Press',
-    token: '--button-press-transform',
-    output: 'translateY(1px) scale(0.99)',
-  },
-];
-
-export const inputVariantRows = [
-  {
-    label: 'Input',
-    token: 'Input',
-    output: 'Single-line value entry with optional prefix and suffix slots.',
-    variant: 'text',
-    status: 'first-class',
-  },
-  {
-    label: 'Dropdown',
-    token: 'Select',
-    output: 'Single-value option selection for constrained field choices.',
-    variant: 'dropdown',
-    status: 'first-class',
-  },
-  {
-    label: 'OTP',
-    token: 'OtpInput',
-    output:
-      'Segmented verification code entry with paste, focus advance, and attempt messaging.',
-    variant: 'otp',
-    status: 'first-class',
-  },
-];
-
-export const inputStateRows = [
-  {
-    label: 'Default',
-    token: 'data-state=default',
-    output: 'Base resting style for all variants.',
-    state: 'default',
-  },
-  {
-    label: 'Hover',
-    token: 'data-state=hover',
-    output: 'Border/surface affordance only. Do not duplicate per variant.',
-    state: 'hover',
-  },
-  {
-    label: 'Focus',
-    token: 'data-state=focus',
-    output: 'Keyboard-visible focus ring and caret treatment.',
-    state: 'focus',
-  },
-  {
-    label: 'Success',
-    token: 'data-status=success',
-    output: 'Confirmed value or valid completion feedback.',
-    state: 'success',
-  },
-  {
-    label: 'Warning',
-    token: 'data-status=warning',
-    output: 'Attention state that does not block submission.',
-    state: 'warning',
-  },
-  {
-    label: 'Error',
-    token: 'aria-invalid=true',
-    output:
-      'Blocking validation, field-level error copy, and accessible invalid state.',
-    state: 'error',
-  },
-  {
-    label: 'Disabled',
-    token: 'disabled',
-    output: 'Unavailable state. No hover/focus interaction.',
-    state: 'disabled',
-  },
-];
-
 export const primitiveColorFamilies = [
   {
     title: 'bgWhite',
@@ -550,7 +358,7 @@ export const primitiveColorFamilies = [
     ],
   },
   {
-    title: 'jokerGold',
+    title: 'Gold',
     tokens: [
       {name: 'jokerGold50', value: '#FFF4E0', text: 'dark'},
       {name: 'jokerGold100', value: '#FFEAC7', text: 'dark'},
@@ -566,7 +374,7 @@ export const primitiveColorFamilies = [
     ],
   },
   {
-    title: 'jokerGreen',
+    title: 'Green',
     tokens: [
       {name: 'jokerGreen50', value: '#D8F8DE', text: 'dark'},
       {name: 'jokerGreen100', value: '#C5F4CD', text: 'dark'},
@@ -581,7 +389,7 @@ export const primitiveColorFamilies = [
     ],
   },
   {
-    title: 'jokerRed',
+    title: 'Red',
     tokens: [
       {name: 'jokerRed50', value: '#F6D2D2', text: 'dark'},
       {name: 'jokerRed100', value: '#F3BFBF', text: 'dark'},
@@ -596,7 +404,7 @@ export const primitiveColorFamilies = [
     ],
   },
   {
-    title: 'jokerAlert',
+    title: 'Alert',
     tokens: [
       {name: 'jokerAlert50', value: '#F4D6C5', text: 'dark'},
       {name: 'jokerAlert100', value: '#F1C9B2', text: 'dark'},
@@ -786,57 +594,11 @@ export const semanticColorGroups = [
 ];
 
 export const componentSummaries = {
-  Buttons:
-    'Shared button styles create clear hierarchy across primary, secondary and supporting actions.',
-  Inputs:
-    'Flexible field patterns support data entry, validation, prefixes and verification states.',
-  Navigation:
-    'Shared navigation patterns keep routes, active states and wayfinding consistent.',
-  'Game Rails':
-    'Shared rails keep game identity, information and controls in predictable locations.',
-  Cards:
-    'Reusable card patterns group related content, summaries and repeated information.',
-  'Betting Panel':
-    'A shared panel structure keeps betting controls consistent while giving each game room for its own mechanics.',
-  Modals:
-    'Focused overlays handle confirmations, key decisions and tasks requiring immediate attention.',
-  Tables:
-    'Data-dense structures for comparison, filtering, review, and operational product actions.',
-  Tabs: 'Local navigation patterns for switching related views inside one focused product context.',
-  'Competition Header':
-    'Sportsbook competition title bar for grouping markets under a league or event name.',
-  'Date Row': 'Sportsbook date label row for grouping markets by day or kickoff schedule.',
-  'Team Info': 'Sportsbook team identity row with crest and name for match listings.',
-  'View Markets': 'Sportsbook action link for expanding or navigating to available markets.',
-  Time: 'Sportsbook kickoff or market time label for match listings.',
-  'Odds Panel': 'Sportsbook odds cell for displaying selectable market prices.',
-  'Odds Row': 'Sportsbook market label row aligned to odds panel column width.',
-  'Odds Selection': 'Sportsbook 1X2 odds block combining market labels and selectable odds panels.',
-  'Upcoming Matches':
-    'Sportsbook match listing row combining kickoff time, home and away teams, and view markets action.',
-  Badges:
-    'Compact label patterns for status, category, counts, metadata, and lightweight state signals.',
-  Chips:
-    'Compact chips communicate multipliers, outcomes and game states without adding unnecessary UI.',
-};
-
-export const gameSummaries = {
-  Sportsbook:
-    'Reusable match and market patterns create a consistent structure for browsing competitions, fixtures and markets.',
-  'Coin Flip':
-    'Components and patterns specific to Coin Flip, built on the shared game foundations.',
-  Hilo: 'Components and patterns specific to Hilo, built on the shared game foundations.',
-  Mines: 'Components and patterns specific to Mines, built on the shared game foundations.',
-  Roulette:
-    'Components and patterns specific to Roulette, built on the shared game foundations.',
-};
-
-export const templateSummaries = {
-  'Game Container':
-    'A reusable shell that brings together navigation, the game stage, betting controls and responsive behaviour.',
+  Overview:
+    'This is the empty component library. Add a page here when you start a new Sessions component.',
 };
 
 export const resources = {
-  Showroom:
-    'A curated place for polished Joker product examples, composed screens, and end-to-end UI previews.',
+  Introduction:
+    'Overview of the Sessions Design System, how the docs site is organized, and where to start.',
 };

@@ -1,1 +1,0 @@
-{"version":3,"file":"ScoreChip.types.d.ts","sourceRoot":"","sources":["../../../src/components/ScoreChip/ScoreChip.types.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,cAAc,EAAE,SAAS,EAAE,MAAM,OAAO,CAAC;AAEvD,MAAM,MAAM,cAAc,GAAG,cAAc,CAAC,eAAe,CAAC,GAAG;IAC7D,QAAQ,CAAC,EAAE,SAAS,CAAC;CACtB,CAAC"}

@@ -1,20 +1,10 @@
 import {renderNav} from './nav.js?v=remove-nav-search-v1';
-import {renderPage} from './pageRenderer.js?v=odds-group-gap-8-v1';
-import {pageRegistry} from './registry.js?v=buttons-lede-v1';
+import {renderPage} from './pageRenderer.js?v=sessions-clean-v1';
+import {pageRegistry} from './registry.js?v=sessions-clean-v1';
 import {state} from './state.js?v=docs-routing-v1';
-
-const SPORTSBOOK_LEGACY_ROUTES = new Set([
-  '/components/tabs',
-  '/components/competition-header',
-  '/components/date-row',
-  '/components/team-info',
-  '/components/view-markets',
-  '/components/time',
-]);
 
 export function normalizeRoute(hash) {
   const clean = hash.replace(/^#/, '').split('/').slice(0, 3).join('/');
-  if (SPORTSBOOK_LEGACY_ROUTES.has(clean)) return '/games/sportsbook';
   if (
     clean === '/foundations/color-variables' ||
     clean === '/foundations/colors'
@@ -32,10 +22,6 @@ export function resolveCurrentRoute() {
 
   if (pageRegistry[location.pathname]) {
     return location.pathname;
-  }
-
-  if (SPORTSBOOK_LEGACY_ROUTES.has(location.pathname)) {
-    return '/games/sportsbook';
   }
 
   return normalizeRoute(location.hash);

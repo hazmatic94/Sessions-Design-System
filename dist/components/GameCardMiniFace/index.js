@@ -1,1 +1,0 @@
-export { GameCardMiniFace } from "./GameCardMiniFace";

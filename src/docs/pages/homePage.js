@@ -1,38 +1,41 @@
-import {
-  COMPONENTS_HOME_BET_INPUT,
-  FOUNDATIONS_HOME_COLOR_SWATCH,
-  GAMES_HOME_COIN,
-  homeShowroomCardMarkup,
-} from '../markup/homeShowroomCardMarkup.js?v=home-card-links-v1';
+import {homeShowroomCardMarkup} from '../markup/homeShowroomCardMarkup.js?v=sessions-clean-v1';
 
 const HOME_TICKER_ITEMS = [
-  'Build Stable',
+  'Sessions',
   'v1.0',
-  'Updated Jul 2026',
-  'React',
-  'TypeScript',
-  'Responsive',
-  'Production Ready',
+  'Foundations',
+  'Components',
+  'Ready to build',
 ];
 
 const HOME_SHOWROOM_CARDS = [
   {
     railLabel: 'Foundations',
-    body: 'Design tokens for colour, type, spacing, motion and iconography.',
+    body: 'Colour, type, spacing, radius, shadows, motion, and icons.',
     href: '#/foundations/colours',
-    innerMedia: FOUNDATIONS_HOME_COLOR_SWATCH,
+    icon: 'palette',
+    innerMedia: `
+      <article class="color-swatch-card color-swatch-card--home-showroom">
+        <div class="color-swatch-card__swatch" style="background: var(--joker-gold-400)">
+          <span class="base-tag">brand</span>
+        </div>
+        <div class="color-swatch-card__meta">
+          <span class="color-swatch-card__token">#FFDEA8</span>
+        </div>
+      </article>
+    `,
   },
   {
     railLabel: 'Components',
-    body: 'Shared UI components, betting patterns and game assets.',
-    href: '#/components/buttons',
-    innerMedia: COMPONENTS_HOME_BET_INPUT,
-  },
-  {
-    railLabel: 'Games',
-    body: 'Game patterns, live previews and the shared Game Container.',
-    href: '#/games/sportsbook',
-    innerMedia: GAMES_HOME_COIN,
+    body: 'An empty library. This is where new Sessions components go.',
+    href: '#/components',
+    icon: 'box',
+    innerMedia: `
+      <div class="home-showroom-card__empty-slot">
+        <span data-lucide="plus" aria-hidden="true"></span>
+        <strong>Add a component</strong>
+      </div>
+    `,
   },
 ];
 
@@ -64,32 +67,18 @@ export function renderHomePage(_page) {
       <div class="home-ticker" aria-label="Release information">
         ${homeTickerTrack()}
       </div>
-      <section
-        class="home-hero"
-        aria-label="Joker Design System hero"
-        data-home-hero-grid
-        data-home-hero-grid-video="./assets/JokerGoldLogoV5-loop.mov?v=home-logo-v5-loop"
-      >
-        <div class="home-hero-video-wrap" data-home-hero-video-wrap>
-          <video
-            class="home-hero-video"
-            data-home-hero-grid-video
-            src="./assets/JokerGoldLogoV5-loop.mov?v=home-logo-v5-loop"
-            autoplay
-            muted
-            playsinline
-            preload="auto"
-            aria-hidden="true"
-          ></video>
+      <section class="home-hero" aria-label="Sessions Design System">
+        <div class="home-hero-wordmark">
+          <p class="home-hero-kicker">Design System</p>
+          <h1 class="home-hero-title">Sessions</h1>
         </div>
-        <canvas class="home-hero-grid-canvas" data-home-hero-grid-canvas aria-hidden="true"></canvas>
       </section>
       <div class="home-body">
         <section class="home-intro" aria-labelledby="home-intro-title">
           <div class="page-hero-text home-intro__copy">
             <div class="home-intro__text">
               <h1 id="home-intro-title">Build Once. Reuse Everywhere.</h1>
-              <p class="lede">A design system built to create consistent products through reusable foundations, components, and game patterns.</p>
+              <p class="lede">The docs layout stays. The product library is empty on purpose — add the next Sessions component here.</p>
             </div>
             <a class="joker-cta-preview secondary home-intro__cta" href="#/getting-started/introduction">Get started</a>
           </div>

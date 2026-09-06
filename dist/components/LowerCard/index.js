@@ -1,1 +1,0 @@
-export { LowerCard } from "./LowerCard";

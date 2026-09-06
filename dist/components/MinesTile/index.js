@@ -1,1 +1,0 @@
-export { MinesTile } from "./MinesTile";

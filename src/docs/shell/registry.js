@@ -1,43 +1,12 @@
 import {
   componentSummaries,
   foundationNotes,
-  gameSummaries,
   navGroups,
   resources,
-  templateSummaries,
-} from '../../system-data.js?v=buttons-lede-v1';
+} from '../../system-data.js?v=sessions-clean-v1';
 import {flattenNavGroups} from './navModel.js?v=nav-fix-2210';
 
-const routePageTitles = {
-  '/components/buttons': 'Buttons',
-  '/components/inputs': 'Inputs',
-  '/components/navigation': 'Navigation',
-  '/components/game-rails': 'Game Rails',
-  '/components/cards': 'Cards',
-  '/components/betting-panel': 'Betting Panel',
-  '/components/modals': 'Modals',
-  '/components/tables': 'Tables',
-  '/components/badges': 'Badges',
-  '/components/chips': 'Chips',
-};
-
-const componentRoutes = new Set([
-  '/components/buttons',
-  '/components/inputs',
-  '/components/navigation',
-  '/components/game-rails',
-  '/components/cards',
-  '/components/betting-panel',
-  '/components/modals',
-  '/components/tables',
-  '/components/badges',
-  '/components/chips',
-  '/components/betting-panel',
-]);
-
-function resolvePageTitle(section, label, route) {
-  return routePageTitles[route] || label;
-}
+const componentRoutes = new Set(['/components']);
 
 function buildPages() {
   const pages = {
@@ -45,35 +14,34 @@ function buildPages() {
       section: 'Getting Started',
       title: 'Home',
       subtitle:
-        'A design system built to create consistent products through reusable foundations, components, and game patterns.',
+        'A design system for building consistent Sessions products from shared foundations and new components.',
       kind: 'home',
     },
     '/installation': {
       section: 'Getting Started',
       title: 'Installation',
       subtitle:
-        'Install the package, import styles.css once, then pull React components and CSS tokens into a React 18+ project.',
+        'Run the docs site locally, then add new components into this library.',
       kind: 'installation',
     },
     '/getting-started/introduction': {
       section: 'Getting Started',
       title: 'Introduction',
       subtitle:
-        'The Joker Design System provides the shared foundations, components, and patterns used to build consistent experiences across every Joker product.',
+        'The Sessions Design System is the shared visual language for Sessions products.',
       kind: 'resource',
     },
-    "/getting-started/introduction": {
-      section: "Getting Started",
-      title: "Introduction",
-      subtitle: "Overview of the Joker Design System, how the showroom is organized, and where to start.",
-      kind: "resource",
+    '/components': {
+      section: 'Components',
+      title: 'Overview',
+      subtitle: componentSummaries.Overview,
+      kind: 'component',
     },
   };
 
   flattenNavGroups(navGroups).forEach(({section, label, route}) => {
     if (pages[route]) return;
-    const title = resolvePageTitle(section, label, route);
-    pages[route] = createPage(section, title, route);
+    pages[route] = createPage(section, label, route);
   });
 
   return pages;
@@ -95,24 +63,6 @@ function createPage(section, title, route) {
       title,
       kind: 'component',
       subtitle: componentSummaries[title],
-    };
-  }
-
-  if (section === 'Games') {
-    return {
-      section,
-      title,
-      kind: 'game',
-      subtitle: gameSummaries[title],
-    };
-  }
-
-  if (section === 'Templates') {
-    return {
-      section,
-      title,
-      kind: 'template',
-      subtitle: templateSummaries[title],
     };
   }
 

@@ -1,3 +1,0 @@
-import type { CocoHutBettingPanelProps } from "./CocoHutBettingPanel.types.js";
-export declare function CocoHutBettingPanel({ layout, onPlaceBet, betAmount, defaultBetAmount, onBetAmountChange, disablePlaceBetUntilBetAmount, difficultyOptions, difficulty, defaultDifficulty, onDifficultyChange, className, }: CocoHutBettingPanelProps): import("react").JSX.Element;
-//# sourceMappingURL=CocoHutBettingPanel.d.ts.map

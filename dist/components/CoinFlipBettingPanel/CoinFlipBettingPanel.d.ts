@@ -1,3 +1,0 @@
-import type { CoinFlipBettingPanelProps } from "./CoinFlipBettingPanel.types.js";
-export declare function CoinFlipBettingPanel({ layout, betAmount, defaultBetAmount, onBetAmountChange, oddsOptions, oddsLayout, showOdds, selectedOddsValue, defaultSelectedOddsValue, onOddsValueChange, roundsToWinOptions, roundsToWinValue, defaultRoundsToWinValue, onRoundsToWinChange, onPlaceBet, onCashout, inGame, disablePlaceBetUntilBetAmount, submitLabel, flipCoinLabel, cashoutLabel, className, }: CoinFlipBettingPanelProps): import("react").JSX.Element;
-//# sourceMappingURL=CoinFlipBettingPanel.d.ts.map

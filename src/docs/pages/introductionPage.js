@@ -1,4 +1,4 @@
-import { slug } from '../../utils.js';
+import {slug} from '../../utils.js';
 
 export function renderIntroductionPage(_page) {
   return `
@@ -7,7 +7,7 @@ export function renderIntroductionPage(_page) {
         <div class="page-hero-copy">
           <div class="page-hero-text">
             <h1>Introduction</h1>
-            <p class="lede">The Joker Design System provides the shared foundations, components, and patterns used to build consistent experiences across every Joker product.</p>
+            <p class="lede">The Sessions Design System is the shared foundation for new Sessions products. The docs site stays. The component library starts empty.</p>
           </div>
         </div>
       </div>
@@ -24,9 +24,9 @@ export function renderIntroductionPage(_page) {
       })}
       <hr class="introduction-divider" aria-hidden="true" />
       ${introductionSectionWithCallout('Built For Real Products', {
-        lede: "The design system isn't a library of isolated components.",
+        lede: 'This is not a museum of old game UI.',
         paragraphs: [
-          'Every token, component, and pattern exists because it solves a real product problem. The same foundations power the documentation, application shell, and native games, ensuring every experience feels familiar regardless of where users interact.',
+          'The old JokerPlus games, betting panels, and showroom demos are gone. What remains is the documentation shell and the visual foundations so new Sessions components can be designed and documented in one place.',
         ],
         callout: 'Design once. Build many.',
       })}
@@ -34,52 +34,24 @@ export function renderIntroductionPage(_page) {
       ${introductionSectionWithCallout('Consistency Without Compromise', {
         lede: "Consistency doesn't mean every screen looks the same.",
         paragraphs: [
-          'It means interactions behave predictably, layouts follow shared principles, and components communicate the same intent wherever they appear. This reduces design decisions, improves usability, and creates a more cohesive product experience.',
+          'It means interactions behave predictably, layouts follow shared principles, and components communicate the same intent wherever they appear.',
         ],
         callout: 'Consistency creates confidence.',
       })}
       <hr class="introduction-divider" aria-hidden="true" />
-      ${introductionSectionWithCallout('Responsive From The Beginning', {
-        lede: 'Responsiveness is considered from the start, not added later.',
+      ${introductionSectionWithCallout('Add Components Here', {
+        lede: 'The Components section is the workshop.',
         paragraphs: [
-          'Components, layouts, and patterns are designed to adapt across desktop, tablet, and mobile while maintaining the same structure, hierarchy, and interaction principles.',
-        ],
-        callout: 'One system. Every screen.',
-      })}
-      <hr class="introduction-divider" aria-hidden="true" />
-      ${introductionSectionWithCallout('Design And Development', {
-        lede: 'The system creates a shared language between design and engineering.',
-        paragraphs: [
-          'Foundations define the visual language, components provide reusable building blocks, and documentation ensures every pattern is implemented consistently. Working from the same system reduces duplication, speeds up development, and makes iteration easier over time.',
-        ],
-        callout: 'Shared foundations. Faster delivery.',
-      })}
-      <hr class="introduction-divider" aria-hidden="true" />
-      ${introductionSectionWithCallout('Designed To Grow', {
-        lede: 'The design system is built to evolve alongside the product.',
-        paragraphs: [
-          'New components, patterns, and improvements can be introduced without changing how the system is understood. As the platform grows, the foundations remain consistent while the library continues to expand.',
+          'Start a new component from the overview page. Use the same preview, variants, states, guidelines, and code sections so every addition feels like part of the same system.',
         ],
         callout: 'Build once. Improve continuously.',
       })}
     </div>
   `;
 }
+
 function introductionParagraph(text) {
   return `<p>${text}</p>`;
-}
-
-function introductionSection(title, paragraphs) {
-  return `
-    <section id="${slug(title)}" class="introduction-section">
-      <div class="page-hero-text">
-        <h2 class="introduction-section__title">${title}</h2>
-        <div class="docs-prose introduction-section__body">
-          ${paragraphs.map(introductionParagraph).join('')}
-        </div>
-      </div>
-    </section>
-  `;
 }
 
 function introductionSectionWithCallout(title, {lede, paragraphs, callout}) {

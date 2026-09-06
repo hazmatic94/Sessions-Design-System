@@ -1,1 +1,0 @@
-{"version":3,"file":"TeamInfo.types.d.ts","sourceRoot":"","sources":["../../../src/components/TeamInfo/TeamInfo.types.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,cAAc,EAAE,SAAS,EAAE,MAAM,OAAO,CAAC;AAEvD,MAAM,MAAM,aAAa,GAAG,cAAc,CAAC,cAAc,CAAC,GAAG;IAC3D,OAAO,EAAE,MAAM,CAAC;IAChB,OAAO,CAAC,EAAE,MAAM,CAAC;IACjB,QAAQ,CAAC,EAAE,SAAS,CAAC;CACtB,CAAC"}

@@ -15,7 +15,7 @@ function foundationTokenTemplate(page) {
       'Primitive tokens, semantic aliases, and usage standards can be added here without changing the page template.',
       `
       <div class="token-grid">
-        ${tokenCard('Primitive', '--joker-${slug(page.title)}-100', 'Raw values imported from the Joker foundation set.')}
+        ${tokenCard('Primitive', '--sessions-${slug(page.title)}-100', 'Raw values from the Sessions foundation set.')}
         ${tokenCard('Semantic', '--surface-primary', 'Meaningful aliases mapped to primitives for product use.')}
         ${tokenCard('Usage', 'Product standard', 'Guidance for where and how this foundation should be applied.')}
       </div>
@@ -64,7 +64,7 @@ function sampleTokenCode(title) {
   "${slug(title)}": {
     "primitive": {},
     "semantic": {},
-    "usage": "Add Joker ${title.toLowerCase()} standards here"
+    "usage": "Add Sessions ${title.toLowerCase()} standards here"
   }
 }`;
 }

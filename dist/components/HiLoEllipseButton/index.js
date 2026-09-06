@@ -1,1 +1,0 @@
-export { HiLoEllipseButton } from "./HiLoEllipseButton";

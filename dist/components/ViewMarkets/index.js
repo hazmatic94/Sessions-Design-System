@@ -1,1 +1,0 @@
-export { ViewMarkets } from "./ViewMarkets";

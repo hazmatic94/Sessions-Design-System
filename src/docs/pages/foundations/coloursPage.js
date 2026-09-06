@@ -95,12 +95,13 @@ function colorFamilyGroup(family) {
 }
 
 function colorFamilyTitle(title) {
-  if (title === 'bgWhite') return 'Joker White';
-  if (title === 'bgBlack') return 'Joker Black';
-  if (title === 'jokerGreen') return 'Joker Green';
-  if (title === 'jokerRed') return 'Joker Red';
-  if (title === 'jokerAlert') return 'Joker Alert';
-  return 'Joker Gold';
+  if (title === 'bgWhite') return 'White';
+  if (title === 'bgBlack') return 'Black';
+  if (title === 'Green') return 'Green';
+  if (title === 'Red') return 'Red';
+  if (title === 'Alert') return 'Alert';
+  if (title === 'Gold') return 'Gold';
+  return title;
 }
 
 function semanticColorGroup(group) {

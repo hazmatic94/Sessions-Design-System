@@ -1,1 +1,0 @@
-{"version":3,"file":"StatusChip.types.d.ts","sourceRoot":"","sources":["../../../src/components/StatusChip/StatusChip.types.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,cAAc,EAAE,MAAM,OAAO,CAAC;AAE5C,MAAM,MAAM,eAAe,GAAG,cAAc,CAAC,eAAe,CAAC,GAAG;IAC9D,UAAU,EAAE,MAAM,CAAC;CACpB,CAAC"}

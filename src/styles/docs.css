@@ -1,4 +1,4 @@
-/* Joker Design System — documentation site styles (not shipped with the npm package). */.showroom-shell {
+/* Sessions Design System — documentation site styles. */.showroom-shell {
   min-height: 100vh;
 }.app-shell {
   display: grid;
@@ -260,6 +260,14 @@
   background: var(--joker-black-700);
   transition: box-shadow var(--motion-fast) var(--ease-standard);
   contain: layout paint style;
+}.brand-logo-wordmark {
+  color: var(--joker-gold-400);
+  font-family: var(--font-display, Teko, sans-serif);
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-transform: uppercase;
 }.brand-logo-version {
   color: var(--joker-black-50);
   font-family: var(--font);
@@ -1048,6 +1056,42 @@ p {
   min-height: 404px;
   border-bottom: 1px solid var(--joker-black-300);
   background: var(--joker-black-800);
+}.home-hero-wordmark {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  text-align: center;
+}.home-hero-kicker {
+  margin: 0;
+  color: var(--joker-black-50);
+  font-family: var(--font);
+  font-size: var(--text-body-14);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}.home-hero-title {
+  margin: 0;
+  color: var(--joker-gold-400);
+  font-family: var(--font-display, Teko, sans-serif);
+  font-size: clamp(72px, 12vw, 128px);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 0.9;
+  text-transform: uppercase;
+}.home-showroom-card__empty-slot {
+  display: grid;
+  place-items: center;
+  gap: 12px;
+  min-height: 160px;
+  color: var(--joker-gold-400);
+  text-align: center;
+}.home-showroom-card__empty-slot svg {
+  width: 28px;
+  height: 28px;
+}.home-showroom-card__empty-slot strong {
+  color: var(--joker-white-50);
+  font-family: var(--font);
+  font-size: var(--text-body-14);
+  font-weight: 600;
 }.home-hero-video-wrap {
   position: absolute;
   inset: 0;

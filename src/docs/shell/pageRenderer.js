@@ -1,21 +1,17 @@
 import {
   hydrateLucideIcons,
   templates,
-} from '../../pages/runtimeDocs.js?v=home-logo-v5-loop';
+} from '../../pages/runtimeDocs.js?v=sessions-clean-v1';
 import {slug} from '../../utils.js';
-import {updateBetPanelSubmit} from '../demo/bettingPanel.js?v=betting-cta-pending-v2';
 import {updateCustomScrollbars} from '../demo/customScrollbar.js?v=scrollbar-3px-v1';
 import {contentRoot} from './dom.js?v=docs-routing-v1';
-import {initGameContainerViewports} from '../demo/gameContainerViewport.js?v=game-container-text-zoom-v1';
-import {syncStaticGameShellRails} from '../demo/gameShellRails.js?v=game-shell-chrome-950-v3';
-import {hydratePageDemos} from '../hydrators/index.js?v=win-modal-coin-loop-v1';
 import {
   bindMobileNavigation,
   bindMobileScrollCues,
   pageSequenceNavigation,
 } from '../demo/mobileBindings.js';
-import {pageFooter} from './pageLayout.js?v=docs-page-footer-v1';
-import {pageRegistry} from './registry.js?v=buttons-lede-v1';
+import {pageFooter} from './pageLayout.js?v=sessions-clean-v1';
+import {pageRegistry} from './registry.js?v=sessions-clean-v1';
 import {state} from './state.js?v=docs-routing-v1';
 
 let isInitialPageRender = true;
@@ -44,8 +40,6 @@ function resetPageTransitionState() {
 }
 
 function resetWorkspaceScroll() {
-  // globals.css sets scroll-behavior: smooth — that makes page swaps look
-  // like content is sliding down. Force an instant jump to the top.
   const html = document.documentElement;
   const previous = html.style.scrollBehavior;
   html.style.scrollBehavior = 'auto';
@@ -245,12 +239,12 @@ function absoluteAssetUrl(path) {
 }
 
 function updateDocumentMeta(page) {
-  const title = page.title || 'Joker Design System';
+  const title = page.title || 'Sessions Design System';
   const description =
     firstSentence(page.subtitle) ||
-    'Joker Design System — shared foundations, components, and game patterns.';
+    'Sessions Design System — shared foundations and a place to build new components.';
   const url = new URL(`/#${state.route}`, window.location.origin).href;
-  const image = absoluteAssetUrl('/assets/og-image.jpg');
+  const image = absoluteAssetUrl('/assets/favicon.svg');
 
   document.title = title;
 
@@ -262,14 +256,14 @@ function updateDocumentMeta(page) {
   setNamedMeta('twitter:image', image);
 
   setPropertyMeta('og:type', 'website');
-  setPropertyMeta('og:site_name', 'Joker Design System');
+  setPropertyMeta('og:site_name', 'Sessions Design System');
   setPropertyMeta('og:title', title);
   setPropertyMeta('og:description', description);
   setPropertyMeta('og:url', url);
   setPropertyMeta('og:image', image);
-  setPropertyMeta('og:image:width', '1200');
-  setPropertyMeta('og:image:height', '630');
-  setPropertyMeta('og:image:alt', 'Joker Design System');
+  setPropertyMeta('og:image:width', '512');
+  setPropertyMeta('og:image:height', '512');
+  setPropertyMeta('og:image:alt', 'Sessions Design System');
 }
 
 async function paintPage(page) {
@@ -278,8 +272,6 @@ async function paintPage(page) {
   try {
     updateDocumentMeta(page);
     contentRoot.dataset.page = pageDatasetKey(page);
-    // Sidebar slide-in is a first-land beat only. Coming back to home, the
-    // nav is already on screen — replaying it feels wrong.
     const playHomeSidebarEnter = page.kind === 'home' && isFirstPagePaint;
     isFirstPagePaint = false;
     document.documentElement.classList.toggle(
@@ -290,14 +282,7 @@ async function paintPage(page) {
     hydrateLucideIcons(contentRoot);
     bindMobileNavigation(contentRoot);
     bindMobileScrollCues(contentRoot);
-    syncStaticGameShellRails(contentRoot);
-    await hydratePageDemos(contentRoot);
-    contentRoot
-      .querySelectorAll('.joker-betting-panel')
-      .forEach(updateBetPanelSubmit);
     updateCustomScrollbars();
-    initGameContainerViewports(contentRoot);
-    requestAnimationFrame(() => initGameContainerViewports(contentRoot));
     resetWorkspaceScroll();
     contentRoot.focus({preventScroll: true});
     wrapPageEnterBody();

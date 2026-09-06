@@ -1,1 +1,0 @@
-export { GoldNuggetsInput } from "./GoldNuggetsInput";

@@ -1,1 +1,0 @@
-{"version":3,"file":"ViewMarkets.types.d.ts","sourceRoot":"","sources":["../../../src/components/ViewMarkets/ViewMarkets.types.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,oBAAoB,EAAE,SAAS,EAAE,MAAM,OAAO,CAAC;AAE7D,MAAM,MAAM,gBAAgB,GAAG,oBAAoB,CAAC,iBAAiB,CAAC,GAAG;IACvE,QAAQ,CAAC,EAAE,SAAS,CAAC;CACtB,CAAC"}

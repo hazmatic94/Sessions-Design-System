@@ -24,7 +24,7 @@ export function pageTitle(page) {
 export function pageFooter() {
   return `
     <footer class="docs-page-footer">
-      <p>© 2026 JokerPlus. All rights reserved.</p>
+      <p>© 2026 Sessions. All rights reserved.</p>
     </footer>
   `;
 }
