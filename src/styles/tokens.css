@@ -251,13 +251,14 @@
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
   --ease-in: cubic-bezier(0.4, 0, 1, 1);
   --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
-  --button-height: calc(var(--spacing-64) - var(--spacing-12));
+  --button-height: 52px;
   --button-primary-min-width: calc(
     var(--spacing-64) + var(--spacing-64) + var(--spacing-64) +
       var(--spacing-64) + var(--spacing-16)
   );
   --button-secondary-height: calc(var(--spacing-40) + var(--spacing-8));
-  --button-radius: var(--radius-sm);
+  --button-primary-radius: 999px;
+  --button-radius: var(--button-primary-radius);
   --button-padding-top: calc(
     var(--border-width-default) + var(--border-width-default)
   );
@@ -271,16 +272,14 @@
   --button-cta-default-bg: var(--green-300);
   --button-cta-hover-bg: var(--color-action-primary-hover);
   --button-cta-disabled-bg: var(--black-500);
-  --button-primary-bg: var(--color-action-primary);
-  --button-primary-bg-hover: var(--color-action-primary-hover);
-  --button-primary-bg-active: var(--color-action-primary-active);
-  --button-primary-border: color-mix(
-    in srgb,
-    var(--color-action-primary) 58%,
-    var(--color-action-primary-active)
-  );
-  --button-primary-border-hover: var(--color-action-primary);
-  --button-primary-text: var(--color-action-on-primary);
+  --button-primary-bg: var(--green-700);
+  --button-primary-bg-hover: color-mix(in srgb, var(--green-700) 94%, white);
+  --button-primary-bg-active: var(--green-800);
+  --button-primary-border: color-mix(in srgb, var(--green-600) 88%, var(--green-700));
+  --button-primary-border-hover: color-mix(in srgb, var(--green-600) 62%, white);
+  --button-primary-text: var(--joker-white-50);
+  --button-primary-hover-duration: 165ms;
+  --button-primary-hover-ease: var(--ease-out);
   --button-primary-highlight: rgb(255 255 255 / 0.28);
   --button-primary-highlight-hover: rgb(255 255 255 / 0.34);
   --button-primary-shadow:
@@ -303,28 +302,20 @@
     0 3px 8px rgb(29 24 17 / 0.26);
   --button-shine-color: rgb(255 255 255 / 0.42);
   --button-primary-shine-color: rgb(255 252 245 / 0.88);
-  --button-secondary-bg: var(--joker-gold-1000);
-  --button-secondary-bg-hover: color-mix(
-    in srgb,
-    var(--color-action-primary) 7%,
-    var(--black-500)
-  );
-  --button-secondary-border: color-mix(
-    in srgb,
-    var(--color-action-primary) 70%,
-    var(--color-border-default)
-  );
-  --button-secondary-border-hover: var(--color-action-primary-hover);
-  --button-secondary-border-hover-contrast: var(--black-50);
-  --button-secondary-border-selected: var(--green-300);
-  --button-secondary-text: var(--green-300);
-  --button-secondary-highlight: transparent;
-  --button-secondary-highlight-hover: transparent;
-  --button-secondary-highlight-selected: transparent;
+  --button-secondary-bg: var(--black-800);
+  --button-secondary-bg-hover: color-mix(in srgb, var(--black-800) 94%, white);
+  --button-secondary-bg-active: var(--black-700);
+  --button-secondary-border: var(--color-border-subtle);
+  --button-secondary-border-hover: color-mix(in srgb, var(--color-border-subtle) 62%, white);
+  --button-secondary-border-selected: var(--green-600);
+  --button-secondary-text: var(--joker-white-50);
+  --button-secondary-hover-duration: var(--button-primary-hover-duration);
+  --button-secondary-hover-ease: var(--button-primary-hover-ease);
   --button-secondary-shadow: none;
   --button-secondary-shadow-hover: none;
   --button-secondary-shadow-selected: none;
   --button-secondary-shadow-loading: none;
+  --button-secondary-border-hover-contrast: var(--button-secondary-border-hover);
   --button-hi-lo-height: var(--button-height);
   --button-hi-lo-bg: var(--input-control-bg);
   --button-hi-lo-bg-hover: var(--input-control-bg-hover);
@@ -352,6 +343,8 @@
   );
   --button-ghost-text: var(--color-text-secondary);
   --button-ghost-text-hover: var(--color-text-primary);
+  --button-ghost-hover-duration: var(--button-primary-hover-duration);
+  --button-ghost-hover-ease: var(--button-primary-hover-ease);
   --button-disabled-border: var(--color-border-default);
   --button-disabled-bg: var(--button-cta-disabled-bg);
   --button-disabled-shadow: var(--button-secondary-shadow);

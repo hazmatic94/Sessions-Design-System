@@ -13,7 +13,9 @@ export function renderComponentExampleWrapper({
   const tocAttrs = tocTitle
     ? ` data-toc-title="${escapeHtml(tocTitle)}" data-toc-depth="2"`
     : "";
-  const previewMarkup = `
+  const previewMarkup = preview
+    ? preview
+    : `
     <div class="component-example-wrapper__empty-slot">
       <span>Preview</span>
     </div>

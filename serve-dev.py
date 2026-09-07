@@ -23,9 +23,14 @@ class NoCacheHandler(SimpleHTTPRequestHandler):
 
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
-        fs_path = os.path.join(ROOT_DIR, parsed.path.lstrip("/"))
-        basename = os.path.basename(parsed.path)
-        if parsed.path not in ("/", "/index.html") and not os.path.exists(fs_path):
+        request_path = parsed.path
+        if request_path in ("/favicon.ico", "/favicon.svg"):
+            request_path = "/assets/favicon.svg"
+            self.path = request_path
+
+        fs_path = os.path.join(ROOT_DIR, request_path.lstrip("/"))
+        basename = os.path.basename(request_path)
+        if request_path not in ("/", "/index.html") and not os.path.exists(fs_path):
             if "." not in basename:
                 self.path = "/index.html"
 

@@ -1,4 +1,4 @@
-import { renderComponentExampleWrapper } from "./componentExampleWrapper.js?v=code-overlay-fixed-v1";
+import { renderComponentExampleWrapper } from "./componentExampleWrapper.js?v=sessions-primary-button-v1";
 import { escapeHtml, slug } from "../../utils.js";
 
 export function pageHero(page) {

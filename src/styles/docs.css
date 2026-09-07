@@ -884,6 +884,15 @@ p {
   border: 0;
   border-radius: 0;
   background: transparent;
+}.section-block.button-example-section .section-heading h2 {
+  max-width: none;
+  color: var(--color-text-primary);
+  font-family: var(--font);
+  font-size: var(--text-body-b1);
+  font-weight: var(--text-body-b1-medium-weight);
+  line-height: var(--text-body-b1-line-height);
+  letter-spacing: var(--text-body-b1-letter-spacing);
+  text-transform: none;
 }.docs-prose {
   max-width: 1080px;
   margin: 0 0 72px;

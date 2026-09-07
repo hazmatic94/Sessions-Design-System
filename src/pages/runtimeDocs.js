@@ -1,5 +1,5 @@
 import {renderBettingPanelSurfacePage} from '../docs/pages/bettingPanelSurfacePage.js?v=sessions-pages-v1';
-import {renderButtonsPage} from '../docs/pages/buttonsPage.js?v=sessions-pages-v1';
+import {renderButtonsPage} from '../docs/pages/buttonsPage.js?v=sessions-button-v17';
 import {renderCardsPage} from '../docs/pages/cardsPage.js?v=sessions-pages-v1';
 import {renderCoinFlipPage} from '../docs/pages/coinFlipPage.js?v=sessions-pages-v1';
 import {renderGameContainerPage} from '../docs/pages/gameContainerPage.js?v=sessions-pages-v1';
