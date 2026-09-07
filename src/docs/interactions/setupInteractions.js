@@ -152,13 +152,21 @@ export function setupInteractions() {
     const copyButton = event.target.closest('[data-copy]');
     if (!copyButton) return;
 
+    const copySrc = copyButton.dataset.copySrc;
     const value = copyButton.dataset.copyValue;
     const target = copyButton.dataset.copy
       ? document.querySelector(copyButton.dataset.copy)
       : null;
-    if (!value && !target) return;
+    if (!value && !target && !copySrc) return;
 
-    await copyText(value || target.textContent.trim());
+    let copyValue = value || target?.textContent.trim();
+    if (!copyValue && copySrc) {
+      const response = await fetch(copySrc);
+      if (!response.ok) return;
+      copyValue = await response.text();
+    }
+
+    await copyText(copyValue);
     if (
       copyButton.classList.contains('copy-icon-button') ||
       copyButton.classList.contains('code-action-button')

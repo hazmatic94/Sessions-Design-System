@@ -59,18 +59,10 @@ function primitiveCssVariableName(name) {
 
 function primitiveColorUsage(token, familyName) {
   if (token.base) return 'Base primitive for this ramp.';
-  if (familyName === 'bgWhite')
-    return 'White primitive and inverse surface value.';
-  if (familyName === 'bgBlack')
+  if (familyName === 'Black')
     return 'Neutral black primitive for dark surfaces, borders, and text mapping.';
-  if (familyName === 'jokerGold')
-    return 'Brand gold primitive for premium accents and action mapping.';
-  if (familyName === 'jokerGreen')
+  if (familyName === 'Green')
     return 'Success primitive for positive feedback and completion states.';
-  if (familyName === 'jokerRed')
-    return 'Error primitive for danger, validation, and destructive states.';
-  if (familyName === 'jokerAlert')
-    return 'Warning primitive for caution, pending, and attention states.';
   return 'Primitive colour value.';
 }
 function primitiveColorTokens() {
@@ -95,12 +87,6 @@ function colorFamilyGroup(family) {
 }
 
 function colorFamilyTitle(title) {
-  if (title === 'bgWhite') return 'White';
-  if (title === 'bgBlack') return 'Black';
-  if (title === 'Green') return 'Green';
-  if (title === 'Red') return 'Red';
-  if (title === 'Alert') return 'Alert';
-  if (title === 'Gold') return 'Gold';
   return title;
 }
 

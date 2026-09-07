@@ -1,16 +1,16 @@
 :root {
   color-scheme: dark;
   --joker-white-50: #ffffff;
-  --joker-black-50: #a6a6a6;
-  --joker-black-100: #5f5f5f;
-  --joker-black-200: #3d3d3d;
-  --joker-black-300: #262626;
-  --joker-black-400: #212121;
-  --joker-black-500: #1f1f1f;
-  --joker-black-600: #1b1b1b;
-  --joker-black-700: #171717;
-  --joker-black-800: #131313;
-  --joker-black-900: #000000;
+  --black-50: #a8a8a8;
+  --black-100: #7d7d7d;
+  --black-200: #595959;
+  --black-300: #343434;
+  --black-400: #2a2a2a;
+  --black-500: #222222;
+  --black-600: #1c1c1c;
+  --black-700: #181818;
+  --black-800: #141414;
+  --black-900: #0f0f0f;
   --joker-gold-50: #fff4e0;
   --joker-gold-100: #ffeac7;
   --joker-gold-200: #ffe8c2;
@@ -22,16 +22,16 @@
   --joker-gold-800: #65512f;
   --joker-gold-900: #382e23;
   --joker-gold-1000: #1d1811;
-  --joker-green-50: #d8f8de;
-  --joker-green-100: #c5f4cd;
-  --joker-green-200: #b2f1bc;
-  --joker-green-300: #8be99b;
-  --joker-green-400: #3edb58;
-  --joker-green-500: #33b849;
-  --joker-green-600: #28953a;
-  --joker-green-700: #1f712c;
-  --joker-green-800: #134e1d;
-  --joker-green-900: #0d3d15;
+  --green-50: #f4f8f3;
+  --green-100: #e4ede2;
+  --green-200: #c8d7c5;
+  --green-300: #a5bc9f;
+  --green-400: #82a17a;
+  --green-500: #5f8660;
+  --green-600: #47684a;
+  --green-700: #304834;
+  --green-800: #18271d;
+  --green-900: #07110b;
   --joker-red-50: #f6d2d2;
   --joker-red-100: #f3bfbf;
   --joker-red-200: #efadad;
@@ -53,44 +53,22 @@
   --joker-alert-800: #452411;
   --joker-alert-900: #1f0f06;
 
+  /* Semantic surface tokens */
+  --color-surface-background: var(--black-900);
+  --color-surface-base: var(--black-800);
+  --color-surface-elevated: var(--black-700);
+  --color-surface-panel: var(--black-600);
+
   /* Semantic color tokens */
-  --color-bg-canvas: var(--joker-black-700);
-  --color-bg-app: color-mix(
-    in srgb,
-    var(--joker-black-900) 96%,
-    var(--joker-gold-1000)
-  );
-  --color-bg-sidebar: var(--joker-black-800);
-  --color-bg-surface: color-mix(
-    in srgb,
-    var(--joker-black-700) 94%,
-    var(--joker-gold-1000)
-  );
-  --color-bg-surface-raised: color-mix(
-    in srgb,
-    var(--joker-black-600) 94%,
-    var(--joker-gold-1000)
-  );
-  --color-bg-surface-active: color-mix(
-    in srgb,
-    var(--joker-gold-400) 3%,
-    var(--color-bg-surface-raised)
-  );
-  --color-bg-code: color-mix(
-    in srgb,
-    var(--joker-black-800) 97%,
-    var(--joker-gold-1000)
-  );
-  --color-bg-control: color-mix(
-    in srgb,
-    var(--color-bg-surface) 97%,
-    var(--joker-gold-1000)
-  );
-  --color-bg-control-hover: color-mix(
-    in srgb,
-    var(--joker-gold-400) 3%,
-    var(--color-bg-surface-raised)
-  );
+  --color-bg-app: var(--color-surface-background);
+  --color-bg-sidebar: var(--color-surface-base);
+  --color-bg-canvas: var(--color-surface-elevated);
+  --color-bg-surface: var(--color-surface-elevated);
+  --color-bg-surface-raised: var(--color-surface-panel);
+  --color-bg-surface-active: var(--black-400);
+  --color-bg-code: var(--color-surface-background);
+  --color-bg-control: var(--color-surface-elevated);
+  --color-bg-control-hover: var(--color-surface-panel);
   --color-bg-inverse: var(--joker-white-50);
   --color-text-primary: color-mix(
     in srgb,
@@ -99,49 +77,34 @@
   );
   --color-text-secondary: color-mix(
     in srgb,
-    var(--joker-black-50) 97%,
+    var(--black-50) 97%,
     var(--joker-gold-50)
   );
   --color-text-muted: color-mix(
     in srgb,
-    var(--joker-black-100) 97%,
+    var(--black-100) 97%,
     var(--joker-gold-500)
   );
-  --color-text-inverse: var(--joker-black-900);
-  --color-text-brand: var(--joker-gold-400);
-  --color-border-subtle: color-mix(
-    in srgb,
-    var(--joker-white-50) 4%,
-    transparent
-  );
-  --color-border-default: color-mix(
-    in srgb,
-    var(--joker-white-50) 7%,
-    transparent
-  );
-  --color-border-strong: color-mix(
-    in srgb,
-    var(--joker-white-50) 12%,
-    transparent
-  );
-  --color-border-focus: color-mix(
-    in srgb,
-    var(--joker-gold-400) 72%,
-    transparent
-  );
-  --color-action-primary: var(--joker-gold-400);
-  --color-action-primary-hover: var(--joker-gold-300);
-  --color-action-primary-active: var(--joker-gold-500);
-  --color-action-on-primary: var(--joker-black-900);
+  --color-text-inverse: var(--black-900);
+  --color-text-brand: var(--green-300);
+  --color-border-subtle: var(--black-400);
+  --color-border-default: var(--black-300);
+  --color-border-strong: var(--black-200);
+  --color-border-focus: var(--green-700);
+  --color-border-brand: var(--green-500);
+  --color-action-primary: var(--green-300);
+  --color-action-primary-hover: var(--green-400);
+  --color-action-primary-active: var(--green-500);
+  --color-action-on-primary: var(--black-900);
   --color-selection-bg: color-mix(
     in srgb,
-    var(--joker-white-50) 4%,
-    var(--color-bg-sidebar)
+    var(--green-300) 14%,
+    var(--color-surface-base)
   );
   --color-selection-border: var(--color-border-default);
-  --color-status-available: var(--joker-gold-400);
-  --color-status-success: var(--joker-green-400);
-  --color-status-success-surface: var(--joker-green-900);
+  --color-status-available: var(--green-300);
+  --color-status-success: var(--green-400);
+  --color-status-success-surface: var(--green-900);
   --color-status-error: var(--joker-red-400);
   --color-status-error-surface: var(--joker-red-900);
   --color-primitive-joker-red-400: var(--joker-red-400);
@@ -158,11 +121,11 @@
   --text: var(--color-text-primary);
   --text-muted: var(--color-text-secondary);
   --text-faint: var(--color-text-muted);
-  --accent: var(--color-action-primary);
-  --accent-soft: rgb(255 222 168 / 0.05);
+  --accent: var(--green-300);
+  --accent-soft: rgb(165 188 159 / 0.05);
   --success: var(--color-status-available);
   --warning: var(--color-status-warning);
-  --info: var(--joker-gold-300);
+  --info: var(--green-400);
   --code: var(--color-bg-code);
   --radius-sm: 4px;
   --radius-md: 4px;
@@ -213,15 +176,15 @@
   --game-canvas-min-width: calc(
     (var(--spacing-64) * 9) + var(--spacing-24) + var(--spacing-12)
   );
-  --font-heading: 'Teko', Impact, 'Arial Narrow', sans-serif;
-  --font:
-    'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    'Segoe UI', sans-serif;
+  --font-heading: "Satoshi", sans-serif;
+  --font: "Satoshi", sans-serif;
   --mono:
     'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  --heading-h1: 48px;
+  --heading-h1: 42px;
   --heading-h2: 32px;
   --heading-h3: 24px;
+  --body-big: 20px;
+  --body-b1: 16px;
   --body-18: 18px;
   --body-16: 16px;
   --body-14: 14px;
@@ -230,9 +193,22 @@
   --text-heading-h2: var(--heading-h2);
   --text-heading-h1: var(--heading-h1);
   --text-heading-weight: 500;
-  --text-heading-line-height-compact: 1;
+  --text-heading-line-height: normal;
+  --text-heading-line-height-compact: normal;
+  --text-heading-letter-spacing: 0;
+  --text-body-big: var(--body-big);
+  --text-body-big-medium: var(--body-big);
+  --text-body-big-weight: 400;
+  --text-body-big-medium-weight: 500;
+  --text-body-big-letter-spacing: 0.045em;
+  --text-body-b1: var(--body-b1);
+  --text-body-b1-medium: var(--body-b1);
+  --text-body-b1-weight: 400;
+  --text-body-b1-medium-weight: 500;
+  --text-body-b1-line-height: normal;
+  --text-body-b1-letter-spacing: 0.045em;
   --text-body-18: var(--body-18);
-  --text-body-16: var(--body-16);
+  --text-body-16: var(--text-body-b1);
   --text-body-14: var(--body-14);
   --text-body-12: var(--body-12);
   --text-body-weight: 400;
@@ -292,9 +268,9 @@
   --button-transition-duration: var(--motion-fast);
   --button-transition-ease: var(--ease-standard);
   --button-press-transform: translateY(var(--border-width-default)) scale(0.99);
-  --button-cta-default-bg: var(--joker-gold-400);
+  --button-cta-default-bg: var(--green-300);
   --button-cta-hover-bg: var(--color-action-primary-hover);
-  --button-cta-disabled-bg: var(--joker-black-500);
+  --button-cta-disabled-bg: var(--black-500);
   --button-primary-bg: var(--color-action-primary);
   --button-primary-bg-hover: var(--color-action-primary-hover);
   --button-primary-bg-active: var(--color-action-primary-active);
@@ -331,7 +307,7 @@
   --button-secondary-bg-hover: color-mix(
     in srgb,
     var(--color-action-primary) 7%,
-    var(--joker-black-500)
+    var(--black-500)
   );
   --button-secondary-border: color-mix(
     in srgb,
@@ -339,9 +315,9 @@
     var(--color-border-default)
   );
   --button-secondary-border-hover: var(--color-action-primary-hover);
-  --button-secondary-border-hover-contrast: var(--joker-black-50);
-  --button-secondary-border-selected: var(--joker-gold-400);
-  --button-secondary-text: var(--joker-gold-400);
+  --button-secondary-border-hover-contrast: var(--black-50);
+  --button-secondary-border-selected: var(--green-300);
+  --button-secondary-text: var(--green-300);
   --button-secondary-highlight: transparent;
   --button-secondary-highlight-hover: transparent;
   --button-secondary-highlight-selected: transparent;
@@ -355,11 +331,11 @@
   --button-hi-lo-bg-selected: var(--joker-gold-1000);
   --button-hi-lo-border: var(--input-control-border);
   --button-hi-lo-border-hover: var(--input-control-border-hover);
-  --button-hi-lo-border-selected: var(--joker-gold-400);
+  --button-hi-lo-border-selected: var(--green-300);
   --button-hi-lo-shadow-selected: 0 0 12px 0 rgb(255 222 168 / 0.3);
   --button-hi-lo-text: var(--joker-white-50);
   --button-hi-lo-chevron-down: var(--joker-red-400);
-  --button-hi-lo-chevron-up: var(--joker-green-400);
+  --button-hi-lo-chevron-up: var(--green-400);
   --button-hi-lo-skip-height: 52px;
   --button-cashout-height: 52px;
   --button-hi-lo-skip-bg: var(--joker-gold-1000);
@@ -420,15 +396,15 @@
   );
   --input-control-padding-inline: var(--spacing-16);
   --input-control-border-width: var(--border-width-default);
-  --input-control-border: var(--joker-black-200);
-  --input-control-border-hover: var(--joker-black-200);
-  --input-control-border-focus: var(--joker-gold-400);
-  --input-control-bg: var(--joker-black-800);
-  --input-control-bg-hover: var(--joker-black-700);
+  --input-control-border: var(--black-200);
+  --input-control-border-hover: var(--black-200);
+  --input-control-border-focus: var(--green-300);
+  --input-control-bg: var(--black-800);
+  --input-control-bg-hover: var(--black-700);
   --input-control-bg-focus: var(--joker-gold-1000);
-  --input-placeholder-text: var(--joker-black-100);
+  --input-placeholder-text: var(--black-100);
   --input-placeholder-font-weight: 400;
-  --input-label-text: var(--joker-black-50);
+  --input-label-text: var(--black-50);
   --input-label-text-focus: var(--joker-white-50);
   --input-label-size: 12px;
   --input-label-line-height: 100%;
@@ -438,21 +414,21 @@
   );
   --input-icon-size-docs: var(--icon-size-sm);
   --input-icon-text-size: calc(var(--spacing-12) - var(--border-width-default));
-  --input-icon-leading: var(--joker-gold-300);
-  --input-icon-trailing: var(--joker-black-50);
-  --input-message-text: var(--joker-black-50);
+  --input-icon-leading: var(--green-300);
+  --input-icon-trailing: var(--black-50);
+  --input-message-text: var(--black-50);
   --input-shadow-hover: none;
   --input-shadow-focus: none;
   --input-status-success: var(--color-status-success);
-  --input-status-success-hover: var(--joker-green-300);
+  --input-status-success-hover: var(--green-300);
   --input-status-success-bg: color-mix(
     in srgb,
-    var(--joker-green-900) 42%,
+    var(--green-900) 42%,
     var(--input-control-bg)
   );
   --input-status-success-bg-hover: color-mix(
     in srgb,
-    var(--joker-green-900) 34%,
+    var(--green-900) 34%,
     var(--input-control-bg-hover)
   );
   --input-status-success-ring: color-mix(

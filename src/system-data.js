@@ -35,20 +35,6 @@ export const navGroups = [
       {label: 'Game Rails', route: '/components/game-rails'},
     ],
   },
-  {
-    title: 'Games',
-    items: [
-      {label: 'Sportsbook'},
-      {label: 'Coin Flip'},
-      {label: 'Hilo'},
-      {label: 'Mines'},
-      {label: 'Roulette'},
-    ],
-  },
-  {
-    title: 'Templates',
-    items: [{label: 'Game Container'}],
-  },
 ];
 
 export const foundationNotes = {
@@ -356,130 +342,60 @@ export const iconUsageTokens = [
 
 export const primitiveColorFamilies = [
   {
-    title: 'bgWhite',
-    tokens: [{name: 'jokerWhite50', value: '#ffffff', text: 'dark'}],
-  },
-  {
-    title: 'bgBlack',
+    title: 'Black',
     tokens: [
-      {name: 'jokerBlack50', value: '#A6A6A6', text: 'light'},
-      {name: 'jokerBlack100', value: '#5F5F5F', text: 'light'},
-      {name: 'jokerBlack200', value: '#3D3D3D', text: 'light'},
-      {name: 'jokerBlack300', value: '#262626', text: 'light'},
-      {name: 'jokerBlack400', value: '#212121', text: 'light', base: true},
-      {name: 'jokerBlack500', value: '#1F1F1F', text: 'light'},
-      {name: 'jokerBlack600', value: '#1B1B1B', text: 'light'},
-      {name: 'jokerBlack700', value: '#171717', text: 'light'},
-      {name: 'jokerBlack800', value: '#131313', text: 'light'},
-      {name: 'jokerBlack900', value: '#000000', text: 'light'},
-    ],
-  },
-  {
-    title: 'Gold',
-    tokens: [
-      {name: 'jokerGold50', value: '#FFF4E0', text: 'dark'},
-      {name: 'jokerGold100', value: '#FFEAC7', text: 'dark'},
-      {name: 'jokerGold200', value: '#FFE8C2', text: 'dark'},
-      {name: 'jokerGold300', value: '#FFE4B8', text: 'dark'},
-      {name: 'jokerGold400', value: '#FFDEA8', text: 'dark', base: true},
-      {name: 'jokerGold500', value: '#BBA072', text: 'dark'},
-      {name: 'jokerGold600', value: '#A88C5D', text: 'dark'},
-      {name: 'jokerGold700', value: '#8E7348', text: 'dark'},
-      {name: 'jokerGold800', value: '#65512F', text: 'dark'},
-      {name: 'jokerGold900', value: '#382E23', text: 'light'},
-      {name: 'jokerGold1000', value: '#1D1811', text: 'light'},
+      {name: 'black50', value: '#A8A8A8', text: 'dark'},
+      {name: 'black100', value: '#7D7D7D', text: 'dark'},
+      {name: 'black200', value: '#595959', text: 'light'},
+      {name: 'black300', value: '#343434', text: 'light'},
+      {name: 'black400', value: '#2A2A2A', text: 'light', base: true},
+      {name: 'black500', value: '#222222', text: 'light'},
+      {name: 'black600', value: '#1C1C1C', text: 'light'},
+      {name: 'black700', value: '#181818', text: 'light'},
+      {name: 'black800', value: '#141414', text: 'light'},
+      {name: 'black900', value: '#0F0F0F', text: 'light'},
     ],
   },
   {
     title: 'Green',
     tokens: [
-      {name: 'jokerGreen50', value: '#D8F8DE', text: 'dark'},
-      {name: 'jokerGreen100', value: '#C5F4CD', text: 'dark'},
-      {name: 'jokerGreen200', value: '#B2F1BC', text: 'dark'},
-      {name: 'jokerGreen300', value: '#8BE99B', text: 'dark'},
-      {name: 'jokerGreen400', value: '#3EDB58', text: 'dark', base: true},
-      {name: 'jokerGreen500', value: '#33B849', text: 'dark'},
-      {name: 'jokerGreen600', value: '#28953A', text: 'dark'},
-      {name: 'jokerGreen700', value: '#1F712C', text: 'dark'},
-      {name: 'jokerGreen800', value: '#134E1D', text: 'light'},
-      {name: 'jokerGreen900', value: '#0D3D15', text: 'light'},
-    ],
-  },
-  {
-    title: 'Red',
-    tokens: [
-      {name: 'jokerRed50', value: '#F6D2D2', text: 'dark'},
-      {name: 'jokerRed100', value: '#F3BFBF', text: 'dark'},
-      {name: 'jokerRed200', value: '#EFADAD', text: 'dark'},
-      {name: 'jokerRed300', value: '#E98888', text: 'dark'},
-      {name: 'jokerRed400', value: '#DB3E3E', text: 'dark', base: true},
-      {name: 'jokerRed500', value: '#BA3434', text: 'dark'},
-      {name: 'jokerRed600', value: '#982929', text: 'dark'},
-      {name: 'jokerRed700', value: '#771F1F', text: 'dark'},
-      {name: 'jokerRed800', value: '#551414', text: 'light'},
-      {name: 'jokerRed900', value: '#450F0F', text: 'light'},
-    ],
-  },
-  {
-    title: 'Alert',
-    tokens: [
-      {name: 'jokerAlert50', value: '#F4D6C5', text: 'dark'},
-      {name: 'jokerAlert100', value: '#F1C9B2', text: 'dark'},
-      {name: 'jokerAlert200', value: '#E9AE8B', text: 'dark'},
-      {name: 'jokerAlert300', value: '#E29365', text: 'dark'},
-      {name: 'jokerAlert400', value: '#DB783E', text: 'dark', base: true},
-      {name: 'jokerAlert500', value: '#B56333', text: 'dark'},
-      {name: 'jokerAlert600', value: '#904E28', text: 'dark'},
-      {name: 'jokerAlert700', value: '#572F17', text: 'light'},
-      {name: 'jokerAlert800', value: '#452411', text: 'light'},
-      {name: 'jokerAlert900', value: '#1F0F06', text: 'light'},
+      {name: 'green50', value: '#F4F8F3', text: 'dark'},
+      {name: 'green100', value: '#E4EDE2', text: 'dark'},
+      {name: 'green200', value: '#C8D7C5', text: 'dark'},
+      {name: 'green300', value: '#A5BC9F', text: 'dark'},
+      {name: 'green400', value: '#82A17A', text: 'dark'},
+      {name: 'green500', value: '#5F8660', text: 'light', base: true},
+      {name: 'green600', value: '#47684A', text: 'light'},
+      {name: 'green700', value: '#304834', text: 'light'},
+      {name: 'green800', value: '#18271D', text: 'light'},
+      {name: 'green900', value: '#07110B', text: 'light'},
     ],
   },
 ];
 
 export const semanticColorGroups = [
   {
-    title: 'Background',
+    title: 'Surface',
     tokens: [
       {
-        name: 'color.bg.canvas',
-        value: 'jokerBlack800',
-        use: 'Main documentation canvas',
+        name: 'color.surface.background',
+        value: 'black900',
+        use: 'Outermost app chrome and deepest page areas',
       },
       {
-        name: 'color.bg.app',
-        value: 'jokerBlack900',
-        use: 'Outer app chrome and deepest page areas',
+        name: 'color.surface.base',
+        value: 'black800',
+        use: 'Primary shell surfaces such as the sidebar and main frame',
       },
       {
-        name: 'color.bg.sidebar',
-        value: 'jokerBlack900',
-        use: 'Left and right navigation rails',
+        name: 'color.surface.elevated',
+        value: 'black700',
+        use: 'Content canvas and repeated surface blocks',
       },
       {
-        name: 'color.bg.surface',
-        value: 'jokerBlack700',
-        use: 'Cards, panels, and repeated content blocks',
-      },
-      {
-        name: 'color.bg.surfaceRaised',
-        value: 'jokerBlack600',
-        use: 'Raised or emphasized surfaces',
-      },
-      {
-        name: 'color.bg.surfaceActive',
-        value: 'jokerBlack400',
-        use: 'Selected navigation and active surfaces',
-      },
-      {
-        name: 'color.bg.code',
-        value: 'jokerBlack900',
-        use: 'Code editor backgrounds',
-      },
-      {
-        name: 'color.bg.inverse',
-        value: 'jokerWhite50',
-        use: 'White controls and inverse content',
+        name: 'color.surface.panel',
+        value: 'black600',
+        use: 'Raised panels, cards, and emphasized surfaces',
       },
     ],
   },
@@ -493,22 +409,22 @@ export const semanticColorGroups = [
       },
       {
         name: 'color.text.secondary',
-        value: 'jokerBlack50',
+        value: 'black50',
         use: 'Default body copy and nav labels',
       },
       {
         name: 'color.text.muted',
-        value: 'jokerBlack100',
+        value: 'black100',
         use: 'Subtle metadata, placeholders, and secondary labels',
       },
       {
         name: 'color.text.inverse',
-        value: 'jokerBlack900',
+        value: 'black900',
         use: 'Text on white or pale gold surfaces',
       },
       {
         name: 'color.text.brand',
-        value: 'jokerGold400',
+        value: 'green300',
         use: 'Brand moments and premium emphasis',
       },
     ],
@@ -518,93 +434,28 @@ export const semanticColorGroups = [
     tokens: [
       {
         name: 'color.border.subtle',
-        value: 'whiteAlpha08',
-        use: 'Dividers and low-emphasis outlines',
+        value: 'black400',
+        use: 'Low-emphasis dividers and outlines',
       },
       {
         name: 'color.border.default',
-        value: 'jokerBlack300',
+        value: 'black300',
         use: 'Default controls, panels, and cards',
       },
       {
         name: 'color.border.strong',
-        value: 'jokerBlack100',
+        value: 'black200',
         use: 'Higher contrast borders and active outlines',
       },
       {
         name: 'color.border.focus',
-        value: 'jokerGold400',
+        value: 'green700',
         use: 'Keyboard focus and selected emphasis',
       },
-    ],
-  },
-  {
-    title: 'Action',
-    tokens: [
       {
-        name: 'color.action.primary',
-        value: 'jokerGold400',
-        use: 'Primary action fill and premium CTA emphasis',
-      },
-      {
-        name: 'color.action.primaryHover',
-        value: 'jokerGold300',
-        use: 'Primary action hover',
-      },
-      {
-        name: 'color.action.primaryActive',
-        value: 'jokerGold500',
-        use: 'Primary action pressed state',
-      },
-      {
-        name: 'color.action.onPrimary',
-        value: 'jokerBlack900',
-        use: 'Text or icon on primary action fills',
-      },
-    ],
-  },
-  {
-    title: 'State',
-    tokens: [
-      {
-        name: 'color.selection.bg',
-        value: 'jokerBlack400',
-        use: 'Selected navigation and active rows',
-      },
-      {
-        name: 'color.status.available',
-        value: 'jokerGold400',
-        use: 'Available, ready, or healthy status indicators',
-      },
-      {
-        name: 'color.status.success',
-        value: 'jokerGreen400',
-        use: 'Success states, approvals, completion, and positive feedback',
-      },
-      {
-        name: 'color.status.successSurface',
-        value: 'jokerGreen900',
-        use: 'Low-emphasis success backgrounds',
-      },
-      {
-        name: 'color.status.error',
-        value: 'jokerRed400',
-        use: 'Errors, destructive feedback, failed states, and blocking validation',
-      },
-      {
-        name: 'color.status.errorSurface',
-        value: 'jokerRed900',
-        use: 'Low-emphasis error backgrounds',
-      },
-      {
-        name: 'color.status.warning',
-        value: 'jokerAlert400',
-        use: 'Warnings, caution, pending, and attention states',
-      },
-      {
-        name: 'color.status.warningSurface',
-        value: 'jokerAlert900',
-        use: 'Low-emphasis warning backgrounds',
+        name: 'color.border.brand',
+        value: 'green500',
+        use: 'Brand accents on borders and emphasis rings',
       },
     ],
   },
@@ -630,22 +481,6 @@ export const componentSummaries = {
   Tabs: 'Local navigation patterns for switching related views inside one focused product context.',
   Chips:
     'Compact chips communicate multipliers, outcomes and game states without adding unnecessary UI.',
-};
-
-export const gameSummaries = {
-  Sportsbook:
-    'Reusable match and market patterns create a consistent structure for browsing competitions, fixtures and markets.',
-  'Coin Flip':
-    'Components and patterns specific to Coin Flip, built on the shared game foundations.',
-  Hilo: 'Components and patterns specific to Hilo, built on the shared game foundations.',
-  Mines: 'Components and patterns specific to Mines, built on the shared game foundations.',
-  Roulette:
-    'Components and patterns specific to Roulette, built on the shared game foundations.',
-};
-
-export const templateSummaries = {
-  'Game Container':
-    'A reusable shell that brings together navigation, the game stage, betting controls and responsive behaviour.',
 };
 
 export const resources = {

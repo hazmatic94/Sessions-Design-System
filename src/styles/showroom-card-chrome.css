@@ -1,8 +1,8 @@
 .joker-showroom-card {
-  --showroom-card-border: var(--joker-black-300);
+  --showroom-card-border: var(--black-300);
   --showroom-card-media-padding-block: var(--spacing-24);
   --showroom-card-media-padding-inline: var(--spacing-24);
-  --showroom-card-media-art-bg: var(--joker-black-800);
+  --showroom-card-media-art-bg: var(--black-800);
   --showroom-card-media-frame-offset: 58px;
   --showroom-card-hover-duration: 320ms;
   --showroom-card-hover-ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -10,7 +10,7 @@
   overflow: hidden;
   border: var(--border-width-default) solid var(--showroom-card-border);
   border-radius: var(--spacing-8);
-  background: var(--joker-black-700);
+  background: var(--black-700);
 }
 
 .joker-showroom-card-top-rail {
@@ -21,7 +21,7 @@
   justify-content: space-between;
   gap: var(--spacing-16);
   border-bottom: var(--border-width-default) solid var(--showroom-card-border);
-  background: var(--joker-black-700);
+  background: var(--black-700);
   padding: var(--spacing-16) var(--spacing-24);
   overflow: visible;
   transition: border-color 180ms ease;
@@ -32,7 +32,7 @@
   min-width: 0;
   align-items: center;
   gap: var(--spacing-4);
-  color: var(--joker-gold-400);
+  color: var(--green-300);
 }
 
 .joker-showroom-card-brand-icon {
@@ -125,7 +125,7 @@
   justify-content: center;
   overflow: hidden;
   height: 250px;
-  background: var(--joker-black-800);
+  background: var(--black-800);
   padding-block: var(--showroom-card-media-padding-block);
   padding-inline: var(--showroom-card-media-padding-inline);
   box-sizing: border-box;
@@ -150,7 +150,7 @@
   padding: 6px;
   border: var(--border-width-default) solid var(--showroom-card-border);
   border-radius: var(--spacing-8);
-  background: var(--joker-black-600);
+  background: var(--black-600);
   overflow: hidden;
   transform: translateY(var(--showroom-card-media-frame-offset));
   transition:
@@ -222,7 +222,7 @@
   flex-direction: column;
   gap: var(--spacing-24);
   border-top: var(--border-width-default) solid var(--showroom-card-border);
-  background: var(--joker-black-700);
+  background: var(--black-700);
   padding: var(--spacing-24) var(--spacing-24) var(--spacing-32);
   transition: border-color 180ms ease;
 }
@@ -248,7 +248,7 @@
 
 .joker-showroom-card-content p {
   margin: 0;
-  color: var(--joker-black-50);
+  color: var(--black-50);
   font-family: var(--font);
   font-size: var(--text-body-14);
   font-weight: var(--text-body-weight);

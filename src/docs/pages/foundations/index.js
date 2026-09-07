@@ -1,10 +1,10 @@
 import { renderColoursPage } from './coloursPage.js';
-import { renderTypographyPage } from './typographyPage.js?v=typography-spec-dividers-v1';
+import { renderTypographyPage } from './typographyPage.js?v=sessions-satoshi-headings-v1';
 import { renderSpacingPage } from './spacingPage.js';
 import { renderRadiusPage } from './radiusPage.js';
 import { renderShadowsPage } from './shadowsPage.js';
 import { renderMotionPage } from './motionPage.js';
-import { renderIconsPage } from './iconsPage.js?v=wallet-icon-v1';
+import { renderIconsPage } from './iconsPage.js?v=sessions-product-icons-v1';
 import { renderFoundationFallbackPage } from './fallbackPage.js';
 
 const foundationRenderers = {

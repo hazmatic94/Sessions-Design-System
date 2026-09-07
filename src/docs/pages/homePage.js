@@ -16,7 +16,7 @@ const HOME_SHOWROOM_CARDS = [
     icon: 'palette',
     innerMedia: `
       <article class="color-swatch-card color-swatch-card--home-showroom">
-        <div class="color-swatch-card__swatch" style="background: var(--joker-gold-400)">
+        <div class="color-swatch-card__swatch" style="background: var(--green-300)">
           <span class="base-tag">brand</span>
         </div>
         <div class="color-swatch-card__meta">
@@ -30,18 +30,6 @@ const HOME_SHOWROOM_CARDS = [
     body: 'Buttons, inputs, cards, and the rest of the library — frames ready for new work.',
     href: '#/components/buttons',
     icon: 'box',
-    innerMedia: `
-      <div class="home-showroom-card__empty-slot">
-        <span data-lucide="plus" aria-hidden="true"></span>
-        <strong>Empty preview frames</strong>
-      </div>
-    `,
-  },
-  {
-    railLabel: 'Games',
-    body: 'Sportsbook, Coin Flip, Hilo, Mines, and Roulette pages with empty frames.',
-    href: '#/games/sportsbook',
-    icon: 'shapes',
     innerMedia: `
       <div class="home-showroom-card__empty-slot">
         <span data-lucide="plus" aria-hidden="true"></span>
@@ -79,11 +67,25 @@ export function renderHomePage(_page) {
       <div class="home-ticker" aria-label="Release information">
         ${homeTickerTrack()}
       </div>
-      <section class="home-hero" aria-label="Sessions Design System">
-        <div class="home-hero-wordmark">
-          <p class="home-hero-kicker">Design System</p>
-          <h1 class="home-hero-title">Sessions</h1>
+      <section
+        class="home-hero"
+        aria-label="Sessions Design System"
+        data-home-hero-grid
+        data-home-hero-grid-video="./assets/SessionsIconVideo.mp4?v=sessions-icon-v1"
+      >
+        <div class="home-hero-video-wrap" data-home-hero-video-wrap>
+          <video
+            class="home-hero-video"
+            data-home-hero-grid-video
+            src="./assets/SessionsIconVideo.mp4?v=sessions-icon-v1"
+            autoplay
+            muted
+            playsinline
+            preload="auto"
+            aria-hidden="true"
+          ></video>
         </div>
+        <canvas class="home-hero-grid-canvas" data-home-hero-grid-canvas aria-hidden="true"></canvas>
       </section>
       <div class="home-body">
         <section class="home-intro" aria-labelledby="home-intro-title">

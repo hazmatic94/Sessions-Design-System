@@ -5,9 +5,10 @@ const typographyHeadingStyles = [
     label: 'Heading / H1',
     token: '--text-heading-h1',
     kind: 'heading',
-    size: 48,
+    size: 42,
     weight: 500,
-    lineHeight: 0.9,
+    lineHeight: 'normal',
+    letterSpacing: 0,
   },
   {
     label: 'Heading / H2',
@@ -15,7 +16,8 @@ const typographyHeadingStyles = [
     kind: 'heading',
     size: 32,
     weight: 500,
-    lineHeight: 0.95,
+    lineHeight: 'normal',
+    letterSpacing: 0,
   },
   {
     label: 'Heading / H3',
@@ -23,24 +25,53 @@ const typographyHeadingStyles = [
     kind: 'heading',
     size: 24,
     weight: 500,
-    lineHeight: 1,
+    lineHeight: 'normal',
+    letterSpacing: 0,
   },
 ];
 
 const typographyBodyStyles = [
   {
+    label: 'Body / Big',
+    token: '--text-body-big',
+    kind: 'body',
+    size: 20,
+    weight: 400,
+    lineHeight: 1.45,
+    letterSpacing: '4.5%',
+  },
+  {
+    label: 'Body / Big Medium',
+    token: '--text-body-big-medium',
+    kind: 'body',
+    size: 20,
+    weight: 500,
+    lineHeight: 1.45,
+    letterSpacing: '4.5%',
+  },
+  {
+    label: 'Body / B1',
+    token: '--text-body-b1',
+    kind: 'body',
+    size: 16,
+    weight: 400,
+    lineHeight: 'normal',
+    letterSpacing: '4.5%',
+  },
+  {
+    label: 'Body / B1 Medium',
+    token: '--text-body-b1-medium',
+    kind: 'body',
+    size: 16,
+    weight: 500,
+    lineHeight: 'normal',
+    letterSpacing: '4.5%',
+  },
+  {
     label: 'Body / 18',
     token: '--text-body-18',
     kind: 'body',
     size: 18,
-    weight: 400,
-    lineHeight: 1.45,
-  },
-  {
-    label: 'Body / 16',
-    token: '--text-body-16',
-    kind: 'body',
-    size: 16,
     weight: 400,
     lineHeight: 1.45,
   },
@@ -75,10 +106,25 @@ export function renderTypographyPage(page) {
 
 function typographyFoundation() {
   return `
-    <section id="typography-tokens" class="section-block typography-token-section">
-      <div class="typography-token-groups">
-        ${typographyTokenGroup('Heading Text', typographyHeadingStyles)}
-        ${typographyTokenGroup('Body Text', typographyBodyStyles)}
+    ${typographyTokenSection('Heading Text', typographyHeadingStyles, 'typography-heading-tokens')}
+    ${typographyTokenSection('Body Text', typographyBodyStyles, 'typography-body-tokens')}
+  `;
+}
+
+function typographyTokenSection(title, rows, id) {
+  return `
+    <section id="${id}" class="section-block typography-token-section" aria-label="${title}">
+      <div class="typography-token-group">
+        <div class="typography-token-list">
+          ${rows
+            .map(
+              (row, index) => `
+          ${typographyTokenCard(row)}
+          ${index < rows.length - 1 ? '<hr class="typography-token-divider" aria-hidden="true" />' : ''}
+        `,
+            )
+            .join('')}
+        </div>
       </div>
     </section>
   `;
@@ -90,23 +136,6 @@ function typographyWeightLabel(weight) {
   if (weight >= 600) return `Semibold / ${weight}`;
   if (weight >= 500) return `Medium / ${weight}`;
   return `Regular / ${weight}`;
-}
-
-function typographyTokenGroup(title, rows) {
-  return `
-    <section class="typography-token-group" aria-label="${title}">
-      <div class="typography-token-list">
-        ${rows
-          .map(
-            (row, index) => `
-          ${typographyTokenCard(row)}
-          ${index < rows.length - 1 ? '<hr class="typography-token-divider" aria-hidden="true" />' : ''}
-        `,
-          )
-          .join('')}
-      </div>
-    </section>
-  `;
 }
 
 function typographySpecChip(label, value) {
@@ -144,6 +173,19 @@ function typographyTokenChip(token, {copy = false} = {}) {
   return `<span class="docs-token-chip">${content}</span>`;
 }
 
+function typographyLetterSpacingCss(letterSpacing) {
+  if (typeof letterSpacing === 'number') {
+    return letterSpacing === 0 ? '0' : `${letterSpacing}px`;
+  }
+
+  if (typeof letterSpacing === 'string' && letterSpacing.endsWith('%')) {
+    const value = Number.parseFloat(letterSpacing);
+    return Number.isFinite(value) ? `${value / 100}em` : '0';
+  }
+
+  return letterSpacing;
+}
+
 function typographySpecChips(row, lineHeightPx, letterSpacing) {
   const chips = [
     typographySpecChip('Weight', typographyWeightLabel(row.weight)),
@@ -162,19 +204,23 @@ function typographySpecChips(row, lineHeightPx, letterSpacing) {
 }
 
 function typographyTokenCard(row) {
-  const lineHeight = row.lineHeight ?? (row.kind === 'heading' ? 0.9 : 1.45);
-  const lineHeightPx = `${Math.round(row.size * lineHeight)}px`;
+  const lineHeight = row.lineHeight ?? (row.kind === 'heading' ? 'normal' : 1.45);
+  const lineHeightLabel =
+    lineHeight === 'normal' ? 'Auto' : `${Math.round(row.size * lineHeight)}px`;
   const letterSpacing =
-    row.letterSpacing ?? (row.kind === 'heading' ? '-3%' : '5%');
+    row.letterSpacing ?? (row.kind === 'heading' ? 0 : '4.5%');
+  const letterSpacingLabel =
+    typeof letterSpacing === 'number' ? `${letterSpacing}px` : letterSpacing;
+  const letterSpacingCss = typographyLetterSpacingCss(letterSpacing);
 
   return `
     <article class="typography-token-card">
       <p class="typography-token-card__label">${row.label}</p>
-      <p class="typography-token-card__sample ${row.kind}" style="font-size: ${row.size}px; font-weight: ${row.weight}; line-height: ${lineHeight}; letter-spacing: ${letterSpacing};">${TYPOGRAPHY_SAMPLE_TEXT}</p>
+      <p class="typography-token-card__sample ${row.kind}" style="font-size: ${row.size}px; font-weight: ${row.weight}; line-height: ${lineHeight}; letter-spacing: ${letterSpacingCss};">${TYPOGRAPHY_SAMPLE_TEXT}</p>
       <div class="typography-token-card__chips">
         ${typographyTokenChip(row.token, {copy: true})}
         <div class="typography-token-card__specs">
-          ${typographySpecChips(row, lineHeightPx, letterSpacing)}
+          ${typographySpecChips(row, lineHeightLabel, letterSpacingLabel)}
         </div>
       </div>
     </article>

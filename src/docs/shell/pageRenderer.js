@@ -4,6 +4,7 @@ import {
 } from '../../pages/runtimeDocs.js?v=sessions-pages-v1';
 import {slug} from '../../utils.js';
 import {updateCustomScrollbars} from '../demo/customScrollbar.js?v=scrollbar-3px-v1';
+import {hydratePageDemos} from '../hydrators/index.js?v=sessions-icon-v1';
 import {contentRoot} from './dom.js?v=docs-routing-v1';
 import {
   bindMobileNavigation,
@@ -11,7 +12,7 @@ import {
   pageSequenceNavigation,
 } from '../demo/mobileBindings.js';
 import {pageFooter} from './pageLayout.js?v=sessions-clean-v1';
-import {pageRegistry} from './registry.js?v=sessions-pages-v1';
+import {pageRegistry} from './registry.js?v=sessions-nav-trim-v1';
 import {state} from './state.js?v=docs-routing-v1';
 
 let isInitialPageRender = true;
@@ -282,6 +283,7 @@ async function paintPage(page) {
     hydrateLucideIcons(contentRoot);
     bindMobileNavigation(contentRoot);
     bindMobileScrollCues(contentRoot);
+    await hydratePageDemos(contentRoot);
     updateCustomScrollbars();
     resetWorkspaceScroll();
     contentRoot.focus({preventScroll: true});

@@ -16,7 +16,9 @@ class NoCacheHandler(SimpleHTTPRequestHandler):
         ".mov": "video/quicktime",
         ".mp4": "video/mp4",
         ".m4v": "video/mp4",
-        ".svg": "image/svg+xml",
+        ".otf": "font/otf",
+        ".woff": "font/woff",
+        ".woff2": "font/woff2",
     }
 
     def do_GET(self):

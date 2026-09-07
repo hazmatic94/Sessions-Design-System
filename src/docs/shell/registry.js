@@ -1,11 +1,9 @@
 import {
   componentSummaries,
   foundationNotes,
-  gameSummaries,
   navGroups,
   resources,
-  templateSummaries,
-} from '../../system-data.js?v=sessions-pages-v1';
+} from '../../system-data.js?v=sessions-nav-trim-v1';
 import {flattenNavGroups} from './navModel.js?v=nav-fix-2210';
 
 const routePageTitles = {
@@ -88,24 +86,6 @@ function createPage(section, title, route) {
       title,
       kind: 'component',
       subtitle: componentSummaries[title],
-    };
-  }
-
-  if (section === 'Games') {
-    return {
-      section,
-      title,
-      kind: 'game',
-      subtitle: gameSummaries[title],
-    };
-  }
-
-  if (section === 'Templates') {
-    return {
-      section,
-      title,
-      kind: 'template',
-      subtitle: templateSummaries[title],
     };
   }
 

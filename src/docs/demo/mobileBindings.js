@@ -1,5 +1,5 @@
 import {lucideIcon} from '../../pages/runtimeDocs.js?v=sessions-clean-v1';
-import {pageOrder, pageRegistry} from '../shell/registry.js?v=sessions-pages-v1';
+import {pageOrder, pageRegistry} from '../shell/registry.js?v=sessions-nav-trim-v1';
 
 export function bindMobileNavigation() {}
 

@@ -49,8 +49,8 @@ function tokenCard(title, token, description) {
 
 function tokenBackground(title) {
   if (title === 'Primitive') return 'var(--joker-alert-400)';
-  if (title === 'Semantic') return 'var(--joker-black-600)';
-  return 'linear-gradient(135deg, var(--joker-white-50) 0 50%, var(--joker-black-300) 50% 100%)';
+  if (title === 'Semantic') return 'var(--black-600)';
+  return 'linear-gradient(135deg, var(--joker-white-50) 0 50%, var(--black-300) 50% 100%)';
 }
 
 

@@ -13,7 +13,7 @@
     <meta
       name="description"
       content="Sessions Design System — foundations and a workshop for new components." />
-    <meta name="theme-color" content="#131313" />
+    <meta name="theme-color" content="#141414" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Sessions Design System" />
     <meta property="og:title" content="Home" />
@@ -27,13 +27,26 @@
       name="twitter:description"
       content="Sessions Design System — foundations and a workshop for new components." />
     <meta name="twitter:image" content="/assets/favicon.svg" />
-    <link rel="icon" href="./assets/favicon.svg?v=sessions-mark-v1" type="image/svg+xml" />
+    <link rel="icon" href="./assets/favicon.svg?v=sessions-icon-v2" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Teko:wght@500;600;700&family=Geist+Mono:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap"
       rel="stylesheet" />
-    <link rel="stylesheet" href="./src/styles/tokens.css?v=sessions-clean-v1" />
+    <link
+      rel="preload"
+      href="./assets/fonts/Satoshi-Regular.otf"
+      as="font"
+      type="font/otf"
+      crossorigin />
+    <link
+      rel="preload"
+      href="./assets/fonts/Satoshi-Medium.otf"
+      as="font"
+      type="font/otf"
+      crossorigin />
+    <link rel="stylesheet" href="./src/styles/fonts.css?v=sessions-satoshi-v2" />
+    <link rel="stylesheet" href="./src/styles/tokens.css?v=sessions-satoshi-v2" />
     <link rel="stylesheet" href="./src/styles/button.css?v=sessions-clean-v1" />
     <link
       rel="stylesheet"
@@ -42,7 +55,7 @@
       rel="stylesheet"
       href="./src/styles/showroom-card.css?v=sessions-clean-v1" />
     <link rel="stylesheet" href="./src/styles/globals.css?v=sessions-clean-v1" />
-    <link rel="stylesheet" href="./src/styles/docs.css?v=sessions-pages-v1" />
+    <link rel="stylesheet" href="./src/styles/docs.css?v=sessions-satoshi-headings-v1" />
   </head>
   <body>
     <div class="showroom-shell">
@@ -54,7 +67,15 @@
               class="brand-logo"
               href="#/home"
               aria-label="Sessions Design System home">
-              <span class="brand-logo-wordmark">Sessions</span>
+              <span class="brand-logo-mark" aria-hidden="true">
+                <video
+                  class="brand-logo-video"
+                  src="./assets/SessionsIconVideo.mp4?v=sessions-icon-v1"
+                  autoplay
+                  muted
+                  playsinline
+                  preload="auto"></video>
+              </span>
               <span class="brand-logo-version">v1.0</span>
             </a>
 
@@ -106,7 +127,15 @@
             class="brand-logo"
             href="#/home"
             aria-label="Sessions Design System home">
-            <span class="brand-logo-wordmark">Sessions</span>
+            <span class="brand-logo-mark" aria-hidden="true">
+              <video
+                class="brand-logo-video"
+                src="./assets/SessionsIconVideo.mp4?v=sessions-icon-v1"
+                autoplay
+                muted
+                playsinline
+                preload="auto"></video>
+            </span>
           </a>
           <button
             id="sidebar-toggle"
@@ -139,6 +168,6 @@
     </div>
     </div>
 
-    <script src="./app.js?v=sessions-pages-v1" type="module"></script>
+    <script src="./app.js?v=sessions-satoshi-headings-v1" type="module"></script>
   </body>
 </html>

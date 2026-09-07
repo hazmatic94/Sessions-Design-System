@@ -4,13 +4,13 @@
 
 html {
   scroll-behavior: smooth;
-  background: var(--joker-black-800);
+  background: var(--black-800);
 }
 
 body {
   margin: 0;
   min-width: 320px;
-  background: var(--joker-black-800);
+  background: var(--black-800);
   color: var(--color-text-primary);
   font-family: var(--font);
   font-weight: var(--text-body-weight);

@@ -356,7 +356,7 @@
 
 .joker-cta-preview.hi-lo.is-selected .joker-hi-lo-side-icon:not(.joker-hi-lo-side-icon--black):not(.joker-hi-lo-side-icon--green):not(.joker-hi-lo-side-icon--red),
 .joker-cta-preview.hi-lo[aria-pressed="true"] .joker-hi-lo-side-icon:not(.joker-hi-lo-side-icon--black):not(.joker-hi-lo-side-icon--green):not(.joker-hi-lo-side-icon--red) {
-  background-color: var(--joker-gold-400);
+  background-color: var(--green-300);
 }
 
 .joker-cta-preview.hi-lo-skip {
@@ -586,8 +586,8 @@
     color-mix(in srgb, var(--button-primary-text) 42%, transparent) 26% 45%,
     color-mix(in srgb, var(--button-primary-text) 20%, transparent) 45% 100%
   );
-  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), var(--joker-black-900) calc(100% - 2px));
-  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), var(--joker-black-900) calc(100% - 2px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), var(--black-900) calc(100% - 2px));
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), var(--black-900) calc(100% - 2px));
   animation: button-loading-spin calc(var(--motion-slow) + var(--motion-slow) + var(--motion-slow)) linear infinite;
 }
 

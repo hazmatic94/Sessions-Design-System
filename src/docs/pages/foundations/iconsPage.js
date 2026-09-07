@@ -1,6 +1,7 @@
-import {navGroups} from '../../../system-data.js';
-import {lucideIcon} from '../../../utils/lucideIcon.js?v=nav-outline-v1';
+import {productIconFiles, productIconLabel, productIconPath} from '../../../data/productIcons.js?v=sessions-product-icons-v1';
 import {pageHero} from '../../shell/pageLayout.js';
+
+const ICON_ASSET_VERSION = 'sessions-product-icons-v1';
 
 export function renderIconsPage(page) {
   return `
@@ -10,75 +11,49 @@ export function renderIconsPage(page) {
 }
 
 function iconsFoundation() {
+  const icons = [...productIconFiles].sort((a, b) =>
+    productIconLabel(a).localeCompare(productIconLabel(b)),
+  );
+
   return `
     <section id="product-icons" class="section-block icon-swatch-section-block">
       <div class="icon-swatch-section">
         <div class="icon-swatch-grid">
-          ${productIconNames().map(iconCatalogSwatch).join('')}
+          ${icons.map(iconCatalogSwatch).join('')}
         </div>
       </div>
     </section>
   `;
 }
 
-const componentUiIcons = [
-  'check',
-  'chevron-down',
-  'chevron-left',
-  'chevron-right',
-  'copy',
-  'menu',
-  'moon',
-  'search',
-  'sun',
-  'x',
-  'rocket',
-  'package',
-  'palette',
-  'type',
-  'layers',
-  'timer',
-  'shapes',
-  'box',
-  'plus',
-];
+function iconCatalogSwatch(file) {
+  const label = productIconLabel(file);
+  const assetPath = `${productIconPath(file)}?v=${ICON_ASSET_VERSION}`;
 
-function productIconNames() {
-  const icons = new Set(componentUiIcons);
-
-  navGroups.forEach(group => {
-    group.items?.forEach(item => {
-      if (typeof item === 'object' && item.icon) icons.add(item.icon);
-    });
-  });
-
-  return [...icons].sort((a, b) => a.localeCompare(b));
-}
-
-function iconCatalogSwatch(name) {
   return `
     <article class="icon-swatch-card">
       <div class="icon-swatch-card__preview">
         <div class="icon-swatch-card__icon-wrap" aria-hidden="true">
-          ${lucideIcon(name, 'icon-swatch-card__icon')}
+          <img
+            class="icon-swatch-card__icon"
+            src="${assetPath}"
+            alt=""
+            width="20"
+            height="20"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <button
           type="button"
           class="docs-token-chip docs-token-chip--copy color-swatch-card__hex-chip icon-swatch-card__copy-chip"
           data-copy
-          data-copy-value="${escapeHtmlAttr(lucideIcon(name))}"
-          data-copy-label="Copy SVG for ${name}"
-          aria-label="Copy SVG for ${name}"
+          data-copy-src="${assetPath}"
+          data-copy-label="Copy SVG for ${label}"
+          aria-label="Copy SVG for ${label}"
         >Copy SVG</button>
       </div>
-      <span class="icon-swatch-card__label">${name}</span>
+      <span class="icon-swatch-card__label">${label}</span>
     </article>
   `;
-}
-
-function escapeHtmlAttr(value) {
-  return value
-    .replace(/&/g, '&amp;')
-    .replace(/"/g, '&quot;')
-    .replace(/</g, '&lt;');
 }
