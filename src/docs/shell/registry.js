@@ -1,12 +1,42 @@
 import {
   componentSummaries,
   foundationNotes,
+  gameSummaries,
   navGroups,
   resources,
-} from '../../system-data.js?v=sessions-clean-v1';
+  templateSummaries,
+} from '../../system-data.js?v=sessions-pages-v1';
 import {flattenNavGroups} from './navModel.js?v=nav-fix-2210';
 
-const componentRoutes = new Set(['/components']);
+const routePageTitles = {
+  '/components/buttons': 'Buttons',
+  '/components/inputs': 'Inputs',
+  '/components/navigation': 'Navigation',
+  '/components/game-rails': 'Game Rails',
+  '/components/cards': 'Cards',
+  '/components/betting-panel': 'Betting Panel',
+  '/components/modals': 'Modals',
+  '/components/tables': 'Tables',
+  '/components/badges': 'Badges',
+  '/components/chips': 'Chips',
+};
+
+const componentRoutes = new Set([
+  '/components/buttons',
+  '/components/inputs',
+  '/components/navigation',
+  '/components/game-rails',
+  '/components/cards',
+  '/components/betting-panel',
+  '/components/modals',
+  '/components/tables',
+  '/components/badges',
+  '/components/chips',
+]);
+
+function resolvePageTitle(section, label, route) {
+  return routePageTitles[route] || label;
+}
 
 function buildPages() {
   const pages = {
@@ -14,34 +44,29 @@ function buildPages() {
       section: 'Getting Started',
       title: 'Home',
       subtitle:
-        'A design system for building consistent Sessions products from shared foundations and new components.',
+        'A design system for building consistent Sessions products from shared foundations and components.',
       kind: 'home',
     },
     '/installation': {
       section: 'Getting Started',
       title: 'Installation',
       subtitle:
-        'Run the docs site locally, then add new components into this library.',
+        'Run the docs site locally, then drop new components into the existing preview frames.',
       kind: 'installation',
     },
     '/getting-started/introduction': {
       section: 'Getting Started',
       title: 'Introduction',
       subtitle:
-        'The Sessions Design System is the shared visual language for Sessions products.',
+        'The Sessions Design System keeps the docs pages and preview frames. The old product demos are gone so new components can go in.',
       kind: 'resource',
-    },
-    '/components': {
-      section: 'Components',
-      title: 'Overview',
-      subtitle: componentSummaries.Overview,
-      kind: 'component',
     },
   };
 
   flattenNavGroups(navGroups).forEach(({section, label, route}) => {
     if (pages[route]) return;
-    pages[route] = createPage(section, label, route);
+    const title = resolvePageTitle(section, label, route);
+    pages[route] = createPage(section, title, route);
   });
 
   return pages;
@@ -63,6 +88,24 @@ function createPage(section, title, route) {
       title,
       kind: 'component',
       subtitle: componentSummaries[title],
+    };
+  }
+
+  if (section === 'Games') {
+    return {
+      section,
+      title,
+      kind: 'game',
+      subtitle: gameSummaries[title],
+    };
+  }
+
+  if (section === 'Templates') {
+    return {
+      section,
+      title,
+      kind: 'template',
+      subtitle: templateSummaries[title],
     };
   }
 

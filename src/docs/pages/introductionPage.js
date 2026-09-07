@@ -7,7 +7,7 @@ export function renderIntroductionPage(_page) {
         <div class="page-hero-copy">
           <div class="page-hero-text">
             <h1>Introduction</h1>
-            <p class="lede">The Sessions Design System is the shared foundation for new Sessions products. The docs site stays. The component library starts empty.</p>
+            <p class="lede">The Sessions Design System keeps the docs pages and preview frames. The old product demos inside those frames are gone so new components can go in.</p>
           </div>
         </div>
       </div>
@@ -24,9 +24,9 @@ export function renderIntroductionPage(_page) {
       })}
       <hr class="introduction-divider" aria-hidden="true" />
       ${introductionSectionWithCallout('Built For Real Products', {
-        lede: 'This is not a museum of old game UI.',
+        lede: 'The pages stay. The demos come out.',
         paragraphs: [
-          'The old JokerPlus games, betting panels, and showroom demos are gone. What remains is the documentation shell and the visual foundations so new Sessions components can be designed and documented in one place.',
+          'Buttons, inputs, cards, games, and the rest of the docs pages are still here, including the component wrapper frames. The old live demos have been cleared out of those frames so new Sessions components can be dropped in.',
         ],
         callout: 'Design once. Build many.',
       })}
@@ -40,9 +40,9 @@ export function renderIntroductionPage(_page) {
       })}
       <hr class="introduction-divider" aria-hidden="true" />
       ${introductionSectionWithCallout('Add Components Here', {
-        lede: 'The Components section is the workshop.',
+        lede: 'Each page already has a place to put the next component.',
         paragraphs: [
-          'Start a new component from the overview page. Use the same preview, variants, states, guidelines, and code sections so every addition feels like part of the same system.',
+          'Use the existing preview frames, code panels, and page structure. Build the new component and drop it into the frame that already belongs to that page.',
         ],
         callout: 'Build once. Improve continuously.',
       })}

@@ -14,10 +14,8 @@ Or `npm run dev`. Open `http://localhost:4173`.
 
 - **Getting Started** — introduction and how to add a component
 - **Foundations** — colour, type, spacing, radius, shadows, motion, icons
-- **Components** — empty library. Add the next Sessions component here
+- **Components, Games, Templates** — original docs pages and preview frames. The live JokerPlus demos inside those frames are gone so new components can go in.
 
 ## Add a component
 
-1. Create the source in `src/components/`
-2. Add a docs page in `src/docs/pages/`
-3. Register the route in `src/system-data.js` under the Components group
+Drop the new component into the existing preview frame on its docs page. The wrapper, code panel, and page structure are already there.

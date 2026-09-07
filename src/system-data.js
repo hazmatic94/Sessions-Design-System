@@ -25,12 +25,29 @@ export const navGroups = [
   {
     title: 'Components',
     items: [
-      {
-        label: 'Overview',
-        icon: 'box',
-        route: '/components',
-      },
+      {label: 'Button', route: '/components/buttons'},
+      {label: 'Inputs', route: '/components/inputs'},
+      {label: 'Navigation', route: '/components/navigation'},
+      {label: 'Chips', route: '/components/chips'},
+      {label: 'Betting Panel', route: '/components/betting-panel'},
+      {label: 'Cards', route: '/components/cards'},
+      {label: 'Modals', route: '/components/modals'},
+      {label: 'Game Rails', route: '/components/game-rails'},
     ],
+  },
+  {
+    title: 'Games',
+    items: [
+      {label: 'Sportsbook'},
+      {label: 'Coin Flip'},
+      {label: 'Hilo'},
+      {label: 'Mines'},
+      {label: 'Roulette'},
+    ],
+  },
+  {
+    title: 'Templates',
+    items: [{label: 'Game Container'}],
   },
 ];
 
@@ -594,11 +611,46 @@ export const semanticColorGroups = [
 ];
 
 export const componentSummaries = {
-  Overview:
-    'This is the empty component library. Add a page here when you start a new Sessions component.',
+  Buttons:
+    'Shared button styles create clear hierarchy across primary, secondary and supporting actions.',
+  Inputs:
+    'Flexible field patterns support data entry, validation, prefixes and verification states.',
+  Navigation:
+    'Shared navigation patterns keep routes, active states and wayfinding consistent.',
+  'Game Rails':
+    'Shared rails keep game identity, information and controls in predictable locations.',
+  Cards:
+    'Reusable card patterns group related content, summaries and repeated information.',
+  'Betting Panel':
+    'A shared panel structure keeps betting controls consistent while giving each game room for its own mechanics.',
+  Modals:
+    'Focused overlays handle confirmations, key decisions and tasks requiring immediate attention.',
+  Tables:
+    'Data-dense structures for comparison, filtering, review, and operational product actions.',
+  Tabs: 'Local navigation patterns for switching related views inside one focused product context.',
+  Chips:
+    'Compact chips communicate multipliers, outcomes and game states without adding unnecessary UI.',
+};
+
+export const gameSummaries = {
+  Sportsbook:
+    'Reusable match and market patterns create a consistent structure for browsing competitions, fixtures and markets.',
+  'Coin Flip':
+    'Components and patterns specific to Coin Flip, built on the shared game foundations.',
+  Hilo: 'Components and patterns specific to Hilo, built on the shared game foundations.',
+  Mines: 'Components and patterns specific to Mines, built on the shared game foundations.',
+  Roulette:
+    'Components and patterns specific to Roulette, built on the shared game foundations.',
+};
+
+export const templateSummaries = {
+  'Game Container':
+    'A reusable shell that brings together navigation, the game stage, betting controls and responsive behaviour.',
 };
 
 export const resources = {
   Introduction:
     'Overview of the Sessions Design System, how the docs site is organized, and where to start.',
+  Showroom:
+    'A place for composed screens and end-to-end UI previews.',
 };

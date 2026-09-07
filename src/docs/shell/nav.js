@@ -1,4 +1,4 @@
-import {navGroups} from '../../system-data.js?v=sessions-clean-v1';
+import {navGroups} from '../../system-data.js?v=sessions-pages-v1';
 import {slug} from '../../utils.js';
 import {hydrateLucideIcons} from '../../utils/lucideIcon.js?v=nav-outline-v1';
 import {updateCustomScrollbars} from '../demo/customScrollbar.js?v=scrollbar-3px-v1';

@@ -13,9 +13,11 @@ export function renderComponentExampleWrapper({
   const tocAttrs = tocTitle
     ? ` data-toc-title="${escapeHtml(tocTitle)}" data-toc-depth="2"`
     : "";
-  const previewMarkup = reactDemo
-    ? `<div class="component-example-wrapper__react-demo" data-react-demo="${escapeHtml(reactDemo)}"></div>`
-    : preview;
+  const previewMarkup = `
+    <div class="component-example-wrapper__empty-slot">
+      <span>Preview</span>
+    </div>
+  `;
   const stageClasses = [
     "component-example-wrapper__stage",
     "button-example-stage",

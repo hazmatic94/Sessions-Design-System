@@ -1092,6 +1092,16 @@ p {
   font-family: var(--font);
   font-size: var(--text-body-14);
   font-weight: 600;
+}.component-example-wrapper__empty-slot {
+  display: grid;
+  place-items: center;
+  min-height: 160px;
+  width: 100%;
+  color: var(--joker-black-50);
+  font-family: var(--font);
+  font-size: var(--text-body-14);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }.home-hero-video-wrap {
   position: absolute;
   inset: 0;

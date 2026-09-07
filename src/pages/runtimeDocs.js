@@ -1,11 +1,24 @@
-import {escapeHtml, slug} from '../utils.js';
+import {renderBettingPanelSurfacePage} from '../docs/pages/bettingPanelSurfacePage.js?v=sessions-pages-v1';
+import {renderButtonsPage} from '../docs/pages/buttonsPage.js?v=sessions-pages-v1';
+import {renderCardsPage} from '../docs/pages/cardsPage.js?v=sessions-pages-v1';
+import {renderCoinFlipPage} from '../docs/pages/coinFlipPage.js?v=sessions-pages-v1';
+import {renderGameContainerPage} from '../docs/pages/gameContainerPage.js?v=sessions-pages-v1';
+import {renderRoulettePage} from '../docs/pages/roulettePage.js?v=sessions-pages-v1';
+import {renderSportsbookPage} from '../docs/pages/sportsbookPage.js?v=sessions-pages-v1';
+import {renderHiloPage} from '../docs/pages/hiloPage.js?v=sessions-pages-v1';
+import {renderMinesPage} from '../docs/pages/minesPage.js?v=sessions-pages-v1';
+import {renderChipsPage} from '../docs/pages/chipsPage.js?v=sessions-pages-v1';
 import {renderFoundationPage} from '../docs/pages/foundations/index.js?v=wallet-icon-v1';
-import {renderHomePage} from '../docs/pages/homePage.js?v=sessions-clean-v1';
-import {renderIntroductionPage} from '../docs/pages/introductionPage.js?v=sessions-clean-v1';
-import {renderInstallationPage} from '../docs/pages/installationPage.js?v=sessions-clean-v1';
-import {renderComponentsOverviewPage} from '../docs/pages/componentsOverviewPage.js?v=sessions-clean-v1';
+import {renderHomePage} from '../docs/pages/homePage.js?v=sessions-pages-v1';
+import {renderIntroductionPage} from '../docs/pages/introductionPage.js?v=sessions-pages-v1';
+import {renderInstallationPage} from '../docs/pages/installationPage.js?v=sessions-pages-v1';
+import {renderInputsPage} from '../docs/pages/inputsPage.js?v=sessions-pages-v1';
+import {renderGameRailsPage} from '../docs/pages/gameRailsPage.js?v=sessions-pages-v1';
+import {renderModalsPage} from '../docs/pages/modalsPage.js?v=sessions-pages-v1';
+import {renderNavigationPage} from '../docs/pages/navigationPage.js?v=sessions-pages-v1';
 import {codePanel, pageHero, section} from '../docs/shell/pageLayout.js';
 import {hydrateLucideIcons, lucideIcon} from '../utils/lucideIcon.js?v=nav-outline-v1';
+import {slug} from '../utils.js';
 
 export {hydrateLucideIcons, lucideIcon};
 
@@ -15,110 +28,72 @@ export const templates = {
   foundation: page => renderFoundationPage(page),
 
   component: page =>
-    page.title === 'Overview'
-      ? renderComponentsOverviewPage(page)
-      : `
+    page.title === 'Buttons'
+      ? renderButtonsPage(page)
+      : page.title === 'Inputs'
+        ? renderInputsPage(page)
+        : page.title === 'Navigation'
+          ? renderNavigationPage(page)
+          : page.title === 'Chips'
+            ? renderChipsPage(page)
+            : page.title === 'Cards'
+              ? renderCardsPage(page)
+              : page.title === 'Betting Panel'
+                ? renderBettingPanelSurfacePage(page)
+                : page.title === 'Game Rails'
+                  ? renderGameRailsPage(page)
+                  : page.title === 'Modals'
+                    ? renderModalsPage(page)
+                    : fallbackComponentPage(page),
+
+  game: page =>
+    page.title === 'Coin Flip'
+      ? renderCoinFlipPage(page)
+      : page.title === 'Hilo'
+        ? renderHiloPage(page)
+        : page.title === 'Mines'
+          ? renderMinesPage(page)
+          : page.title === 'Roulette'
+            ? renderRoulettePage(page)
+            : page.title === 'Sportsbook'
+              ? renderSportsbookPage(page)
+              : fallbackComponentPage(page),
+
+  template: page =>
+    page.title === 'Game Container'
+      ? renderGameContainerPage(page)
+      : fallbackComponentPage(page),
+
+  resource: page =>
+    page.title === 'Introduction'
+      ? renderIntroductionPage(page)
+      : fallbackComponentPage(page),
+};
+
+function fallbackComponentPage(page) {
+  return `
     ${pageHero(page)}
     ${section(
       'Live Preview',
-      'A reserved preview area for the production component.',
+      '',
       `
       <div class="preview-shell">
         <div class="preview-placeholder">
-          <strong>${escapeHtml(page.title)} preview slot</strong>
-          <span>Drop live examples, variants, and implementation-backed demos here.</span>
+          <strong>${page.title} preview slot</strong>
+          <span>Drop the next Sessions component into this frame.</span>
         </div>
       </div>
     `,
     )}
     ${section(
-      'Variants',
-      'Every component page supports a repeatable variant model.',
-      `
-      <div class="variant-grid">
-        ${variantTile('Primary', 'Main product action or default expression.')}
-        ${variantTile('Secondary', 'Supporting action or lower emphasis expression.')}
-        ${variantTile('Danger', 'Destructive or irreversible action pattern.')}
-      </div>
-    `,
-    )}
-    ${section(
-      'States',
-      'Document interaction, validation, loading, empty, disabled, and error states in one place.',
-      `
-      <div class="state-list">
-        ${stateRow('Default', 'Resting state used for most product contexts.')}
-        ${stateRow('Hover and focus', 'Interaction states with visible keyboard focus.')}
-        ${stateRow('Disabled', 'Unavailable state with clear affordance.')}
-        ${stateRow('Loading', 'Progress state for asynchronous actions.')}
-      </div>
-    `,
-    )}
-    ${section(
-      'Usage Guidelines',
-      'Product rules, accessibility requirements, and implementation constraints.',
-      `
-      <div class="card-grid">
-        ${guideline('Do', 'Describe the intended use and the strongest default.')}
-        ${guideline('Avoid', 'Capture misuse and cases where another component is better.')}
-      </div>
-    `,
-    )}
-    ${section(
       'Code Example',
-      'Production-ready examples can be copied from this section.',
+      '',
       codePanel(
         'component-code',
         `${slug(page.title)}.tsx`,
-        sampleComponentCode(page.title),
+        `export function Example() {\n  return <${page.title.replace(/\s+/g, '')} />;\n}`,
         {collapsible: true},
       ),
     )}
-  `,
-
-  resource: page =>
-    page.title === 'Introduction'
-      ? renderIntroductionPage(page)
-      : `
-    ${pageHero(page)}
-    ${section(
-      'Resource Template',
-      'This page is ready for internal standards, governance, and release documentation.',
-      `
-      <div class="resource-list">
-        ${resourceItem('Purpose', page.subtitle)}
-        ${resourceItem('Audience', 'Design, engineering, product, and AI coding tools')}
-        ${resourceItem('Workflow', 'Draft, review, approve, ship, and announce')}
-        ${resourceItem('Maintenance', 'Owners, review cadence, and deprecation policy')}
-      </div>
-    `,
-    )}
-  `,
-};
-
-function guideline(title, description) {
-  return `<article class="guideline-card"><h3>${title}</h3><p>${description}</p></article>`;
-}
-
-function variantTile(title, description) {
-  return `<article class="variant-tile"><strong>${title}</strong><span>${description}</span></article>`;
-}
-
-function stateRow(title, description) {
-  return `<article class="state-row"><h3>${title}</h3><p>${description}</p></article>`;
-}
-
-function resourceItem(title, description) {
-  return `<article class="resource-item"><strong>${title}</strong><span>${description}</span></article>`;
-}
-
-function sampleComponentCode(title) {
-  const componentName = title.replace(/\s+/g, '');
-  return `import { ${componentName} } from "@sessions/design-system";
-
-export function Example() {
-  return (
-    <${componentName} />
-  );
-}`;
+  `;
 }

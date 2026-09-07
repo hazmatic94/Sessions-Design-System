@@ -27,13 +27,25 @@ const HOME_SHOWROOM_CARDS = [
   },
   {
     railLabel: 'Components',
-    body: 'An empty library. This is where new Sessions components go.',
-    href: '#/components',
+    body: 'Buttons, inputs, cards, and the rest of the library — frames ready for new work.',
+    href: '#/components/buttons',
     icon: 'box',
     innerMedia: `
       <div class="home-showroom-card__empty-slot">
         <span data-lucide="plus" aria-hidden="true"></span>
-        <strong>Add a component</strong>
+        <strong>Empty preview frames</strong>
+      </div>
+    `,
+  },
+  {
+    railLabel: 'Games',
+    body: 'Sportsbook, Coin Flip, Hilo, Mines, and Roulette pages with empty frames.',
+    href: '#/games/sportsbook',
+    icon: 'shapes',
+    innerMedia: `
+      <div class="home-showroom-card__empty-slot">
+        <span data-lucide="plus" aria-hidden="true"></span>
+        <strong>Empty preview frames</strong>
       </div>
     `,
   },
