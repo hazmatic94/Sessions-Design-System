@@ -1,4 +1,4 @@
-import {bootstrapDocsApp} from './src/docs/shell/bootstrap.js?v=win-modal-coin-loop-v1';
+import {bootstrapDocsApp} from './src/docs/shell/bootstrap.js?v=sessions-rail-v3';
 
 bootstrapDocsApp().catch(error => {
   console.error(error);

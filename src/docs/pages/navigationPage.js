@@ -1,8 +1,12 @@
 import {componentExampleWrapper, pageHero, section} from '../shell/pageLayout.js';
 import {
+  renderSessionsLeftRail,
+  renderSessionsLogo,
+  renderSessionsRailItem,
+} from '../../components/navigation/index.js?v=sessions-rail-v3';
+import {
   sampleAvatarActionCode,
   sampleGameMenuDropdownCode,
-  sampleJokerLogoCode,
   sampleMobileNavigationCode,
   sampleNotificationActionCode,
   sampleRailNavItemCode,
@@ -15,6 +19,8 @@ import {
 export function renderNavigationPage(page) {
   return `
     ${pageHero(page)}
+    ${section('Logo', '', logoExamples(), 'button-example-section navigation-example-section')}
+    ${section('Left Rail', '', leftRailExamples(), 'button-example-section navigation-example-section')}
     ${section('Top Rail', '', topRailExamples(), 'button-example-section navigation-example-section')}
     ${section('Mobile Navigation', '', mobileNavigationExamples(), 'button-example-section navigation-example-section')}
     ${section('Side Rail', '', sideRailExamples(), 'button-example-section navigation-example-section')}
@@ -63,6 +69,46 @@ export function navigationExampleCard({
     stageClassName: 'navigation-example-stage',
     previewClassName: 'navigation-example-preview',
   });
+}
+
+function logoExamples() {
+  return navigationExampleCard({
+    id: 'sessions-logo-example',
+    tocTitle: 'Default Logo',
+    preview: renderSessionsLogo(),
+    codeId: 'sessions-logo-code',
+    filename: 'Logo.tsx',
+    code: sampleSessionsLogoCode(),
+  });
+}
+
+function leftRailExamples() {
+  return `
+    ${navigationExampleCard({
+      id: 'rail-item-default-example',
+      tocTitle: 'Default Item',
+      preview: renderSessionsRailItem({ icon: 'home' }),
+      codeId: 'rail-item-default-code',
+      filename: 'RailItem.tsx',
+      code: sampleRailItemCode(),
+    })}
+    ${navigationExampleCard({
+      id: 'rail-item-selected-example',
+      tocTitle: 'Selected Item',
+      preview: renderSessionsRailItem({ icon: 'home', selected: true }),
+      codeId: 'rail-item-selected-code',
+      filename: 'RailItemSelected.tsx',
+      code: sampleSelectedRailItemCode(),
+    })}
+    ${navigationExampleCard({
+      id: 'left-rail-example',
+      tocTitle: 'Left Rail',
+      preview: renderSessionsLeftRail({ selected: 'home' }),
+      codeId: 'left-rail-code',
+      filename: 'LeftRail.tsx',
+      code: sampleLeftRailCode(),
+    })}
+  `;
 }
 
 function topRailExamples() {
@@ -128,14 +174,6 @@ function navigationExamples() {
       code: sampleAvatarActionCode(),
     })}
     ${navigationExampleCard({
-      id: 'joker-logo-example',
-      tocTitle: 'Joker Logo',
-      reactDemo: 'nav-joker-logo',
-      codeId: 'joker-logo-code',
-      filename: 'JokerLogo.tsx',
-      code: sampleJokerLogoCode(),
-    })}
-    ${navigationExampleCard({
       id: 'rail-nav-item-example',
       tocTitle: 'Rail Nav Item',
       reactDemo: 'nav-rail-nav-item',
@@ -161,4 +199,41 @@ function navigationExamples() {
       className: 'is-game-menu-dropdown',
     })}
   `;
+}
+
+function sampleSessionsLogoCode() {
+  return `import { Logo } from "@sessions/design-system";
+
+export function NavLogo() {
+  return <Logo href="/" ariaLabel="Sessions home" />;
+}`;
+}
+
+function sampleRailItemCode() {
+  return `import { RailItem } from "@sessions/design-system";
+
+export function DefaultRailItem() {
+  return <RailItem icon="home" label="Home" />;
+}`;
+}
+
+function sampleSelectedRailItemCode() {
+  return `import { RailItem } from "@sessions/design-system";
+
+export function SelectedRailItem() {
+  return <RailItem icon="home" label="Home" selected />;
+}`;
+}
+
+function sampleLeftRailCode() {
+  return `import { LeftRail } from "@sessions/design-system";
+
+export function SessionsLeftRail() {
+  return (
+    <LeftRail
+      selected="home"
+      items={["home", "calendar", "clients", "team", "settings"]}
+    />
+  );
+}`;
 }

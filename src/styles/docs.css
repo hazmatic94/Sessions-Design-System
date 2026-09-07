@@ -3858,7 +3858,9 @@ then uniform zoom on the set below */
     linear-gradient(180deg, var(--black-900), var(--black-800));
   padding: 72px 24px;
 }.content[data-page="buttons"] .button-example-stage,
+.content[data-page="inputs"] .button-example-stage,
 .content[data-page="inputs"] .input-example-stage,
+.content[data-page="inputs"] .component-example-wrapper__stage,
 .content[data-page="betting-panel"] .navigation-example-stage,
 .content[data-page="navigation"] .navigation-example-stage,
 .content[data-page="game-rails"] .navigation-example-stage,

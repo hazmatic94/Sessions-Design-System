@@ -1,7 +1,7 @@
 import {
   hydrateLucideIcons,
   templates,
-} from '../../pages/runtimeDocs.js?v=sessions-pages-v1';
+} from '../../pages/runtimeDocs.js?v=sessions-rail-v3';
 import {slug} from '../../utils.js';
 import {updateCustomScrollbars} from '../demo/customScrollbar.js?v=scrollbar-3px-v1';
 import {hydratePageDemos} from '../hydrators/index.js?v=sessions-icon-v1';

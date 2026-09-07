@@ -12,10 +12,10 @@ import {renderFoundationPage} from '../docs/pages/foundations/index.js?v=session
 import {renderHomePage} from '../docs/pages/homePage.js?v=sessions-nav-trim-v1';
 import {renderIntroductionPage} from '../docs/pages/introductionPage.js?v=sessions-pages-v1';
 import {renderInstallationPage} from '../docs/pages/installationPage.js?v=sessions-pages-v1';
-import {renderInputsPage} from '../docs/pages/inputsPage.js?v=sessions-pages-v1';
+import {renderInputsPage} from '../docs/pages/inputsPage.js?v=sessions-input-v6';
 import {renderGameRailsPage} from '../docs/pages/gameRailsPage.js?v=sessions-pages-v1';
 import {renderModalsPage} from '../docs/pages/modalsPage.js?v=sessions-pages-v1';
-import {renderNavigationPage} from '../docs/pages/navigationPage.js?v=sessions-pages-v1';
+import {renderNavigationPage} from '../docs/pages/navigationPage.js?v=sessions-rail-v3';
 import {codePanel, pageHero, section} from '../docs/shell/pageLayout.js';
 import {hydrateLucideIcons, lucideIcon} from '../utils/lucideIcon.js?v=nav-outline-v1';
 import {slug} from '../utils.js';

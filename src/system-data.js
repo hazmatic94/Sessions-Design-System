@@ -393,6 +393,11 @@ export const semanticColorGroups = [
         use: 'Content canvas and repeated surface blocks',
       },
       {
+        name: 'color.surface.hover',
+        value: 'black600',
+        use: 'Hover fill for elevated controls and interactive surfaces',
+      },
+      {
         name: 'color.surface.panel',
         value: 'black600',
         use: 'Raised panels, cards, and emphasized surfaces',

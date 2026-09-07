@@ -57,6 +57,7 @@
   --color-surface-background: var(--black-900);
   --color-surface-base: var(--black-800);
   --color-surface-elevated: var(--black-700);
+  --color-surface-hover: var(--black-600);
   --color-surface-panel: var(--black-600);
 
   /* Semantic color tokens */
@@ -350,14 +351,9 @@
   --button-disabled-shadow: var(--button-secondary-shadow);
   --button-disabled-text: var(--color-text-muted);
   --button-focus-outline: rgb(255 222 168 / 0.28);
-  --input-width: calc(
-    var(--spacing-64) + var(--spacing-64) + var(--spacing-64) +
-      var(--spacing-64) + var(--spacing-4)
-  );
-  --input-width-docs: calc(
-    var(--spacing-64) + var(--spacing-64) + var(--spacing-64) +
-      var(--spacing-64) + var(--spacing-64) + var(--spacing-40)
-  );
+  --input-min-width: 300px;
+  --input-width: var(--input-min-width);
+  --input-width-docs: var(--input-min-width);
   --betting-panel-min-width: 280px;
   --betting-panel-max-width: 360px;
   --betting-panel-compact-max-width: 340px;
@@ -377,10 +373,11 @@
   --game-shell-mobile-stage-height: calc(
     70dvh + var(--game-shell-mobile-stage-boost)
   );
-  --input-field-gap: calc(var(--spacing-4) + var(--border-width-default));
-  --input-field-gap-docs: var(--spacing-8);
-  --input-control-height: calc(var(--spacing-64) - var(--spacing-12));
+  --input-field-gap: 6px;
+  --input-field-gap-docs: var(--input-field-gap);
+  --input-control-height: calc(var(--spacing-48) + var(--spacing-8));
   --input-control-height-docs: var(--input-control-height);
+  --input-textarea-height: calc(var(--input-control-height) + var(--spacing-64));
   --input-control-gap: calc(
     var(--spacing-4) + var(--border-width-default) + var(--border-width-default)
   );
@@ -389,18 +386,18 @@
   );
   --input-control-padding-inline: var(--spacing-16);
   --input-control-border-width: var(--border-width-default);
-  --input-control-border: var(--black-200);
-  --input-control-border-hover: var(--black-200);
+  --input-control-border: var(--color-border-default);
+  --input-control-border-hover: var(--color-border-default);
   --input-control-border-focus: var(--green-300);
-  --input-control-bg: var(--black-800);
-  --input-control-bg-hover: var(--black-700);
-  --input-control-bg-focus: var(--joker-gold-1000);
+  --input-control-bg: var(--color-surface-elevated);
+  --input-control-bg-hover: var(--color-surface-hover);
+  --input-control-bg-focus: var(--color-surface-elevated);
   --input-placeholder-text: var(--black-100);
   --input-placeholder-font-weight: 400;
   --input-label-text: var(--black-50);
   --input-label-text-focus: var(--joker-white-50);
-  --input-label-size: 12px;
-  --input-label-line-height: 100%;
+  --input-label-size: var(--text-body-14);
+  --input-label-line-height: var(--text-body-line-height);
   --input-icon-size: calc(
     var(--spacing-16) - var(--border-width-default) -
       var(--border-width-default)
