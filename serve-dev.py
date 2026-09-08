@@ -24,7 +24,12 @@ class NoCacheHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
         request_path = parsed.path
-        if request_path in ("/favicon.ico", "/favicon.svg"):
+        if request_path in (
+            "/favicon.ico",
+            "/favicon.svg",
+            "/apple-touch-icon.png",
+            "/apple-touch-icon-precomposed.png",
+        ):
             request_path = "/assets/favicon.svg"
             self.path = request_path
 

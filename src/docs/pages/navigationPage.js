@@ -1,18 +1,19 @@
-import {componentExampleWrapper, pageHero, section} from '../shell/pageLayout.js';
+import {componentExampleWrapper, pageHero, section} from '../shell/pageLayout.js?v=sessions-docs-cta-v1';
+import {renderSessionsAvatar} from '../../components/avatar/index.js?v=sessions-avatar-v2';
 import {
+  renderMobileMenu,
   renderSessionsLeftRail,
   renderSessionsLogo,
   renderSessionsRailItem,
-} from '../../components/navigation/index.js?v=sessions-rail-v3';
+  renderTopNav,
+} from '../../components/navigation/index.js';
 import {
   sampleAvatarActionCode,
   sampleGameMenuDropdownCode,
-  sampleMobileNavigationCode,
   sampleNotificationActionCode,
   sampleRailNavItemCode,
   sampleRailSearchCode,
   sampleSideRailCode,
-  sampleTopRailCode,
   sampleWalletControlCode,
 } from './navigationPreviewMarkup.js?v=wallet-icon-v1';
 
@@ -20,9 +21,10 @@ export function renderNavigationPage(page) {
   return `
     ${pageHero(page)}
     ${section('Logo', '', logoExamples(), 'button-example-section navigation-example-section')}
-    ${section('Left Rail', '', leftRailExamples(), 'button-example-section navigation-example-section')}
-    ${section('Top Rail', '', topRailExamples(), 'button-example-section navigation-example-section')}
-    ${section('Mobile Navigation', '', mobileNavigationExamples(), 'button-example-section navigation-example-section')}
+    ${section('Left Nav', '', leftNavExamples(), 'button-example-section navigation-example-section')}
+    ${section('Top Nav', '', topNavExamples(), 'button-example-section navigation-example-section')}
+    ${section('Avatar', '', avatarExamples(), 'button-example-section navigation-example-section')}
+    ${section('Mobile Menu', '', mobileMenuExamples(), 'button-example-section navigation-example-section')}
     ${section('Side Rail', '', sideRailExamples(), 'button-example-section navigation-example-section')}
     ${section('Inner Components', '', navigationExamples(), 'button-example-section navigation-example-section')}
   `;
@@ -82,7 +84,7 @@ function logoExamples() {
   });
 }
 
-function leftRailExamples() {
+function leftNavExamples() {
   return `
     ${navigationExampleCard({
       id: 'rail-item-default-example',
@@ -101,37 +103,57 @@ function leftRailExamples() {
       code: sampleSelectedRailItemCode(),
     })}
     ${navigationExampleCard({
-      id: 'left-rail-example',
-      tocTitle: 'Left Rail',
+      id: 'left-nav-example',
+      tocTitle: 'Left Nav',
       preview: renderSessionsLeftRail({ selected: 'home' }),
-      codeId: 'left-rail-code',
-      filename: 'LeftRail.tsx',
-      code: sampleLeftRailCode(),
+      codeId: 'left-nav-code',
+      filename: 'LeftNav.tsx',
+      code: sampleLeftNavCode(),
+      className: 'is-left-nav',
     })}
   `;
 }
 
-function topRailExamples() {
+function topNavExamples() {
   return navigationExampleCard({
-    id: 'top-rail-example',
-    tocTitle: 'Top Rail',
-    reactDemo: 'nav-top-rail',
-    codeId: 'top-rail-code',
-    filename: 'TopRail.tsx',
-    code: sampleTopRailCode(),
-    className: 'is-top-rail is-wide-stage-inline',
+    id: 'top-nav-example',
+    tocTitle: 'Top Nav',
+    preview: renderTopNav(),
+    codeId: 'top-nav-code',
+    filename: 'TopNav.tsx',
+    code: sampleTopNavCode(),
+    className: 'is-top-nav',
   });
 }
 
-function mobileNavigationExamples() {
+function avatarExamples() {
   return navigationExampleCard({
-    id: 'mobile-navigation-example',
-    tocTitle: 'Mobile Navigation',
-    reactDemo: 'nav-mobile',
-    codeId: 'mobile-navigation-code',
-    filename: 'MobileNavigation.tsx',
-    code: sampleMobileNavigationCode(),
-    className: 'is-mobile-nav',
+    id: 'avatar-example',
+    tocTitle: 'Avatar',
+    preview: `
+      <div class="sessions-avatar-preview-row">
+        ${renderSessionsAvatar({ name: 'Harry' })}
+        ${renderSessionsAvatar({
+          src: '/assets/user.png?v=sessions-avatar-v1',
+          alt: 'Harry',
+        })}
+      </div>
+    `,
+    codeId: 'avatar-code',
+    filename: 'Avatar.tsx',
+    code: sampleAvatarCode(),
+  });
+}
+
+function mobileMenuExamples() {
+  return navigationExampleCard({
+    id: 'mobile-menu-example',
+    tocTitle: 'Mobile Menu',
+    preview: renderMobileMenu(),
+    codeId: 'mobile-menu-code',
+    filename: 'MobileMenu.tsx',
+    code: sampleMobileMenuCode(),
+    className: 'is-mobile-menu',
   });
 }
 
@@ -225,15 +247,39 @@ export function SelectedRailItem() {
 }`;
 }
 
-function sampleLeftRailCode() {
-  return `import { LeftRail } from "@sessions/design-system";
+function sampleLeftNavCode() {
+  return `import { LeftNav } from "@sessions/design-system";
 
-export function SessionsLeftRail() {
+export function SessionsLeftNav() {
+  return <LeftNav selected="home" />;
+}`;
+}
+
+function sampleTopNavCode() {
+  return `import { TopNav } from "@sessions/design-system";
+
+export function SessionsTopNav() {
+  return <TopNav />;
+}`;
+}
+
+function sampleMobileMenuCode() {
+  return `import { MobileMenu } from "@sessions/design-system";
+
+export function SessionsMobileMenu() {
+  return <MobileMenu />;
+}`;
+}
+
+function sampleAvatarCode() {
+  return `import { Avatar } from "@sessions/design-system";
+
+export function SessionsAvatarExamples() {
   return (
-    <LeftRail
-      selected="home"
-      items={["home", "calendar", "clients", "team", "settings"]}
-    />
+    <>
+      <Avatar name="Harry" />
+      <Avatar src="/assets/user.png" alt="Harry" />
+    </>
   );
 }`;
 }

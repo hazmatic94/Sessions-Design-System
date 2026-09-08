@@ -1,5 +1,20 @@
 @import "./tokens.css";
 
+:root {
+  --nav-left-rail-width: 100px;
+  --nav-left-rail-padding-block: var(--spacing-24);
+  --nav-left-rail-item-gap: 20px;
+  --nav-left-rail-bg: var(--color-surface-base);
+  --nav-left-rail-border: var(--color-border-subtle);
+  --top-nav-height: 74px;
+  --top-nav-avatar-gap: var(--spacing-16);
+  --top-nav-padding-inline: var(--spacing-24);
+  --mobile-menu-height: 64px;
+  --mobile-menu-padding-inline: 20px;
+  --mobile-menu-device-width: 402px;
+  --mobile-menu-device-height: 874px;
+}
+
 .sessions-logo {
   display: inline-flex;
   flex-shrink: 0;
@@ -31,10 +46,33 @@
 }
 
 .sessions-left-rail {
-  display: inline-flex;
+  box-sizing: border-box;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacing-8);
+  justify-content: space-between;
+  width: var(--nav-left-rail-width);
+  min-height: 100%;
+  padding-block: var(--nav-left-rail-padding-block);
+  border-right: 1px solid var(--nav-left-rail-border);
+  background: var(--nav-left-rail-bg);
+}
+
+.sessions-left-rail__items,
+.sessions-left-rail__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--nav-left-rail-item-gap);
+  width: 100%;
+}
+
+.sessions-left-rail__divider {
+  width: 100%;
+  height: 0;
+  margin: 0;
+  border: 0;
+  border-top: 1px solid var(--nav-left-rail-border);
 }
 
 .sessions-rail-item {
@@ -78,6 +116,18 @@
   mask-image: none;
 }
 
+.sessions-rail-item__icon--img {
+  background: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.sessions-rail-item__icon--img img {
+  display: block;
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
+}
+
 .sessions-rail-item__icon svg {
   display: block;
   width: 100%;
@@ -106,4 +156,262 @@
 .sessions-rail-item:focus-visible {
   outline: 2px solid var(--color-border-focus);
   outline-offset: 2px;
+}
+
+.top-nav {
+  box-sizing: border-box;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-24);
+  width: 100%;
+  height: var(--top-nav-height);
+  min-height: var(--top-nav-height);
+  padding-inline: var(--top-nav-padding-inline);
+  border-block-end: 1px solid var(--nav-left-rail-border);
+  background: var(--color-surface-base);
+}
+
+.top-nav__actions {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: var(--top-nav-avatar-gap);
+}
+
+.top-nav__icons {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+}
+
+.top-nav .sessions-avatar {
+  --avatar-size: 42px;
+  --avatar-fill-color: var(--color-surface-base);
+}
+
+.mobile-menu {
+  box-sizing: border-box;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-24);
+  width: 100%;
+  height: var(--mobile-menu-height);
+  min-height: var(--mobile-menu-height);
+  padding-inline: var(--mobile-menu-padding-inline);
+  border-block-end: 1px solid var(--color-border-subtle);
+  background: var(--color-surface-base);
+}
+
+.mobile-menu-device {
+  display: flex;
+  flex-direction: column;
+  width: var(--mobile-menu-device-width);
+  height: var(--mobile-menu-device-height);
+  overflow: hidden;
+  background: var(--color-surface-base);
+}
+
+.mobile-menu__content {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.mobile-menu-device:not(.is-open) .mobile-menu__content {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.mobile-menu-panel {
+  position: absolute;
+  top: var(--spacing-8);
+  right: var(--spacing-8);
+  bottom: var(--spacing-8);
+  box-sizing: border-box;
+  display: flex;
+  width: 334px;
+  flex-direction: column;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--spacing-8);
+  background: var(--color-surface-base);
+  overflow: auto;
+}
+
+.mobile-menu-panel__user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-12);
+  width: 100%;
+  margin: 0;
+  padding: var(--spacing-16) 20px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.mobile-menu-panel__user-main {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  align-items: center;
+  gap: var(--spacing-12);
+}
+
+.mobile-menu-panel__user-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.mobile-menu-panel__user-name {
+  overflow: hidden;
+  color: var(--joker-white-50);
+  font-size: var(--text-body-b1);
+  font-weight: var(--text-body-b1-medium-weight);
+  line-height: var(--text-body-b1-line-height);
+  letter-spacing: var(--text-body-b1-letter-spacing);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mobile-menu-panel__user-email {
+  overflow: hidden;
+  color: var(--black-50);
+  font-size: var(--text-body-14);
+  font-weight: var(--text-body-weight);
+  line-height: var(--text-body-line-height);
+  letter-spacing: var(--text-body-letter-spacing);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mobile-menu-panel .sessions-avatar {
+  --avatar-size: 42px;
+  --avatar-fill-color: var(--color-surface-base);
+  flex-shrink: 0;
+}
+
+.mobile-menu-panel__chevron {
+  display: block;
+  flex-shrink: 0;
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
+  background-color: currentColor;
+  color: var(--joker-white-50);
+  -webkit-mask-image: var(--sessions-rail-icon);
+  mask-image: var(--sessions-rail-icon);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.mobile-menu-panel__user:hover .mobile-menu-panel__chevron,
+.mobile-menu-panel__user:focus-visible .mobile-menu-panel__chevron {
+  color: var(--black-50);
+}
+
+.mobile-menu-panel__user:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: -2px;
+}
+
+.mobile-menu-panel__divider {
+  width: auto;
+  height: 0;
+  margin: 20px;
+  border: 0;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.mobile-menu-panel__nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  padding-inline: 20px;
+}
+
+.mobile-menu-panel__footer {
+  margin-top: auto;
+  padding: 0 20px 20px;
+}
+
+.sessions-nav-item {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: var(--spacing-12);
+  min-height: 52px;
+  margin: 0;
+  padding: 0 20px;
+  border: var(--border-width-default) solid transparent;
+  border-radius: var(--spacing-8);
+  background: transparent;
+  color: var(--joker-white-50);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--button-primary-hover-duration) var(--button-primary-hover-ease),
+    border-color var(--button-primary-hover-duration) var(--button-primary-hover-ease),
+    color var(--button-primary-hover-duration) var(--button-primary-hover-ease);
+}
+
+.sessions-nav-item__label {
+  font-size: var(--text-body-b1);
+  font-weight: var(--text-body-b1-medium-weight);
+  line-height: var(--text-body-b1-line-height);
+  letter-spacing: var(--text-body-b1-letter-spacing);
+}
+
+.sessions-nav-item .sessions-rail-item__icon {
+  flex-shrink: 0;
+}
+
+.sessions-nav-item:hover:not(.is-selected) {
+  background: var(--button-secondary-bg-hover);
+}
+
+.sessions-nav-item.is-selected {
+  border-color: var(--green-300);
+  background: var(--green-900);
+  color: var(--green-300);
+}
+
+.sessions-nav-item.is-selected:hover {
+  border-color: color-mix(in srgb, var(--green-300) 62%, white);
+  background: color-mix(in srgb, var(--green-900) 94%, white);
+}
+
+.sessions-nav-item.is-label-only .sessions-nav-item__label {
+  padding-inline-start: calc(var(--icon-size-lg) + var(--spacing-12));
+}
+
+.sessions-nav-item:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.mobile-menu__toggle-icon--close {
+  display: none;
+}
+
+.mobile-menu__toggle[aria-expanded="true"] .mobile-menu__toggle-icon--menu {
+  display: none;
+}
+
+.mobile-menu__toggle[aria-expanded="true"] .mobile-menu__toggle-icon--close {
+  display: block;
 }

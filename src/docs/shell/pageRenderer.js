@@ -1,7 +1,7 @@
 import {
   hydrateLucideIcons,
   templates,
-} from '../../pages/runtimeDocs.js?v=sessions-rail-v3';
+} from '../../pages/runtimeDocs.js?v=sessions-docs-cta-v1';
 import {slug} from '../../utils.js';
 import {updateCustomScrollbars} from '../demo/customScrollbar.js?v=scrollbar-3px-v1';
 import {hydratePageDemos} from '../hydrators/index.js?v=sessions-icon-v1';
@@ -11,7 +11,7 @@ import {
   bindMobileScrollCues,
   pageSequenceNavigation,
 } from '../demo/mobileBindings.js';
-import {pageFooter} from './pageLayout.js?v=sessions-clean-v1';
+import {pageFooter} from './pageLayout.js?v=sessions-docs-cta-v1';
 import {pageRegistry} from './registry.js?v=sessions-nav-trim-v1';
 import {state} from './state.js?v=docs-routing-v1';
 
@@ -235,6 +235,45 @@ function setPropertyMeta(property, content) {
   el.setAttribute('content', content);
 }
 
+function ensureLinkTag(rel, attributes) {
+  let el = document.head.querySelector(`link[rel="${rel}"]`);
+  if (!el) {
+    el = document.createElement('link');
+    el.setAttribute('rel', rel);
+    document.head.appendChild(el);
+  }
+  Object.entries(attributes).forEach(([key, value]) => {
+    el.setAttribute(key, value);
+  });
+  return el;
+}
+
+const SESSIONS_FAVICON = '/assets/favicon.svg?v=sessions-icon-v4';
+
+function updateFavicon() {
+  const href = absoluteAssetUrl(SESSIONS_FAVICON);
+
+  document
+    .querySelectorAll('link[rel="icon"], link[rel="shortcut icon"], link[rel="apple-touch-icon"]')
+    .forEach((link) => {
+      const linkHref = link.getAttribute('href') || '';
+      if (linkHref && !linkHref.includes('/assets/favicon.svg')) {
+        link.remove();
+      }
+    });
+
+  ensureLinkTag('icon', {
+    href,
+    type: 'image/svg+xml',
+    sizes: 'any',
+  });
+  ensureLinkTag('shortcut icon', {
+    href,
+    type: 'image/svg+xml',
+  });
+  ensureLinkTag('apple-touch-icon', {href});
+}
+
 function absoluteAssetUrl(path) {
   return new URL(path, window.location.origin).href;
 }
@@ -245,9 +284,10 @@ function updateDocumentMeta(page) {
     firstSentence(page.subtitle) ||
     'Sessions Design System — shared foundations and a place to build new components.';
   const url = new URL(`/#${state.route}`, window.location.origin).href;
-  const image = absoluteAssetUrl('/assets/favicon.svg');
+  const image = absoluteAssetUrl(SESSIONS_FAVICON);
 
   document.title = title;
+  updateFavicon();
 
   setNamedMeta('description', description);
   setNamedMeta('theme-color', '#131313');

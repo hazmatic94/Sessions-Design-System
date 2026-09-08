@@ -1166,6 +1166,9 @@ p {
   gap: 12px;
   min-width: 0;
   flex: 1;
+}.home-intro__text h1 {
+  max-width: none;
+  white-space: nowrap;
 }.home-intro__cta {
   flex: none;
   align-self: center;
@@ -1650,7 +1653,7 @@ p {
 }.code-toggle-button {
   cursor: pointer;
   pointer-events: auto;
-}.code-view-button {
+}.code-view-button:not(.sessions-button) {
   position: relative;
   isolation: isolate;
   display: inline-flex;
@@ -1676,7 +1679,7 @@ p {
     box-shadow var(--motion-fast) var(--ease-standard),
     color var(--motion-fast) var(--ease-standard);
   white-space: nowrap;
-}.code-view-button::after {
+}.code-view-button:not(.sessions-button)::after {
   position: absolute;
   top: -70%;
   bottom: -70%;
@@ -1691,10 +1694,10 @@ p {
   transition:
     left calc(var(--motion-slow) + var(--motion-slow) + var(--motion-slow) + var(--motion-slow)) var(--ease-emphasized),
     opacity var(--motion-instant) ease;
-}.code-view-button > span {
+}.code-view-button:not(.sessions-button) > span {
   position: relative;
   z-index: 1;
-}.code-view-button:hover {
+}.code-view-button:not(.sessions-button):hover {
   border-color: var(--black-100);
   background-color: var(--black-700);
   background-image: linear-gradient(180deg, rgb(255 255 255 / 0.05), transparent 62%);
@@ -1702,7 +1705,7 @@ p {
     inset 0 1px 0 rgb(255 255 255 / 0.06),
     0 3px 8px rgb(0 0 0 / 0.22);
   color: var(--joker-white-50);
-}.code-view-button:hover::after {
+}.code-view-button:not(.sessions-button):hover::after {
   left: 115%;
   opacity: 1;
 }.code-toggle-button:focus-visible {
@@ -2961,10 +2964,77 @@ boxed column handled by .workspace grid */
   justify-self: end;
   text-align: right;
   white-space: nowrap;
-}.content[data-page="navigation"] .navigation-example.card-example:not(.is-game-menu-dropdown):not(.is-side-rail):not(.is-mobile-nav) {
+}.content[data-page="navigation"] .navigation-example.is-left-nav {
+  --example-stage-height: 420px;
   height: calc(var(--example-stage-height) + var(--example-code-collapsed-height));
-}.content[data-page="navigation"] .navigation-example:not(.is-game-menu-dropdown):not(.is-side-rail):not(.is-mobile-nav) .component-example-wrapper__stage,
-.content[data-page="navigation"] .navigation-example:not(.is-game-menu-dropdown):not(.is-side-rail):not(.is-mobile-nav) .navigation-example-stage {
+}.content[data-page="navigation"] .navigation-example.is-left-nav .component-example-wrapper__stage,
+.content[data-page="navigation"] .navigation-example.is-left-nav .navigation-example-stage {
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  overflow: visible;
+}.content[data-page="navigation"] .navigation-example.is-left-nav .component-example-wrapper__preview,
+.content[data-page="navigation"] .navigation-example.is-left-nav .navigation-example-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: 100%;
+  min-height: 0;
+  flex: none;
+}.content[data-page="navigation"] .navigation-example.is-left-nav .sessions-left-rail {
+  height: 100%;
+  min-height: 0;
+  flex: none;
+}.content[data-page="navigation"] .navigation-example.is-mobile-menu {
+  --example-stage-height: 874px;
+  height: calc(var(--example-stage-height) + var(--example-code-collapsed-height));
+}.content[data-page="navigation"] .navigation-example.is-top-nav .component-example-wrapper__stage,
+.content[data-page="navigation"] .navigation-example.is-top-nav .navigation-example-stage {
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0;
+  overflow: visible;
+}.content[data-page="navigation"] .navigation-example.is-mobile-menu .component-example-wrapper__stage,
+.content[data-page="navigation"] .navigation-example.is-mobile-menu .navigation-example-stage {
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  overflow: visible;
+  flex: 0 0 var(--example-stage-height);
+  height: var(--example-stage-height);
+  min-height: var(--example-stage-height);
+  max-height: var(--example-stage-height);
+}.content[data-page="navigation"] .navigation-example.is-top-nav .component-example-wrapper__preview,
+.content[data-page="navigation"] .navigation-example.is-top-nav .navigation-example-preview {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  flex: none;
+}.content[data-page="navigation"] .navigation-example.is-mobile-menu .component-example-wrapper__preview,
+.content[data-page="navigation"] .navigation-example.is-mobile-menu .navigation-example-preview {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  width: 402px;
+  max-width: 100%;
+  height: 874px;
+  min-height: 0;
+  flex: none;
+}.content[data-page="navigation"] .navigation-example.is-top-nav .top-nav {
+  width: 100%;
+  flex: none;
+}.content[data-page="navigation"] .navigation-example.is-mobile-menu .mobile-menu-device {
+  width: 100%;
+  height: 100%;
+  flex: none;
+}.content[data-page="navigation"] .navigation-example.card-example:not(.is-game-menu-dropdown):not(.is-side-rail):not(.is-mobile-nav):not(.is-left-nav):not(.is-mobile-menu) {
+  height: calc(var(--example-stage-height) + var(--example-code-collapsed-height));
+}.content[data-page="navigation"] .navigation-example:not(.is-game-menu-dropdown):not(.is-side-rail):not(.is-mobile-nav):not(.is-left-nav):not(.is-mobile-menu) .component-example-wrapper__stage,
+.content[data-page="navigation"] .navigation-example:not(.is-game-menu-dropdown):not(.is-side-rail):not(.is-mobile-nav):not(.is-left-nav):not(.is-mobile-menu) .navigation-example-stage {
   display: flex;
   flex: 0 0 var(--example-stage-height);
   align-items: center;
@@ -3806,7 +3876,7 @@ then uniform zoom on the set below */
   border: 1px solid var(--color-border-default);
   border-radius: 6px;
   background: var(--color-bg-surface);
-  --example-code-collapsed-height: 100px;
+  --example-code-collapsed-height: calc(var(--button-height) + 72px);
   --example-code-strip-padding: 28px;
 }.button-example.card-example,
 .component-example-wrapper.button-example.card-example {
@@ -3814,7 +3884,7 @@ then uniform zoom on the set below */
   overflow: hidden;
   box-sizing: border-box;
   --example-stage-height: 340px;
-  --example-code-collapsed-height: 100px;
+  --example-code-collapsed-height: calc(var(--button-height) + 72px);
   --example-code-drawer-top: 24px;
   height: calc(var(--example-stage-height) + var(--example-code-collapsed-height));
 }.content[data-page="sportsbook"] .component-example-wrapper.button-example {
@@ -4423,7 +4493,7 @@ no 340 clip */
   flex: 0 1 auto;
 }.button-example .code-reveal-overlay,
 .docs-example .code-reveal-overlay {
-  height: var(--example-code-collapsed-height, 100px);
+  height: var(--example-code-collapsed-height, calc(var(--button-height) + 72px));
   background: linear-gradient(transparent, var(--black-800) 70%);
   transition: opacity 180ms var(--ease-standard);
 }.button-example .code-panel-collapsible:not([data-code-expanded="true"]) .code-reveal-overlay {
@@ -4436,6 +4506,10 @@ no 340 clip */
   place-items: center;
 }.button-example:has(.code-panel-collapsible[data-code-expanded="true"]) .code-reveal-overlay {
   opacity: 1;
+}.button-example .code-toggle-button.sessions-button {
+  width: auto;
+  min-width: 0;
+  flex: none;
 }.button-example .code-toggle-button {
   width: 100px;
   padding: 0;
@@ -4460,6 +4534,18 @@ no 340 clip */
   padding: var(--example-code-strip-padding);
   pointer-events: auto;
   -webkit-overflow-scrolling: touch;
+}.button-example .code-panel-collapsible[data-code-expanded="true"] .code-close-button.sessions-button {
+  width: auto;
+  min-width: 0;
+  height: var(--button-height);
+  min-height: var(--button-height);
+  margin: 0;
+  padding: 0 var(--button-padding-inline) 1px;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  text-align: center;
+  text-decoration: none;
 }.button-example .code-panel-collapsible[data-code-expanded="true"] .code-close-button {
   width: auto;
   min-height: 0;
@@ -4472,7 +4558,7 @@ no 340 clip */
   overflow: hidden;
   padding-bottom: 48px;
   pointer-events: none;
-}.button-example .code-close-button {
+}.button-example .code-close-button:not(.sessions-button) {
   width: auto;
   min-width: 0;
   height: auto;
@@ -4492,9 +4578,9 @@ no 340 clip */
   text-decoration: underline;
   text-underline-offset: 3px;
   text-transform: none;
-}.button-example .code-close-button::after {
+}.button-example .code-close-button:not(.sessions-button)::after {
   display: none;
-}.button-example .code-close-button:hover {
+}.button-example .code-close-button:not(.sessions-button):hover {
   border: 0;
   background: transparent;
   background-image: none;
@@ -6112,7 +6198,7 @@ no 340 clip */
   }
 
   .button-example {
-    --example-code-collapsed-height: 80px;
+    --example-code-collapsed-height: calc(var(--button-height) + 72px);
     --example-code-strip-padding: var(--spacing-16);
   }
 
@@ -6474,13 +6560,21 @@ no 340 clip */
     max-width: none;
   }
 
-  .content[data-page="navigation"] .navigation-example.card-example:not(.is-game-menu-dropdown):not(.is-side-rail):not(.is-mobile-nav) {
+  .content[data-page="navigation"] .navigation-example.card-example:not(.is-game-menu-dropdown):not(.is-side-rail):not(.is-mobile-nav):not(.is-left-nav):not(.is-mobile-menu) {
     --example-stage-height: 260px;
     height: calc(var(--example-stage-height) + var(--example-code-collapsed-height));
   }
 
-  .content[data-page="navigation"] .navigation-example:not(.is-game-menu-dropdown):not(.is-side-rail):not(.is-mobile-nav) .component-example-wrapper__stage,
-  .content[data-page="navigation"] .navigation-example:not(.is-game-menu-dropdown):not(.is-side-rail):not(.is-mobile-nav) .navigation-example-stage {
+  .content[data-page="navigation"] .navigation-example.is-left-nav {
+    --example-stage-height: 420px;
+  }
+
+  .content[data-page="navigation"] .navigation-example.is-mobile-menu {
+    --example-stage-height: 874px;
+  }
+
+  .content[data-page="navigation"] .navigation-example:not(.is-game-menu-dropdown):not(.is-side-rail):not(.is-mobile-nav):not(.is-left-nav):not(.is-mobile-menu) .component-example-wrapper__stage,
+  .content[data-page="navigation"] .navigation-example:not(.is-game-menu-dropdown):not(.is-side-rail):not(.is-mobile-nav):not(.is-left-nav):not(.is-mobile-menu) .navigation-example-stage {
     flex: 0 0 var(--example-stage-height);
     height: var(--example-stage-height);
     min-height: var(--example-stage-height);
@@ -6492,8 +6586,8 @@ no 340 clip */
     justify-content: center;
   }
 
-  .content[data-page="navigation"] .navigation-example:not(.is-game-menu-dropdown):not(.is-side-rail):not(.is-mobile-nav) .component-example-wrapper__preview,
-  .content[data-page="navigation"] .navigation-example:not(.is-game-menu-dropdown):not(.is-side-rail):not(.is-mobile-nav) .navigation-example-preview {
+  .content[data-page="navigation"] .navigation-example:not(.is-game-menu-dropdown):not(.is-side-rail):not(.is-mobile-nav):not(.is-left-nav):not(.is-mobile-menu) .component-example-wrapper__preview,
+  .content[data-page="navigation"] .navigation-example:not(.is-game-menu-dropdown):not(.is-side-rail):not(.is-mobile-nav):not(.is-left-nav):not(.is-mobile-menu) .navigation-example-preview {
     display: flex;
     width: 100%;
     height: 100%;

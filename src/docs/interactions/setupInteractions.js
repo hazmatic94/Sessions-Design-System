@@ -24,7 +24,7 @@ function getCodeDrawerMetrics(panel) {
 function applyCodeTogglePresentation(toggle, expanded) {
   toggle.classList.toggle('code-view-button', !expanded);
   toggle.classList.toggle('code-close-button', expanded);
-  const label = toggle.querySelector('span');
+  const label = toggle.querySelector('.sessions-button__label') || toggle.querySelector('span');
   const labelText = expanded ? 'Close' : 'View Code';
   if (label) {
     label.textContent = labelText;
@@ -116,6 +116,26 @@ export function setupInteractions() {
       event.preventDefault();
       navigateToRoute(docsRouteHref);
       requestAnimationFrame(updateScrollCue);
+      return;
+    }
+
+    const mobileMenuToggle = event.target.closest('[data-mobile-menu-toggle]');
+    if (mobileMenuToggle) {
+      event.preventDefault();
+      const expanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
+      const nextExpanded = !expanded;
+      mobileMenuToggle.setAttribute('aria-expanded', String(nextExpanded));
+      mobileMenuToggle.setAttribute(
+        'aria-label',
+        nextExpanded
+          ? mobileMenuToggle.dataset.closeLabel || 'Close menu'
+          : mobileMenuToggle.dataset.menuLabel || 'Open menu',
+      );
+      const device = mobileMenuToggle.closest('.mobile-menu-device');
+      device?.classList.toggle('is-open', nextExpanded);
+      device
+        ?.querySelector('[data-mobile-menu-panel]')
+        ?.setAttribute('aria-hidden', String(!nextExpanded));
       return;
     }
 

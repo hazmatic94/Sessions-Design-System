@@ -9,6 +9,7 @@
   cursor: pointer;
   font-family: var(--font);
   text-transform: none;
+  text-decoration: none;
 }
 
 .sessions-button--primary,

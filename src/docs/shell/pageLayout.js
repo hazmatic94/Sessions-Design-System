@@ -1,4 +1,5 @@
-import { renderComponentExampleWrapper } from "./componentExampleWrapper.js?v=sessions-primary-button-v1";
+import { renderComponentExampleWrapper } from "./componentExampleWrapper.js?v=sessions-docs-cta-v2";
+import { renderGhostButton } from "../../components/button/index.js?v=sessions-docs-cta-v2";
 import { escapeHtml, slug } from "../../utils.js";
 
 export function pageHero(page) {
@@ -58,9 +59,12 @@ export function codePanel(id, label, code, {collapsible = false} = {}) {
           collapsible
             ? `
           <div class="code-reveal-overlay">
-            <button class="code-toggle-button code-view-button" type="button" data-code-toggle aria-expanded="false">
-              <span>View Code</span>
-            </button>
+            ${renderGhostButton({
+              label: 'View Code',
+              className: 'code-toggle-button code-view-button',
+              ariaExpanded: false,
+              dataCodeToggle: true,
+            })}
           </div>
         `
             : ''

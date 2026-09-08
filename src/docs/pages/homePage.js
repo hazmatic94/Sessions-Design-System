@@ -1,4 +1,5 @@
 import {homeShowroomCardMarkup} from '../markup/homeShowroomCardMarkup.js?v=sessions-clean-v1';
+import {renderPrimaryButton} from '../../components/button/index.js?v=sessions-docs-cta-v1';
 
 const HOME_TICKER_ITEMS = [
   'Sessions',
@@ -94,7 +95,11 @@ export function renderHomePage(_page) {
               <h1 id="home-intro-title">Build Once. Reuse Everywhere.</h1>
               <p class="lede">The docs layout stays. The product library is empty on purpose — add the next Sessions component here.</p>
             </div>
-            <a class="joker-cta-preview secondary home-intro__cta" href="#/getting-started/introduction">Get started</a>
+            ${renderPrimaryButton({
+              label: 'Get started',
+              href: '#/getting-started/introduction',
+              className: 'home-intro__cta',
+            })}
           </div>
         </section>
         <hr class="introduction-divider home-body-divider" aria-hidden="true" />
