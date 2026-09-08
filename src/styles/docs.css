@@ -1166,7 +1166,7 @@ p {
   gap: 12px;
   min-width: 0;
   flex: 1;
-}.home-intro__text h1 {
+}.home-intro__text h2 {
   max-width: none;
   white-space: nowrap;
 }.home-intro__cta {
@@ -2442,7 +2442,7 @@ pre {
   padding-left: var(--color-variable-page-padding);
 }.content[data-page="spacing"] .spacing-guideline-row:hover {
   background: var(--color-bg-control-hover);
-}.content:not([data-page="home"]) h1,
+}.content:not([data-page="home"]) h2,
 .content:not([data-page="home"]) .lede,
 .content:not([data-page="home"]) .section-heading h2,
 .content:not([data-page="home"]) .section-heading p,

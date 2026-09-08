@@ -1,4 +1,4 @@
-import { componentExampleWrapper, pageHero, section } from "../shell/pageLayout.js?v=sessions-docs-cta-v1";
+import { componentExampleWrapper, pageHero, section } from "../shell/pageLayout.js?v=sessions-page-h2-v1";
 import { renderSessionsInput } from "../../components/input/index.js?v=sessions-input-v6";
 
 export function renderInputsPage(page) {

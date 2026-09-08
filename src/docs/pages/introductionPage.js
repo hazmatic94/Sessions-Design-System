@@ -6,7 +6,7 @@ export function renderIntroductionPage(_page) {
       <div class="page-hero-main">
         <div class="page-hero-copy">
           <div class="page-hero-text">
-            <h1>Introduction</h1>
+            <h2>Introduction</h2>
             <p class="lede">The Sessions Design System keeps the docs pages and preview frames. The old product demos inside those frames are gone so new components can go in.</p>
           </div>
         </div>

@@ -93,7 +93,6 @@ export function renderSessionsNavItem({
   const classes = [
     "sessions-nav-item",
     selected ? "is-selected" : "",
-    !hasIcon ? "is-label-only" : "",
     tone === "danger" ? "is-danger" : "",
   ]
     .filter(Boolean)

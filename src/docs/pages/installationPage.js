@@ -6,7 +6,7 @@ export function renderInstallationPage(page) {
       <div class="page-hero-main">
         <div class="page-hero-copy">
           <div class="page-hero-text">
-            <h1>${page.title}</h1>
+            <h2>${page.title}</h2>
             <p class="lede">${page.subtitle}</p>
           </div>
         </div>

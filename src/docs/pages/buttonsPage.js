@@ -1,4 +1,4 @@
-import { componentExampleWrapper, pageHero, section } from "../shell/pageLayout.js?v=sessions-docs-cta-v1";
+import { componentExampleWrapper, pageHero, section } from "../shell/pageLayout.js?v=sessions-page-h2-v1";
 import { renderPrimaryButton, renderSecondaryButton, renderGhostButton } from "../../components/button/index.js?v=sessions-button-v17";
 
 export function renderButtonsPage(page) {

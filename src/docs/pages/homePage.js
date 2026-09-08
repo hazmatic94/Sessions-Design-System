@@ -92,7 +92,7 @@ export function renderHomePage(_page) {
         <section class="home-intro" aria-labelledby="home-intro-title">
           <div class="page-hero-text home-intro__copy">
             <div class="home-intro__text">
-              <h1 id="home-intro-title">Build Once. Reuse Everywhere.</h1>
+              <h2 id="home-intro-title">Build Once. Reuse Everywhere.</h2>
               <p class="lede">The docs layout stays. The product library is empty on purpose — add the next Sessions component here.</p>
             </div>
             ${renderPrimaryButton({

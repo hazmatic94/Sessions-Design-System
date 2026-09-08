@@ -1,7 +1,7 @@
 import {
   hydrateLucideIcons,
   templates,
-} from '../../pages/runtimeDocs.js?v=sessions-docs-cta-v1';
+} from '../../pages/runtimeDocs.js?v=sessions-page-h2-v1';
 import {slug} from '../../utils.js';
 import {updateCustomScrollbars} from '../demo/customScrollbar.js?v=scrollbar-3px-v1';
 import {hydratePageDemos} from '../hydrators/index.js?v=sessions-icon-v1';
@@ -11,7 +11,7 @@ import {
   bindMobileScrollCues,
   pageSequenceNavigation,
 } from '../demo/mobileBindings.js';
-import {pageFooter} from './pageLayout.js?v=sessions-docs-cta-v1';
+import {pageFooter} from './pageLayout.js?v=sessions-page-h2-v1';
 import {pageRegistry} from './registry.js?v=sessions-nav-trim-v1';
 import {state} from './state.js?v=docs-routing-v1';
 

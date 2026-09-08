@@ -8,7 +8,7 @@ export function pageHero(page) {
       <div class="page-hero-main">
         <div class="page-hero-copy">
           <div class="page-hero-text">
-            <h1>${pageTitle(page)}</h1>
+            <h2>${pageTitle(page)}</h2>
             <p class="lede">${page.subtitle}</p>
           </div>
         </div>

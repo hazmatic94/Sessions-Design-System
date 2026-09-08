@@ -1,4 +1,4 @@
-import {componentExampleWrapper, pageHero, section} from '../shell/pageLayout.js?v=sessions-docs-cta-v1';
+import {componentExampleWrapper, pageHero, section} from '../shell/pageLayout.js?v=sessions-page-h2-v1';
 import {renderSessionsAvatar} from '../../components/avatar/index.js?v=sessions-avatar-v2';
 import {
   renderMobileMenu,
@@ -6,16 +6,7 @@ import {
   renderSessionsLogo,
   renderSessionsRailItem,
   renderTopNav,
-} from '../../components/navigation/index.js';
-import {
-  sampleAvatarActionCode,
-  sampleGameMenuDropdownCode,
-  sampleNotificationActionCode,
-  sampleRailNavItemCode,
-  sampleRailSearchCode,
-  sampleSideRailCode,
-  sampleWalletControlCode,
-} from './navigationPreviewMarkup.js?v=wallet-icon-v1';
+} from '../../components/navigation/index.js?v=sessions-mobile-nav-v1';
 
 export function renderNavigationPage(page) {
   return `
@@ -25,8 +16,6 @@ export function renderNavigationPage(page) {
     ${section('Top Nav', '', topNavExamples(), 'button-example-section navigation-example-section')}
     ${section('Avatar', '', avatarExamples(), 'button-example-section navigation-example-section')}
     ${section('Mobile Menu', '', mobileMenuExamples(), 'button-example-section navigation-example-section')}
-    ${section('Side Rail', '', sideRailExamples(), 'button-example-section navigation-example-section')}
-    ${section('Inner Components', '', navigationExamples(), 'button-example-section navigation-example-section')}
   `;
 }
 
@@ -155,72 +144,6 @@ function mobileMenuExamples() {
     code: sampleMobileMenuCode(),
     className: 'is-mobile-menu',
   });
-}
-
-function sideRailExamples() {
-  return navigationExampleCard({
-    id: 'side-rail-example',
-    tocTitle: 'Side Rail',
-    reactDemo: 'nav-side-rail',
-    codeId: 'side-rail-code',
-    filename: 'SideRail.tsx',
-    code: sampleSideRailCode(),
-    className: 'is-side-rail',
-  });
-}
-
-function navigationExamples() {
-  return `
-    ${navigationExampleCard({
-      id: 'wallet-control-example',
-      tocTitle: 'Wallet Control',
-      reactDemo: 'nav-wallet-control',
-      codeId: 'wallet-control-code',
-      filename: 'WalletControl.tsx',
-      code: sampleWalletControlCode(),
-    })}
-    ${navigationExampleCard({
-      id: 'notification-action-example',
-      tocTitle: 'Notification Action',
-      reactDemo: 'nav-notification-action',
-      codeId: 'notification-action-code',
-      filename: 'NotificationAction.tsx',
-      code: sampleNotificationActionCode(),
-    })}
-    ${navigationExampleCard({
-      id: 'avatar-action-example',
-      tocTitle: 'Avatar Action',
-      reactDemo: 'nav-avatar-action',
-      codeId: 'avatar-action-code',
-      filename: 'AvatarAction.tsx',
-      code: sampleAvatarActionCode(),
-    })}
-    ${navigationExampleCard({
-      id: 'rail-nav-item-example',
-      tocTitle: 'Rail Nav Item',
-      reactDemo: 'nav-rail-nav-item',
-      codeId: 'rail-nav-item-code',
-      filename: 'RailNavItem.tsx',
-      code: sampleRailNavItemCode(),
-    })}
-    ${navigationExampleCard({
-      id: 'rail-search-example',
-      tocTitle: 'Rail Search',
-      reactDemo: 'nav-rail-search',
-      codeId: 'rail-search-code',
-      filename: 'RailSearch.tsx',
-      code: sampleRailSearchCode(),
-    })}
-    ${navigationExampleCard({
-      id: 'game-menu-dropdown-example',
-      tocTitle: 'Game Menu Dropdown',
-      reactDemo: 'nav-game-menu-dropdown',
-      codeId: 'game-menu-dropdown-code',
-      filename: 'GameMenuDropdown.tsx',
-      code: sampleGameMenuDropdownCode(),
-      className: 'is-game-menu-dropdown',
-    })}
-  `;
 }
 
 function sampleSessionsLogoCode() {

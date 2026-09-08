@@ -11,6 +11,8 @@
   --top-nav-padding-inline: var(--spacing-24);
   --mobile-menu-height: 64px;
   --mobile-menu-padding-inline: 20px;
+  --mobile-menu-section-gap: 20px;
+  --mobile-menu-profile-gap: 32px;
   --mobile-menu-device-width: 402px;
   --mobile-menu-device-height: 874px;
 }
@@ -187,7 +189,7 @@
 }
 
 .top-nav .sessions-avatar {
-  --avatar-size: 42px;
+  --avatar-size: 48px;
   --avatar-fill-color: var(--color-surface-base);
 }
 
@@ -223,7 +225,6 @@
 }
 
 .mobile-menu-device:not(.is-open) .mobile-menu__content {
-  visibility: hidden;
   pointer-events: none;
 }
 
@@ -240,6 +241,23 @@
   border-radius: var(--spacing-8);
   background: var(--color-surface-base);
   overflow: auto;
+  padding-top: var(--mobile-menu-profile-gap);
+  opacity: 0;
+  transform: translate3d(60%, 0, 0);
+  transition:
+    transform var(--motion-slow) var(--ease-emphasized),
+    opacity var(--motion-medium) var(--ease-out);
+}
+
+.mobile-menu-device.is-open .mobile-menu-panel {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu-panel {
+    transition: none;
+  }
 }
 
 .mobile-menu-panel__user {
@@ -249,7 +267,7 @@
   gap: var(--spacing-12);
   width: 100%;
   margin: 0;
-  padding: var(--spacing-16) 20px;
+  padding: 0 var(--mobile-menu-padding-inline);
   border: 0;
   background: transparent;
   color: inherit;
@@ -295,7 +313,7 @@
 }
 
 .mobile-menu-panel .sessions-avatar {
-  --avatar-size: 42px;
+  --avatar-size: 48px;
   --avatar-fill-color: var(--color-surface-base);
   flex-shrink: 0;
 }
@@ -317,7 +335,6 @@
   mask-size: contain;
 }
 
-.mobile-menu-panel__user:hover .mobile-menu-panel__chevron,
 .mobile-menu-panel__user:focus-visible .mobile-menu-panel__chevron {
   color: var(--black-50);
 }
@@ -330,21 +347,26 @@
 .mobile-menu-panel__divider {
   width: auto;
   height: 0;
-  margin: 20px;
+  margin-block: var(--mobile-menu-section-gap);
+  margin-inline: var(--mobile-menu-padding-inline);
   border: 0;
   border-top: 1px solid var(--color-border-subtle);
+}
+
+.mobile-menu-panel__user + .mobile-menu-panel__divider {
+  margin-block: var(--mobile-menu-profile-gap);
 }
 
 .mobile-menu-panel__nav {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-8);
-  padding-inline: 20px;
+  padding-inline: var(--mobile-menu-padding-inline);
 }
 
 .mobile-menu-panel__footer {
   margin-top: auto;
-  padding: 0 20px 20px;
+  padding: 0 var(--mobile-menu-padding-inline) var(--mobile-menu-padding-inline);
 }
 
 .sessions-nav-item {
@@ -355,7 +377,7 @@
   gap: var(--spacing-12);
   min-height: 52px;
   margin: 0;
-  padding: 0 20px;
+  padding: 0 var(--mobile-menu-padding-inline);
   border: var(--border-width-default) solid transparent;
   border-radius: var(--spacing-8);
   background: transparent;
@@ -363,10 +385,6 @@
   text-align: left;
   text-decoration: none;
   cursor: pointer;
-  transition:
-    background-color var(--button-primary-hover-duration) var(--button-primary-hover-ease),
-    border-color var(--button-primary-hover-duration) var(--button-primary-hover-ease),
-    color var(--button-primary-hover-duration) var(--button-primary-hover-ease);
 }
 
 .sessions-nav-item__label {
@@ -380,28 +398,24 @@
   flex-shrink: 0;
 }
 
-.sessions-nav-item:hover:not(.is-selected) {
-  background: var(--button-secondary-bg-hover);
-}
-
 .sessions-nav-item.is-selected {
   border-color: var(--green-300);
   background: var(--green-900);
   color: var(--green-300);
 }
 
-.sessions-nav-item.is-selected:hover {
-  border-color: color-mix(in srgb, var(--green-300) 62%, white);
-  background: color-mix(in srgb, var(--green-900) 94%, white);
-}
-
-.sessions-nav-item.is-label-only .sessions-nav-item__label {
-  padding-inline-start: calc(var(--icon-size-lg) + var(--spacing-12));
-}
-
 .sessions-nav-item:focus-visible {
   outline: 2px solid var(--color-border-focus);
   outline-offset: 2px;
+}
+
+.mobile-menu .sessions-logo:hover,
+.mobile-menu .sessions-logo:focus-visible {
+  color: var(--joker-white-50);
+}
+
+.mobile-menu__toggle:hover:not(.is-selected) {
+  background: transparent;
 }
 
 .mobile-menu__toggle-icon--close {
