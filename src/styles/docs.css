@@ -3851,6 +3851,94 @@ then uniform zoom on the set below */
   gap: 12px;
 }.content[data-page="modals"] .button-example-section {
   gap: 12px;
+}.content[data-page="modals"] .card-example.is-calendar,
+.content[data-page="modals"] .component-example-wrapper.is-calendar.button-example.card-example {
+  --example-stage-height: 576px;
+  height: calc(var(--example-stage-height) + var(--example-code-collapsed-height));
+}.content[data-page="modals"] .card-example.is-calendar .component-example-wrapper__stage,
+.content[data-page="modals"] .card-example.is-calendar .button-example-stage,
+.content[data-page="modals"] .card-example.is-calendar .card-example-stage {
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 var(--example-stage-height);
+  height: var(--example-stage-height);
+  min-height: var(--example-stage-height);
+  max-height: var(--example-stage-height);
+  overflow: visible;
+  padding: 0;
+}.content[data-page="modals"] .card-example.is-calendar .component-example-wrapper__preview,
+.content[data-page="modals"] .card-example.is-calendar .card-example-preview {
+  display: flex;
+  width: auto;
+  max-width: none;
+  align-items: center;
+  justify-content: center;
+}.content[data-page="modals"] .card-example.is-sessions-modal,
+.content[data-page="modals"] .component-example-wrapper.is-sessions-modal.button-example.card-example {
+  --example-stage-height: 340px;
+  height: calc(var(--example-stage-height) + var(--example-code-collapsed-height));
+}.content[data-page="modals"] .card-example.is-sessions-modal .component-example-wrapper__stage,
+.content[data-page="modals"] .card-example.is-sessions-modal .button-example-stage,
+.content[data-page="modals"] .card-example.is-sessions-modal .card-example-stage {
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 var(--example-stage-height);
+  height: var(--example-stage-height);
+  min-height: var(--example-stage-height);
+  max-height: var(--example-stage-height);
+  overflow: visible;
+  padding: 0;
+}.content[data-page="modals"] .card-example.is-sessions-modal .component-example-wrapper__preview,
+.content[data-page="modals"] .card-example.is-sessions-modal .card-example-preview {
+  display: flex;
+  width: auto;
+  max-width: none;
+  align-items: center;
+  justify-content: center;
+}.content[data-page="modals"] .card-example.is-sessions-menu-panel,
+.content[data-page="modals"] .component-example-wrapper.is-sessions-menu-panel.button-example.card-example {
+  --example-stage-height: 340px;
+  height: calc(var(--example-stage-height) + var(--example-code-collapsed-height));
+}.content[data-page="modals"] .card-example.is-sessions-menu-panel .component-example-wrapper__stage,
+.content[data-page="modals"] .card-example.is-sessions-menu-panel .button-example-stage,
+.content[data-page="modals"] .card-example.is-sessions-menu-panel .card-example-stage {
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 var(--example-stage-height);
+  height: var(--example-stage-height);
+  min-height: var(--example-stage-height);
+  max-height: var(--example-stage-height);
+  overflow: visible;
+  padding: 0;
+}.content[data-page="modals"] .card-example.is-sessions-menu-panel .component-example-wrapper__preview,
+.content[data-page="modals"] .card-example.is-sessions-menu-panel .card-example-preview {
+  display: flex;
+  width: auto;
+  max-width: none;
+  align-items: center;
+  justify-content: center;
+}.content[data-page="modals"] .card-example.is-calendar-dual,
+.content[data-page="modals"] .component-example-wrapper.is-calendar-dual.button-example.card-example {
+  --example-stage-height: 640px;
+  height: calc(var(--example-stage-height) + var(--example-code-collapsed-height));
+}.content[data-page="modals"] .card-example.is-calendar-dual .component-example-wrapper__stage,
+.content[data-page="modals"] .card-example.is-calendar-dual .button-example-stage,
+.content[data-page="modals"] .card-example.is-calendar-dual .card-example-stage {
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 var(--example-stage-height);
+  height: var(--example-stage-height);
+  min-height: var(--example-stage-height);
+  max-height: var(--example-stage-height);
+  overflow: auto;
+  padding: 0;
+}.content[data-page="modals"] .card-example.is-calendar-dual .component-example-wrapper__preview,
+.content[data-page="modals"] .card-example.is-calendar-dual .card-example-preview {
+  display: flex;
+  width: auto;
+  max-width: none;
+  align-items: center;
+  justify-content: center;
 }.content[data-page="showroom"] .showroom-example-section {
   gap: 12px;
 }.content[data-page="cards"] {
@@ -4061,25 +4149,8 @@ stretch desktop surface */
     min-width: 0;
     max-width: none;
   }
-}/* Modals page: hug content like betting-panel stages — equal pad,
-no 340 clip */
-.content[data-page="modals"] .card-example.button-example,
-.content[data-page="modals"] .component-example-wrapper.button-example.card-example {
-  height: auto;
-}.content[data-page="modals"] .card-example .component-example-wrapper__stage,
-.content[data-page="modals"] .card-example .card-example-stage,
-.content[data-page="modals"] .card-example .button-example-stage {
-  display: flex;
-  flex: 0 0 auto;
-  align-items: center;
-  justify-content: center;
-  height: auto;
-  min-height: 0;
-  max-height: none;
-  overflow: visible;
-  padding: var(--spacing-32);
-  box-sizing: border-box;
-}.content[data-page="modals"] .card-example.is-win-modal-card .card-example-preview,
+}/* Hilo page: small demos = button 340 stage; card-scale demos = betting-panel hug */
+.content[data-page="modals"] .card-example.is-win-modal-card .card-example-preview,
 .content[data-page="modals"] .card-example.is-win-modal-card .component-example-wrapper__preview {
   width: min(100%, var(--betting-panel-max-width));
   max-width: var(--betting-panel-max-width);
@@ -4089,8 +4160,7 @@ no 340 clip */
   width: min(100%, var(--modal-width, 452px));
   max-width: var(--modal-width, 452px);
   align-self: center;
-}/* Hilo page: small demos = button 340 stage; card-scale demos = betting-panel hug */
-.content[data-page="hilo"] .card-example.is-game-card,
+}.content[data-page="hilo"] .card-example.is-game-card,
 .content[data-page="hilo"] .card-example.is-game-card-stack,
 .content[data-page="hilo"] .card-example.is-higher-card,
 .content[data-page="hilo"] .card-example.is-lower-card {

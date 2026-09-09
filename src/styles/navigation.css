@@ -137,7 +137,14 @@
 }
 
 .sessions-rail-item__badge {
-  fill: #d35e5e;
+  fill: var(--color-notification-dot);
+}
+
+.sessions-rail-item.is-selected .sessions-rail-item__badge,
+.sessions-rail-item:hover .sessions-rail-item__badge,
+.sessions-nav-item .sessions-rail-item__badge,
+.sessions-nav-item.is-selected .sessions-rail-item__badge {
+  fill: var(--color-notification-dot);
 }
 
 .sessions-rail-item:hover:not(.is-selected) {

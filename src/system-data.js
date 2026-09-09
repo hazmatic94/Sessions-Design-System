@@ -28,10 +28,10 @@ export const navGroups = [
       {label: 'Button', route: '/components/buttons'},
       {label: 'Inputs', route: '/components/inputs'},
       {label: 'Navigation', route: '/components/navigation'},
+      {label: 'Modals', route: '/components/modals'},
       {label: 'Chips', route: '/components/chips'},
       {label: 'Betting Panel', route: '/components/betting-panel'},
       {label: 'Cards', route: '/components/cards'},
-      {label: 'Modals', route: '/components/modals'},
       {label: 'Game Rails', route: '/components/game-rails'},
     ],
   },
@@ -461,6 +461,31 @@ export const semanticColorGroups = [
         name: 'color.border.brand',
         value: 'green500',
         use: 'Brand accents on borders and emphasis rings',
+      },
+    ],
+  },
+  {
+    title: 'Interaction',
+    tokens: [
+      {
+        name: 'color.interaction.hover',
+        value: 'black600',
+        use: 'Hover fill for selector rows and interactive list items',
+      },
+      {
+        name: 'color.interaction.pressed',
+        value: 'black600',
+        use: 'Pressed fill for selector rows and interactive list items',
+      },
+      {
+        name: 'color.interaction.selected',
+        value: 'black400',
+        use: 'Selected fill for selector rows and interactive list items',
+      },
+      {
+        name: 'color.interaction.disabled',
+        value: 'black600',
+        use: 'Disabled fill for selector rows and interactive list items',
       },
     ],
   },

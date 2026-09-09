@@ -2,6 +2,8 @@ import {hydrateLucideIcons} from '../../utils/lucideIcon.js?v=nav-outline-v1';
 import {setupBrandLogoVideos} from '../demo/brandLogoVideo.js?v=sessions-icon-v1';
 import {setupCustomScrollbars} from '../demo/customScrollbar.js?v=scrollbar-3px-v1';
 import {setupInteractions} from '../interactions/setupInteractions.js?v=mobile-menu-toggle-v1';
+import {setupSessionsCalendars} from '../../components/calendar/interactions.js';
+import {setupSessionsMenuItems} from '../../components/menu/interactions.js';
 import {renderNav} from './nav.js?v=remove-nav-search-v1';
 import {renderPage} from './pageRenderer.js?v=sessions-page-h2-v1';
 import {pageRegistry} from './registry.js?v=sessions-nav-trim-v1';
@@ -20,5 +22,7 @@ export async function bootstrapDocsApp() {
   renderNav();
   renderPage();
   setupInteractions();
+  setupSessionsCalendars();
+  setupSessionsMenuItems();
   setupCustomScrollbars();
 }

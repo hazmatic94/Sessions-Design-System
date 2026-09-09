@@ -35,7 +35,11 @@ function renderRailItemIconMarkup(icon, badge = icon === "calendar" || icon === 
 }
 
 function badgeCircleMarkup() {
-  return '<circle class="sessions-rail-item__badge" cx="16.6667" cy="3.74996" r="3.33333"/>';
+  return '<circle class="sessions-rail-item__badge" cx="16.6667" cy="3.74996" r="3.33333" fill="var(--color-notification-dot)"/>';
+}
+
+export function renderCalendarBadgeIcon({ badge = true } = {}) {
+  return calendarIconMarkup({ badge });
 }
 
 function calendarIconMarkup({ badge = true } = {}) {

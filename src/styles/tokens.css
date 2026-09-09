@@ -57,7 +57,7 @@
   --color-surface-background: var(--black-900);
   --color-surface-base: var(--black-800);
   --color-surface-elevated: var(--black-700);
-  --color-surface-hover: var(--black-600);
+  --color-surface-hover: var(--color-interaction-hover);
   --color-surface-panel: var(--black-600);
 
   /* Semantic color tokens */
@@ -93,6 +93,11 @@
   --color-border-strong: var(--black-200);
   --color-border-focus: var(--green-700);
   --color-border-brand: var(--green-500);
+  --color-interaction-hover: var(--black-600);
+  --color-interaction-pressed: var(--black-600);
+  --color-interaction-selected: var(--black-400);
+  --color-interaction-disabled: var(--black-600);
+  --color-notification-dot: #d35e5e;
   --color-action-primary: var(--green-300);
   --color-action-primary-hover: var(--green-400);
   --color-action-primary-active: var(--green-500);
@@ -390,7 +395,7 @@
   --input-control-border-hover: var(--color-border-default);
   --input-control-border-focus: var(--green-300);
   --input-control-bg: var(--color-surface-elevated);
-  --input-control-bg-hover: var(--color-surface-hover);
+  --input-control-bg-hover: var(--color-interaction-hover);
   --input-control-bg-focus: var(--color-surface-elevated);
   --input-placeholder-text: var(--black-100);
   --input-placeholder-font-weight: 400;
