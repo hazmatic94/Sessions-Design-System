@@ -16,6 +16,11 @@ import {renderInputsPage} from '../docs/pages/inputsPage.js?v=sessions-page-h2-v
 import {renderGameRailsPage} from '../docs/pages/gameRailsPage.js?v=sessions-pages-v1';
 import {renderModalsPage} from '../docs/pages/modalsPage.js?v=sessions-pages-v1';
 import {renderNavigationPage} from '../docs/pages/navigationPage.js?v=sessions-page-h2-v1';
+import {renderLegendItemPatternPage} from '../docs/pages/patterns/legendItemPage.js?v=sessions-patterns-v1';
+import {renderChartGridPatternPage} from '../docs/pages/patterns/chartGridPage.js?v=sessions-chart-grid-v1';
+import {renderMetricRowPatternPage} from '../docs/pages/patterns/metricRowPage.js?v=sessions-patterns-v1';
+import {renderMetricValuePatternPage} from '../docs/pages/patterns/metricValuePage.js?v=sessions-patterns-v1';
+import {renderPageHeaderPatternPage} from '../docs/pages/patterns/pageHeaderPage.js?v=sessions-patterns-v1';
 import {codePanel, pageHero, section} from '../docs/shell/pageLayout.js?v=sessions-page-h2-v1';
 import {hydrateLucideIcons, lucideIcon} from '../utils/lucideIcon.js?v=nav-outline-v1';
 import {slug} from '../utils.js';
@@ -68,6 +73,19 @@ export const templates = {
     page.title === 'Introduction'
       ? renderIntroductionPage(page)
       : fallbackComponentPage(page),
+
+  pattern: page =>
+    page.title === 'Page Header'
+      ? renderPageHeaderPatternPage(page)
+      : page.title === 'Metric Value'
+        ? renderMetricValuePatternPage(page)
+        : page.title === 'Metric Row'
+          ? renderMetricRowPatternPage(page)
+          : page.title === 'Legend Item'
+            ? renderLegendItemPatternPage(page)
+            : page.title === 'Chart Grid'
+              ? renderChartGridPatternPage(page)
+              : fallbackComponentPage(page),
 };
 
 function fallbackComponentPage(page) {

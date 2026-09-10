@@ -2,8 +2,9 @@ import {
   componentSummaries,
   foundationNotes,
   navGroups,
+  patternSummaries,
   resources,
-} from '../../system-data.js?v=sessions-nav-trim-v1';
+} from '../../system-data.js?v=sessions-chart-grid-v1';
 import {flattenNavGroups} from './navModel.js?v=nav-fix-2210';
 
 const routePageTitles = {
@@ -17,7 +18,20 @@ const routePageTitles = {
   '/components/tables': 'Tables',
   '/components/badges': 'Badges',
   '/components/chips': 'Chips',
+  '/patterns/page-header': 'Page Header',
+  '/patterns/metric-value': 'Metric Value',
+  '/patterns/metric-row': 'Metric Row',
+  '/patterns/legend-item': 'Legend Item',
+  '/patterns/chart-grid': 'Chart Grid',
 };
+
+const patternRoutes = new Set([
+  '/patterns/page-header',
+  '/patterns/metric-value',
+  '/patterns/metric-row',
+  '/patterns/legend-item',
+  '/patterns/chart-grid',
+]);
 
 const componentRoutes = new Set([
   '/components/buttons',
@@ -86,6 +100,15 @@ function createPage(section, title, route) {
       title,
       kind: 'component',
       subtitle: componentSummaries[title],
+    };
+  }
+
+  if (section === 'Patterns' || patternRoutes.has(route)) {
+    return {
+      section: 'Patterns',
+      title,
+      kind: 'pattern',
+      subtitle: patternSummaries[title],
     };
   }
 

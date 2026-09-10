@@ -2320,8 +2320,18 @@ pre {
 .content[data-page="showroom"] .section-heading,
 .content[data-page="cards"] .page-hero,
 .content[data-page="modals"] .page-hero,
+.content[data-page="page-header"] .page-hero,
+.content[data-page="metric-value"] .page-hero,
+.content[data-page="metric-row"] .page-hero,
+.content[data-page="legend-item"] .page-hero,
+.content[data-page="chart-grid"] .page-hero,
 .content[data-page="cards"] .section-heading,
-.content[data-page="modals"] .section-heading {
+.content[data-page="modals"] .section-heading,
+.content[data-page="page-header"] .section-heading,
+.content[data-page="metric-value"] .section-heading,
+.content[data-page="metric-row"] .section-heading,
+.content[data-page="legend-item"] .section-heading,
+.content[data-page="chart-grid"] .section-heading {
   padding-right: var(--color-variable-page-padding);
   padding-left: var(--color-variable-page-padding);
 }.content[data-page="colors"] #code-export,
@@ -3917,6 +3927,116 @@ then uniform zoom on the set below */
   max-width: none;
   align-items: center;
   justify-content: center;
+}.content[data-page="page-header"] .card-example.is-sessions-page-header,
+.content[data-page="page-header"] .component-example-wrapper.is-sessions-page-header.button-example.card-example {
+  --example-stage-height: 340px;
+  height: calc(var(--example-stage-height) + var(--example-code-collapsed-height));
+}.content[data-page="page-header"] .card-example.is-sessions-page-header .component-example-wrapper__stage,
+.content[data-page="page-header"] .card-example.is-sessions-page-header .button-example-stage,
+.content[data-page="page-header"] .card-example.is-sessions-page-header .card-example-stage {
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 var(--example-stage-height);
+  height: var(--example-stage-height);
+  min-height: var(--example-stage-height);
+  max-height: var(--example-stage-height);
+  overflow: visible;
+  padding: 0;
+}.content[data-page="page-header"] .card-example.is-sessions-page-header .component-example-wrapper__preview,
+.content[data-page="page-header"] .card-example.is-sessions-page-header .card-example-preview {
+  display: flex;
+  width: auto;
+  max-width: none;
+  align-items: center;
+  justify-content: center;
+}.content[data-page="metric-value"] .card-example.is-sessions-metric-value,
+.content[data-page="metric-value"] .component-example-wrapper.is-sessions-metric-value.button-example.card-example {
+  --example-stage-height: 340px;
+  height: calc(var(--example-stage-height) + var(--example-code-collapsed-height));
+}.content[data-page="metric-value"] .card-example.is-sessions-metric-value .component-example-wrapper__stage,
+.content[data-page="metric-value"] .card-example.is-sessions-metric-value .button-example-stage,
+.content[data-page="metric-value"] .card-example.is-sessions-metric-value .card-example-stage {
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 var(--example-stage-height);
+  height: var(--example-stage-height);
+  min-height: var(--example-stage-height);
+  max-height: var(--example-stage-height);
+  overflow: visible;
+  padding: 0;
+}.content[data-page="metric-value"] .card-example.is-sessions-metric-value .component-example-wrapper__preview,
+.content[data-page="metric-value"] .card-example.is-sessions-metric-value .card-example-preview {
+  display: flex;
+  width: auto;
+  max-width: none;
+  align-items: center;
+  justify-content: center;
+}.content[data-page="metric-row"] .card-example.is-sessions-metric-row,
+.content[data-page="metric-row"] .component-example-wrapper.is-sessions-metric-row.button-example.card-example {
+  --example-stage-height: 340px;
+  height: calc(var(--example-stage-height) + var(--example-code-collapsed-height));
+}.content[data-page="metric-row"] .card-example.is-sessions-metric-row .component-example-wrapper__stage,
+.content[data-page="metric-row"] .card-example.is-sessions-metric-row .button-example-stage,
+.content[data-page="metric-row"] .card-example.is-sessions-metric-row .card-example-stage {
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 var(--example-stage-height);
+  height: var(--example-stage-height);
+  min-height: var(--example-stage-height);
+  max-height: var(--example-stage-height);
+  overflow: visible;
+  padding: 0;
+}.content[data-page="metric-row"] .card-example.is-sessions-metric-row .component-example-wrapper__preview,
+.content[data-page="metric-row"] .card-example.is-sessions-metric-row .card-example-preview {
+  display: flex;
+  width: auto;
+  max-width: none;
+  align-items: center;
+  justify-content: center;
+}.content[data-page="legend-item"] .card-example.is-sessions-legend-item,
+.content[data-page="legend-item"] .component-example-wrapper.is-sessions-legend-item.button-example.card-example {
+  --example-stage-height: 340px;
+  height: calc(var(--example-stage-height) + var(--example-code-collapsed-height));
+}.content[data-page="legend-item"] .card-example.is-sessions-legend-item .component-example-wrapper__stage,
+.content[data-page="legend-item"] .card-example.is-sessions-legend-item .button-example-stage,
+.content[data-page="legend-item"] .card-example.is-sessions-legend-item .card-example-stage {
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 var(--example-stage-height);
+  height: var(--example-stage-height);
+  min-height: var(--example-stage-height);
+  max-height: var(--example-stage-height);
+  overflow: visible;
+  padding: 0;
+}.content[data-page="legend-item"] .card-example.is-sessions-legend-item .component-example-wrapper__preview,
+.content[data-page="legend-item"] .card-example.is-sessions-legend-item .card-example-preview {
+  display: flex;
+  width: auto;
+  max-width: none;
+  align-items: center;
+  justify-content: center;
+}.content[data-page="chart-grid"] .card-example.is-sessions-chart-grid,
+.content[data-page="chart-grid"] .component-example-wrapper.is-sessions-chart-grid.button-example.card-example {
+  --example-stage-height: 340px;
+  height: calc(var(--example-stage-height) + var(--example-code-collapsed-height));
+}.content[data-page="chart-grid"] .card-example.is-sessions-chart-grid .component-example-wrapper__stage,
+.content[data-page="chart-grid"] .card-example.is-sessions-chart-grid .button-example-stage,
+.content[data-page="chart-grid"] .card-example.is-sessions-chart-grid .card-example-stage {
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 var(--example-stage-height);
+  height: var(--example-stage-height);
+  min-height: var(--example-stage-height);
+  max-height: var(--example-stage-height);
+  overflow: visible;
+  padding: 24px;
+}.content[data-page="chart-grid"] .card-example.is-sessions-chart-grid .component-example-wrapper__preview,
+.content[data-page="chart-grid"] .card-example.is-sessions-chart-grid .card-example-preview {
+  display: flex;
+  width: 100%;
+  max-width: 573px;
+  align-items: center;
+  justify-content: center;
 }.content[data-page="modals"] .card-example.is-calendar-dual,
 .content[data-page="modals"] .component-example-wrapper.is-calendar-dual.button-example.card-example {
   --example-stage-height: 640px;
@@ -4047,7 +4167,22 @@ then uniform zoom on the set below */
 .content[data-page="game-container"] .button-example-stage,
 .content[data-page="game-container"] .card-example-stage,
 .content[data-page="showroom"] .button-example-stage,
-.content[data-page="showroom"] .card-example-stage {
+.content[data-page="showroom"] .card-example-stage,
+.content[data-page="page-header"] .button-example-stage,
+.content[data-page="page-header"] .card-example-stage,
+.content[data-page="page-header"] .component-example-wrapper__stage,
+.content[data-page="metric-value"] .button-example-stage,
+.content[data-page="metric-value"] .card-example-stage,
+.content[data-page="metric-value"] .component-example-wrapper__stage,
+.content[data-page="metric-row"] .button-example-stage,
+.content[data-page="metric-row"] .card-example-stage,
+.content[data-page="metric-row"] .component-example-wrapper__stage,
+.content[data-page="legend-item"] .button-example-stage,
+.content[data-page="legend-item"] .card-example-stage,
+.content[data-page="legend-item"] .component-example-wrapper__stage,
+.content[data-page="chart-grid"] .button-example-stage,
+.content[data-page="chart-grid"] .card-example-stage,
+.content[data-page="chart-grid"] .component-example-wrapper__stage {
   background: var(--black-800);
 }.content[data-page="modals"] .card-example-section .code-panel {
   background: var(--black-700);

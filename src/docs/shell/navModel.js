@@ -14,6 +14,7 @@ export function getNavItemBadge(item) {
 
 export function getNavSectionSlug(sectionTitle) {
   if (sectionTitle === "Components") return "components";
+  if (sectionTitle === "Patterns") return "patterns";
   return slug(sectionTitle);
 }
 

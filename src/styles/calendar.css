@@ -24,8 +24,8 @@
 }
 
 .sessions-date--selected {
-  border-color: transparent;
-  background: var(--color-interaction-selected);
+  border-color: var(--green-300);
+  background: var(--green-700);
 }
 
 .sessions-date--current {
@@ -59,8 +59,8 @@
 
 .sessions-date--selected:hover,
 .sessions-date--selected:active {
-  border-color: transparent;
-  background: var(--color-interaction-selected);
+  border-color: var(--green-300);
+  background: var(--green-700);
 }
 
 .sessions-date:focus-visible {
@@ -240,7 +240,7 @@
   bottom: 0;
   left: calc(var(--spacing-16) / -2);
   right: calc(var(--spacing-16) / -2);
-  background: var(--color-interaction-selected);
+  background: var(--green-700);
 }
 
 .sessions-calendar__date-cell.is-range-start.is-in-range::before {

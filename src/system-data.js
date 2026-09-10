@@ -35,6 +35,16 @@ export const navGroups = [
       {label: 'Game Rails', route: '/components/game-rails'},
     ],
   },
+  {
+    title: 'Patterns',
+    items: [
+      {label: 'Page Header', route: '/patterns/page-header'},
+      {label: 'Metric Value', route: '/patterns/metric-value'},
+      {label: 'Metric Row', route: '/patterns/metric-row'},
+      {label: 'Legend Item', route: '/patterns/legend-item'},
+      {label: 'Chart Grid', route: '/patterns/chart-grid'},
+    ],
+  },
 ];
 
 export const foundationNotes = {
@@ -490,6 +500,19 @@ export const semanticColorGroups = [
     ],
   },
 ];
+
+export const patternSummaries = {
+  'Page Header':
+    'A consistent page title and supporting body line for top-of-page context.',
+  'Metric Value':
+    'A flexible metric display for currency totals, counts, and optional period labels.',
+  'Metric Row':
+    'A compact inline label and value row for appointment and summary stats.',
+  'Legend Item':
+    'A colored dot and label for chart legends and status keys.',
+  'Chart Grid':
+    'A 7 by 4 chart grid for plotting sales and appointment data.',
+};
 
 export const componentSummaries = {
   Buttons:
