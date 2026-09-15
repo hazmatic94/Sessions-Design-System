@@ -4017,7 +4017,7 @@ then uniform zoom on the set below */
   justify-content: center;
 }.content[data-page="chart-grid"] .card-example.is-sessions-chart-grid,
 .content[data-page="chart-grid"] .component-example-wrapper.is-sessions-chart-grid.button-example.card-example {
-  --example-stage-height: 340px;
+  --example-stage-height: 400px;
   height: calc(var(--example-stage-height) + var(--example-code-collapsed-height));
 }.content[data-page="chart-grid"] .card-example.is-sessions-chart-grid .component-example-wrapper__stage,
 .content[data-page="chart-grid"] .card-example.is-sessions-chart-grid .button-example-stage,
@@ -4033,8 +4033,8 @@ then uniform zoom on the set below */
 }.content[data-page="chart-grid"] .card-example.is-sessions-chart-grid .component-example-wrapper__preview,
 .content[data-page="chart-grid"] .card-example.is-sessions-chart-grid .card-example-preview {
   display: flex;
-  width: 100%;
-  max-width: 573px;
+  width: auto;
+  max-width: none;
   align-items: center;
   justify-content: center;
 }.content[data-page="modals"] .card-example.is-calendar-dual,

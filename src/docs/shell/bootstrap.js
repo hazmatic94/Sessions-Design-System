@@ -5,7 +5,7 @@ import {setupInteractions} from '../interactions/setupInteractions.js?v=mobile-m
 import {setupSessionsCalendars} from '../../components/calendar/interactions.js';
 import {setupSessionsMenuItems} from '../../components/menu/interactions.js';
 import {renderNav} from './nav.js?v=remove-nav-search-v1';
-import {renderPage} from './pageRenderer.js?v=sessions-page-h2-v1';
+import {renderPage} from './pageRenderer.js?v=sessions-chart-grid-v13';
 import {pageRegistry} from './registry.js?v=sessions-chart-grid-v1';
 import {resolveCurrentRoute} from './routes.js?v=sessions-clean-v1';
 import {state} from './state.js?v=docs-routing-v1';
