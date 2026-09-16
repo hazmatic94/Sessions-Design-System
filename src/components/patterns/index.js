@@ -1,3 +1,7 @@
+export {
+  renderSessionsAppointmentRow,
+  renderSessionsAppointmentRowList,
+} from "./appointmentRow.js";
 export { SESSIONS_CHART_COLORS } from "./chartColors.js";
 export { renderSessionsLegendItem } from "./legendItem.js";
 export { renderSessionsChartGrid } from "./chartGrid.js";

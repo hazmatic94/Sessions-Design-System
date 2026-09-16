@@ -3341,6 +3341,39 @@ then uniform zoom on the set below */
 }.content[data-page="cards"] .card-example-section,
 .content[data-page="modals"] .card-example-section {
   gap: 12px;
+}.content[data-page="cards"] .card-example.is-sessions-recent-sales-card.button-example.card-example,
+.content[data-page="cards"] .component-example-wrapper.is-sessions-recent-sales-card.button-example.card-example,
+.content[data-page="cards"] .card-example.is-sessions-upcoming-appointments-card.button-example.card-example,
+.content[data-page="cards"] .component-example-wrapper.is-sessions-upcoming-appointments-card.button-example.card-example,
+.content[data-page="cards"] .card-example.is-sessions-appointment-activity-card.button-example.card-example,
+.content[data-page="cards"] .component-example-wrapper.is-sessions-appointment-activity-card.button-example.card-example {
+  overflow: visible;
+}.content[data-page="cards"] .card-example.is-sessions-recent-sales-card .card-example-stage,
+.content[data-page="cards"] .card-example.is-sessions-recent-sales-card .component-example-wrapper__stage,
+.content[data-page="cards"] .card-example.is-sessions-recent-sales-card .button-example-stage,
+.content[data-page="cards"] .card-example.is-sessions-upcoming-appointments-card .card-example-stage,
+.content[data-page="cards"] .card-example.is-sessions-upcoming-appointments-card .component-example-wrapper__stage,
+.content[data-page="cards"] .card-example.is-sessions-upcoming-appointments-card .button-example-stage,
+.content[data-page="cards"] .card-example.is-sessions-appointment-activity-card .card-example-stage,
+.content[data-page="cards"] .card-example.is-sessions-appointment-activity-card .component-example-wrapper__stage,
+.content[data-page="cards"] .card-example.is-sessions-appointment-activity-card .button-example-stage {
+  align-items: center;
+  justify-content: center;
+  min-height: 640px;
+  padding: var(--spacing-24);
+  overflow: visible;
+}.content[data-page="cards"] .card-example.is-sessions-recent-sales-card .card-example-preview,
+.content[data-page="cards"] .card-example.is-sessions-recent-sales-card .component-example-wrapper__preview,
+.content[data-page="cards"] .card-example.is-sessions-upcoming-appointments-card .card-example-preview,
+.content[data-page="cards"] .card-example.is-sessions-upcoming-appointments-card .component-example-wrapper__preview,
+.content[data-page="cards"] .card-example.is-sessions-appointment-activity-card .card-example-preview,
+.content[data-page="cards"] .card-example.is-sessions-appointment-activity-card .component-example-wrapper__preview {
+  display: flex;
+  width: 100%;
+  max-width: 42rem;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: visible;
 }.card-example-stage {
   display: flex;
   align-items: center;
@@ -3969,6 +4002,28 @@ then uniform zoom on the set below */
   display: flex;
   width: auto;
   max-width: none;
+  align-items: center;
+  justify-content: center;
+}.content[data-page="appointment-rows"] .card-example.is-sessions-appointment-row,
+.content[data-page="appointment-rows"] .component-example-wrapper.is-sessions-appointment-row.button-example.card-example {
+  --example-stage-height: 340px;
+  height: calc(var(--example-stage-height) + var(--example-code-collapsed-height));
+}.content[data-page="appointment-rows"] .card-example.is-sessions-appointment-row .component-example-wrapper__stage,
+.content[data-page="appointment-rows"] .card-example.is-sessions-appointment-row .button-example-stage,
+.content[data-page="appointment-rows"] .card-example.is-sessions-appointment-row .card-example-stage {
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 var(--example-stage-height);
+  height: var(--example-stage-height);
+  min-height: var(--example-stage-height);
+  max-height: var(--example-stage-height);
+  overflow: visible;
+  padding: var(--spacing-24);
+}.content[data-page="appointment-rows"] .card-example.is-sessions-appointment-row .component-example-wrapper__preview,
+.content[data-page="appointment-rows"] .card-example.is-sessions-appointment-row .card-example-preview {
+  display: flex;
+  width: min(100%, 42rem);
+  max-width: 42rem;
   align-items: center;
   justify-content: center;
 }.content[data-page="metric-row"] .card-example.is-sessions-metric-row,

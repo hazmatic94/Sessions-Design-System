@@ -5,8 +5,8 @@ import {setupInteractions} from '../interactions/setupInteractions.js?v=mobile-m
 import {setupSessionsCalendars} from '../../components/calendar/interactions.js';
 import {setupSessionsMenuItems} from '../../components/menu/interactions.js';
 import {renderNav} from './nav.js?v=remove-nav-search-v1';
-import {renderPage} from './pageRenderer.js?v=sessions-chart-grid-v13';
-import {pageRegistry} from './registry.js?v=sessions-chart-grid-v1';
+import {renderPage} from './pageRenderer.js?v=sessions-icon-v5';
+import {pageRegistry} from './registry.js?v=sessions-appointment-rows-v1';
 import {resolveCurrentRoute} from './routes.js?v=sessions-clean-v1';
 import {state} from './state.js?v=docs-routing-v1';
 import {setupThemeToggle} from './themeToggle.js?v=theme-toggle-soon-v1';

@@ -1,23 +1,22 @@
-import {renderBettingPanelSurfacePage} from '../docs/pages/bettingPanelSurfacePage.js?v=sessions-pages-v1';
 import {renderButtonsPage} from '../docs/pages/buttonsPage.js?v=sessions-page-h2-v1';
-import {renderCardsPage} from '../docs/pages/cardsPage.js?v=sessions-pages-v1';
+import {renderCardsPage} from '../docs/pages/cardsPage.js?v=sessions-metric-cards-v2';
 import {renderCoinFlipPage} from '../docs/pages/coinFlipPage.js?v=sessions-pages-v1';
 import {renderGameContainerPage} from '../docs/pages/gameContainerPage.js?v=sessions-pages-v1';
 import {renderRoulettePage} from '../docs/pages/roulettePage.js?v=sessions-pages-v1';
 import {renderSportsbookPage} from '../docs/pages/sportsbookPage.js?v=sessions-pages-v1';
 import {renderHiloPage} from '../docs/pages/hiloPage.js?v=sessions-pages-v1';
 import {renderMinesPage} from '../docs/pages/minesPage.js?v=sessions-pages-v1';
-import {renderChipsPage} from '../docs/pages/chipsPage.js?v=sessions-pages-v1';
+import {renderChipsPage} from '../docs/pages/chipsPage.js?v=sessions-chip-v3';
 import {renderFoundationPage} from '../docs/pages/foundations/index.js?v=sessions-product-icons-v1';
 import {renderHomePage} from '../docs/pages/homePage.js?v=sessions-home-h2-v1';
 import {renderIntroductionPage} from '../docs/pages/introductionPage.js?v=sessions-page-h2-v1';
 import {renderInstallationPage} from '../docs/pages/installationPage.js?v=sessions-page-h2-v1';
 import {renderInputsPage} from '../docs/pages/inputsPage.js?v=sessions-page-h2-v1';
-import {renderGameRailsPage} from '../docs/pages/gameRailsPage.js?v=sessions-pages-v1';
 import {renderModalsPage} from '../docs/pages/modalsPage.js?v=sessions-pages-v1';
 import {renderNavigationPage} from '../docs/pages/navigationPage.js?v=sessions-page-h2-v1';
 import {renderLegendItemPatternPage} from '../docs/pages/patterns/legendItemPage.js?v=sessions-patterns-v1';
-import {renderChartGridPatternPage} from '../docs/pages/patterns/chartGridPage.js?v=sessions-chart-grid-v13';
+import {renderAppointmentRowsPatternPage} from '../docs/pages/patterns/appointmentRowsPage.js?v=sessions-appointment-row-v3';
+import {renderChartGridPatternPage} from '../docs/pages/patterns/chartGridPage.js?v=sessions-chart-grid-v40';
 import {renderMetricRowPatternPage} from '../docs/pages/patterns/metricRowPage.js?v=sessions-patterns-v1';
 import {renderMetricValuePatternPage} from '../docs/pages/patterns/metricValuePage.js?v=sessions-patterns-v1';
 import {renderPageHeaderPatternPage} from '../docs/pages/patterns/pageHeaderPage.js?v=sessions-patterns-v1';
@@ -43,13 +42,9 @@ export const templates = {
             ? renderChipsPage(page)
             : page.title === 'Cards'
               ? renderCardsPage(page)
-              : page.title === 'Betting Panel'
-                ? renderBettingPanelSurfacePage(page)
-                : page.title === 'Game Rails'
-                  ? renderGameRailsPage(page)
-                  : page.title === 'Modals'
-                    ? renderModalsPage(page)
-                    : fallbackComponentPage(page),
+              : page.title === 'Modals'
+                ? renderModalsPage(page)
+                : fallbackComponentPage(page),
 
   game: page =>
     page.title === 'Coin Flip'
@@ -85,7 +80,9 @@ export const templates = {
             ? renderLegendItemPatternPage(page)
             : page.title === 'Chart Grid'
               ? renderChartGridPatternPage(page)
-              : fallbackComponentPage(page),
+              : page.title === 'Appointment Rows'
+                ? renderAppointmentRowsPatternPage(page)
+                : fallbackComponentPage(page),
 };
 
 function fallbackComponentPage(page) {

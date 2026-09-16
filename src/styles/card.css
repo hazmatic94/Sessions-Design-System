@@ -1,0 +1,140 @@
+@import "./tokens.css";
+
+.sessions-card {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 42rem;
+  padding: 24px;
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: var(--radius-card);
+  background: var(--color-surface-base);
+}
+
+.sessions-metric-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.sessions-metric-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-16);
+  margin-bottom: var(--spacing-16);
+}
+
+.sessions-metric-card__header .sessions-page-header {
+  flex: 1;
+  min-width: 0;
+}
+
+.sessions-metric-card__menu {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--joker-white-50);
+  cursor: pointer;
+}
+
+.sessions-metric-card__menu:hover {
+  background: var(--color-surface-hover);
+}
+
+.sessions-metric-card__menu-icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+
+.sessions-metric-card__summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-32);
+  margin-bottom: var(--spacing-32);
+  overflow: visible;
+}
+
+.sessions-metric-card .sessions-metric-value {
+  overflow: visible;
+}
+
+.sessions-metric-card .sessions-metric-value__value {
+  display: block;
+  line-height: 1.2;
+  overflow: visible;
+}
+
+.sessions-metric-card__metrics {
+  display: grid;
+  gap: var(--spacing-8);
+}
+
+.sessions-metric-card__chart {
+  width: 100%;
+  min-width: 0;
+  margin-bottom: var(--spacing-24);
+  overflow: visible;
+}
+
+.sessions-metric-card__legend {
+  margin-top: 0;
+}
+
+.sessions-appointment-activity-card {
+  box-sizing: border-box;
+  height: 32rem;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+
+.sessions-appointment-activity-card .sessions-metric-card__header {
+  margin-bottom: var(--spacing-32);
+}
+
+.sessions-appointment-activity-card__rows {
+  flex: 1;
+  min-height: 0;
+  margin-inline: -24px;
+}
+
+.sessions-appointment-activity-card .sessions-appointment-row-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  height: 100%;
+}
+
+.sessions-appointment-activity-card .sessions-appointment-row {
+  flex: 1;
+  min-height: 0;
+  align-items: center;
+  border-radius: 0;
+}
+
+.sessions-appointment-activity-card .sessions-appointment-row:last-child {
+  border-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .sessions-metric-card .sessions-page-header__title {
+    font-family: var(--font);
+    font-size: var(--text-body-big-medium);
+    font-weight: var(--text-body-big-medium-weight);
+    line-height: var(--text-body-b1-line-height);
+    letter-spacing: var(--text-body-big-letter-spacing);
+  }
+
+  .sessions-metric-card .sessions-metric-value__value {
+    font-size: var(--text-body-big-medium);
+    font-weight: var(--text-body-big-medium-weight);
+    line-height: var(--text-body-b1-line-height);
+    letter-spacing: var(--text-body-big-letter-spacing);
+  }
+}

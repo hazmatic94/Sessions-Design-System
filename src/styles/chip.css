@@ -1,0 +1,25 @@
+@import "./tokens.css";
+
+.sessions-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 2px 2px 2px 4px;
+  border: var(--border-width-default) solid var(--green-300);
+  border-radius: 6px;
+  background: var(--color-surface-elevated);
+  color: var(--green-300);
+  font-family: var(--font);
+  font-size: var(--text-body-12);
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.sessions-chip--cancelled {
+  border-color: var(--joker-red-400);
+  color: var(--joker-red-400);
+}

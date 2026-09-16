@@ -121,32 +121,39 @@
 }
 
 .sessions-chart-grid-wrap {
-  --sessions-chart-grid-width: 565px;
-  --sessions-chart-grid-height: 210px;
-  display: flex;
-  width: fit-content;
-  align-items: flex-start;
+  --sessions-chart-grid-aspect-ratio: 565 / 210;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: auto auto auto;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   overflow: visible;
 }
 
 .sessions-chart-grid-plot {
-  display: flex;
-  flex-direction: column;
+  display: contents;
 }
 
 .sessions-chart-grid-y-axis {
   display: flex;
-  flex: 0 0 auto;
+  grid-column: 1;
+  grid-row: 1;
+  align-self: stretch;
   align-items: stretch;
-  height: var(--sessions-chart-grid-height);
+  height: auto;
+  overflow: visible;
 }
 
 .sessions-chart-grid-y-labels {
   position: relative;
   flex: 0 0 auto;
   box-sizing: border-box;
+  width: max-content;
   height: 100%;
-  padding-right: var(--spacing-8);
+  padding-right: calc(var(--spacing-12) + var(--spacing-4));
+  overflow: visible;
   color: var(--black-50);
   font-family: var(--font);
   font-size: var(--text-body-12);
@@ -155,61 +162,79 @@
   letter-spacing: var(--text-body-letter-spacing);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
+  text-align: left;
 }
 
 .sessions-chart-grid-y-sizer {
-  visibility: hidden;
   display: block;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
 }
 
 .sessions-chart-grid__y-label {
   position: absolute;
-  top: 0;
-  right: var(--spacing-8);
+  left: 0;
   transform: translateY(-50%);
+}
+
+.sessions-chart-grid__y-label--start {
+  transform: translateY(0);
+}
+
+.sessions-chart-grid__y-label--end {
+  transform: translateY(-100%);
 }
 
 .sessions-chart-grid-y-ticks {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: calc(-1 * var(--spacing-8));
+  left: calc(-1 * var(--spacing-12));
   z-index: 1;
-  width: var(--spacing-8);
+  width: var(--spacing-12);
   pointer-events: none;
 }
 
 .sessions-chart-grid__y-tick {
   position: absolute;
   right: 0;
-  width: var(--spacing-8);
+  width: var(--spacing-12);
   height: var(--border-width-default);
   background: var(--color-border-subtle);
+  transform: translateY(-50%);
 }
 
 .sessions-chart-grid-x-ticks {
   position: relative;
-  width: var(--sessions-chart-grid-width);
-  height: var(--spacing-8);
+  grid-column: 2;
+  grid-row: 2;
+  width: 100%;
+  height: var(--spacing-12);
 }
 
 .sessions-chart-grid__x-tick {
   position: absolute;
   top: 0;
   width: var(--border-width-default);
-  height: var(--spacing-8);
+  height: var(--spacing-12);
   background: var(--color-border-subtle);
+  transform: translateX(-50%);
 }
 
 .sessions-chart-grid-x-labels {
   position: relative;
-  width: var(--sessions-chart-grid-width);
+  grid-column: 2;
+  grid-row: 3;
+  width: 100%;
   height: 80px;
+  margin-top: var(--spacing-4);
+  overflow: visible;
 }
 
 .sessions-chart-grid__x-label {
   position: absolute;
-  top: var(--spacing-8);
+  top: 0;
   width: 0;
   height: 0;
 }
@@ -229,33 +254,138 @@
   transform-origin: right top;
 }
 
+.sessions-chart-grid-wrap--area .sessions-chart-grid-x-ticks,
+.sessions-chart-grid-wrap--area .sessions-chart-grid-x-labels {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sessions-chart-grid-wrap--area .sessions-chart-grid-x-labels {
+  height: 24px;
+  overflow: visible;
+}
+
+.sessions-chart-grid-wrap--area .sessions-chart-grid__x-tick {
+  position: relative;
+  left: auto;
+  flex: 0 0 var(--border-width-default);
+  transform: none;
+}
+
+.sessions-chart-grid-wrap--area .sessions-chart-grid__x-label {
+  position: relative;
+  top: 0;
+  left: auto;
+  flex: 0 0 0;
+  overflow: visible;
+}
+
+.sessions-chart-grid-wrap--area .sessions-chart-grid__x-label-text {
+  position: absolute;
+  top: 0;
+  right: auto;
+  left: 0;
+  transform: translateX(-50%);
+  transform-origin: center top;
+}
+
+.sessions-chart-grid-wrap--bar .sessions-chart-grid-x-ticks,
+.sessions-chart-grid-wrap--bar .sessions-chart-grid-x-labels {
+  display: grid;
+  grid-template-columns: repeat(var(--sessions-chart-grid-day-columns, 7), 1fr);
+}
+
+.sessions-chart-grid-wrap--bar .sessions-chart-grid-x-labels {
+  height: 24px;
+}
+
+.sessions-chart-grid-wrap--bar .sessions-chart-grid__x-tick {
+  position: relative;
+  top: 0;
+  left: auto;
+  justify-self: center;
+  transform: none;
+}
+
+.sessions-chart-grid-wrap--bar .sessions-chart-grid__x-label {
+  position: relative;
+  top: 0;
+  left: auto;
+  width: 100%;
+  height: auto;
+  justify-self: stretch;
+  overflow: visible;
+  text-align: center;
+  transform: none;
+}
+
+.sessions-chart-grid-wrap--bar .sessions-chart-grid__x-label-text {
+  position: static;
+  display: inline-block;
+  transform: none;
+  transform-origin: center top;
+}
+
+.sessions-chart-grid-wrap--area .sessions-chart-grid,
+.sessions-chart-grid-wrap--bar .sessions-chart-grid {
+  border-left: var(--border-width-default) solid var(--sessions-chart-grid-line);
+  background-image: none;
+  box-shadow: inset calc(-1 * var(--border-width-default)) 0 0 var(--sessions-chart-grid-line),
+    inset 0 calc(-1 * var(--border-width-default)) 0 var(--sessions-chart-grid-line);
+}
+
+.sessions-chart-grid-wrap--area .sessions-chart-grid__cell,
+.sessions-chart-grid-wrap--bar .sessions-chart-grid__cell {
+  border-right: var(--border-width-default) solid var(--sessions-chart-grid-line);
+}
+
+.sessions-chart-grid-wrap--area .sessions-chart-grid__cell--column-end,
+.sessions-chart-grid-wrap--bar .sessions-chart-grid__cell--column-end {
+  border-right: 0;
+}
+
+.sessions-chart-grid__bars {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
 .sessions-chart-grid {
   --sessions-chart-grid-line: var(--color-border-subtle);
   position: relative;
   display: grid;
-  width: var(--sessions-chart-grid-width);
-  height: var(--sessions-chart-grid-height);
+  grid-column: 2;
+  grid-row: 1;
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  aspect-ratio: var(--sessions-chart-grid-aspect-ratio);
   grid-template-columns: repeat(var(--sessions-chart-grid-columns, 7), 1fr);
   grid-template-rows: repeat(var(--sessions-chart-grid-rows, 4), 1fr);
   overflow: visible;
-  background-image:
-    repeating-linear-gradient(
-      to right,
-      var(--sessions-chart-grid-line) 0,
-      var(--sessions-chart-grid-line) var(--border-width-default),
-      transparent var(--border-width-default),
-      transparent calc(100% / var(--sessions-chart-grid-columns, 7))
-    ),
-    repeating-linear-gradient(
-      to bottom,
-      var(--sessions-chart-grid-line) 0,
-      var(--sessions-chart-grid-line) var(--border-width-default),
-      transparent var(--border-width-default),
-      transparent calc(100% / var(--sessions-chart-grid-rows, 4))
-    );
+  border-top: var(--border-width-default) solid var(--sessions-chart-grid-line);
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--sessions-chart-grid-line) 0,
+    var(--sessions-chart-grid-line) var(--border-width-default),
+    transparent var(--border-width-default),
+    transparent calc(100% / var(--sessions-chart-grid-columns, 7))
+  );
   box-shadow:
     inset calc(-1 * var(--border-width-default)) 0 0 var(--sessions-chart-grid-line),
     inset 0 calc(-1 * var(--border-width-default)) 0 var(--sessions-chart-grid-line);
+}
+
+.sessions-chart-grid__cell {
+  border-bottom: var(--border-width-default) solid var(--sessions-chart-grid-line);
+}
+
+.sessions-chart-grid__cell--grid-row-end {
+  border-bottom: 0;
 }
 
 .sessions-chart-grid__lines {
@@ -268,6 +398,109 @@
   pointer-events: none;
 }
 
-.sessions-chart-grid__cell {
-  border: 0;
+.sessions-appointment-row-list {
+  display: grid;
+  gap: var(--spacing-8);
+  width: 100%;
+}
+
+.sessions-appointment-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-24);
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--spacing-24);
+  border-bottom: var(--border-width-default) solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  transition: background-color var(--motion-fast) ease;
+}
+
+.sessions-appointment-row:hover {
+  background: var(--color-surface-hover);
+  cursor: pointer;
+}
+
+.sessions-appointment-row__date {
+  display: grid;
+  flex-shrink: 0;
+  justify-items: center;
+  gap: 0;
+  width: fit-content;
+}
+
+.sessions-appointment-row__day {
+  color: var(--joker-white-50);
+  font-family: var(--font);
+  font-size: var(--text-body-big-medium);
+  font-weight: var(--text-body-big-medium-weight);
+  line-height: var(--text-body-b1-line-height);
+  letter-spacing: var(--text-body-big-letter-spacing);
+}
+
+.sessions-appointment-row__month {
+  color: var(--joker-white-50);
+  font-family: var(--font);
+  font-size: var(--text-body-b1);
+  font-weight: var(--text-body-b1-weight);
+  line-height: var(--text-body-b1-line-height);
+  letter-spacing: var(--text-body-b1-letter-spacing);
+}
+
+.sessions-appointment-row__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.sessions-appointment-row__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-8);
+  margin-bottom: var(--spacing-12);
+}
+
+.sessions-appointment-row__service {
+  margin: 0;
+  color: var(--joker-white-50);
+  font-family: var(--font);
+  font-size: var(--text-body-big-medium);
+  font-weight: var(--text-body-big-medium-weight);
+  line-height: var(--text-body-b1-line-height);
+  letter-spacing: var(--text-body-big-letter-spacing);
+}
+
+.sessions-appointment-row__datetime {
+  margin: 0 0 var(--spacing-4);
+  color: var(--joker-white-50);
+  font-family: var(--font);
+  font-size: var(--text-body-b1-medium);
+  font-weight: var(--text-body-b1-medium-weight);
+  line-height: var(--text-body-b1-line-height);
+  letter-spacing: var(--text-body-b1-letter-spacing);
+}
+
+.sessions-appointment-row__meta {
+  margin: 0;
+  color: var(--black-50);
+  font-family: var(--font);
+  font-size: var(--text-body-b1);
+  font-weight: var(--text-body-b1-weight);
+  line-height: var(--text-body-b1-line-height);
+  letter-spacing: var(--text-body-b1-letter-spacing);
+}
+
+.sessions-appointment-row__price {
+  flex-shrink: 0;
+  margin-left: auto;
+  color: var(--joker-white-50);
+  font-family: var(--font);
+  font-size: var(--text-body-big-medium);
+  font-weight: var(--text-body-big-medium-weight);
+  line-height: var(--text-body-b1-line-height);
+  letter-spacing: var(--text-body-big-letter-spacing);
+  white-space: nowrap;
 }

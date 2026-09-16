@@ -4,16 +4,14 @@ import {
   navGroups,
   patternSummaries,
   resources,
-} from '../../system-data.js?v=sessions-chart-grid-v1';
+} from '../../system-data.js?v=sessions-appointment-rows-v1';
 import {flattenNavGroups} from './navModel.js?v=nav-fix-2210';
 
 const routePageTitles = {
   '/components/buttons': 'Buttons',
   '/components/inputs': 'Inputs',
   '/components/navigation': 'Navigation',
-  '/components/game-rails': 'Game Rails',
   '/components/cards': 'Cards',
-  '/components/betting-panel': 'Betting Panel',
   '/components/modals': 'Modals',
   '/components/tables': 'Tables',
   '/components/badges': 'Badges',
@@ -23,6 +21,7 @@ const routePageTitles = {
   '/patterns/metric-row': 'Metric Row',
   '/patterns/legend-item': 'Legend Item',
   '/patterns/chart-grid': 'Chart Grid',
+  '/patterns/appointment-rows': 'Appointment Rows',
 };
 
 const patternRoutes = new Set([
@@ -31,15 +30,14 @@ const patternRoutes = new Set([
   '/patterns/metric-row',
   '/patterns/legend-item',
   '/patterns/chart-grid',
+  '/patterns/appointment-rows',
 ]);
 
 const componentRoutes = new Set([
   '/components/buttons',
   '/components/inputs',
   '/components/navigation',
-  '/components/game-rails',
   '/components/cards',
-  '/components/betting-panel',
   '/components/modals',
   '/components/tables',
   '/components/badges',

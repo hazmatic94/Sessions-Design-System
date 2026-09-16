@@ -1,4 +1,4 @@
-import {bootstrapDocsApp} from './src/docs/shell/bootstrap.js?v=sessions-chart-grid-v13';
+import {bootstrapDocsApp} from './src/docs/shell/bootstrap.js?v=sessions-recent-sales-card-v1';
 
 bootstrapDocsApp().catch(error => {
   console.error(error);

@@ -30,9 +30,7 @@ export const navGroups = [
       {label: 'Navigation', route: '/components/navigation'},
       {label: 'Modals', route: '/components/modals'},
       {label: 'Chips', route: '/components/chips'},
-      {label: 'Betting Panel', route: '/components/betting-panel'},
       {label: 'Cards', route: '/components/cards'},
-      {label: 'Game Rails', route: '/components/game-rails'},
     ],
   },
   {
@@ -43,6 +41,7 @@ export const navGroups = [
       {label: 'Metric Row', route: '/patterns/metric-row'},
       {label: 'Legend Item', route: '/patterns/legend-item'},
       {label: 'Chart Grid', route: '/patterns/chart-grid'},
+      {label: 'Appointment Rows', route: '/patterns/appointment-rows'},
     ],
   },
 ];
@@ -512,6 +511,8 @@ export const patternSummaries = {
     'A colored dot and label for chart legends and status keys.',
   'Chart Grid':
     'A 7 by 4 chart grid for plotting sales and appointment data.',
+  'Appointment Rows':
+    'Repeatable rows for listing appointments with client, service, time, and status.',
 };
 
 export const componentSummaries = {
@@ -521,12 +522,8 @@ export const componentSummaries = {
     'Flexible field patterns support data entry, validation, prefixes and verification states.',
   Navigation:
     'Shared navigation patterns keep routes, active states and wayfinding consistent.',
-  'Game Rails':
-    'Shared rails keep game identity, information and controls in predictable locations.',
   Cards:
     'Reusable card patterns group related content, summaries and repeated information.',
-  'Betting Panel':
-    'A shared panel structure keeps betting controls consistent while giving each game room for its own mechanics.',
   Modals:
     'Focused overlays handle confirmations, key decisions and tasks requiring immediate attention.',
   Tables:

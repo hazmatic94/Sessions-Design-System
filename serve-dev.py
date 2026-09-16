@@ -30,7 +30,7 @@ class NoCacheHandler(SimpleHTTPRequestHandler):
             "/apple-touch-icon.png",
             "/apple-touch-icon-precomposed.png",
         ):
-            request_path = "/assets/favicon.svg"
+            request_path = "/assets/sessions-favicon.svg"
             self.path = request_path
 
         fs_path = os.path.join(ROOT_DIR, request_path.lstrip("/"))

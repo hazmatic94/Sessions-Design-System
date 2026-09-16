@@ -1,7 +1,7 @@
 import {
   hydrateLucideIcons,
   templates,
-} from '../../pages/runtimeDocs.js?v=sessions-chart-grid-v13';
+} from '../../pages/runtimeDocs.js?v=sessions-recent-sales-card-v1';
 import {slug} from '../../utils.js';
 import {updateCustomScrollbars} from '../demo/customScrollbar.js?v=scrollbar-3px-v1';
 import {hydratePageDemos} from '../hydrators/index.js?v=sessions-icon-v1';
@@ -12,7 +12,7 @@ import {
   pageSequenceNavigation,
 } from '../demo/mobileBindings.js';
 import {pageFooter} from './pageLayout.js?v=sessions-page-h2-v1';
-import {pageRegistry} from './registry.js?v=sessions-nav-trim-v1';
+import {pageRegistry} from './registry.js?v=sessions-appointment-rows-v1';
 import {state} from './state.js?v=docs-routing-v1';
 
 let isInitialPageRender = true;
@@ -248,19 +248,14 @@ function ensureLinkTag(rel, attributes) {
   return el;
 }
 
-const SESSIONS_FAVICON = '/assets/favicon.svg?v=sessions-icon-v4';
+const SESSIONS_FAVICON = '/assets/sessions-favicon.svg?v=sessions-icon-v5';
 
 function updateFavicon() {
   const href = absoluteAssetUrl(SESSIONS_FAVICON);
 
   document
     .querySelectorAll('link[rel="icon"], link[rel="shortcut icon"], link[rel="apple-touch-icon"]')
-    .forEach((link) => {
-      const linkHref = link.getAttribute('href') || '';
-      if (linkHref && !linkHref.includes('/assets/favicon.svg')) {
-        link.remove();
-      }
-    });
+    .forEach((link) => link.remove());
 
   ensureLinkTag('icon', {
     href,
