@@ -1,10 +1,10 @@
 import {
   hydrateLucideIcons,
   templates,
-} from '../../pages/runtimeDocs.js?v=sessions-recent-sales-card-v1';
+} from '../../pages/runtimeDocs.js?v=sessions-appointment-activity-empty-v1';
 import {slug} from '../../utils.js';
 import {updateCustomScrollbars} from '../demo/customScrollbar.js?v=scrollbar-3px-v1';
-import {hydratePageDemos} from '../hydrators/index.js?v=sessions-icon-v1';
+import {hydratePageDemos} from '../hydrators/index.js?v=sessions-responsive-demo-v3';
 import {contentRoot} from './dom.js?v=docs-routing-v1';
 import {
   bindMobileNavigation,
@@ -248,25 +248,26 @@ function ensureLinkTag(rel, attributes) {
   return el;
 }
 
-const SESSIONS_FAVICON = '/assets/sessions-favicon.svg?v=sessions-icon-v5';
+const SESSIONS_FAVICON_SVG = '/assets/sessions-favicon.svg?v=sessions-icon-v6';
+const SESSIONS_FAVICON_ICO = '/favicon.ico?v=sessions-icon-v6';
 
 function updateFavicon() {
-  const href = absoluteAssetUrl(SESSIONS_FAVICON);
-
   document
-    .querySelectorAll('link[rel="icon"], link[rel="shortcut icon"], link[rel="apple-touch-icon"]')
+    .querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]')
     .forEach((link) => link.remove());
 
   ensureLinkTag('icon', {
-    href,
+    href: absoluteAssetUrl(SESSIONS_FAVICON_ICO),
+    sizes: '32x32',
+  });
+  ensureLinkTag('icon', {
+    href: absoluteAssetUrl(SESSIONS_FAVICON_SVG),
     type: 'image/svg+xml',
     sizes: 'any',
   });
   ensureLinkTag('shortcut icon', {
-    href,
-    type: 'image/svg+xml',
+    href: absoluteAssetUrl(SESSIONS_FAVICON_ICO),
   });
-  ensureLinkTag('apple-touch-icon', {href});
 }
 
 function absoluteAssetUrl(path) {
@@ -279,7 +280,7 @@ function updateDocumentMeta(page) {
     firstSentence(page.subtitle) ||
     'Sessions Design System — shared foundations and a place to build new components.';
   const url = new URL(`/#${state.route}`, window.location.origin).href;
-  const image = absoluteAssetUrl(SESSIONS_FAVICON);
+  const image = absoluteAssetUrl(SESSIONS_FAVICON_SVG);
 
   document.title = title;
   updateFavicon();

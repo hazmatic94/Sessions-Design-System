@@ -38,7 +38,7 @@ function chipExamples() {
   return chipExampleCard({
     id: "chip-default-example",
     tocTitle: "Default",
-    preview: renderSessionsChip({ label: "Confirmed" }),
+    preview: `${renderSessionsChip({ label: "BOOKED" })}${renderSessionsChip({ label: "CANCELLED", className: "sessions-chip--cancelled" })}`,
     codeId: "chip-code",
     filename: "Chip.tsx",
     code: sampleChipCode(),
@@ -62,7 +62,12 @@ function sampleChipCode() {
   return `import { Chip } from "@sessions/design-system";
 
 export function ChipExample() {
-  return <Chip>Confirmed</Chip>;
+  return (
+    <>
+      <Chip>BOOKED</Chip>
+      <Chip variant="cancelled">CANCELLED</Chip>
+    </>
+  );
 }`;
 }
 

@@ -172,37 +172,41 @@
   visibility: hidden;
 }
 
-.sessions-chart-grid__y-label {
+.sessions-chart-grid-y-markers {
   position: absolute;
-  left: 0;
-  transform: translateY(-50%);
-}
-
-.sessions-chart-grid__y-label--start {
-  transform: translateY(0);
-}
-
-.sessions-chart-grid__y-label--end {
-  transform: translateY(-100%);
-}
-
-.sessions-chart-grid-y-ticks {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: calc(-1 * var(--spacing-12));
+  inset: 0;
   z-index: 1;
-  width: var(--spacing-12);
+  overflow: visible;
   pointer-events: none;
 }
 
-.sessions-chart-grid__y-tick {
+.sessions-chart-grid__y-marker {
   position: absolute;
-  right: 0;
+  right: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  width: max-content;
+  height: 0;
+  overflow: visible;
+}
+
+.sessions-chart-grid__y-label {
+  color: var(--black-50);
+  font-family: var(--font);
+  font-size: var(--text-body-12);
+  font-weight: var(--text-body-weight);
+  line-height: 1;
+  letter-spacing: var(--text-body-letter-spacing);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.sessions-chart-grid__y-tick {
+  flex-shrink: 0;
   width: var(--spacing-12);
   height: var(--border-width-default);
   background: var(--color-border-subtle);
-  transform: translateY(-50%);
 }
 
 .sessions-chart-grid-x-ticks {
@@ -398,6 +402,43 @@
   pointer-events: none;
 }
 
+@media (max-width: 768px) {
+  .sessions-chart-grid-wrap {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sessions-chart-grid-y-axis,
+  .sessions-chart-grid-y-markers {
+    display: none;
+  }
+
+  .sessions-chart-grid,
+  .sessions-chart-grid-x-ticks,
+  .sessions-chart-grid-x-labels {
+    grid-column: 1;
+  }
+}
+
+.sessions-responsive-demo__viewport--mobile .sessions-chart-grid-wrap {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.sessions-responsive-demo__viewport--mobile .sessions-chart-grid-y-axis,
+.sessions-responsive-demo__viewport--mobile .sessions-chart-grid-y-markers {
+  display: none;
+}
+
+.sessions-responsive-demo__viewport--mobile .sessions-chart-grid,
+.sessions-responsive-demo__viewport--mobile .sessions-chart-grid-x-ticks,
+.sessions-responsive-demo__viewport--mobile .sessions-chart-grid-x-labels {
+  grid-column: 1;
+}
+
+.sessions-responsive-demo__viewport--mobile .sessions-chart-grid {
+  aspect-ratio: auto;
+  height: var(--sessions-chart-grid-sync-height, auto);
+}
+
 .sessions-appointment-row-list {
   display: grid;
   gap: var(--spacing-8);
@@ -410,7 +451,8 @@
   gap: var(--spacing-24);
   box-sizing: border-box;
   width: 100%;
-  padding: var(--spacing-24);
+  padding-block: 20px;
+  padding-inline: var(--spacing-24);
   border-bottom: var(--border-width-default) solid var(--color-border-default);
   border-radius: var(--radius-sm);
   background: transparent;
@@ -452,6 +494,7 @@
   display: flex;
   flex: 1;
   flex-direction: column;
+  gap: var(--spacing-8);
   min-width: 0;
 }
 
@@ -459,8 +502,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--spacing-8);
-  margin-bottom: var(--spacing-12);
+  gap: var(--spacing-16);
 }
 
 .sessions-appointment-row__service {
@@ -474,11 +516,11 @@
 }
 
 .sessions-appointment-row__datetime {
-  margin: 0 0 var(--spacing-4);
+  margin: 0;
   color: var(--joker-white-50);
   font-family: var(--font);
-  font-size: var(--text-body-b1-medium);
-  font-weight: var(--text-body-b1-medium-weight);
+  font-size: var(--text-body-b1);
+  font-weight: var(--text-body-b1-weight);
   line-height: var(--text-body-b1-line-height);
   letter-spacing: var(--text-body-b1-letter-spacing);
 }

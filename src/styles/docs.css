@@ -3341,6 +3341,9 @@ then uniform zoom on the set below */
 }.content[data-page="cards"] .card-example-section,
 .content[data-page="modals"] .card-example-section {
   gap: 12px;
+}.content[data-page="cards"] .button-example.card-example,
+.content[data-page="cards"] .component-example-wrapper.button-example.card-example {
+  background: var(--color-surface-base);
 }.content[data-page="cards"] .card-example.is-sessions-recent-sales-card.button-example.card-example,
 .content[data-page="cards"] .component-example-wrapper.is-sessions-recent-sales-card.button-example.card-example,
 .content[data-page="cards"] .card-example.is-sessions-upcoming-appointments-card.button-example.card-example,
@@ -3370,7 +3373,7 @@ then uniform zoom on the set below */
 .content[data-page="cards"] .card-example.is-sessions-appointment-activity-card .component-example-wrapper__preview {
   display: flex;
   width: 100%;
-  max-width: 42rem;
+  max-width: var(--sessions-card-max-width);
   align-items: flex-start;
   justify-content: center;
   overflow: visible;
@@ -4006,26 +4009,69 @@ then uniform zoom on the set below */
   justify-content: center;
 }.content[data-page="appointment-rows"] .card-example.is-sessions-appointment-row,
 .content[data-page="appointment-rows"] .component-example-wrapper.is-sessions-appointment-row.button-example.card-example {
-  --example-stage-height: 340px;
-  height: calc(var(--example-stage-height) + var(--example-code-collapsed-height));
+  height: auto;
 }.content[data-page="appointment-rows"] .card-example.is-sessions-appointment-row .component-example-wrapper__stage,
 .content[data-page="appointment-rows"] .card-example.is-sessions-appointment-row .button-example-stage,
 .content[data-page="appointment-rows"] .card-example.is-sessions-appointment-row .card-example-stage {
   align-items: center;
   justify-content: center;
-  flex: 0 0 var(--example-stage-height);
-  height: var(--example-stage-height);
-  min-height: var(--example-stage-height);
-  max-height: var(--example-stage-height);
+  height: auto;
+  min-height: 0;
+  max-height: none;
   overflow: visible;
   padding: var(--spacing-24);
 }.content[data-page="appointment-rows"] .card-example.is-sessions-appointment-row .component-example-wrapper__preview,
 .content[data-page="appointment-rows"] .card-example.is-sessions-appointment-row .card-example-preview {
   display: flex;
-  width: min(100%, 42rem);
-  max-width: 42rem;
+  width: min(100%, var(--sessions-card-max-width));
+  max-width: var(--sessions-card-max-width);
+  align-items: stretch;
+  justify-content: flex-start;
+}.sessions-responsive-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+  width: 100%;
+}.sessions-responsive-demo__viewport {
+  width: 100%;
+}.sessions-responsive-demo__viewport--mobile {
+  width: var(--sessions-responsive-demo-mobile-width, 362px);
+  max-width: 100%;
+}.sessions-responsive-demo__viewport > * {
+  width: 100%;
+}.sessions-responsive-demo__divider {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-16);
+  width: 100%;
+}.sessions-responsive-demo__divider::before,
+.sessions-responsive-demo__divider::after {
+  flex: 1;
+  height: var(--border-width-default);
+  background: var(--color-border-default);
+  content: "";
+}.sessions-responsive-demo__label {
+  flex-shrink: 0;
+  color: var(--black-50);
+  font-family: var(--font);
+  font-size: var(--text-body-b1);
+  font-weight: var(--text-body-b1-weight);
+  line-height: var(--text-body-b1-line-height);
+  letter-spacing: var(--text-body-b1-letter-spacing);
+  white-space: nowrap;
+}.content[data-page="cards"] .card-example .component-example-wrapper__stage:has(.sessions-responsive-demo),
+.content[data-page="cards"] .card-example .button-example-stage:has(.sessions-responsive-demo),
+.content[data-page="cards"] .card-example .card-example-stage:has(.sessions-responsive-demo) {
   align-items: center;
   justify-content: center;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  overflow: visible;
+  padding: var(--spacing-24);
+}.content[data-page="cards"] .card-example:has(.sessions-responsive-demo).button-example.card-example,
+.content[data-page="cards"] .component-example-wrapper:has(.sessions-responsive-demo).button-example.card-example {
+  height: auto;
 }.content[data-page="metric-row"] .card-example.is-sessions-metric-row,
 .content[data-page="metric-row"] .component-example-wrapper.is-sessions-metric-row.button-example.card-example {
   --example-stage-height: 340px;
@@ -4238,7 +4284,7 @@ then uniform zoom on the set below */
 .content[data-page="chart-grid"] .button-example-stage,
 .content[data-page="chart-grid"] .card-example-stage,
 .content[data-page="chart-grid"] .component-example-wrapper__stage {
-  background: var(--black-800);
+  background: var(--color-surface-base);
 }.content[data-page="modals"] .card-example-section .code-panel {
   background: var(--black-700);
 }.content[data-page="coin-flip"] .betting-panel-section,

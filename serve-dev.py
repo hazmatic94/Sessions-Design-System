@@ -9,7 +9,6 @@ import urllib.parse
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 4173
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-
 class NoCacheHandler(SimpleHTTPRequestHandler):
     extensions_map = {
         **SimpleHTTPRequestHandler.extensions_map,
@@ -21,25 +20,27 @@ class NoCacheHandler(SimpleHTTPRequestHandler):
         ".woff2": "font/woff2",
     }
 
-    def do_GET(self):
+    def _normalize_path(self):
         parsed = urllib.parse.urlparse(self.path)
         request_path = parsed.path
-        if request_path in (
-            "/favicon.ico",
-            "/favicon.svg",
-            "/apple-touch-icon.png",
-            "/apple-touch-icon-precomposed.png",
-        ):
-            request_path = "/assets/sessions-favicon.svg"
-            self.path = request_path
 
         fs_path = os.path.join(ROOT_DIR, request_path.lstrip("/"))
         basename = os.path.basename(request_path)
         if request_path not in ("/", "/index.html") and not os.path.exists(fs_path):
             if "." not in basename:
-                self.path = "/index.html"
+                request_path = "/index.html"
 
+        query = f"?{parsed.query}" if parsed.query else ""
+        fragment = f"#{parsed.fragment}" if parsed.fragment else ""
+        self.path = f"{request_path}{query}{fragment}"
+
+    def do_GET(self):
+        self._normalize_path()
         super().do_GET()
+
+    def do_HEAD(self):
+        self._normalize_path()
+        super().do_HEAD()
 
     def end_headers(self):
         self.send_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")

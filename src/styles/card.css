@@ -3,7 +3,7 @@
 .sessions-card {
   box-sizing: border-box;
   width: 100%;
-  max-width: 42rem;
+  max-width: var(--sessions-card-max-width);
   padding: 24px;
   border: var(--border-width-default) solid var(--color-border-default);
   border-radius: var(--radius-card);
@@ -13,6 +13,10 @@
 .sessions-metric-card {
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  height: var(--sessions-metric-card-height);
+  min-height: var(--sessions-metric-card-height);
+  max-height: var(--sessions-metric-card-height);
 }
 
 .sessions-metric-card__header {
@@ -77,19 +81,24 @@
 }
 
 .sessions-metric-card__chart {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: flex-end;
   width: 100%;
   min-width: 0;
+  min-height: 0;
   margin-bottom: var(--spacing-24);
   overflow: visible;
 }
 
 .sessions-metric-card__legend {
-  margin-top: 0;
+  flex-shrink: 0;
+  margin-top: auto;
 }
 
 .sessions-appointment-activity-card {
   box-sizing: border-box;
-  height: 32rem;
   padding-bottom: 0;
   overflow: hidden;
 }
@@ -99,22 +108,18 @@
 }
 
 .sessions-appointment-activity-card__rows {
-  flex: 1;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
   min-height: 0;
   margin-inline: -24px;
 }
 
 .sessions-appointment-activity-card .sessions-appointment-row-list {
-  display: flex;
-  flex-direction: column;
   gap: 0;
-  height: 100%;
 }
 
 .sessions-appointment-activity-card .sessions-appointment-row {
-  flex: 1;
-  min-height: 0;
-  align-items: center;
   border-radius: 0;
 }
 
@@ -122,8 +127,180 @@
   border-bottom: 0;
 }
 
+.sessions-appointment-activity-card__empty {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: var(--spacing-48) var(--spacing-24);
+  text-align: center;
+}
+
+.sessions-appointment-activity-card__empty-icon {
+  display: block;
+  width: 62px;
+  height: 62px;
+  margin-bottom: var(--spacing-16);
+}
+
+.sessions-appointment-activity-card__empty-title,
+.sessions-appointment-activity-card__empty-body {
+  margin: 0;
+}
+
+.sessions-appointment-activity-card__empty-title {
+  margin-bottom: var(--spacing-8);
+}
+
+.sessions-appointment-activity-card__empty-link {
+  color: var(--color-text-brand);
+  font-weight: var(--text-body-b1-medium-weight);
+  text-decoration: none;
+}
+
+.sessions-appointment-activity-card__empty-link:hover {
+  text-decoration: underline;
+}
+
+.sessions-responsive-demo__viewport--mobile .sessions-appointment-activity-card .sessions-appointment-row__date {
+  display: none;
+}
+
+.sessions-responsive-demo__viewport--mobile .sessions-appointment-activity-card .sessions-appointment-row {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  column-gap: var(--spacing-8);
+  row-gap: var(--spacing-8);
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.sessions-responsive-demo__viewport--mobile .sessions-appointment-activity-card .sessions-appointment-row__content,
+.sessions-responsive-demo__viewport--mobile .sessions-appointment-activity-card .sessions-appointment-row__header {
+  display: contents;
+}
+
+.sessions-responsive-demo__viewport--mobile .sessions-appointment-activity-card .sessions-appointment-row__service {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.sessions-responsive-demo__viewport--mobile .sessions-appointment-activity-card .sessions-appointment-row__price {
+  grid-column: 2;
+  grid-row: 1;
+  margin-left: 0;
+}
+
+.sessions-responsive-demo__viewport--mobile .sessions-appointment-activity-card .sessions-appointment-row__status {
+  grid-column: 4;
+  grid-row: 1;
+  justify-self: end;
+}
+
+.sessions-responsive-demo__viewport--mobile .sessions-appointment-activity-card .sessions-appointment-row__datetime,
+.sessions-responsive-demo__viewport--mobile .sessions-appointment-activity-card .sessions-appointment-row__meta {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+.sessions-responsive-demo__viewport--mobile .sessions-appointment-activity-card .sessions-appointment-row__meta {
+  margin-top: calc(var(--spacing-4) - var(--spacing-8));
+}
+
 @media (max-width: 768px) {
-  .sessions-metric-card .sessions-page-header__title {
+  .sessions-appointment-activity-card .sessions-appointment-row__date {
+    display: none;
+  }
+
+  .sessions-appointment-activity-card .sessions-appointment-row {
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    column-gap: var(--spacing-8);
+    row-gap: var(--spacing-8);
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .sessions-appointment-activity-card .sessions-appointment-row__content,
+  .sessions-appointment-activity-card .sessions-appointment-row__header {
+    display: contents;
+  }
+
+  .sessions-appointment-activity-card .sessions-appointment-row__service {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .sessions-appointment-activity-card .sessions-appointment-row__price {
+    grid-column: 2;
+    grid-row: 1;
+    margin-left: 0;
+  }
+
+  .sessions-appointment-activity-card .sessions-appointment-row__status {
+    grid-column: 4;
+    grid-row: 1;
+    justify-self: end;
+  }
+
+  .sessions-appointment-activity-card .sessions-appointment-row__datetime,
+  .sessions-appointment-activity-card .sessions-appointment-row__meta {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .sessions-appointment-activity-card .sessions-appointment-row__meta {
+    margin-top: calc(var(--spacing-4) - var(--spacing-8));
+  }
+
+  .sessions-metric-card {
+    padding: 20px;
+  }
+
+  .sessions-appointment-activity-card {
+    padding-bottom: 0;
+  }
+
+  .sessions-appointment-activity-card__rows {
+    margin-inline: -20px;
+  }
+}
+
+.sessions-responsive-demo__viewport--mobile .sessions-metric-card {
+  padding: 20px;
+}
+
+.sessions-responsive-demo__viewport--mobile .sessions-appointment-activity-card {
+  padding-bottom: 0;
+}
+
+.sessions-responsive-demo__viewport--mobile .sessions-appointment-activity-card__rows {
+  margin-inline: -20px;
+}
+
+.sessions-responsive-demo__viewport--mobile .sessions-metric-card .sessions-page-header__title,
+.sessions-responsive-demo__viewport--mobile .sessions-appointment-activity-card__empty-title {
+  font-family: var(--font);
+  font-size: var(--text-body-big-medium);
+  font-weight: var(--text-body-big-medium-weight);
+  line-height: var(--text-body-b1-line-height);
+  letter-spacing: var(--text-body-big-letter-spacing);
+}
+
+.sessions-responsive-demo__viewport--mobile .sessions-metric-card .sessions-metric-value__value {
+  font-size: var(--text-heading-h3);
+  font-weight: var(--text-heading-weight);
+  line-height: var(--text-heading-line-height);
+  letter-spacing: var(--text-heading-letter-spacing);
+}
+
+@media (max-width: 768px) {
+  .sessions-metric-card .sessions-page-header__title,
+  .sessions-appointment-activity-card__empty-title {
     font-family: var(--font);
     font-size: var(--text-body-big-medium);
     font-weight: var(--text-body-big-medium-weight);
@@ -132,9 +309,9 @@
   }
 
   .sessions-metric-card .sessions-metric-value__value {
-    font-size: var(--text-body-big-medium);
-    font-weight: var(--text-body-big-medium-weight);
-    line-height: var(--text-body-b1-line-height);
-    letter-spacing: var(--text-body-big-letter-spacing);
+    font-size: var(--text-heading-h3);
+    font-weight: var(--text-heading-weight);
+    line-height: var(--text-heading-line-height);
+    letter-spacing: var(--text-heading-letter-spacing);
   }
 }

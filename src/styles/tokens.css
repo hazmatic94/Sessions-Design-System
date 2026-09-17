@@ -236,6 +236,8 @@
   --spacing-48: 48px;
   --spacing-64: 64px;
   --spacing-88: 88px;
+  --sessions-card-max-width: 656px;
+  --sessions-metric-card-height: 600px;
   --game-tile-size: 120px;
   --icon-size-xs: var(--spacing-12);
   --icon-size-sm: var(--spacing-16);

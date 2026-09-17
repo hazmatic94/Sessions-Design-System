@@ -6,10 +6,35 @@ const GRID_WIDTH = 565;
 const GRID_HEIGHT = 210;
 const BAR_WIDTH_RATIO = 0.45;
 let areaGradientId = 0;
+let barGradientId = 0;
 
 function nextAreaGradientId() {
   areaGradientId += 1;
   return `sessions-chart-area-fill-${areaGradientId}`;
+}
+
+function nextBarGradientId() {
+  barGradientId += 1;
+  return `sessions-chart-bar-${barGradientId}`;
+}
+
+const BAR_GRADIENT_TOP_OPACITY = 0.6;
+const BAR_GRADIENT_BOTTOM_OPACITY = 1;
+
+function resolveBarFill(color, fallback, gradientId) {
+  if (!color || typeof color === "string") {
+    return {
+      fill: escapeHtml(color ?? fallback),
+      defs: "",
+    };
+  }
+
+  const baseColor = escapeHtml(color.color ?? fallback);
+
+  return {
+    fill: `url(#${gradientId})`,
+    defs: `<linearGradient id="${gradientId}" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${baseColor}" stop-opacity="${BAR_GRADIENT_TOP_OPACITY}" /><stop offset="100%" stop-color="${baseColor}" stop-opacity="${BAR_GRADIENT_BOTTOM_OPACITY}" /></linearGradient>`,
+  };
 }
 
 function usesFlexXAxis(variant) {
@@ -41,11 +66,28 @@ function axisValueTop(value, axisMax) {
   return (1 - value / axisMax) * 100;
 }
 
-function renderYTicks(axis) {
+function renderYAxisSizer(axis) {
+  return `<span class="sessions-chart-grid-y-sizer">${formatYAxisLabel(axis.max, axis.format)}</span>`;
+}
+
+function renderYAxisMarkerPlacement(index, rows) {
+  if (index === 0) {
+    return "top: 0; bottom: auto;";
+  }
+
+  if (index === rows) {
+    return "top: auto; bottom: 0;";
+  }
+
+  return `top: ${(index / rows) * 100}%; bottom: auto;`;
+}
+
+function renderYAxisMarkers(axis, rows) {
   return axis.ticks
-    .map((tick) => {
-      const top = axisValueTop(tick, axis.max);
-      return `<span class="sessions-chart-grid__y-tick" style="top: ${top}%"></span>`;
+    .map((value, index) => {
+      const label = formatYAxisLabel(value, axis.format);
+      const placement = renderYAxisMarkerPlacement(index, rows);
+      return `<div class="sessions-chart-grid__y-marker" style="${placement}"><span class="sessions-chart-grid__y-label">${label}</span><span class="sessions-chart-grid__y-tick" aria-hidden="true"></span></div>`;
     })
     .join("");
 }
@@ -113,6 +155,18 @@ function formatAxisAmount(value) {
   }).format(value);
 }
 
+function formatCompactThousands(value, prefix = "") {
+  if (Math.abs(value) < 1000) return null;
+
+  const scaled = value / 1000;
+  const formatted = new Intl.NumberFormat("en-US", {
+    maximumFractionDigits: Number.isInteger(scaled) ? 0 : 1,
+    minimumFractionDigits: 0,
+  }).format(scaled);
+
+  return `${prefix}${formatted}k`;
+}
+
 function resolveYAxisFormat(variant, yAxisFormat) {
   if (yAxisFormat) return yAxisFormat;
   return variant === "bar" ? "number" : "currency";
@@ -120,9 +174,11 @@ function resolveYAxisFormat(variant, yAxisFormat) {
 
 function formatYAxisLabel(value, format = "currency") {
   if (format === "number") {
-    return new Intl.NumberFormat("en-US", { maximumFractionDigits: 1 }).format(value);
+    return formatCompactThousands(value) ??
+      new Intl.NumberFormat("en-US", { maximumFractionDigits: 1 }).format(value);
   }
-  return formatAxisAmount(value);
+
+  return formatCompactThousands(value, "$") ?? formatAxisAmount(value);
 }
 
 function formatAxisSummary(axis) {
@@ -131,22 +187,6 @@ function formatAxisSummary(axis) {
   return `Chart grid from ${min} to ${max}`;
 }
 
-function renderYLabels(axis) {
-  const labels = axis.ticks.map((value, index) => {
-    const top = axisValueTop(value, axis.max);
-    const label = formatYAxisLabel(value, axis.format);
-    const edgeClass =
-      index === 0
-        ? " sessions-chart-grid__y-label--start"
-        : index === axis.ticks.length - 1
-          ? " sessions-chart-grid__y-label--end"
-          : "";
-    return `<span class="sessions-chart-grid__y-label${edgeClass}" style="top: ${top}%">${label}</span>`;
-  });
-  const sizer = formatYAxisLabel(axis.max, axis.format);
-
-  return `<span class="sessions-chart-grid-y-sizer">${sizer}</span>${labels.join("")}`;
-}
 
 function parseDayDate(value) {
   if (value instanceof Date && !Number.isNaN(value.getTime())) {
@@ -325,12 +365,26 @@ function renderLineSeries(item, index, columns, axisMax, pointVariant = "default
   </g>`;
 }
 
-function renderBarPlot(bars, columns, axisMax) {
+const BAR_TOP_RADIUS = 2;
+
+function renderBarSegment(x, y, width, height, fill, roundTop = false) {
+  if (!roundTop || height <= 0 || width <= 0) {
+    return `<rect class="sessions-chart-grid__bar" x="${x}" y="${y}" width="${width}" height="${height}" fill="${fill}" />`;
+  }
+
+  const radius = Math.min(BAR_TOP_RADIUS, width / 2, height);
+  const right = x + width;
+  const bottom = y + height;
+
+  return `<path class="sessions-chart-grid__bar" d="M ${x} ${bottom} L ${x} ${y + radius} Q ${x} ${y} ${x + radius} ${y} L ${right - radius} ${y} Q ${right} ${y} ${right} ${y + radius} L ${right} ${bottom} Z" fill="${fill}" />`;
+}
+
+function renderBarPlot(bars, columns, axisMax, barColors = {}) {
   if (!bars.length) return "";
 
   const barWidth = (GRID_WIDTH / columns) * BAR_WIDTH_RATIO;
-  const green = escapeHtml(SESSIONS_CHART_COLORS.sales);
-  const stackColor = escapeHtml(SESSIONS_CHART_COLORS.stack);
+  const baseFill = resolveBarFill(barColors.base, SESSIONS_CHART_COLORS.sales, nextBarGradientId());
+  const stackFill = resolveBarFill(barColors.stack, SESSIONS_CHART_COLORS.stack, nextBarGradientId());
   const barMarkup = bars
     .map((bar, index) => {
       const base = Number.isFinite(bar?.base) ? bar.base : Number.isFinite(bar?.value) ? bar.value : 0;
@@ -343,20 +397,20 @@ function renderBarPlot(bars, columns, axisMax) {
       const baseHeight = GRID_HEIGHT - baseY;
       const stackHeight = baseY - totalY;
       const segments = [
-        `<rect class="sessions-chart-grid__bar sessions-chart-grid__bar--base" x="${x}" y="${baseY}" width="${barWidth}" height="${baseHeight}" rx="2" fill="${green}" />`,
+        renderBarSegment(x, baseY, barWidth, baseHeight, baseFill.fill, stack <= 0),
       ];
 
       if (stack > 0) {
-        segments.push(
-          `<rect class="sessions-chart-grid__bar sessions-chart-grid__bar--stack" x="${x}" y="${totalY}" width="${barWidth}" height="${stackHeight}" rx="2" fill="${stackColor}" />`,
-        );
+        segments.push(renderBarSegment(x, totalY, barWidth, stackHeight, stackFill.fill, true));
       }
 
       return `<g class="sessions-chart-grid__bar-group">${segments.join("")}</g>`;
     })
     .join("");
 
-  return `<svg class="sessions-chart-grid__bars" viewBox="0 0 ${GRID_WIDTH} ${GRID_HEIGHT}" aria-hidden="true">${barMarkup}</svg>`;
+  const defs = `<defs>${baseFill.defs}${stackFill.defs}</defs>`;
+
+  return `<svg class="sessions-chart-grid__bars" viewBox="0 0 ${GRID_WIDTH} ${GRID_HEIGHT}" preserveAspectRatio="xMidYMax meet" aria-hidden="true">${defs}${barMarkup}</svg>`;
 }
 
 function renderSeriesPlot(series, columns, axisMax, variant = "default") {
@@ -395,6 +449,7 @@ export function renderSessionsChartGrid({
   startDate,
   series = [],
   bars = [],
+  barColors,
   variant = "default",
   className = "",
 } = {}) {
@@ -426,17 +481,17 @@ export function renderSessionsChartGrid({
   const days = resolveDays(dates, startDate, dayCount);
   const plot =
     variant === "bar"
-      ? renderBarPlot(bars, columns, axis.max)
+      ? renderBarPlot(bars, columns, axis.max, barColors)
       : renderSeriesPlot(series, columns, axis.max, variant);
   const wrapClass = resolveWrapClass(variant);
   const dayAxisStyle = variant === "bar" ? ` style="--sessions-chart-grid-day-columns: ${columns}"` : "";
 
   return `<div class="${wrapClass}">
     <div class="sessions-chart-grid-y-axis" aria-hidden="true">
-      <div class="sessions-chart-grid-y-labels">${renderYLabels(axis)}</div>
+      <div class="sessions-chart-grid-y-labels">${renderYAxisSizer(axis)}</div>
     </div>
     <div class="sessions-chart-grid-plot">
-      <div class="${classes}" style="--sessions-chart-grid-columns: ${gridColumns}; --sessions-chart-grid-rows: ${rows};" role="img" aria-label="${formatAxisSummary(axis)}">${cells}${plot}<div class="sessions-chart-grid-y-ticks">${renderYTicks(axis)}</div></div>
+      <div class="${classes}" style="--sessions-chart-grid-columns: ${gridColumns}; --sessions-chart-grid-rows: ${rows};" role="img" aria-label="${formatAxisSummary(axis)}">${cells}${plot}<div class="sessions-chart-grid-y-markers">${renderYAxisMarkers(axis, rows)}</div></div>
       <div class="sessions-chart-grid-x-ticks"${dayAxisStyle}>${renderXTicks(columns, variant)}</div>
       <div class="sessions-chart-grid-x-labels"${dayAxisStyle} aria-hidden="true">${renderXLabels(days, columns, variant)}</div>
     </div>

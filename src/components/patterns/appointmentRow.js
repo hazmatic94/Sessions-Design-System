@@ -7,6 +7,28 @@ function formatDateTime(dateLabel, startTime) {
   return `${dateLabel}  ${startTime}`;
 }
 
+function formatAppointmentPrice(price, currency = "USD") {
+  if (price === "" || price == null) return "";
+
+  const amount =
+    typeof price === "number"
+      ? price
+      : Number.parseFloat(String(price).replace(/[^\d.-]/g, ""));
+
+  if (Number.isNaN(amount)) {
+    return String(price).replace(/^A\$\s*/i, "$");
+  }
+
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency,
+    currencyDisplay: "narrowSymbol",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+    useGrouping: false,
+  }).format(amount);
+}
+
 function formatMetadata(bookingSource, duration, staffMember) {
   const durationWithStaff =
     duration && staffMember ? `${duration} with ${staffMember}` : duration || staffMember;
@@ -59,6 +81,7 @@ export function renderSessionsAppointmentRow({
   duration = "",
   staffMember = "",
   price = "",
+  currency = "USD",
   className = "",
 } = {}) {
   const classes = ["sessions-appointment-row", className].filter(Boolean).join(" ");
@@ -69,7 +92,7 @@ export function renderSessionsAppointmentRow({
     <article class="${classes}">
       ${renderDateBlock({ day, month })}
       ${renderContent({ serviceName, status, dateTime, metadata })}
-      ${renderPrice(price)}
+      ${renderPrice(formatAppointmentPrice(price, currency))}
     </article>
   `;
 }

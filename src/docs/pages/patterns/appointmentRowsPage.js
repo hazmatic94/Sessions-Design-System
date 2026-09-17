@@ -1,4 +1,5 @@
 import { componentExampleWrapper, pageHero, section } from "../../shell/pageLayout.js?v=sessions-page-h2-v1";
+import { renderResponsiveDemo } from "../../demo/responsiveDemo.js?v=sessions-responsive-demo-v2";
 import { renderSessionsAppointmentRow } from "../../../components/patterns/index.js?v=sessions-appointment-row-v2";
 
 const sampleAppointment = {
@@ -21,11 +22,15 @@ export function renderAppointmentRowsPatternPage(page) {
   `;
 }
 
+function appointmentRowPreview() {
+  return renderResponsiveDemo(renderSessionsAppointmentRow(sampleAppointment));
+}
+
 function appointmentRowExample() {
   return componentExampleWrapper({
     id: "sessions-appointment-row-example",
     tocTitle: "Default",
-    preview: renderSessionsAppointmentRow(sampleAppointment),
+    preview: appointmentRowPreview(),
     codeId: "sessions-appointment-row-code",
     filename: "AppointmentRow.tsx",
     code: sampleAppointmentRowCode(),

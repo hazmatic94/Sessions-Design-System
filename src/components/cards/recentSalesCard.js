@@ -6,8 +6,12 @@ import {
   renderSessionsPageHeader,
   SESSIONS_CHART_COLORS,
 } from "../patterns/index.js";
-import { escapeHtml } from "../../utils.js";
+import { isChartEmpty, resolveEmptyChart } from "./cardChartState.js";
 
+const RECENT_SALES_EMPTY_METRICS = [
+  { label: "Appointments", value: "0" },
+  { label: "Appointments Value", value: "$0.00" },
+];
 function renderLegend(items = []) {
   return `<div class="sessions-legend-item-row sessions-metric-card__legend">${items
     .map((item) =>
@@ -36,10 +40,16 @@ export function renderSessionsRecentSalesCard({
   totalValue = "$0.00",
   metrics = [],
   chart = {},
-  legend = [{ label: "Sales", color: SESSIONS_CHART_COLORS.sales }],
-  menuLabel = "More options",
+  legend = [
+    { label: "Sales", color: SESSIONS_CHART_COLORS.sales },
+    { label: "Appointments", color: SESSIONS_CHART_COLORS.appointments },
+  ],
   className = "",
 } = {}) {
+  const empty = isChartEmpty(chart.bars);
+  const resolvedChart = resolveEmptyChart(chart);
+  const resolvedMetrics = empty && !metrics.length ? RECENT_SALES_EMPTY_METRICS : metrics;
+
   const classes = ["sessions-card", "sessions-metric-card", "sessions-recent-sales-card", className]
     .filter(Boolean)
     .join(" ");
@@ -47,18 +57,15 @@ export function renderSessionsRecentSalesCard({
   return `<article class="${classes}">
     <div class="sessions-metric-card__header">
       ${renderSessionsPageHeader({ title, body: period })}
-      <button class="sessions-metric-card__menu" type="button" aria-label="${escapeHtml(menuLabel)}">
-        <img class="sessions-metric-card__menu-icon" src="./assets/IconMore.svg" alt="" />
-      </button>
     </div>
     <div class="sessions-metric-card__summary">
       ${renderSessionsMetricValue({ value: totalValue })}
       <div class="sessions-metric-card__metrics">
-        ${renderMetricRows(metrics)}
+        ${renderMetricRows(resolvedMetrics)}
       </div>
     </div>
     <div class="sessions-metric-card__chart">
-      ${renderSessionsChartGrid(chart)}
+      ${renderSessionsChartGrid(resolvedChart)}
     </div>
     ${renderLegend(legend)}
   </article>`;

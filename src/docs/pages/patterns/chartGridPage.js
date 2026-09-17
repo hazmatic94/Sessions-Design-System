@@ -1,5 +1,5 @@
 import { componentExampleWrapper, pageHero, section } from "../../shell/pageLayout.js?v=sessions-page-h2-v1";
-import { renderSessionsChartGrid } from "../../../components/patterns/chartGrid.js?v=sessions-chart-grid-v40";
+import { renderSessionsChartGrid } from "../../../components/patterns/chartGrid.js?v=sessions-chart-grid-bar-v10";
 import { SESSIONS_CHART_COLORS } from "../../../components/patterns/chartColors.js";
 
 const CHART_START_DATE = "2025-03-19";
