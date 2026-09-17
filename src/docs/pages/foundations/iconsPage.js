@@ -1,7 +1,7 @@
-import {productIconFiles, productIconLabel, productIconPath} from '../../../data/productIcons.js?v=sessions-product-icons-v1';
+import {productIconFiles, productIconLabel, productIconPath} from '../../../data/productIcons.js?v=sessions-product-icons-v2';
 import {pageHero} from '../../shell/pageLayout.js';
 
-const ICON_ASSET_VERSION = 'sessions-product-icons-v1';
+const ICON_ASSET_VERSION = 'sessions-product-icons-v2';
 
 export function renderIconsPage(page) {
   return `

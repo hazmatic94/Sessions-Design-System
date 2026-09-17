@@ -36,6 +36,8 @@ export const productIconFiles = [
   'IconTeam.svg',
   'IconTime.svg',
   'IconTrash.svg',
+  'IconTrendDown.svg',
+  'IconTrendUp.svg',
   'IconUserAdd.svg',
   'IconWalkIn.svg',
   'IconWeek.svg',

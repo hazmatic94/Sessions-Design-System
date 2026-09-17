@@ -4,7 +4,7 @@ import { renderSpacingPage } from './spacingPage.js';
 import { renderRadiusPage } from './radiusPage.js';
 import { renderShadowsPage } from './shadowsPage.js';
 import { renderMotionPage } from './motionPage.js';
-import { renderIconsPage } from './iconsPage.js?v=sessions-product-icons-v1';
+import { renderIconsPage } from './iconsPage.js?v=sessions-product-icons-v2';
 import { renderFoundationFallbackPage } from './fallbackPage.js';
 
 const foundationRenderers = {
