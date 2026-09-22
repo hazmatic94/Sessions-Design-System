@@ -22,7 +22,14 @@ export {
   renderSessionsNavigator,
 } from "./navigator.js?v=sessions-navigator-v4";
 export { renderSessionsPageHeader } from "./pageHeader.js";
-export { renderSessionsStaffHeader } from "./staffHeader.js?v=sessions-staff-header-v1";
+export { renderSessionsStaffHeader, setupSessionsStaffHeaders } from "./staffHeader.js?v=sessions-staff-header-v3";
+export {
+  applySessionsHourBlock,
+  HOUR_BLOCK_COUNT,
+  renderSessionsHourBlock,
+  resolveHourBlock,
+  setupSessionsHourBlocks,
+} from "./hourBlock.js?v=sessions-hour-block-v1";
 export {
   renderSessionsTopServiceRow,
   renderSessionsTopServiceRowList,

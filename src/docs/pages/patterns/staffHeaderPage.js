@@ -1,7 +1,13 @@
 import { componentExampleWrapper, pageHero, section } from "../../shell/pageLayout.js?v=sessions-page-h2-v1";
-import { renderSessionsStaffHeader } from "../../../components/patterns/index.js";
+import { renderSessionsStaffHeader } from "../../../components/patterns/index.js?v=sessions-staff-header-v3";
 
 const DEMO_AVATAR = "/assets/user.png?v=sessions-avatar-demo-v3";
+
+const DEMO_STAFF = [
+  { name: "Larry June", avatarSrc: DEMO_AVATAR },
+  { name: "Marcus Bell", avatarInitial: "M" },
+  { name: "Sofia Reyes", avatarInitial: "S" },
+];
 
 export function renderStaffHeaderPatternPage(page) {
   return `
@@ -17,6 +23,7 @@ function staffHeaderExample() {
     preview: renderSessionsStaffHeader({
       name: "Larry June",
       avatarSrc: DEMO_AVATAR,
+      staff: DEMO_STAFF,
     }),
     codeId: "sessions-staff-header-code",
     filename: "StaffHeader.tsx",
@@ -28,11 +35,12 @@ function staffHeaderExample() {
 function sampleStaffHeaderCode() {
   return `import { StaffHeader } from "@sessions/design-system";
 
-export function BarberStaffHeader({ name, avatarSrc, onNameClick }) {
+export function BarberStaffHeader({ name, avatarSrc, staff, onNameClick }) {
   return (
     <StaffHeader
       name={name}
       avatarSrc={avatarSrc}
+      staff={staff}
       onNameClick={onNameClick}
     />
   );

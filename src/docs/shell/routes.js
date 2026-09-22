@@ -1,6 +1,6 @@
-import {renderNav} from './nav.js?v=remove-nav-search-v1';
-import {renderPage} from './pageRenderer.js?v=sessions-navigator-v1';
-import {pageRegistry} from './registry.js?v=sessions-appointment-rows-v1';
+import {renderNav} from './nav.js?v=sessions-hour-block-v1';
+import {renderPage} from './pageRenderer.js?v=sessions-hour-block-v1';
+import {pageRegistry} from './registry.js?v=sessions-hour-block-v1';
 import {state} from './state.js?v=docs-routing-v1';
 
 export function normalizeRoute(hash) {

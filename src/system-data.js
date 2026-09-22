@@ -46,6 +46,7 @@ export const navGroups = [
       {label: 'Navigator', route: '/patterns/navigator'},
       {label: 'Calendar Header Row', route: '/patterns/calendar-header-row'},
       {label: 'Staff Header', route: '/patterns/staff-header'},
+      {label: 'Hour Block', route: '/patterns/hour-block'},
     ],
   },
 ];
@@ -523,6 +524,8 @@ export const patternSummaries = {
     'Top calendar toolbar with today, date navigation, view selection, team access, and add actions.',
   'Staff Header':
     'Centered staff profile header with avatar, name, and menu trigger for barber context.',
+  'Hour Block':
+    'A 80 by 140 hour label for calendar columns, with stacked time and meridiem.',
 };
 
 export const componentSummaries = {

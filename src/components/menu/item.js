@@ -20,6 +20,7 @@ export function renderSessionsMenuItem({
   state = "default",
   className = "",
   disabled = false,
+  attributes = {},
 } = {}) {
   const classes = [
     "sessions-menu-item",
@@ -39,6 +40,9 @@ export function renderSessionsMenuItem({
     `data-menu-item-state="${state}"`,
     isDisabled ? "disabled" : "",
     state === "selected" ? 'aria-pressed="true"' : "",
+    ...Object.entries(attributes).map(
+      ([key, value]) => `${key}="${escapeHtml(String(value ?? ""))}"`,
+    ),
   ]
     .filter(Boolean)
     .join(" ");
@@ -47,6 +51,7 @@ export function renderSessionsMenuItem({
 }
 
 function renderMenuItemIcon(icon) {
+  if (!icon) return "";
   const iconSrc = MENU_ICONS[icon] ?? MENU_ICONS.calendar;
 
   if (icon === "calendar") {

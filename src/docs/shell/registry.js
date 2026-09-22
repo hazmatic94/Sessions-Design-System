@@ -4,7 +4,7 @@ import {
   navGroups,
   patternSummaries,
   resources,
-} from '../../system-data.js?v=sessions-staff-header-v1';
+} from '../../system-data.js?v=sessions-hour-block-v1';
 import {flattenNavGroups} from './navModel.js?v=nav-fix-2210';
 
 const routePageTitles = {
@@ -26,6 +26,7 @@ const routePageTitles = {
   '/patterns/navigator': 'Navigator',
   '/patterns/calendar-header-row': 'Calendar Header Row',
   '/patterns/staff-header': 'Staff Header',
+  '/patterns/hour-block': 'Hour Block',
 };
 
 const patternRoutes = new Set([
@@ -38,6 +39,7 @@ const patternRoutes = new Set([
   '/patterns/navigator',
   '/patterns/calendar-header-row',
   '/patterns/staff-header',
+  '/patterns/hour-block',
 ]);
 
 const componentRoutes = new Set([

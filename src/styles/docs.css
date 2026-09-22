@@ -2324,6 +2324,7 @@ pre {
 .content[data-page="navigator"] .page-hero,
 .content[data-page="avatar"] .page-hero,
 .content[data-page="staff-header"] .page-hero,
+.content[data-page="hour-block"] .page-hero,
 .content[data-page="calendar-header-row"] .page-hero,
 .content[data-page="metric-value"] .page-hero,
 .content[data-page="metric-row"] .page-hero,
@@ -2335,6 +2336,7 @@ pre {
 .content[data-page="navigator"] .section-heading,
 .content[data-page="avatar"] .section-heading,
 .content[data-page="staff-header"] .section-heading,
+.content[data-page="hour-block"] .section-heading,
 .content[data-page="calendar-header-row"] .section-heading,
 .content[data-page="metric-value"] .section-heading,
 .content[data-page="metric-row"] .section-heading,
@@ -4019,9 +4021,12 @@ then uniform zoom on the set below */
 .content[data-page="staff-header"] .component-example-wrapper.is-sessions-staff-header.button-example.card-example {
   --example-stage-height: 180px;
   height: calc(var(--example-stage-height) + var(--example-code-collapsed-height));
+  overflow: visible;
 }.content[data-page="staff-header"] .card-example.is-sessions-staff-header .component-example-wrapper__stage,
 .content[data-page="staff-header"] .card-example.is-sessions-staff-header .button-example-stage,
 .content[data-page="staff-header"] .card-example.is-sessions-staff-header .card-example-stage {
+  position: relative;
+  z-index: 3;
   align-items: stretch;
   justify-content: stretch;
   flex: 0 0 var(--example-stage-height);
@@ -4037,6 +4042,28 @@ then uniform zoom on the set below */
   max-width: none;
   align-items: stretch;
   justify-content: stretch;
+}.content[data-page="hour-block"] .card-example.is-sessions-hour-block,
+.content[data-page="hour-block"] .component-example-wrapper.is-sessions-hour-block.button-example.card-example {
+  --example-stage-height: 220px;
+  height: calc(var(--example-stage-height) + var(--example-code-collapsed-height));
+}.content[data-page="hour-block"] .card-example.is-sessions-hour-block .component-example-wrapper__stage,
+.content[data-page="hour-block"] .card-example.is-sessions-hour-block .button-example-stage,
+.content[data-page="hour-block"] .card-example.is-sessions-hour-block .card-example-stage {
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 var(--example-stage-height);
+  height: var(--example-stage-height);
+  min-height: var(--example-stage-height);
+  max-height: var(--example-stage-height);
+  overflow: visible;
+  padding: 0;
+}.content[data-page="hour-block"] .card-example.is-sessions-hour-block .component-example-wrapper__preview,
+.content[data-page="hour-block"] .card-example.is-sessions-hour-block .card-example-preview {
+  display: flex;
+  width: auto;
+  max-width: none;
+  align-items: center;
+  justify-content: center;
 }.content[data-page="calendar-header-row"] .card-example.is-sessions-calendar-header-row,
 .content[data-page="calendar-header-row"] .component-example-wrapper.is-sessions-calendar-header-row.button-example.card-example {
   --example-stage-height: 140px;
@@ -4377,6 +4404,9 @@ then uniform zoom on the set below */
 .content[data-page="staff-header"] .button-example-stage,
 .content[data-page="staff-header"] .card-example-stage,
 .content[data-page="staff-header"] .component-example-wrapper__stage,
+.content[data-page="hour-block"] .button-example-stage,
+.content[data-page="hour-block"] .card-example-stage,
+.content[data-page="hour-block"] .component-example-wrapper__stage,
 .content[data-page="calendar-header-row"] .button-example-stage,
 .content[data-page="calendar-header-row"] .card-example-stage,
 .content[data-page="calendar-header-row"] .component-example-wrapper__stage,

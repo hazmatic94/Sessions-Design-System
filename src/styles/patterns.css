@@ -1,4 +1,5 @@
 .sessions-staff-header {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6,11 +7,13 @@
   width: 100%;
   min-height: 120px;
   height: 120px;
+  overflow: visible;
   border-bottom: var(--border-width-default) solid var(--color-border-subtle);
   background: var(--color-surface-elevated);
 }
 
 .sessions-staff-header__content {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,7 +25,7 @@
   align-items: center;
   gap: var(--spacing-8);
   margin: 0;
-  padding: 0;
+  padding: 0 0 0 calc(var(--icon-size-md) + var(--spacing-8));
   border: 0;
   background: transparent;
   color: var(--joker-white-50);
@@ -43,12 +46,80 @@
   width: var(--icon-size-md);
   height: var(--icon-size-md);
   flex-shrink: 0;
+  transition: transform var(--motion-fast) var(--ease-out);
+}
+
+.sessions-staff-header.is-open .sessions-staff-header__chevron {
+  transform: rotate(180deg);
+}
+
+.sessions-staff-header__menu {
+  position: absolute;
+  top: calc(100% + var(--spacing-8));
+  left: 50%;
+  z-index: 8;
+  translate: -50% 0;
+}
+
+.sessions-staff-header__menu .sessions-menu-panel {
+  min-width: 220px;
+}
+
+.sessions-staff-header__menu[hidden] {
+  display: none;
+}
+
+.sessions-staff-header__option.sessions-menu-item {
+  width: 100%;
 }
 
 .sessions-staff-header__trigger:focus-visible {
   outline: 2px solid var(--color-border-focus);
   outline-offset: 2px;
   border-radius: var(--radius-sm);
+}
+
+.sessions-hour-block {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  width: 80px;
+  height: 140px;
+  margin: 0;
+  padding: var(--spacing-4) 0 0;
+  border: 0;
+  border-bottom: var(--border-width-default) solid var(--color-border-subtle);
+  background: transparent;
+  color: var(--joker-white-50);
+  font-family: var(--font);
+  cursor: pointer;
+  appearance: none;
+}
+
+.sessions-hour-block__time {
+  color: var(--joker-white-50);
+  font-size: var(--text-body-b1);
+  font-weight: 700;
+  line-height: var(--text-body-b1-line-height);
+  letter-spacing: var(--text-body-b1-letter-spacing);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.sessions-hour-block__period {
+  color: var(--joker-white-50);
+  font-size: var(--text-body-b1);
+  font-weight: var(--text-body-b1-weight);
+  line-height: var(--text-body-b1-line-height);
+  letter-spacing: var(--text-body-b1-letter-spacing);
+  white-space: nowrap;
+}
+
+.sessions-hour-block:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
 }
 
 .sessions-calendar-header-row {
