@@ -17,6 +17,7 @@
 .sessions-button--ghost {
   position: relative;
   box-sizing: border-box;
+  gap: var(--spacing-8);
   height: var(--button-height);
   min-height: var(--button-height);
   padding: 0 var(--button-padding-inline) 1px;
@@ -25,6 +26,25 @@
   font-weight: var(--text-body-b1-medium-weight);
   line-height: var(--text-body-b1-line-height);
   letter-spacing: var(--text-body-b1-letter-spacing);
+}
+
+.sessions-button--icon-only {
+  width: var(--button-icon-only-width);
+  min-width: var(--button-icon-only-width);
+  padding-inline: 0;
+  border-radius: var(--button-icon-only-radius);
+}
+
+.sessions-button--primary.sessions-button--icon-start,
+.sessions-button--secondary.sessions-button--icon-start {
+  padding-right: var(--button-padding-inline);
+  padding-left: var(--button-padding-inline-small);
+}
+
+.sessions-button--primary.sessions-button--icon-end,
+.sessions-button--secondary.sessions-button--icon-end {
+  padding-right: var(--button-padding-inline-small);
+  padding-left: var(--button-padding-inline);
 }
 
 .sessions-button--primary {
@@ -118,6 +138,7 @@
   color: var(--button-ghost-text);
 }
 
+.sessions-button.is-loading .sessions-button__icon,
 .sessions-button.is-loading .sessions-button__label {
   visibility: hidden;
 }
@@ -136,4 +157,20 @@
 
 .sessions-button__label {
   display: inline-block;
+}
+
+.sessions-button__icon {
+  display: block;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background-color: currentColor;
+  -webkit-mask-image: var(--sessions-button-icon);
+  mask-image: var(--sessions-button-icon);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
 }

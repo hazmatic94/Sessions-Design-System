@@ -26,6 +26,7 @@ export const navGroups = [
     title: 'Components',
     items: [
       {label: 'Button', route: '/components/buttons'},
+      {label: 'Avatar', route: '/components/avatar'},
       {label: 'Inputs', route: '/components/inputs'},
       {label: 'Navigation', route: '/components/navigation'},
       {label: 'Modals', route: '/components/modals'},
@@ -42,6 +43,9 @@ export const navGroups = [
       {label: 'Legend Item', route: '/patterns/legend-item'},
       {label: 'Chart Grid', route: '/patterns/chart-grid'},
       {label: 'Appointment Rows', route: '/patterns/appointment-rows'},
+      {label: 'Navigator', route: '/patterns/navigator'},
+      {label: 'Calendar Header Row', route: '/patterns/calendar-header-row'},
+      {label: 'Staff Header', route: '/patterns/staff-header'},
     ],
   },
 ];
@@ -513,11 +517,19 @@ export const patternSummaries = {
     'A 7 by 4 chart grid for plotting sales and appointment data.',
   'Appointment Rows':
     'Repeatable rows for listing appointments with client, service, time, and status.',
+  Navigator:
+    'Date stepping controls and a calendar view selector with reset for schedule navigation.',
+  'Calendar Header Row':
+    'Top calendar toolbar with today, date navigation, view selection, team access, and add actions.',
+  'Staff Header':
+    'Centered staff profile header with avatar, name, and menu trigger for barber context.',
 };
 
 export const componentSummaries = {
   Buttons:
     'Shared button styles create clear hierarchy across primary, secondary and supporting actions.',
+  Avatar:
+    'Circular profile images with a green outline, or initials when no photo is available.',
   Inputs:
     'Flexible field patterns support data entry, validation, prefixes and verification states.',
   Navigation:

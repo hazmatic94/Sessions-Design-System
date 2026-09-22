@@ -3,8 +3,9 @@ import { renderResponsiveDemo } from "../demo/responsiveDemo.js?v=sessions-respo
 import {
   renderSessionsAppointmentActivityCard,
   renderSessionsRecentSalesCard,
+  renderSessionsTopServicesCard,
   renderSessionsUpcomingAppointmentsCard,
-} from "../../components/cards/index.js?v=sessions-metric-cards-v26";
+} from "../../components/cards/index.js?v=sessions-metric-card-view-all-v2";
 import { SESSIONS_CHART_COLORS } from "../../components/patterns/chartColors.js";
 
 export function cardExampleCard({
@@ -194,11 +195,96 @@ const APPOINTMENT_ACTIVITY_ROWS = [
     staffMember: "Larry",
     price: 60,
   },
+  {
+    day: "21",
+    month: "Aug",
+    serviceName: "Beard Trim",
+    status: "BOOKED",
+    dateLabel: "Fri, 21 Aug 2026",
+    startTime: "11:00am",
+    bookingSource: "Walk-in",
+    duration: "30min",
+    staffMember: "Larry",
+    price: 35,
+  },
+  {
+    day: "21",
+    month: "Aug",
+    serviceName: "Buzz Cut",
+    status: "BOOKED",
+    dateLabel: "Fri, 21 Aug 2026",
+    startTime: "12:00pm",
+    bookingSource: "Online Booking",
+    duration: "30min",
+    staffMember: "Larry",
+    price: 40,
+  },
+  {
+    day: "21",
+    month: "Aug",
+    serviceName: "Line Up",
+    status: "CANCELLED",
+    dateLabel: "Fri, 21 Aug 2026",
+    startTime: "1:00pm",
+    bookingSource: "Walk-in",
+    duration: "20min",
+    staffMember: "Larry",
+    price: 25,
+  },
+  {
+    day: "22",
+    month: "Aug",
+    serviceName: "Skin Fade",
+    status: "BOOKED",
+    dateLabel: "Sat, 22 Aug 2026",
+    startTime: "10:00am",
+    bookingSource: "Online Booking",
+    duration: "45min",
+    staffMember: "Larry",
+    price: 60,
+  },
+  {
+    day: "22",
+    month: "Aug",
+    serviceName: "Taper Fade",
+    status: "BOOKED",
+    dateLabel: "Sat, 22 Aug 2026",
+    startTime: "11:30am",
+    bookingSource: "Online Booking",
+    duration: "45min",
+    staffMember: "Larry",
+    price: 55,
+  },
+  {
+    day: "22",
+    month: "Aug",
+    serviceName: "Beard Trim",
+    status: "BOOKED",
+    dateLabel: "Sat, 22 Aug 2026",
+    startTime: "2:00pm",
+    bookingSource: "Walk-in",
+    duration: "30min",
+    staffMember: "Larry",
+    price: 35,
+  },
+  {
+    day: "23",
+    month: "Aug",
+    serviceName: "Zero Fade",
+    status: "BOOKED",
+    dateLabel: "Sun, 23 Aug 2026",
+    startTime: "9:30am",
+    bookingSource: "Online Booking",
+    duration: "45min",
+    staffMember: "Larry",
+    price: 60,
+  },
 ];
 
 const APPOINTMENT_ACTIVITY_CARD = {
   title: "Appointment activity",
   appointments: APPOINTMENT_ACTIVITY_ROWS,
+  viewAllHref: "#",
 };
 
 const APPOINTMENT_ACTIVITY_EMPTY_CARD = {
@@ -207,12 +293,100 @@ const APPOINTMENT_ACTIVITY_EMPTY_CARD = {
   clientLinkHref: "#",
 };
 
+const TOP_SERVICES_ROWS = [
+  {
+    serviceName: "Skin Fade",
+    bookingCount: 309,
+    changePercent: 8,
+    trend: "up",
+    percentage: 32,
+  },
+  {
+    serviceName: "Taper Fade",
+    bookingCount: 276,
+    changePercent: 5,
+    trend: "up",
+    percentage: 28,
+  },
+  {
+    serviceName: "Zero Fade",
+    bookingCount: 198,
+    changePercent: 3,
+    trend: "down",
+    percentage: 20,
+  },
+  {
+    serviceName: "Beard Trim",
+    bookingCount: 154,
+    changePercent: 2,
+    trend: "up",
+    percentage: 16,
+  },
+  {
+    serviceName: "Buzz Cut",
+    bookingCount: 128,
+    changePercent: 1,
+    trend: "up",
+    percentage: 4,
+  },
+  {
+    serviceName: "Line Up",
+    bookingCount: 112,
+    changePercent: 4,
+    trend: "up",
+    percentage: 3,
+  },
+  {
+    serviceName: "Hot Towel Shave",
+    bookingCount: 98,
+    changePercent: 2,
+    trend: "down",
+    percentage: 3,
+  },
+  {
+    serviceName: "Kids Cut",
+    bookingCount: 87,
+    changePercent: 6,
+    trend: "up",
+    percentage: 3,
+  },
+  {
+    serviceName: "Design",
+    bookingCount: 76,
+    changePercent: 1,
+    trend: "up",
+    percentage: 2,
+  },
+  {
+    serviceName: "Colour",
+    bookingCount: 64,
+    changePercent: 3,
+    trend: "down",
+    percentage: 2,
+  },
+  {
+    serviceName: "Wash & Style",
+    bookingCount: 52,
+    changePercent: 2,
+    trend: "up",
+    percentage: 2,
+  },
+];
+
+const TOP_SERVICES_CARD = {
+  title: "Top Services",
+  period: "Last 30 Days",
+  services: TOP_SERVICES_ROWS,
+  viewAllHref: "#",
+};
+
 export function renderCardsPage(page) {
   return `
     ${pageHero(page)}
     ${section("Recent Sales", "", recentSalesCardExample(), "button-example-section card-example-section")}
     ${section("Upcoming Appointments", "", upcomingAppointmentsCardExample(), "button-example-section card-example-section")}
     ${section("Appointment Activity", "", appointmentActivityCardExample(), "button-example-section card-example-section")}
+    ${section("Top Services", "", topServicesCardExample(), "button-example-section card-example-section")}
   `;
 }
 
@@ -262,6 +436,69 @@ function upcomingAppointmentsCardExample() {
   `;
 }
 
+function topServicesCardExample() {
+  return componentExampleWrapper({
+    id: "sessions-top-services-card-example",
+    tocTitle: "Default",
+    preview: renderResponsiveDemo(renderSessionsTopServicesCard(TOP_SERVICES_CARD)),
+    codeId: "sessions-top-services-card-code",
+    filename: "TopServicesCard.tsx",
+    code: sampleTopServicesCardCode(),
+    className: "is-sessions-top-services-card",
+  });
+}
+
+function sampleTopServicesCardCode() {
+  return `import { TopServicesCard } from "@sessions/design-system";
+
+const topServices = {
+  title: "Top Services",
+  period: "Last 30 Days",
+  viewAllHref: "/services",
+  services: [
+    {
+      serviceName: "Skin Fade",
+      bookingCount: 309,
+      changePercent: 8,
+      trend: "up",
+      percentage: 32,
+    },
+    {
+      serviceName: "Taper Fade",
+      bookingCount: 276,
+      changePercent: 5,
+      trend: "up",
+      percentage: 28,
+    },
+    {
+      serviceName: "Zero Fade",
+      bookingCount: 198,
+      changePercent: 3,
+      trend: "down",
+      percentage: 20,
+    },
+    {
+      serviceName: "Beard Trim",
+      bookingCount: 154,
+      changePercent: 2,
+      trend: "up",
+      percentage: 16,
+    },
+    {
+      serviceName: "Buzz Cut",
+      bookingCount: 128,
+      changePercent: 1,
+      trend: "up",
+      percentage: 4,
+    },
+  ],
+};
+
+export function TopServicesCardExample() {
+  return <TopServicesCard {...topServices} />;
+}`;
+}
+
 function appointmentActivityCardExample() {
   return `
     ${componentExampleWrapper({
@@ -290,6 +527,7 @@ function sampleAppointmentActivityCardCode() {
 
 const appointmentActivity = {
   title: "Appointment activity",
+  viewAllHref: "/appointments",
   appointments: [
     {
       day: "20",

@@ -5,36 +5,9 @@ const Y_AXIS_INCREMENT = 60;
 const GRID_WIDTH = 565;
 const GRID_HEIGHT = 210;
 const BAR_WIDTH_RATIO = 0.45;
-let areaGradientId = 0;
-let barGradientId = 0;
-
-function nextAreaGradientId() {
-  areaGradientId += 1;
-  return `sessions-chart-area-fill-${areaGradientId}`;
-}
-
-function nextBarGradientId() {
-  barGradientId += 1;
-  return `sessions-chart-bar-${barGradientId}`;
-}
-
-const BAR_GRADIENT_TOP_OPACITY = 0.6;
-const BAR_GRADIENT_BOTTOM_OPACITY = 1;
-
-function resolveBarFill(color, fallback, gradientId) {
-  if (!color || typeof color === "string") {
-    return {
-      fill: escapeHtml(color ?? fallback),
-      defs: "",
-    };
-  }
-
-  const baseColor = escapeHtml(color.color ?? fallback);
-
-  return {
-    fill: `url(#${gradientId})`,
-    defs: `<linearGradient id="${gradientId}" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${baseColor}" stop-opacity="${BAR_GRADIENT_TOP_OPACITY}" /><stop offset="100%" stop-color="${baseColor}" stop-opacity="${BAR_GRADIENT_BOTTOM_OPACITY}" /></linearGradient>`,
-  };
+function resolveBarFill(color, fallback) {
+  const value = typeof color === "object" && color?.color ? color.color : color;
+  return escapeHtml(value ?? fallback);
 }
 
 function usesFlexXAxis(variant) {
@@ -315,7 +288,6 @@ function renderAreaSeries(item, index, columns, axisMax) {
     y: valueToY(value, axisMax, GRID_HEIGHT),
   }));
   const polyline = points.map((point) => `${point.x},${point.y}`).join(" ");
-  const gradientId = nextAreaGradientId();
   const areaPoints = [
     ...points.map((point) => `${point.x},${point.y}`),
     `${points[points.length - 1].x},${GRID_HEIGHT}`,
@@ -329,13 +301,7 @@ function renderAreaSeries(item, index, columns, axisMax) {
     .join("");
 
   return `<g class="sessions-chart-grid__series sessions-chart-grid__series--area">
-    <defs>
-      <linearGradient id="${gradientId}" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="${color}" stop-opacity="0.35" />
-        <stop offset="100%" stop-color="${color}" stop-opacity="0" />
-      </linearGradient>
-    </defs>
-    <polygon class="sessions-chart-grid__area" points="${areaPoints}" fill="url(#${gradientId})" />
+    <polygon class="sessions-chart-grid__area" points="${areaPoints}" fill="${color}" fill-opacity="0.35" />
     <polyline class="sessions-chart-grid__line" points="${polyline}" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
     ${dots}
   </g>`;
@@ -383,8 +349,8 @@ function renderBarPlot(bars, columns, axisMax, barColors = {}) {
   if (!bars.length) return "";
 
   const barWidth = (GRID_WIDTH / columns) * BAR_WIDTH_RATIO;
-  const baseFill = resolveBarFill(barColors.base, SESSIONS_CHART_COLORS.sales, nextBarGradientId());
-  const stackFill = resolveBarFill(barColors.stack, SESSIONS_CHART_COLORS.stack, nextBarGradientId());
+  const baseFill = resolveBarFill(barColors.base, SESSIONS_CHART_COLORS.sales);
+  const stackFill = resolveBarFill(barColors.stack, SESSIONS_CHART_COLORS.stack);
   const barMarkup = bars
     .map((bar, index) => {
       const base = Number.isFinite(bar?.base) ? bar.base : Number.isFinite(bar?.value) ? bar.value : 0;
@@ -397,20 +363,18 @@ function renderBarPlot(bars, columns, axisMax, barColors = {}) {
       const baseHeight = GRID_HEIGHT - baseY;
       const stackHeight = baseY - totalY;
       const segments = [
-        renderBarSegment(x, baseY, barWidth, baseHeight, baseFill.fill, stack <= 0),
+        renderBarSegment(x, baseY, barWidth, baseHeight, baseFill, stack <= 0),
       ];
 
       if (stack > 0) {
-        segments.push(renderBarSegment(x, totalY, barWidth, stackHeight, stackFill.fill, true));
+        segments.push(renderBarSegment(x, totalY, barWidth, stackHeight, stackFill, true));
       }
 
       return `<g class="sessions-chart-grid__bar-group">${segments.join("")}</g>`;
     })
     .join("");
 
-  const defs = `<defs>${baseFill.defs}${stackFill.defs}</defs>`;
-
-  return `<svg class="sessions-chart-grid__bars" viewBox="0 0 ${GRID_WIDTH} ${GRID_HEIGHT}" preserveAspectRatio="xMidYMax meet" aria-hidden="true">${defs}${barMarkup}</svg>`;
+  return `<svg class="sessions-chart-grid__bars" viewBox="0 0 ${GRID_WIDTH} ${GRID_HEIGHT}" preserveAspectRatio="none" aria-hidden="true">${barMarkup}</svg>`;
 }
 
 function renderSeriesPlot(series, columns, axisMax, variant = "default") {

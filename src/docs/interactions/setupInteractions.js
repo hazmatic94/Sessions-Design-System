@@ -1,3 +1,7 @@
+import {
+  addNavigatorDays,
+  formatNavigatorDate,
+} from '../../components/patterns/navigator.js?v=sessions-navigator-v2';
 import {lucideIcon} from '../../pages/runtimeDocs.js?v=sessions-clean-v1';
 import {updateCustomScrollbars} from '../demo/customScrollbar.js?v=scrollbar-3px-v1';
 import {
@@ -117,6 +121,41 @@ export function setupInteractions() {
       navigateToRoute(docsRouteHref);
       requestAnimationFrame(updateScrollCue);
       return;
+    }
+
+    const navigator = event.target.closest('[data-sessions-navigator]');
+    if (navigator) {
+      const previousControl = event.target.closest('[data-sessions-navigator-previous]');
+      const nextControl = event.target.closest('[data-sessions-navigator-next]');
+      const dateControl = event.target.closest('[data-sessions-navigator-date]');
+      const dateLabel = navigator.querySelector('[data-sessions-navigator-date-label]');
+      const currentValue = navigator.dataset.sessionsNavigatorValue;
+
+      if (previousControl && !previousControl.disabled && currentValue) {
+        event.preventDefault();
+        const nextValue = addNavigatorDays(currentValue, -1);
+        navigator.dataset.sessionsNavigatorValue = nextValue;
+        if (dateLabel) dateLabel.textContent = formatNavigatorDate(nextValue);
+        if (dateControl) {
+          dateControl.setAttribute('aria-label', formatNavigatorDate(nextValue));
+        }
+        return;
+      }
+
+      if (nextControl && !nextControl.disabled && currentValue) {
+        event.preventDefault();
+        const nextValue = addNavigatorDays(currentValue, 1);
+        navigator.dataset.sessionsNavigatorValue = nextValue;
+        if (dateLabel) dateLabel.textContent = formatNavigatorDate(nextValue);
+        if (dateControl) {
+          dateControl.setAttribute('aria-label', formatNavigatorDate(nextValue));
+        }
+        return;
+      }
+
+      if (dateControl) {
+        return;
+      }
     }
 
     const mobileMenuToggle = event.target.closest('[data-mobile-menu-toggle]');

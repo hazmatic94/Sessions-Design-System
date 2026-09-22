@@ -165,6 +165,7 @@
   --docs-content-max-width: 1080px;
   --showroom-shell-max-width: 1488px;
   --docs-content-box-min-width: var(--showroom-shell-max-width);
+  --breakpoint-calendar-header-mobile: 768px;
   --breakpoint-navigation-mobile: 1000px;
   --breakpoint-navigation-desktop: 1300px;
   --breakpoint-game-shell-chrome: 950px;
@@ -238,6 +239,12 @@
   --spacing-88: 88px;
   --sessions-card-max-width: 656px;
   --sessions-metric-card-height: 600px;
+  --sessions-metric-card-padding-inline: var(--spacing-24);
+  --sessions-metric-card-padding-block: var(--spacing-24);
+  --sessions-metric-card-padding-inline-mobile: 20px;
+  --sessions-metric-card-padding-block-mobile: 20px;
+  --sessions-metric-card-section-gap: var(--spacing-32);
+  --sessions-metric-card-summary-gap: var(--spacing-32);
   --game-tile-size: 120px;
   --icon-size-xs: var(--spacing-12);
   --icon-size-sm: var(--spacing-16);
@@ -266,6 +273,8 @@
   );
   --button-secondary-height: calc(var(--spacing-40) + var(--spacing-8));
   --button-primary-radius: 999px;
+  --button-icon-only-radius: calc(var(--button-height) / 2);
+  --button-icon-only-width: calc(var(--button-height) + var(--spacing-12));
   --button-radius: var(--button-primary-radius);
   --button-padding-top: calc(
     var(--border-width-default) + var(--border-width-default)

@@ -1,5 +1,9 @@
 import { componentExampleWrapper, pageHero, section } from "../shell/pageLayout.js?v=sessions-page-h2-v1";
-import { renderPrimaryButton, renderSecondaryButton, renderGhostButton } from "../../components/button/index.js?v=sessions-button-v17";
+import {
+  renderGhostButton,
+  renderPrimaryButton,
+  renderSecondaryButton,
+} from "../../components/button/index.js?v=sessions-button-v18";
 
 export function renderButtonsPage(page) {
   return `
@@ -7,6 +11,8 @@ export function renderButtonsPage(page) {
     ${section('Primary Button', '', primaryButtonExamples(), 'button-example-section card-example-section')}
     ${section('Secondary Button', '', secondaryButtonExamples(), 'button-example-section card-example-section')}
     ${section('Ghost Button', '', ghostButtonExamples(), 'button-example-section card-example-section')}
+    ${section('Primary icon layouts', '', iconLayoutExamples({ variant: 'primary', renderButton: renderPrimaryButton, idPrefix: 'primary-button' }), 'button-example-section card-example-section')}
+    ${section('Secondary icon layouts', '', iconLayoutExamples({ variant: 'secondary', renderButton: renderSecondaryButton, idPrefix: 'secondary-button' }), 'button-example-section card-example-section')}
   `;
 }
 
@@ -174,5 +180,105 @@ function sampleLoadingButtonCode() {
 
 export function PrimaryLoadingButton() {
   return <Button variant="primary" loading>Confirm</Button>;
+}`;
+}
+
+const ICON_LAYOUT_COPY = {
+  primary: {
+    textOnly: "Confirm",
+    iconStart: "Add service",
+    iconEnd: "Next",
+    iconOnlyAriaLabel: "Add service",
+    filenamePrefix: "Primary",
+  },
+  secondary: {
+    textOnly: "Cancel",
+    iconStart: "Add client",
+    iconEnd: "Next",
+    iconOnlyAriaLabel: "Add client",
+    filenamePrefix: "Secondary",
+  },
+};
+
+function iconLayoutExamples({ variant, renderButton, idPrefix }) {
+  const copy = ICON_LAYOUT_COPY[variant];
+
+  return `
+    ${componentExampleWrapper({
+      id: `${idPrefix}-text-only-example`,
+      tocTitle: "Text only",
+      preview: renderButton({ label: copy.textOnly }),
+      codeId: `${idPrefix}-text-only-code`,
+      filename: `${copy.filenamePrefix}Button.tsx`,
+      code: sampleButtonTextOnlyCode(variant, copy.textOnly),
+    })}
+    ${componentExampleWrapper({
+      id: `${idPrefix}-icon-start-example`,
+      tocTitle: "Icon start",
+      preview: renderButton({ label: copy.iconStart, icon: "plus" }),
+      codeId: `${idPrefix}-icon-start-code`,
+      filename: `${copy.filenamePrefix}ButtonIconStart.tsx`,
+      code: sampleButtonIconStartCode(variant, copy.iconStart),
+    })}
+    ${componentExampleWrapper({
+      id: `${idPrefix}-icon-end-example`,
+      tocTitle: "Icon end",
+      preview: renderButton({
+        label: copy.iconEnd,
+        icon: "chevron-right",
+        iconPosition: "end",
+      }),
+      codeId: `${idPrefix}-icon-end-code`,
+      filename: `${copy.filenamePrefix}ButtonIconEnd.tsx`,
+      code: sampleButtonIconEndCode(variant, copy.iconEnd),
+    })}
+    ${componentExampleWrapper({
+      id: `${idPrefix}-icon-only-example`,
+      tocTitle: "Icon only",
+      preview: renderButton({ icon: "plus", ariaLabel: copy.iconOnlyAriaLabel }),
+      codeId: `${idPrefix}-icon-only-code`,
+      filename: `${copy.filenamePrefix}IconButton.tsx`,
+      code: sampleButtonIconOnlyCode(variant, copy.iconOnlyAriaLabel),
+    })}
+  `;
+}
+
+function sampleButtonTextOnlyCode(variant, label) {
+  return `import { Button } from "@sessions/design-system";
+
+export function ${ICON_LAYOUT_COPY[variant].filenamePrefix}Button() {
+  return <Button variant="${variant}">${label}</Button>;
+}`;
+}
+
+function sampleButtonIconStartCode(variant, label) {
+  return `import { Button } from "@sessions/design-system";
+
+export function ${ICON_LAYOUT_COPY[variant].filenamePrefix}ButtonIconStart() {
+  return (
+    <Button variant="${variant}" icon="plus">
+      ${label}
+    </Button>
+  );
+}`;
+}
+
+function sampleButtonIconEndCode(variant, label) {
+  return `import { Button } from "@sessions/design-system";
+
+export function ${ICON_LAYOUT_COPY[variant].filenamePrefix}ButtonIconEnd() {
+  return (
+    <Button variant="${variant}" icon="chevron-right" iconPosition="end">
+      ${label}
+    </Button>
+  );
+}`;
+}
+
+function sampleButtonIconOnlyCode(variant, ariaLabel) {
+  return `import { Button } from "@sessions/design-system";
+
+export function ${ICON_LAYOUT_COPY[variant].filenamePrefix}IconButton() {
+  return <Button variant="${variant}" icon="plus" aria-label="${ariaLabel}" />;
 }`;
 }

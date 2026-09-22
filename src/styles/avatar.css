@@ -1,11 +1,32 @@
 @import "./tokens.css";
 
 :root {
-  --avatar-size: 62px;
+  --avatar-size-sm: 48px;
+  --avatar-size-md: 62px;
+  --avatar-size-lg: 88px;
+  --avatar-size: var(--avatar-size-md);
+  --avatar-initial-size: var(--text-heading-h3);
   --avatar-padding: 2px;
   --avatar-outline-width: var(--border-width-default);
   --avatar-outline-color: var(--green-400);
-  --avatar-fill-color: var(--green-900);
+  --avatar-ring-color: var(--green-900);
+  --avatar-inner-color: var(--black-600);
+  --avatar-fill-color: var(--avatar-inner-color);
+}
+
+.sessions-avatar--sm {
+  --avatar-size: var(--avatar-size-sm);
+  --avatar-initial-size: var(--text-body-b1-medium);
+}
+
+.sessions-avatar--md {
+  --avatar-size: var(--avatar-size-md);
+  --avatar-initial-size: var(--text-heading-h3);
+}
+
+.sessions-avatar--lg {
+  --avatar-size: var(--avatar-size-lg);
+  --avatar-initial-size: var(--text-heading-h2);
 }
 
 .sessions-avatar {
@@ -20,7 +41,7 @@
   padding: var(--avatar-padding);
   border: var(--avatar-outline-width) solid var(--avatar-outline-color);
   border-radius: 50%;
-  background: var(--avatar-fill-color);
+  background: var(--avatar-ring-color);
   color: inherit;
   text-decoration: none;
   cursor: default;
@@ -42,10 +63,10 @@ a.sessions-avatar {
   overflow: hidden;
 }
 
-.sessions-avatar__initial {
-  color: var(--color-text-primary);
+.sessions-avatar--initials .sessions-avatar__initial {
+  color: var(--joker-white-50);
   font-family: var(--font-heading);
-  font-size: var(--text-heading-h3);
+  font-size: var(--avatar-initial-size);
   font-weight: var(--text-heading-weight);
   line-height: 1;
   letter-spacing: var(--text-heading-letter-spacing);
@@ -73,14 +94,6 @@ a.sessions-avatar {
   gap: var(--spacing-24);
 }
 
-.sessions-avatar-preview-row .sessions-avatar {
-  cursor: pointer;
-  transition:
-    background-color var(--button-secondary-hover-duration) var(--button-secondary-hover-ease),
-    border-color var(--button-secondary-hover-duration) var(--button-secondary-hover-ease);
-}
-
-.sessions-avatar-preview-row .sessions-avatar:is(:hover, :focus-visible) {
-  border-color: var(--button-secondary-border-hover);
-  background: var(--button-secondary-bg-hover);
+.sessions-avatar-preview-row--sizes {
+  gap: var(--spacing-40);
 }

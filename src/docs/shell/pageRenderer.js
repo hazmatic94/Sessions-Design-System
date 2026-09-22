@@ -1,7 +1,7 @@
 import {
   hydrateLucideIcons,
   templates,
-} from '../../pages/runtimeDocs.js?v=sessions-appointment-activity-empty-v1';
+} from '../../pages/runtimeDocs.js?v=sessions-staff-header-v1';
 import {slug} from '../../utils.js';
 import {updateCustomScrollbars} from '../demo/customScrollbar.js?v=scrollbar-3px-v1';
 import {hydratePageDemos} from '../hydrators/index.js?v=sessions-responsive-demo-v3';

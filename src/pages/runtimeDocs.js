@@ -1,5 +1,6 @@
-import {renderButtonsPage} from '../docs/pages/buttonsPage.js?v=sessions-page-h2-v1';
-import {renderCardsPage} from '../docs/pages/cardsPage.js?v=sessions-appointment-activity-empty-v1';
+import {renderAvatarPage} from '../docs/pages/avatarPage.js?v=sessions-avatar-sizes-v3';
+import {renderButtonsPage} from '../docs/pages/buttonsPage.js?v=sessions-button-icons-v2';
+import {renderCardsPage} from '../docs/pages/cardsPage.js?v=sessions-list-card-scroll-v1';
 import {renderCoinFlipPage} from '../docs/pages/coinFlipPage.js?v=sessions-pages-v1';
 import {renderGameContainerPage} from '../docs/pages/gameContainerPage.js?v=sessions-pages-v1';
 import {renderRoulettePage} from '../docs/pages/roulettePage.js?v=sessions-pages-v1';
@@ -19,7 +20,10 @@ import {renderAppointmentRowsPatternPage} from '../docs/pages/patterns/appointme
 import {renderChartGridPatternPage} from '../docs/pages/patterns/chartGridPage.js?v=sessions-chart-grid-v40';
 import {renderMetricRowPatternPage} from '../docs/pages/patterns/metricRowPage.js?v=sessions-patterns-v1';
 import {renderMetricValuePatternPage} from '../docs/pages/patterns/metricValuePage.js?v=sessions-patterns-v1';
+import {renderCalendarHeaderRowPatternPage} from '../docs/pages/patterns/calendarHeaderRowPage.js?v=sessions-calendar-header-v2';
+import {renderNavigatorPatternPage} from '../docs/pages/patterns/navigatorPage.js?v=sessions-navigator-v3';
 import {renderPageHeaderPatternPage} from '../docs/pages/patterns/pageHeaderPage.js?v=sessions-patterns-v1';
+import {renderStaffHeaderPatternPage} from '../docs/pages/patterns/staffHeaderPage.js?v=sessions-staff-header-v1';
 import {codePanel, pageHero, section} from '../docs/shell/pageLayout.js?v=sessions-page-h2-v1';
 import {hydrateLucideIcons, lucideIcon} from '../utils/lucideIcon.js?v=nav-outline-v1';
 import {slug} from '../utils.js';
@@ -34,7 +38,9 @@ export const templates = {
   component: page =>
     page.title === 'Buttons'
       ? renderButtonsPage(page)
-      : page.title === 'Inputs'
+      : page.title === 'Avatar'
+        ? renderAvatarPage(page)
+        : page.title === 'Inputs'
         ? renderInputsPage(page)
         : page.title === 'Navigation'
           ? renderNavigationPage(page)
@@ -82,7 +88,13 @@ export const templates = {
               ? renderChartGridPatternPage(page)
               : page.title === 'Appointment Rows'
                 ? renderAppointmentRowsPatternPage(page)
-                : fallbackComponentPage(page),
+                : page.title === 'Navigator'
+                  ? renderNavigatorPatternPage(page)
+                  : page.title === 'Calendar Header Row'
+                    ? renderCalendarHeaderRowPatternPage(page)
+                    : page.title === 'Staff Header'
+                      ? renderStaffHeaderPatternPage(page)
+                      : fallbackComponentPage(page),
 };
 
 function fallbackComponentPage(page) {

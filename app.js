@@ -1,4 +1,4 @@
-import {bootstrapDocsApp} from './src/docs/shell/bootstrap.js?v=sessions-responsive-demo-v3';
+import {bootstrapDocsApp} from './src/docs/shell/bootstrap.js?v=sessions-staff-header-v1';
 
 bootstrapDocsApp().catch(error => {
   console.error(error);

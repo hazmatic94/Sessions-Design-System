@@ -1,5 +1,4 @@
 import {componentExampleWrapper, pageHero, section} from '../shell/pageLayout.js?v=sessions-page-h2-v1';
-import {renderSessionsAvatar} from '../../components/avatar/index.js?v=sessions-avatar-v2';
 import {
   renderMobileMenu,
   renderSessionsLeftRail,
@@ -14,7 +13,6 @@ export function renderNavigationPage(page) {
     ${section('Logo', '', logoExamples(), 'button-example-section navigation-example-section')}
     ${section('Left Nav', '', leftNavExamples(), 'button-example-section navigation-example-section')}
     ${section('Top Nav', '', topNavExamples(), 'button-example-section navigation-example-section')}
-    ${section('Avatar', '', avatarExamples(), 'button-example-section navigation-example-section')}
     ${section('Mobile Menu', '', mobileMenuExamples(), 'button-example-section navigation-example-section')}
   `;
 }
@@ -115,25 +113,6 @@ function topNavExamples() {
   });
 }
 
-function avatarExamples() {
-  return navigationExampleCard({
-    id: 'avatar-example',
-    tocTitle: 'Avatar',
-    preview: `
-      <div class="sessions-avatar-preview-row">
-        ${renderSessionsAvatar({ name: 'Harry' })}
-        ${renderSessionsAvatar({
-          src: '/assets/user.png?v=sessions-avatar-v1',
-          alt: 'Harry',
-        })}
-      </div>
-    `,
-    codeId: 'avatar-code',
-    filename: 'Avatar.tsx',
-    code: sampleAvatarCode(),
-  });
-}
-
 function mobileMenuExamples() {
   return navigationExampleCard({
     id: 'mobile-menu-example',
@@ -194,15 +173,3 @@ export function SessionsMobileMenu() {
 }`;
 }
 
-function sampleAvatarCode() {
-  return `import { Avatar } from "@sessions/design-system";
-
-export function SessionsAvatarExamples() {
-  return (
-    <>
-      <Avatar name="Harry" />
-      <Avatar src="/assets/user.png" alt="Harry" />
-    </>
-  );
-}`;
-}

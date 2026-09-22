@@ -4,11 +4,12 @@ import {
   navGroups,
   patternSummaries,
   resources,
-} from '../../system-data.js?v=sessions-appointment-rows-v1';
+} from '../../system-data.js?v=sessions-staff-header-v1';
 import {flattenNavGroups} from './navModel.js?v=nav-fix-2210';
 
 const routePageTitles = {
   '/components/buttons': 'Buttons',
+  '/components/avatar': 'Avatar',
   '/components/inputs': 'Inputs',
   '/components/navigation': 'Navigation',
   '/components/cards': 'Cards',
@@ -22,6 +23,9 @@ const routePageTitles = {
   '/patterns/legend-item': 'Legend Item',
   '/patterns/chart-grid': 'Chart Grid',
   '/patterns/appointment-rows': 'Appointment Rows',
+  '/patterns/navigator': 'Navigator',
+  '/patterns/calendar-header-row': 'Calendar Header Row',
+  '/patterns/staff-header': 'Staff Header',
 };
 
 const patternRoutes = new Set([
@@ -31,10 +35,14 @@ const patternRoutes = new Set([
   '/patterns/legend-item',
   '/patterns/chart-grid',
   '/patterns/appointment-rows',
+  '/patterns/navigator',
+  '/patterns/calendar-header-row',
+  '/patterns/staff-header',
 ]);
 
 const componentRoutes = new Set([
   '/components/buttons',
+  '/components/avatar',
   '/components/inputs',
   '/components/navigation',
   '/components/cards',
