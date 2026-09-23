@@ -11,16 +11,17 @@ export {
   CALENDAR_HEADER_MOBILE_DATE_SIZING_TEXT,
   formatCalendarHeaderMobileDate,
   renderSessionsCalendarHeaderRow,
-} from "./calendarHeaderRow.js";
+} from "./calendarHeaderRow.js?v=sessions-calendar-header-icons-v1";
 export {
   addNavigatorDays,
+  calendarViewIconSrc,
   formatCalendarViewLabel,
   formatNavigatorDate,
   NAVIGATOR_DATE_LABEL_SIZING_TEXT,
   NAVIGATOR_VIEW_LABEL_SIZING_TEXT,
   renderSessionsCalendarViewNavigator,
   renderSessionsNavigator,
-} from "./navigator.js";
+} from "./navigator.js?v=sessions-calendar-header-icons-v1";
 export { renderSessionsFooter } from "./footer.js";
 export { renderSessionsPageHeader } from "./pageHeader.js";
 export { renderSessionsStaffHeader, setupSessionsStaffHeaders } from "./staffHeader.js";

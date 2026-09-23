@@ -15,6 +15,13 @@ const CALENDAR_VIEW_LABELS = {
   "3day": "3 Day",
 };
 
+const CALENDAR_VIEW_ICONS = {
+  day: "/assets/IconDay.svg",
+  week: "/assets/IconWeek.svg",
+  month: "/assets/IconMonth.svg",
+  "3day": "/assets/Icon3Day.svg",
+};
+
 export function parseNavigatorDate(value = new Date()) {
   if (value instanceof Date) {
     return new Date(value.getFullYear(), value.getMonth(), value.getDate());
@@ -62,6 +69,10 @@ export function formatCalendarViewLabel(view = "day") {
   return CALENDAR_VIEW_LABELS[view] ?? String(view);
 }
 
+export function calendarViewIconSrc(view = "day") {
+  return CALENDAR_VIEW_ICONS[view] ?? CALENDAR_VIEW_ICONS.day;
+}
+
 export function renderSessionsNavigator({
   date = new Date(),
   dateLabel,
@@ -91,5 +102,5 @@ export function renderSessionsCalendarViewNavigator({
     .filter(Boolean)
     .join(" ");
 
-  return `<nav class="${classes}" data-sessions-calendar-view-nav data-sessions-calendar-view-value="${escapeHtml(view)}" aria-label="${escapeHtml(ariaLabel)}"><button class="sessions-navigator__control sessions-navigator__control--reset" type="button" data-sessions-calendar-view-reset aria-label="${escapeHtml(resetLabel)}">${renderNavigatorAssetIcon(REFRESH_ICON)}</button><button class="sessions-navigator__view" type="button" data-sessions-calendar-view-trigger aria-haspopup="menu" aria-expanded="false" aria-label="${escapeHtml(resolvedViewLabel)} view"><span class="sessions-navigator__view-label-wrap"><span class="sessions-navigator__view-sizing" aria-hidden="true">${escapeHtml(NAVIGATOR_VIEW_LABEL_SIZING_TEXT)}</span><span class="sessions-navigator__view-label" data-sessions-calendar-view-label>${escapeHtml(resolvedViewLabel)}</span></span>${renderNavigatorAssetIcon(CHEVRON_DOWN_ICON, "sessions-navigator__icon--chevron")}</button></nav>`;
+  return `<nav class="${classes}" data-sessions-calendar-view-nav data-sessions-calendar-view-value="${escapeHtml(view)}" aria-label="${escapeHtml(ariaLabel)}"><button class="sessions-navigator__control sessions-navigator__control--reset" type="button" data-sessions-calendar-view-reset aria-label="${escapeHtml(resetLabel)}">${renderNavigatorAssetIcon(REFRESH_ICON)}</button><button class="sessions-navigator__view" type="button" data-sessions-calendar-view-trigger aria-haspopup="menu" aria-expanded="false" aria-label="${escapeHtml(resolvedViewLabel)} view">${renderNavigatorAssetIcon(calendarViewIconSrc(view), "sessions-navigator__icon--view")}<span class="sessions-navigator__view-label-wrap"><span class="sessions-navigator__view-sizing" aria-hidden="true">${escapeHtml(NAVIGATOR_VIEW_LABEL_SIZING_TEXT)}</span><span class="sessions-navigator__view-label" data-sessions-calendar-view-label>${escapeHtml(resolvedViewLabel)}</span></span>${renderNavigatorAssetIcon(CHEVRON_DOWN_ICON, "sessions-navigator__icon--chevron")}</button></nav>`;
 }

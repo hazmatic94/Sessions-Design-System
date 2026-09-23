@@ -1,5 +1,5 @@
 import { componentExampleWrapper, pageHero, section } from "../../shell/pageLayout.js?v=sessions-page-h2-v1";
-import { renderSessionsCalendarHeaderRow } from "../../../components/patterns/index.js";
+import { renderSessionsCalendarHeaderRow } from "../../../components/patterns/index.js?v=sessions-calendar-header-icons-v1";
 
 export function renderCalendarHeaderRowPatternPage(page) {
   return `

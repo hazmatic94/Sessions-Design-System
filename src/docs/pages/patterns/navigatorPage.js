@@ -2,7 +2,7 @@ import { componentExampleWrapper, pageHero, section } from "../../shell/pageLayo
 import {
   renderSessionsCalendarViewNavigator,
   renderSessionsNavigator,
-} from "../../../components/patterns/index.js";
+} from "../../../components/patterns/index.js?v=sessions-calendar-header-icons-v1";
 
 export function renderNavigatorPatternPage(page) {
   return `

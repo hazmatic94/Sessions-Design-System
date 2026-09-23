@@ -282,6 +282,10 @@
   text-align: left;
 }
 
+.sessions-calendar-header-row__add-chevron {
+  display: block;
+}
+
 @container calendar-header-row (max-width: 768px) {
   .sessions-calendar-header-row__layout--desktop {
     display: none;

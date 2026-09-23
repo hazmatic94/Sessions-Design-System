@@ -6,11 +6,14 @@ const MENU_ICONS = {
   day: "/assets/IconDay.svg",
   week: "/assets/IconWeek.svg",
   month: "/assets/IconMonth.svg",
+  "3day": "/assets/Icon3Day.svg",
   time: "/assets/IconTime.svg",
   settings: "/assets/IconSettings.svg",
   help: "/assets/IconHelp.svg",
   logout: "/assets/IconLogout.svg",
 };
+
+const MENU_IMG_ICONS = new Set(["logout", "day", "week", "month", "3day"]);
 
 export const MENU_ITEM_STATES = ["default", "hover", "pressed", "selected", "disabled"];
 
@@ -58,7 +61,7 @@ function renderMenuItemIcon(icon) {
     return `<span class="sessions-menu-item__icon sessions-menu-item__icon--svg" aria-hidden="true">${renderCalendarBadgeIcon()}</span>`;
   }
 
-  if (icon === "logout") {
+  if (MENU_IMG_ICONS.has(icon)) {
     return `<span class="sessions-menu-item__icon sessions-menu-item__icon--img" aria-hidden="true"><img src="${iconSrc}" width="24" height="24" alt="" /></span>`;
   }
 

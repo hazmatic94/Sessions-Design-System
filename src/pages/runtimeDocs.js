@@ -20,8 +20,8 @@ import {renderAppointmentRowsPatternPage} from '../docs/pages/patterns/appointme
 import {renderChartGridPatternPage} from '../docs/pages/patterns/chartGridPage.js?v=sessions-chart-grid-v40';
 import {renderMetricRowPatternPage} from '../docs/pages/patterns/metricRowPage.js?v=sessions-patterns-v1';
 import {renderMetricValuePatternPage} from '../docs/pages/patterns/metricValuePage.js?v=sessions-patterns-v1';
-import {renderCalendarHeaderRowPatternPage} from '../docs/pages/patterns/calendarHeaderRowPage.js?v=sessions-calendar-header-v2';
-import {renderNavigatorPatternPage} from '../docs/pages/patterns/navigatorPage.js?v=sessions-navigator-v3';
+import {renderCalendarHeaderRowPatternPage} from '../docs/pages/patterns/calendarHeaderRowPage.js?v=sessions-calendar-header-icons-v1';
+import {renderNavigatorPatternPage} from '../docs/pages/patterns/navigatorPage.js?v=sessions-calendar-header-icons-v1';
 import {renderPageHeaderPatternPage} from '../docs/pages/patterns/pageHeaderPage.js?v=sessions-patterns-v1';
 import {renderStaffHeaderPatternPage} from '../docs/pages/patterns/staffHeaderPage.js?v=sessions-staff-header-v3';
 import {renderHourBlockPatternPage} from '../docs/pages/patterns/hourBlockPage.js?v=sessions-hour-calendar-v5';

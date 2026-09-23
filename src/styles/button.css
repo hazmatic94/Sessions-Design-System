@@ -174,3 +174,14 @@
   -webkit-mask-size: contain;
   mask-size: contain;
 }
+
+.sessions-button__icon--img {
+  background-color: transparent;
+  -webkit-mask-image: none;
+  mask-image: none;
+  object-fit: contain;
+}
+
+.sessions-button--icon-start.sessions-button--icon-end {
+  padding-inline: var(--button-padding-inline-small);
+}
