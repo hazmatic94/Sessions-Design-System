@@ -90,6 +90,7 @@
   margin: 0;
   padding: var(--spacing-4) 0 0;
   border: 0;
+  border-right: var(--border-width-default) solid var(--color-border-subtle);
   border-bottom: var(--border-width-default) solid var(--color-border-subtle);
   background: transparent;
   color: var(--joker-white-50);
