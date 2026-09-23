@@ -390,7 +390,7 @@ function renderSeriesPlot(series, columns, axisMax, variant = "default") {
 
   if (!lines) return "";
 
-  return `<svg class="sessions-chart-grid__lines" viewBox="${resolvePlotViewBox()}" aria-hidden="true">${lines}</svg>`;
+  return `<svg class="sessions-chart-grid__lines" viewBox="${resolvePlotViewBox()}" preserveAspectRatio="none" aria-hidden="true">${lines}</svg>`;
 }
 
 function resolveWrapClass(variant) {

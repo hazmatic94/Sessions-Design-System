@@ -79,14 +79,14 @@
   border-radius: var(--radius-sm);
 }
 
-.sessions-hour-block {
+.sessions-hour-label {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   justify-content: flex-start;
   width: 80px;
-  height: 140px;
+  height: var(--sessions-hour-column-height);
   margin: 0;
   padding: var(--spacing-4) 0 0;
   border: 0;
@@ -98,7 +98,7 @@
   appearance: none;
 }
 
-.sessions-hour-block__time {
+.sessions-hour-label__time {
   color: var(--joker-white-50);
   font-size: var(--text-body-b1);
   font-weight: 700;
@@ -108,7 +108,7 @@
   white-space: nowrap;
 }
 
-.sessions-hour-block__period {
+.sessions-hour-label__period {
   color: var(--joker-white-50);
   font-size: var(--text-body-b1);
   font-weight: var(--text-body-b1-weight);
@@ -117,9 +117,111 @@
   white-space: nowrap;
 }
 
-.sessions-hour-block:focus-visible {
+.sessions-hour-label:focus-visible {
   outline: 2px solid var(--color-border-focus);
   outline-offset: 2px;
+}
+
+.sessions-hour-column {
+  --sessions-hour-column-height: 140px;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 220px;
+  height: var(--sessions-hour-column-height);
+  border-bottom: var(--border-width-default) solid var(--color-border-subtle);
+}
+
+.sessions-hour-column__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  width: 100%;
+  height: 100%;
+}
+
+.sessions-hour-column__slot {
+  grid-column: 1;
+  border-bottom: var(--border-width-default) solid var(--color-border-subtle);
+  background-color: transparent;
+}
+
+.sessions-hour-column__slot--outside-hours {
+  background-color: var(--color-surface-elevated);
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent,
+    transparent 7px,
+    color-mix(in srgb, var(--color-border-subtle) 42%, transparent) 7px,
+    color-mix(in srgb, var(--color-border-subtle) 42%, transparent) 8px
+  );
+}
+
+.sessions-hour-column__slot:nth-child(4) {
+  border-bottom: 0;
+}
+
+.sessions-hour-column__booking {
+  z-index: 1;
+  display: flex;
+  grid-column: 1;
+  align-items: stretch;
+  min-height: 0;
+  padding: var(--spacing-4);
+}
+
+.sessions-hour-booking {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  min-width: 0;
+  min-height: 0;
+  padding: var(--spacing-4) var(--spacing-8);
+  border: var(--border-width-default) solid var(--green-300);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--green-300) 14%, var(--black-900));
+  color: var(--joker-white-50);
+}
+
+.sessions-hour-booking__summary,
+.sessions-hour-booking__service-type {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-family: var(--font);
+  font-size: var(--text-body-14);
+  font-weight: var(--text-body-weight);
+  line-height: var(--text-body-line-height);
+  letter-spacing: var(--text-body-letter-spacing);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sessions-hour-booking__summary {
+  display: flex;
+  gap: var(--spacing-4);
+  min-width: 0;
+}
+
+.sessions-hour-booking__time {
+  flex: 0 0 auto;
+}
+
+.sessions-hour-booking__customer {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  font-weight: var(--text-body-b1-medium-weight);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sessions-hour-column-preview {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr);
+  width: min(100%, 420px);
+  max-width: 420px;
 }
 
 .sessions-calendar-header-row {
@@ -225,6 +327,29 @@
   letter-spacing: var(--text-body-b1-letter-spacing);
 }
 
+.sessions-footer {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+  min-height: 40px;
+  border-top: var(--border-width-default) solid var(--color-border-subtle);
+  background: var(--color-surface-base);
+  color: var(--black-100);
+}
+
+.sessions-footer__text {
+  margin: 0;
+  font-family: var(--font);
+  font-size: var(--text-body-b1);
+  font-weight: var(--text-body-b1-weight);
+  line-height: var(--text-body-b1-line-height);
+  letter-spacing: var(--text-body-b1-letter-spacing);
+  text-align: center;
+}
+
 .sessions-metric-value {
   display: grid;
   gap: var(--spacing-4);
@@ -323,7 +448,7 @@
 }
 
 .sessions-chart-grid-wrap {
-  --sessions-chart-grid-aspect-ratio: 565 / 210;
+  --sessions-chart-grid-height: 210px;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   grid-template-rows: auto auto auto;
@@ -566,10 +691,12 @@
   display: grid;
   grid-column: 2;
   grid-row: 1;
+  align-self: start;
+  justify-self: stretch;
   width: 100%;
   min-width: 0;
-  height: auto;
-  aspect-ratio: var(--sessions-chart-grid-aspect-ratio);
+  height: var(--sessions-chart-grid-height);
+  aspect-ratio: auto;
   grid-template-columns: repeat(var(--sessions-chart-grid-columns, 7), 1fr);
   grid-template-rows: repeat(var(--sessions-chart-grid-rows, 4), 1fr);
   overflow: visible;
@@ -636,11 +763,6 @@
   grid-column: 1;
 }
 
-.sessions-responsive-demo__viewport--mobile .sessions-chart-grid {
-  aspect-ratio: auto;
-  height: var(--sessions-chart-grid-sync-height, auto);
-}
-
 .sessions-appointment-row-list {
   display: grid;
   gap: var(--spacing-8);
@@ -648,12 +770,13 @@
 }
 
 .sessions-appointment-row {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--spacing-24);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: var(--spacing-24);
+  align-items: start;
   box-sizing: border-box;
   width: 100%;
-  padding-block: 20px;
+  padding-block: var(--spacing-16);
   padding-inline: var(--spacing-24);
   border-bottom: var(--border-width-default) solid var(--color-border-default);
   border-radius: var(--radius-sm);
@@ -668,7 +791,9 @@
 
 .sessions-appointment-row__date {
   display: grid;
-  flex-shrink: 0;
+  grid-column: 1;
+  grid-row: 1 / -1;
+  align-self: start;
   justify-items: center;
   gap: 0;
   width: fit-content;
@@ -693,33 +818,34 @@
 }
 
 .sessions-appointment-row__content {
+  display: grid;
+  gap: var(--spacing-4);
+  min-width: 0;
+}
+
+.sessions-appointment-row__service-row {
   display: flex;
-  flex: 1;
-  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
   gap: var(--spacing-8);
   min-width: 0;
 }
 
-.sessions-appointment-row__header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--spacing-16);
-}
-
 .sessions-appointment-row__service {
   margin: 0;
+  min-width: 0;
   color: var(--joker-white-50);
   font-family: var(--font);
-  font-size: var(--text-body-big-medium);
-  font-weight: var(--text-body-big-medium-weight);
+  font-size: var(--text-body-b1-medium);
+  font-weight: var(--text-body-b1-medium-weight);
   line-height: var(--text-body-b1-line-height);
-  letter-spacing: var(--text-body-big-letter-spacing);
+  letter-spacing: var(--text-body-b1-letter-spacing);
 }
 
 .sessions-appointment-row__datetime {
   margin: 0;
-  color: var(--joker-white-50);
+  color: var(--black-50);
   font-family: var(--font);
   font-size: var(--text-body-b1);
   font-weight: var(--text-body-b1-weight);
@@ -737,16 +863,22 @@
   letter-spacing: var(--text-body-b1-letter-spacing);
 }
 
-.sessions-appointment-row__price {
-  flex-shrink: 0;
-  margin-left: auto;
-  color: var(--joker-white-50);
-  font-family: var(--font);
-  font-size: var(--text-body-big-medium);
-  font-weight: var(--text-body-big-medium-weight);
-  line-height: var(--text-body-b1-line-height);
-  letter-spacing: var(--text-body-big-letter-spacing);
-  white-space: nowrap;
+.sessions-responsive-demo__viewport--mobile .sessions-appointment-row__date {
+  display: none;
+}
+
+.sessions-responsive-demo__viewport--mobile .sessions-appointment-row {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (max-width: 768px) {
+  .sessions-appointment-row__date {
+    display: none;
+  }
+
+  .sessions-appointment-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .sessions-top-service-row-list {

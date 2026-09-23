@@ -3,16 +3,15 @@ import { renderResponsiveDemo } from "../../demo/responsiveDemo.js?v=sessions-re
 import { renderSessionsAppointmentRow } from "../../../components/patterns/index.js?v=sessions-appointment-row-v2";
 
 const sampleAppointment = {
-  day: "20",
-  month: "Aug",
-  serviceName: "Skin Fade",
-  status: "BOOKED",
-  dateLabel: "Thu, 20 Aug 2026",
-  startTime: "2:45pm",
-  bookingSource: "Online Booking",
-  duration: "45min",
-  staffMember: "Larry",
-  price: "$60",
+  day: "23",
+  month: "Sep",
+  serviceName: "Zero Fade",
+  status: "Booked",
+  dateLabel: "Wed, 23 Sep 2026",
+  startTime: "5:45pm",
+  bookingSource: "Walk-In",
+  duration: "1h 30min",
+  staffMember: "Trend",
 };
 
 export function renderAppointmentRowsPatternPage(page) {
@@ -42,16 +41,15 @@ function sampleAppointmentRowCode() {
   return `import { AppointmentRow } from "@sessions/design-system";
 
 const appointment = {
-  day: "20",
-  month: "Aug",
-  serviceName: "Skin Fade",
-  status: "BOOKED",
-  dateLabel: "Thu, 20 Aug 2026",
-  startTime: "2:45pm",
-  bookingSource: "Online Booking",
-  duration: "45min",
-  staffMember: "Larry",
-  price: "$60",
+  day: "23",
+  month: "Sep",
+  serviceName: "Zero Fade",
+  status: "Booked",
+  dateLabel: "Wed, 23 Sep 2026",
+  startTime: "5:45pm",
+  bookingSource: "Walk-In",
+  duration: "1h 30min",
+  staffMember: "Trend",
 };
 
 export function AppointmentRowExample() {

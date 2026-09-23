@@ -47,6 +47,7 @@ export const navGroups = [
       {label: 'Calendar Header Row', route: '/patterns/calendar-header-row'},
       {label: 'Staff Header', route: '/patterns/staff-header'},
       {label: 'Hour Block', route: '/patterns/hour-block'},
+      {label: 'Footer', route: '/patterns/footer'},
     ],
   },
 ];
@@ -525,7 +526,9 @@ export const patternSummaries = {
   'Staff Header':
     'Centered staff profile header with avatar, name, and menu trigger for barber context.',
   'Hour Block':
-    'A 80 by 140 hour label for calendar columns, with stacked time and meridiem.',
+    'Calendar hour label, booking pill, and four-slot hour column for quarter-hour scheduling.',
+  Footer:
+    'A fixed-height app footer with copyright text for page shells and layouts.',
 };
 
 export const componentSummaries = {

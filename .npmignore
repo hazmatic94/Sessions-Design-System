@@ -1,0 +1,9 @@
+src/docs/
+src/pages/
+src/data/
+src/system-data.js
+app.js
+index.html
+serve-dev.py
+.git/
+.cursor/

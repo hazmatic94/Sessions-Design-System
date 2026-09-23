@@ -15,40 +15,59 @@ export function renderInstallationPage(page) {
     </section>
     <div class="installation-page">
     ${section(
-      'Run The Docs Site',
+      'Install In Another Repo',
       '',
       `
-      <p class="section-support-copy">From the repo root, serve the site with the local no-cache server.</p>
-      ${codePanel('install-package-code', 'terminal', 'python3 serve-dev.py 4173')}
+      <p class="section-support-copy">Link the package from a local path, then copy assets into your app.</p>
+      ${codePanel(
+        'install-package-code',
+        'terminal',
+        `npm install ../Sessions-Design-System
+
+# copy icons, fonts, and images into your app public folder
+cp -R node_modules/@sessions/design-system/assets ./public/assets`,
+      )}
     `,
     )}
     ${section(
-      'Where New Components Live',
+      'Import Styles + Components',
       '',
       `
-      <p class="section-support-copy">Add source under <code>src/components</code>, then register a docs page so it shows up in the sidebar.</p>
+      <p class="section-support-copy">Load the CSS bundle once, then import whatever you need from the package entry.</p>
       ${codePanel(
-        'add-component-code',
-        'src/docs/pages',
-        `// 1. Create src/components/YourComponent/
-// 2. Add a docs page in src/docs/pages/
-// 3. Register the route in src/system-data.js
+        'use-package-code',
+        'app.js',
+        `import "@sessions/design-system/styles";
+import {
+  renderSessionsButton,
+  renderSessionsHourColumn,
+} from "@sessions/design-system";
 
-{
-  title: 'Components',
-  items: [
-    {label: 'Overview', route: '/components'},
-    {label: 'Your Component', route: '/components/your-component'},
-  ],
-}`,
+document.querySelector("#slot").innerHTML = renderSessionsHourColumn({
+  hour: 11,
+  bookings: [{
+    startMinute: 0,
+    span: 3,
+    customerName: "Jack Doe",
+    serviceType: "Skin Fade",
+  }],
+});`,
       )}
+    `,
+    )}
+    ${section(
+      'Run The Docs Site',
+      '',
+      `
+      <p class="section-support-copy">From this repo root, serve the docs with the local no-cache server.</p>
+      ${codePanel('install-docs-code', 'terminal', 'npm run dev')}
     `,
     )}
     ${section(
       'Use Design Tokens',
       '',
       `
-      <p class="section-support-copy">Foundations already ship as CSS custom properties from <code>src/styles/tokens.css</code>. Use them in new component CSS.</p>
+      <p class="section-support-copy">Tokens ship as CSS custom properties from <code>tokens.css</code> (included in the styles bundle).</p>
       ${codePanel(
         'use-tokens-code',
         'card.css',

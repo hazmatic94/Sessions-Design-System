@@ -1,1 +1,1 @@
-export { renderSessionsAvatar } from "./avatar.js?v=sessions-avatar-v5";
+export { renderSessionsAvatar } from "./avatar.js";

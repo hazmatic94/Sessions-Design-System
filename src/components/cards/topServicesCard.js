@@ -6,12 +6,13 @@ import {
 
 export function renderSessionsTopServicesCard({
   title = "Top Services",
-  period = "Last 30 Days",
+  period = "Last 30 days",
   services = [],
   collapsedCount = 10,
   mobileCollapsedCount = 5,
   viewAllHref = "#",
   viewAllLabel = "View all",
+  showViewAll = true,
   className = "",
 } = {}) {
   const hasDesktopTruncate = services.length > collapsedCount;
@@ -27,7 +28,7 @@ export function renderSessionsTopServicesCard({
     .filter(Boolean)
     .join(" ");
   const viewAllFooter =
-    hasDesktopTruncate || hasMobileTruncate
+    showViewAll && (hasDesktopTruncate || hasMobileTruncate)
       ? renderMetricCardViewAllFooter({ viewAllHref, viewAllLabel })
       : "";
 

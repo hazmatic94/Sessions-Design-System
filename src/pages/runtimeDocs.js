@@ -24,8 +24,9 @@ import {renderCalendarHeaderRowPatternPage} from '../docs/pages/patterns/calenda
 import {renderNavigatorPatternPage} from '../docs/pages/patterns/navigatorPage.js?v=sessions-navigator-v3';
 import {renderPageHeaderPatternPage} from '../docs/pages/patterns/pageHeaderPage.js?v=sessions-patterns-v1';
 import {renderStaffHeaderPatternPage} from '../docs/pages/patterns/staffHeaderPage.js?v=sessions-staff-header-v3';
-import {renderHourBlockPatternPage} from '../docs/pages/patterns/hourBlockPage.js?v=sessions-hour-block-v1';
-import {codePanel, pageHero, section} from '../docs/shell/pageLayout.js?v=sessions-page-h2-v1';
+import {renderHourBlockPatternPage} from '../docs/pages/patterns/hourBlockPage.js?v=sessions-hour-calendar-v5';
+import {renderFooterPatternPage} from '../docs/pages/patterns/footerPage.js?v=sessions-footer-v1';
+import {codePanel, pageHero, section} from '../docs/shell/pageLayout.js?v=sessions-footer-v1';
 import {hydrateLucideIcons, lucideIcon} from '../utils/lucideIcon.js?v=nav-outline-v1';
 import {slug} from '../utils.js';
 
@@ -97,7 +98,9 @@ export const templates = {
                       ? renderStaffHeaderPatternPage(page)
                       : page.title === 'Hour Block'
                         ? renderHourBlockPatternPage(page)
-                        : fallbackComponentPage(page),
+                        : page.title === 'Footer'
+                          ? renderFooterPatternPage(page)
+                          : fallbackComponentPage(page),
 };
 
 function fallbackComponentPage(page) {

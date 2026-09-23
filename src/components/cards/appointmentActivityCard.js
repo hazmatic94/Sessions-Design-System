@@ -23,11 +23,13 @@ function renderEmptyState({
 
 export function renderSessionsAppointmentActivityCard({
   title = "Appointment activity",
+  period = "",
   appointments = [],
   collapsedCount = 10,
   mobileCollapsedCount = 5,
   viewAllHref = "#",
   viewAllLabel = "View all",
+  showViewAll = true,
   emptyTitle = "You don't have any activity",
   clientLinkHref = "#",
   clientLinkLabel = "client",
@@ -47,7 +49,7 @@ export function renderSessionsAppointmentActivityCard({
     .filter(Boolean)
     .join(" ");
   const viewAllFooter =
-    hasDesktopTruncate || hasMobileTruncate
+    showViewAll && (hasDesktopTruncate || hasMobileTruncate)
       ? renderMetricCardViewAllFooter({ viewAllHref, viewAllLabel })
       : "";
   const body = isEmpty
@@ -56,7 +58,7 @@ export function renderSessionsAppointmentActivityCard({
 
   return `<article class="${classes}">
     <div class="sessions-metric-card__header">
-      ${renderSessionsPageHeader({ title })}
+      ${renderSessionsPageHeader({ title, body: period })}
     </div>
     ${body}
   </article>`;

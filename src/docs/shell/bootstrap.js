@@ -5,9 +5,8 @@ import {setupInteractions} from '../interactions/setupInteractions.js?v=sessions
 import {setupSessionsCalendars} from '../../components/calendar/interactions.js';
 import {setupSessionsMenuItems} from '../../components/menu/interactions.js';
 import {setupSessionsStaffHeaders} from '../../components/patterns/staffHeader.js?v=sessions-staff-header-v3';
-import {setupSessionsHourBlocks} from '../../components/patterns/hourBlock.js?v=sessions-hour-block-v1';
 import {renderNav} from './nav.js?v=sessions-hour-block-v1';
-import {renderPage} from './pageRenderer.js?v=sessions-hour-block-v1';
+import {renderPage} from './pageRenderer.js?v=sessions-hour-calendar-v5';
 import {pageRegistry} from './registry.js?v=sessions-hour-block-v1';
 import {resolveCurrentRoute} from './routes.js?v=sessions-hour-block-v1';
 import {state} from './state.js?v=docs-routing-v1';
@@ -27,6 +26,5 @@ export async function bootstrapDocsApp() {
   setupSessionsCalendars();
   setupSessionsMenuItems();
   setupSessionsStaffHeaders();
-  setupSessionsHourBlocks();
   setupCustomScrollbars();
 }

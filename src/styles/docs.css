@@ -2325,6 +2325,7 @@ pre {
 .content[data-page="avatar"] .page-hero,
 .content[data-page="staff-header"] .page-hero,
 .content[data-page="hour-block"] .page-hero,
+.content[data-page="footer"] .page-hero,
 .content[data-page="calendar-header-row"] .page-hero,
 .content[data-page="metric-value"] .page-hero,
 .content[data-page="metric-row"] .page-hero,
@@ -2337,6 +2338,7 @@ pre {
 .content[data-page="avatar"] .section-heading,
 .content[data-page="staff-header"] .section-heading,
 .content[data-page="hour-block"] .section-heading,
+.content[data-page="footer"] .section-heading,
 .content[data-page="calendar-header-row"] .section-heading,
 .content[data-page="metric-value"] .section-heading,
 .content[data-page="metric-row"] .section-heading,
@@ -4042,13 +4044,27 @@ then uniform zoom on the set below */
   max-width: none;
   align-items: stretch;
   justify-content: stretch;
-}.content[data-page="hour-block"] .card-example.is-sessions-hour-block,
-.content[data-page="hour-block"] .component-example-wrapper.is-sessions-hour-block.button-example.card-example {
+}.content[data-page="hour-block"] .card-example.is-sessions-hour-label,
+.content[data-page="hour-block"] .card-example.is-sessions-hour-booking,
+.content[data-page="hour-block"] .card-example.is-sessions-hour-column,
+.content[data-page="hour-block"] .component-example-wrapper.is-sessions-hour-label.button-example.card-example,
+.content[data-page="hour-block"] .component-example-wrapper.is-sessions-hour-booking.button-example.card-example,
+.content[data-page="hour-block"] .component-example-wrapper.is-sessions-hour-column.button-example.card-example,
+.content[data-page="hour-block"] .component-example-wrapper.is-sessions-hour-column-booked.button-example.card-example {
   --example-stage-height: 220px;
   height: calc(var(--example-stage-height) + var(--example-code-collapsed-height));
-}.content[data-page="hour-block"] .card-example.is-sessions-hour-block .component-example-wrapper__stage,
-.content[data-page="hour-block"] .card-example.is-sessions-hour-block .button-example-stage,
-.content[data-page="hour-block"] .card-example.is-sessions-hour-block .card-example-stage {
+}.content[data-page="hour-block"] .card-example.is-sessions-hour-label .component-example-wrapper__stage,
+.content[data-page="hour-block"] .card-example.is-sessions-hour-booking .component-example-wrapper__stage,
+.content[data-page="hour-block"] .card-example.is-sessions-hour-column .component-example-wrapper__stage,
+.content[data-page="hour-block"] .card-example.is-sessions-hour-column-booked .component-example-wrapper__stage,
+.content[data-page="hour-block"] .card-example.is-sessions-hour-label .button-example-stage,
+.content[data-page="hour-block"] .card-example.is-sessions-hour-booking .button-example-stage,
+.content[data-page="hour-block"] .card-example.is-sessions-hour-column .button-example-stage,
+.content[data-page="hour-block"] .card-example.is-sessions-hour-column-booked .button-example-stage,
+.content[data-page="hour-block"] .card-example.is-sessions-hour-label .card-example-stage,
+.content[data-page="hour-block"] .card-example.is-sessions-hour-booking .card-example-stage,
+.content[data-page="hour-block"] .card-example.is-sessions-hour-column .card-example-stage,
+.content[data-page="hour-block"] .card-example.is-sessions-hour-column-booked .card-example-stage {
   align-items: center;
   justify-content: center;
   flex: 0 0 var(--example-stage-height);
@@ -4057,13 +4073,45 @@ then uniform zoom on the set below */
   max-height: var(--example-stage-height);
   overflow: visible;
   padding: 0;
-}.content[data-page="hour-block"] .card-example.is-sessions-hour-block .component-example-wrapper__preview,
-.content[data-page="hour-block"] .card-example.is-sessions-hour-block .card-example-preview {
+}.content[data-page="hour-block"] .card-example.is-sessions-hour-label .component-example-wrapper__preview,
+.content[data-page="hour-block"] .card-example.is-sessions-hour-booking .component-example-wrapper__preview,
+.content[data-page="hour-block"] .card-example.is-sessions-hour-column .component-example-wrapper__preview,
+.content[data-page="hour-block"] .card-example.is-sessions-hour-column-booked .component-example-wrapper__preview,
+.content[data-page="hour-block"] .card-example.is-sessions-hour-label .card-example-preview,
+.content[data-page="hour-block"] .card-example.is-sessions-hour-booking .card-example-preview,
+.content[data-page="hour-block"] .card-example.is-sessions-hour-column .card-example-preview,
+.content[data-page="hour-block"] .card-example.is-sessions-hour-column-booked .card-example-preview {
   display: flex;
   width: auto;
   max-width: none;
   align-items: center;
   justify-content: center;
+}.content[data-page="hour-block"] .card-example.is-sessions-hour-column .component-example-wrapper__preview,
+.content[data-page="hour-block"] .card-example.is-sessions-hour-column .card-example-preview {
+  width: min(100%, 420px);
+  max-width: 420px;
+}.content[data-page="footer"] .card-example.is-sessions-footer,
+.content[data-page="footer"] .component-example-wrapper.is-sessions-footer.button-example.card-example {
+  --example-stage-height: 120px;
+  height: calc(var(--example-stage-height) + var(--example-code-collapsed-height));
+}.content[data-page="footer"] .card-example.is-sessions-footer .component-example-wrapper__stage,
+.content[data-page="footer"] .card-example.is-sessions-footer .button-example-stage,
+.content[data-page="footer"] .card-example.is-sessions-footer .card-example-stage {
+  align-items: flex-end;
+  justify-content: stretch;
+  flex: 0 0 var(--example-stage-height);
+  height: var(--example-stage-height);
+  min-height: var(--example-stage-height);
+  max-height: var(--example-stage-height);
+  overflow: visible;
+  padding: 0;
+}.content[data-page="footer"] .card-example.is-sessions-footer .component-example-wrapper__preview,
+.content[data-page="footer"] .card-example.is-sessions-footer .card-example-preview {
+  display: flex;
+  width: 100%;
+  max-width: none;
+  align-items: flex-end;
+  justify-content: stretch;
 }.content[data-page="calendar-header-row"] .card-example.is-sessions-calendar-header-row,
 .content[data-page="calendar-header-row"] .component-example-wrapper.is-sessions-calendar-header-row.button-example.card-example {
   --example-stage-height: 140px;

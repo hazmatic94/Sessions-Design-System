@@ -375,7 +375,7 @@ const TOP_SERVICES_ROWS = [
 
 const TOP_SERVICES_CARD = {
   title: "Top Services",
-  period: "Last 30 Days",
+  period: "Last 30 days",
   services: TOP_SERVICES_ROWS,
   viewAllHref: "#",
 };
@@ -453,7 +453,7 @@ function sampleTopServicesCardCode() {
 
 const topServices = {
   title: "Top Services",
-  period: "Last 30 Days",
+  period: "Last 30 days",
   viewAllHref: "/services",
   services: [
     {

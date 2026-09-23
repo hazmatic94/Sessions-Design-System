@@ -1,4 +1,4 @@
-import {bootstrapDocsApp} from './src/docs/shell/bootstrap.js?v=sessions-hour-block-v1';
+import {bootstrapDocsApp} from './src/docs/shell/bootstrap.js?v=sessions-hour-calendar-v5';
 
 bootstrapDocsApp().catch(error => {
   console.error(error);

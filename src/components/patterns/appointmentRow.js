@@ -4,29 +4,7 @@ import { escapeHtml } from "../../utils.js";
 function formatDateTime(dateLabel, startTime) {
   if (!dateLabel) return startTime || "";
   if (!startTime) return dateLabel;
-  return `${dateLabel}  ${startTime}`;
-}
-
-function formatAppointmentPrice(price, currency = "USD") {
-  if (price === "" || price == null) return "";
-
-  const amount =
-    typeof price === "number"
-      ? price
-      : Number.parseFloat(String(price).replace(/[^\d.-]/g, ""));
-
-  if (Number.isNaN(amount)) {
-    return String(price).replace(/^A\$\s*/i, "$");
-  }
-
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency,
-    currencyDisplay: "narrowSymbol",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 2,
-    useGrouping: false,
-  }).format(amount);
+  return `${dateLabel} ${startTime}`;
 }
 
 function formatMetadata(bookingSource, duration, staffMember) {
@@ -48,7 +26,7 @@ function renderDateBlock({ day, month }) {
 function renderContent({ serviceName, status, dateTime, metadata }) {
   return `
     <div class="sessions-appointment-row__content">
-      <div class="sessions-appointment-row__header">
+      <div class="sessions-appointment-row__service-row">
         <h3 class="sessions-appointment-row__service">${escapeHtml(serviceName)}</h3>
         ${renderSessionsChip({
           label: status,
@@ -66,22 +44,16 @@ function renderContent({ serviceName, status, dateTime, metadata }) {
   `;
 }
 
-function renderPrice(price) {
-  return `<div class="sessions-appointment-row__price">${escapeHtml(price)}</div>`;
-}
-
 export function renderSessionsAppointmentRow({
   day = "1",
   month = "Jan",
-  serviceName = "Service",
+  serviceName = "Zero Fade",
   status = "Booked",
   dateLabel = "",
   startTime = "",
   bookingSource = "",
   duration = "",
   staffMember = "",
-  price = "",
-  currency = "USD",
   className = "",
 } = {}) {
   const classes = ["sessions-appointment-row", className].filter(Boolean).join(" ");
@@ -91,8 +63,12 @@ export function renderSessionsAppointmentRow({
   return `
     <article class="${classes}">
       ${renderDateBlock({ day, month })}
-      ${renderContent({ serviceName, status, dateTime, metadata })}
-      ${renderPrice(formatAppointmentPrice(price, currency))}
+      ${renderContent({
+        serviceName,
+        status,
+        dateTime,
+        metadata,
+      })}
     </article>
   `;
 }

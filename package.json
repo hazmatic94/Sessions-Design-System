@@ -1,9 +1,27 @@
 {
   "name": "@sessions/design-system",
   "version": "0.1.0",
-  "private": true,
+  "description": "Sessions design system — vanilla JS components, tokens, and styles.",
   "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./styles": "./src/styles/sessions.css",
+    "./styles/*": "./src/styles/*",
+    "./assets/*": "./assets/*"
+  },
+  "files": [
+    "src/index.js",
+    "src/assetBase.js",
+    "src/utils.js",
+    "src/components",
+    "src/styles",
+    "assets",
+    "README.md"
+  ],
   "scripts": {
-    "dev": "python3 serve-dev.py 4173"
+    "dev": "python3 serve-dev.py 4173",
+    "verify": "node scripts/verify-package.mjs",
+    "pack:check": "npm pack --dry-run"
   }
 }
