@@ -802,19 +802,19 @@
 .sessions-appointment-row__day {
   color: var(--joker-white-50);
   font-family: var(--font);
-  font-size: var(--text-body-big-medium);
-  font-weight: var(--text-body-big-medium-weight);
+  font-size: var(--text-body-b1-medium);
+  font-weight: var(--text-body-b1-medium-weight);
   line-height: var(--text-body-b1-line-height);
-  letter-spacing: var(--text-body-big-letter-spacing);
+  letter-spacing: var(--text-body-b1-letter-spacing);
 }
 
 .sessions-appointment-row__month {
   color: var(--joker-white-50);
   font-family: var(--font);
-  font-size: var(--text-body-b1);
-  font-weight: var(--text-body-b1-weight);
-  line-height: var(--text-body-b1-line-height);
-  letter-spacing: var(--text-body-b1-letter-spacing);
+  font-size: var(--text-body-14);
+  font-weight: var(--text-body-weight);
+  line-height: var(--text-body-line-height);
+  letter-spacing: var(--text-body-letter-spacing);
 }
 
 .sessions-appointment-row__content {
@@ -911,17 +911,17 @@
   min-width: 24px;
   color: var(--joker-white-50);
   font-family: var(--font);
-  font-size: var(--text-body-big-medium);
-  font-weight: var(--text-body-big-medium-weight);
+  font-size: var(--text-body-b1-medium);
+  font-weight: var(--text-body-b1-medium-weight);
   line-height: var(--text-body-b1-line-height);
-  letter-spacing: var(--text-body-big-letter-spacing);
+  letter-spacing: var(--text-body-b1-letter-spacing);
 }
 
 .sessions-top-service-row__content {
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: var(--spacing-8);
+  gap: var(--spacing-4);
   min-width: 0;
 }
 
@@ -936,20 +936,20 @@
   margin: 0;
   color: var(--joker-white-50);
   font-family: var(--font);
-  font-size: var(--text-body-big-medium);
-  font-weight: var(--text-body-big-medium-weight);
+  font-size: var(--text-body-b1-medium);
+  font-weight: var(--text-body-b1-medium-weight);
   line-height: var(--text-body-b1-line-height);
-  letter-spacing: var(--text-body-big-letter-spacing);
+  letter-spacing: var(--text-body-b1-letter-spacing);
 }
 
 .sessions-top-service-row__bookings {
   margin: 0;
   color: var(--joker-white-50);
   font-family: var(--font);
-  font-size: var(--text-body-b1);
-  font-weight: var(--text-body-b1-weight);
-  line-height: var(--text-body-b1-line-height);
-  letter-spacing: var(--text-body-b1-letter-spacing);
+  font-size: var(--text-body-14);
+  font-weight: var(--text-body-weight);
+  line-height: var(--text-body-line-height);
+  letter-spacing: var(--text-body-letter-spacing);
 }
 
 .sessions-top-service-row__trend-meta {
@@ -997,10 +997,10 @@
   margin-left: auto;
   color: var(--joker-white-50);
   font-family: var(--font);
-  font-size: var(--text-body-big-medium);
-  font-weight: var(--text-body-big-medium-weight);
+  font-size: var(--text-body-b1-medium);
+  font-weight: var(--text-body-b1-medium-weight);
   line-height: var(--text-body-b1-line-height);
-  letter-spacing: var(--text-body-big-letter-spacing);
+  letter-spacing: var(--text-body-b1-letter-spacing);
   white-space: nowrap;
 }
 

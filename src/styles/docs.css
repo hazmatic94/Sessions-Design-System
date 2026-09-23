@@ -3361,7 +3361,9 @@ then uniform zoom on the set below */
 .content[data-page="cards"] .card-example.is-sessions-upcoming-appointments-card.button-example.card-example,
 .content[data-page="cards"] .component-example-wrapper.is-sessions-upcoming-appointments-card.button-example.card-example,
 .content[data-page="cards"] .card-example.is-sessions-appointment-activity-card.button-example.card-example,
-.content[data-page="cards"] .component-example-wrapper.is-sessions-appointment-activity-card.button-example.card-example {
+.content[data-page="cards"] .component-example-wrapper.is-sessions-appointment-activity-card.button-example.card-example,
+.content[data-page="cards"] .card-example.is-sessions-top-services-card.button-example.card-example,
+.content[data-page="cards"] .component-example-wrapper.is-sessions-top-services-card.button-example.card-example {
   overflow: visible;
 }.content[data-page="cards"] .card-example.is-sessions-recent-sales-card .card-example-stage,
 .content[data-page="cards"] .card-example.is-sessions-recent-sales-card .component-example-wrapper__stage,
@@ -3371,7 +3373,10 @@ then uniform zoom on the set below */
 .content[data-page="cards"] .card-example.is-sessions-upcoming-appointments-card .button-example-stage,
 .content[data-page="cards"] .card-example.is-sessions-appointment-activity-card .card-example-stage,
 .content[data-page="cards"] .card-example.is-sessions-appointment-activity-card .component-example-wrapper__stage,
-.content[data-page="cards"] .card-example.is-sessions-appointment-activity-card .button-example-stage {
+.content[data-page="cards"] .card-example.is-sessions-appointment-activity-card .button-example-stage,
+.content[data-page="cards"] .card-example.is-sessions-top-services-card .card-example-stage,
+.content[data-page="cards"] .card-example.is-sessions-top-services-card .component-example-wrapper__stage,
+.content[data-page="cards"] .card-example.is-sessions-top-services-card .button-example-stage {
   align-items: center;
   justify-content: center;
   min-height: 640px;
@@ -3382,7 +3387,9 @@ then uniform zoom on the set below */
 .content[data-page="cards"] .card-example.is-sessions-upcoming-appointments-card .card-example-preview,
 .content[data-page="cards"] .card-example.is-sessions-upcoming-appointments-card .component-example-wrapper__preview,
 .content[data-page="cards"] .card-example.is-sessions-appointment-activity-card .card-example-preview,
-.content[data-page="cards"] .card-example.is-sessions-appointment-activity-card .component-example-wrapper__preview {
+.content[data-page="cards"] .card-example.is-sessions-appointment-activity-card .component-example-wrapper__preview,
+.content[data-page="cards"] .card-example.is-sessions-top-services-card .card-example-preview,
+.content[data-page="cards"] .card-example.is-sessions-top-services-card .component-example-wrapper__preview {
   display: flex;
   width: 100%;
   max-width: var(--sessions-card-max-width);

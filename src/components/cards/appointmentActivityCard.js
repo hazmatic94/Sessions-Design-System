@@ -1,9 +1,9 @@
-import { renderMetricCardViewAllFooter } from "./cardViewAllFooter.js";
 import {
   renderSessionsAppointmentRowList,
   renderSessionsPageHeader,
 } from "../patterns/index.js";
 import { escapeHtml } from "../../utils.js";
+import { renderMetricCardScrollRegion } from "./metricCardScrollHint.js";
 
 function renderEmptyState({
   title = "You don't have any activity",
@@ -23,38 +23,27 @@ function renderEmptyState({
 
 export function renderSessionsAppointmentActivityCard({
   title = "Appointment activity",
-  period = "",
+  period = "Most recent",
   appointments = [],
-  collapsedCount = 10,
-  mobileCollapsedCount = 5,
-  viewAllHref = "#",
-  viewAllLabel = "View all",
-  showViewAll = true,
+  maxItems = 10,
   emptyTitle = "You don't have any activity",
   clientLinkHref = "#",
   clientLinkLabel = "client",
   className = "",
 } = {}) {
   const isEmpty = !appointments.length;
-  const hasDesktopTruncate = !isEmpty && appointments.length > collapsedCount;
-  const hasMobileTruncate = !isEmpty && appointments.length > mobileCollapsedCount;
+  const visibleAppointments = appointments.slice(0, maxItems);
   const classes = [
     "sessions-card",
     "sessions-metric-card",
     "sessions-appointment-activity-card",
-    hasDesktopTruncate ? "sessions-appointment-activity-card--desktop-truncate" : "",
-    hasMobileTruncate ? "sessions-appointment-activity-card--mobile-truncate" : "",
     className,
   ]
     .filter(Boolean)
     .join(" ");
-  const viewAllFooter =
-    showViewAll && (hasDesktopTruncate || hasMobileTruncate)
-      ? renderMetricCardViewAllFooter({ viewAllHref, viewAllLabel })
-      : "";
   const body = isEmpty
     ? renderEmptyState({ title: emptyTitle, clientLinkHref, clientLinkLabel })
-    : `<div class="sessions-appointment-activity-card__rows">${renderSessionsAppointmentRowList(appointments)}${viewAllFooter}</div>`;
+    : `<div class="sessions-appointment-activity-card__rows">${renderMetricCardScrollRegion(renderSessionsAppointmentRowList(visibleAppointments))}</div>`;
 
   return `<article class="${classes}">
     <div class="sessions-metric-card__header">

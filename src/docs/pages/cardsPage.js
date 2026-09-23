@@ -283,12 +283,13 @@ const APPOINTMENT_ACTIVITY_ROWS = [
 
 const APPOINTMENT_ACTIVITY_CARD = {
   title: "Appointment activity",
+  period: "Most recent",
   appointments: APPOINTMENT_ACTIVITY_ROWS,
-  viewAllHref: "#",
 };
 
 const APPOINTMENT_ACTIVITY_EMPTY_CARD = {
   title: "Appointment activity",
+  period: "Most recent",
   appointments: [],
   clientLinkHref: "#",
 };
@@ -377,7 +378,6 @@ const TOP_SERVICES_CARD = {
   title: "Top Services",
   period: "Last 30 days",
   services: TOP_SERVICES_ROWS,
-  viewAllHref: "#",
 };
 
 export function renderCardsPage(page) {
@@ -454,7 +454,6 @@ function sampleTopServicesCardCode() {
 const topServices = {
   title: "Top Services",
   period: "Last 30 days",
-  viewAllHref: "/services",
   services: [
     {
       serviceName: "Skin Fade",
@@ -527,7 +526,7 @@ function sampleAppointmentActivityCardCode() {
 
 const appointmentActivity = {
   title: "Appointment activity",
-  viewAllHref: "/appointments",
+  period: "Most recent",
   appointments: [
     {
       day: "20",
@@ -566,6 +565,7 @@ function sampleAppointmentActivityCardEmptyCode() {
 
 const appointmentActivity = {
   title: "Appointment activity",
+  period: "Most recent",
   appointments: [],
   clientLinkHref: "/clients/new",
 };

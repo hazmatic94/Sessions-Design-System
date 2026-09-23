@@ -3,6 +3,7 @@ import {
   templates,
 } from '../../pages/runtimeDocs.js?v=sessions-footer-v1';
 import {slug} from '../../utils.js';
+import {setupSessionsMetricCardScrollHints} from '../../components/cards/metricCardScrollHint.js';
 import {updateCustomScrollbars} from '../demo/customScrollbar.js?v=scrollbar-3px-v1';
 import {hydratePageDemos} from '../hydrators/index.js?v=sessions-responsive-demo-v3';
 import {contentRoot} from './dom.js?v=docs-routing-v1';
@@ -320,6 +321,7 @@ async function paintPage(page) {
     bindMobileNavigation(contentRoot);
     bindMobileScrollCues(contentRoot);
     await hydratePageDemos(contentRoot);
+    setupSessionsMetricCardScrollHints(contentRoot);
     updateCustomScrollbars();
     resetWorkspaceScroll();
     contentRoot.focus({preventScroll: true});
