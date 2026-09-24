@@ -8,6 +8,7 @@ import {renderSportsbookPage} from '../docs/pages/sportsbookPage.js?v=sessions-p
 import {renderHiloPage} from '../docs/pages/hiloPage.js?v=sessions-pages-v1';
 import {renderMinesPage} from '../docs/pages/minesPage.js?v=sessions-pages-v1';
 import {renderChipsPage} from '../docs/pages/chipsPage.js?v=sessions-chip-v4';
+import {renderTabsPage} from '../docs/pages/tabsPage.js?v=sessions-tabs-v1';
 import {renderFoundationPage} from '../docs/pages/foundations/index.js?v=sessions-product-icons-v2';
 import {renderHomePage} from '../docs/pages/homePage.js?v=sessions-home-h2-v1';
 import {renderIntroductionPage} from '../docs/pages/introductionPage.js?v=sessions-page-h2-v1';
@@ -26,6 +27,7 @@ import {renderPageHeaderPatternPage} from '../docs/pages/patterns/pageHeaderPage
 import {renderStaffHeaderPatternPage} from '../docs/pages/patterns/staffHeaderPage.js?v=sessions-staff-header-v3';
 import {renderHourBlockPatternPage} from '../docs/pages/patterns/hourBlockPage.js?v=sessions-hour-calendar-v5';
 import {renderFooterPatternPage} from '../docs/pages/patterns/footerPage.js?v=sessions-footer-v1';
+import {renderSurfacePatternPage} from '../docs/pages/patterns/surfacePage.js?v=sessions-surface-v1';
 import {codePanel, pageHero, section} from '../docs/shell/pageLayout.js?v=sessions-footer-v1';
 import {hydrateLucideIcons, lucideIcon} from '../utils/lucideIcon.js?v=nav-outline-v1';
 import {slug} from '../utils.js';
@@ -48,7 +50,9 @@ export const templates = {
           ? renderNavigationPage(page)
           : page.title === 'Chips'
             ? renderChipsPage(page)
-            : page.title === 'Cards'
+            : page.title === 'Tabs'
+              ? renderTabsPage(page)
+              : page.title === 'Cards'
               ? renderCardsPage(page)
               : page.title === 'Rows'
                 ? renderRowsPage(page)
@@ -98,9 +102,11 @@ export const templates = {
                       ? renderStaffHeaderPatternPage(page)
                       : page.title === 'Hour Block'
                         ? renderHourBlockPatternPage(page)
-                        : page.title === 'Footer'
-                          ? renderFooterPatternPage(page)
-                          : fallbackComponentPage(page),
+                        : page.title === 'Surface'
+                          ? renderSurfacePatternPage(page)
+                          : page.title === 'Footer'
+                            ? renderFooterPatternPage(page)
+                            : fallbackComponentPage(page),
 };
 
 function fallbackComponentPage(page) {

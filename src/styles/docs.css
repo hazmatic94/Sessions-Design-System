@@ -4078,7 +4078,7 @@ then uniform zoom on the set below */
 .content[data-page="hour-block"] .card-example.is-sessions-current-time .button-example-stage,
 .content[data-page="hour-block"] .card-example.is-sessions-current-time .card-example-stage {
   align-items: center;
-  justify-content: center;
+  justify-content: stretch;
   flex: 0 0 var(--example-stage-height);
   height: var(--example-stage-height);
   min-height: var(--example-stage-height);
@@ -4088,8 +4088,8 @@ then uniform zoom on the set below */
 }.content[data-page="hour-block"] .card-example.is-sessions-current-time .component-example-wrapper__preview,
 .content[data-page="hour-block"] .card-example.is-sessions-current-time .card-example-preview {
   display: flex;
-  width: min(100%, 480px);
-  max-width: 480px;
+  width: 100%;
+  max-width: none;
   align-items: center;
   justify-content: stretch;
 }.content[data-page="hour-block"] .card-example.is-sessions-hour-label,
@@ -4138,6 +4138,48 @@ then uniform zoom on the set below */
 .content[data-page="hour-block"] .card-example.is-sessions-hour-column .card-example-preview {
   width: min(100%, 420px);
   max-width: 420px;
+}.content[data-page="tabs"] .card-example.is-sessions-tabs,
+.content[data-page="tabs"] .component-example-wrapper.is-sessions-tabs.button-example.card-example {
+  --example-stage-height: 160px;
+  height: calc(var(--example-stage-height) + var(--example-code-collapsed-height));
+}.content[data-page="tabs"] .card-example.is-sessions-tabs .component-example-wrapper__stage,
+.content[data-page="tabs"] .card-example.is-sessions-tabs .button-example-stage,
+.content[data-page="tabs"] .card-example.is-sessions-tabs .card-example-stage {
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 var(--example-stage-height);
+  height: var(--example-stage-height);
+  min-height: var(--example-stage-height);
+  max-height: var(--example-stage-height);
+  overflow: visible;
+  padding: var(--spacing-24);
+}.content[data-page="tabs"] .card-example.is-sessions-tabs .component-example-wrapper__preview,
+.content[data-page="tabs"] .card-example.is-sessions-tabs .card-example-preview {
+  display: flex;
+  width: min(100%, 480px);
+  max-width: 480px;
+  align-items: center;
+  justify-content: center;
+}.content[data-page="surface"] .card-example.is-sessions-surface,
+.content[data-page="surface"] .component-example-wrapper.is-sessions-surface.button-example.card-example {
+  height: auto;
+}.content[data-page="surface"] .card-example.is-sessions-surface .component-example-wrapper__stage,
+.content[data-page="surface"] .card-example.is-sessions-surface .button-example-stage,
+.content[data-page="surface"] .card-example.is-sessions-surface .card-example-stage {
+  align-items: flex-start;
+  justify-content: center;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  overflow: visible;
+  padding: var(--spacing-24);
+}.content[data-page="surface"] .card-example.is-sessions-surface .component-example-wrapper__preview,
+.content[data-page="surface"] .card-example.is-sessions-surface .card-example-preview {
+  display: flex;
+  width: min(100%, 480px);
+  max-width: 480px;
+  align-items: stretch;
+  justify-content: flex-start;
 }.content[data-page="footer"] .card-example.is-sessions-footer,
 .content[data-page="footer"] .component-example-wrapper.is-sessions-footer.button-example.card-example {
   --example-stage-height: 120px;

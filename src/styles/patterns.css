@@ -136,13 +136,17 @@
   display: flex;
   width: 100%;
   align-items: center;
+  gap: 0;
   pointer-events: none;
 }
 
 .sessions-current-time__chip {
   box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  padding: 4px 10px;
+  padding: 4px 8px;
   border: var(--border-width-default) solid var(--joker-red-300);
   border-radius: 999px;
   background: color-mix(in srgb, var(--joker-red-900) 55%, transparent);
@@ -153,25 +157,33 @@
   font-family: var(--font);
   font-size: var(--text-body-12);
   font-weight: 700;
-  line-height: var(--text-body-line-height);
+  line-height: 1;
   letter-spacing: var(--text-body-letter-spacing);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
 .sessions-current-time__line {
-  flex: 1;
+  flex: 1 1 auto;
+  min-width: 0;
   height: var(--border-width-default);
   background: var(--joker-red-300);
 }
 
 .sessions-current-time-preview {
   box-sizing: border-box;
-  width: min(100%, 480px);
-  padding: var(--spacing-24);
-  border: var(--border-width-default) solid var(--color-border-default);
-  border-radius: var(--spacing-8);
-  background: var(--color-surface-elevated);
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.sessions-surface {
+  --sessions-surface-width: 480px;
+  box-sizing: border-box;
+  width: min(100%, var(--sessions-surface-width));
+  max-width: var(--sessions-surface-width);
+  background: var(--color-surface-base);
+  border-left: var(--border-width-default) solid var(--color-border-default);
 }
 
 .sessions-hour-column {

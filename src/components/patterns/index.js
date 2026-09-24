@@ -28,6 +28,7 @@ export {
   setupSessionsNavigators,
 } from "./navigator.js?v=sessions-calendar-header-icons-v1";
 export { renderSessionsFooter } from "./footer.js";
+export { renderSessionsSurface } from "./surface.js";
 export { renderSessionsPageHeader } from "./pageHeader.js";
 export { renderSessionsStaffHeader, setupSessionsStaffHeaders } from "./staffHeader.js";
 export {

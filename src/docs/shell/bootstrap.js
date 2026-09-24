@@ -4,6 +4,7 @@ import {setupCustomScrollbars} from '../demo/customScrollbar.js?v=scrollbar-3px-
 import {setupInteractions} from '../interactions/setupInteractions.js?v=sessions-navigator-v2';
 import {setupSessionsCalendars} from '../../components/calendar/interactions.js';
 import {setupSessionsMenuItems} from '../../components/menu/interactions.js';
+import {setupSessionsTabs} from '../../components/tabs/interactions.js';
 import {setupSessionsStaffHeaders} from '../../components/patterns/staffHeader.js?v=sessions-staff-header-v3';
 import {setupSessionsCurrentTimeIndicators} from '../../components/patterns/currentTimeIndicator.js';
 import {renderNav} from './nav.js?v=sessions-hour-block-v1';
@@ -26,6 +27,7 @@ export async function bootstrapDocsApp() {
   setupInteractions();
   setupSessionsCalendars();
   setupSessionsMenuItems();
+  setupSessionsTabs();
   setupSessionsStaffHeaders();
   setupSessionsCurrentTimeIndicators();
   setupCustomScrollbars();

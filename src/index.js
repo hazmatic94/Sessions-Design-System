@@ -6,6 +6,7 @@ export * from "./components/button/index.js";
 export * from "./components/calendar/index.js";
 export * from "./components/cards/index.js";
 export * from "./components/chip/index.js";
+export * from "./components/tabs/index.js";
 export * from "./components/input/index.js";
 export * from "./components/menu/index.js";
 export * from "./components/modal/index.js";

@@ -1,0 +1,85 @@
+.sessions-tabs {
+  --sessions-tabs-count: 2;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(var(--sessions-tabs-count), minmax(0, 1fr));
+  gap: var(--spacing-24);
+  width: 100%;
+  padding: var(--spacing-12) var(--spacing-24);
+}
+
+.sessions-surface > .sessions-tabs {
+  margin-left: calc(-1 * var(--border-width-default));
+  padding-left: calc(var(--spacing-24) + var(--border-width-default));
+  background: var(--color-surface-base);
+}
+
+.sessions-tabs__tab {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-8);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--black-50);
+  font-family: var(--font);
+  font-size: var(--text-body-b1);
+  font-weight: var(--text-body-b1-weight);
+  line-height: var(--text-body-b1-line-height);
+  letter-spacing: var(--text-body-b1-letter-spacing);
+  text-align: center;
+  cursor: pointer;
+  appearance: none;
+}
+
+.sessions-tabs__label {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sessions-tabs__label::after {
+  content: attr(data-text);
+  display: block;
+  height: 0;
+  overflow: hidden;
+  font-weight: var(--text-body-b1-medium-weight);
+  visibility: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.sessions-tabs__tab--selected {
+  color: var(--joker-white-50);
+  font-weight: var(--text-body-b1-medium-weight);
+}
+
+.sessions-tabs__indicator {
+  flex-shrink: 0;
+  width: 100%;
+  height: var(--border-width-default);
+  background: transparent;
+}
+
+.sessions-tabs__tab--selected .sessions-tabs__indicator {
+  background: var(--green-300);
+}
+
+.sessions-tabs-preview {
+  box-sizing: border-box;
+  width: min(100%, 480px);
+  max-width: 480px;
+  background: var(--color-surface-base);
+}
+
+.sessions-tabs__tab:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--spacing-4);
+}

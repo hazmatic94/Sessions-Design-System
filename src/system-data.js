@@ -31,6 +31,7 @@ export const navGroups = [
       {label: 'Navigation', route: '/components/navigation'},
       {label: 'Modals', route: '/components/modals'},
       {label: 'Chips', route: '/components/chips'},
+      {label: 'Tabs', route: '/components/tabs'},
       {label: 'Cards', route: '/components/cards'},
       {label: 'Rows', route: '/components/rows'},
     ],
@@ -47,6 +48,7 @@ export const navGroups = [
       {label: 'Calendar Header Row', route: '/patterns/calendar-header-row'},
       {label: 'Staff Header', route: '/patterns/staff-header'},
       {label: 'Hour Block', route: '/patterns/hour-block'},
+      {label: 'Surface', route: '/patterns/surface'},
       {label: 'Footer', route: '/patterns/footer'},
     ],
   },
@@ -525,6 +527,8 @@ export const patternSummaries = {
     'Centered staff profile header with avatar, name, and menu trigger for barber context.',
   'Hour Block':
     'Calendar hour label, booking pill, and four-slot hour column for quarter-hour scheduling.',
+  Surface:
+    'A fixed-width side panel shell for stacking rows, cards, and other build content.',
   Footer:
     'A fixed-height app footer with copyright text for page shells and layouts.',
 };
@@ -546,9 +550,10 @@ export const componentSummaries = {
     'Focused overlays handle confirmations, key decisions and tasks requiring immediate attention.',
   Tables:
     'Data-dense structures for comparison, filtering, review, and operational product actions.',
-  Tabs: 'Local navigation patterns for switching related views inside one focused product context.',
   Chips:
     'Compact chips communicate multipliers, outcomes and game states without adding unnecessary UI.',
+  Tabs:
+    'Two-up tab controls for switching related views inside a surface or panel.',
 };
 
 export const resources = {

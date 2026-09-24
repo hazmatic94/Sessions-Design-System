@@ -18,6 +18,7 @@ const routePageTitles = {
   '/components/tables': 'Tables',
   '/components/badges': 'Badges',
   '/components/chips': 'Chips',
+  '/components/tabs': 'Tabs',
   '/patterns/page-header': 'Page Header',
   '/patterns/metric-value': 'Metric Value',
   '/patterns/metric-row': 'Metric Row',
@@ -27,6 +28,7 @@ const routePageTitles = {
   '/patterns/calendar-header-row': 'Calendar Header Row',
   '/patterns/staff-header': 'Staff Header',
   '/patterns/hour-block': 'Hour Block',
+  '/patterns/surface': 'Surface',
   '/patterns/footer': 'Footer',
 };
 
@@ -40,6 +42,7 @@ const patternRoutes = new Set([
   '/patterns/calendar-header-row',
   '/patterns/staff-header',
   '/patterns/hour-block',
+  '/patterns/surface',
   '/patterns/footer',
 ]);
 
@@ -54,6 +57,7 @@ const componentRoutes = new Set([
   '/components/tables',
   '/components/badges',
   '/components/chips',
+  '/components/tabs',
 ]);
 
 function resolvePageTitle(section, label, route) {
