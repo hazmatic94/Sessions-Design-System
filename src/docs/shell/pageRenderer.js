@@ -1,7 +1,7 @@
 import {
   hydrateLucideIcons,
   templates,
-} from '../../pages/runtimeDocs.js?v=sessions-footer-v1';
+} from '../../pages/runtimeDocs.js?v=sessions-selector-v4';
 import {slug} from '../../utils.js';
 import {setupSessionsMetricCardScrollHints} from '../../components/cards/metricCardScrollHint.js';
 import {setupSessionsCurrentTimeIndicators} from '../../components/patterns/currentTimeIndicator.js';
@@ -12,9 +12,9 @@ import {
   bindMobileNavigation,
   bindMobileScrollCues,
   pageSequenceNavigation,
-} from '../demo/mobileBindings.js';
+} from '../demo/mobileBindings.js?v=sessions-selector-v1';
 import {pageFooter} from './pageLayout.js?v=sessions-page-h2-v1';
-import {pageRegistry} from './registry.js?v=sessions-hour-block-v1';
+import {pageRegistry} from './registry.js?v=sessions-selector-v1';
 import {state} from './state.js?v=docs-routing-v1';
 
 let isInitialPageRender = true;

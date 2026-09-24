@@ -5,12 +5,13 @@ import {setupInteractions} from '../interactions/setupInteractions.js?v=sessions
 import {setupSessionsCalendars} from '../../components/calendar/interactions.js';
 import {setupSessionsMenuItems} from '../../components/menu/interactions.js';
 import {setupSessionsTabs} from '../../components/tabs/interactions.js';
+import {setupSessionsSelectors} from '../../components/selector/interactions.js';
 import {setupSessionsStaffHeaders} from '../../components/patterns/staffHeader.js?v=sessions-staff-header-v3';
 import {setupSessionsCurrentTimeIndicators} from '../../components/patterns/currentTimeIndicator.js';
-import {renderNav} from './nav.js?v=sessions-hour-block-v1';
-import {renderPage} from './pageRenderer.js?v=sessions-hour-calendar-v5';
-import {pageRegistry} from './registry.js?v=sessions-hour-block-v1';
-import {resolveCurrentRoute} from './routes.js?v=sessions-hour-block-v1';
+import {renderNav} from './nav.js?v=sessions-selector-v1';
+import {renderPage} from './pageRenderer.js?v=sessions-selector-v4';
+import {pageRegistry} from './registry.js?v=sessions-selector-v1';
+import {resolveCurrentRoute} from './routes.js?v=sessions-selector-v4';
 import {state} from './state.js?v=docs-routing-v1';
 import {setupThemeToggle} from './themeToggle.js?v=theme-toggle-soon-v1';
 
@@ -28,6 +29,7 @@ export async function bootstrapDocsApp() {
   setupSessionsCalendars();
   setupSessionsMenuItems();
   setupSessionsTabs();
+  setupSessionsSelectors();
   setupSessionsStaffHeaders();
   setupSessionsCurrentTimeIndicators();
   setupCustomScrollbars();

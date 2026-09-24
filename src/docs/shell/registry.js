@@ -4,7 +4,7 @@ import {
   navGroups,
   patternSummaries,
   resources,
-} from '../../system-data.js?v=sessions-footer-v1';
+} from '../../system-data.js?v=sessions-selector-v1';
 import {flattenNavGroups} from './navModel.js?v=nav-fix-2210';
 
 const routePageTitles = {
@@ -14,6 +14,7 @@ const routePageTitles = {
   '/components/navigation': 'Navigation',
   '/components/cards': 'Cards',
   '/components/rows': 'Rows',
+  '/components/selectors': 'Selector',
   '/components/modals': 'Modals',
   '/components/tables': 'Tables',
   '/components/badges': 'Badges',
@@ -53,6 +54,7 @@ const componentRoutes = new Set([
   '/components/navigation',
   '/components/cards',
   '/components/rows',
+  '/components/selectors',
   '/components/modals',
   '/components/tables',
   '/components/badges',

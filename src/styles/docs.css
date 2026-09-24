@@ -2320,6 +2320,7 @@ pre {
 .content[data-page="showroom"] .section-heading,
 .content[data-page="cards"] .page-hero,
 .content[data-page="rows"] .page-hero,
+.content[data-page="selector"] .page-hero,
 .content[data-page="modals"] .page-hero,
 .content[data-page="page-header"] .page-hero,
 .content[data-page="navigator"] .page-hero,
@@ -2334,6 +2335,7 @@ pre {
 .content[data-page="chart-grid"] .page-hero,
 .content[data-page="cards"] .section-heading,
 .content[data-page="rows"] .section-heading,
+.content[data-page="selector"] .section-heading,
 .content[data-page="modals"] .section-heading,
 .content[data-page="page-header"] .section-heading,
 .content[data-page="navigator"] .section-heading,
@@ -4307,6 +4309,13 @@ then uniform zoom on the set below */
   max-width: var(--sessions-card-max-width);
   align-items: stretch;
   justify-content: flex-start;
+}.content[data-page="selector"] .card-example.is-sessions-selector .component-example-wrapper__preview,
+.content[data-page="selector"] .card-example.is-sessions-selector .card-example-preview {
+  display: flex;
+  width: 410px;
+  max-width: 100%;
+  align-items: stretch;
+  justify-content: flex-start;
 }.sessions-responsive-demo {
   display: flex;
   flex-direction: column;
@@ -4517,6 +4526,8 @@ then uniform zoom on the set below */
     linear-gradient(180deg, var(--black-900), var(--black-800));
   padding: 72px 24px;
 }.content[data-page="buttons"] .button-example-stage,
+.content[data-page="selector"] .button-example-stage,
+.content[data-page="selector"] .card-example-stage,
 .content[data-page="inputs"] .button-example-stage,
 .content[data-page="inputs"] .input-example-stage,
 .content[data-page="inputs"] .component-example-wrapper__stage,
@@ -5188,6 +5199,7 @@ stretch desktop surface */
   box-shadow: none;
   color: var(--button-ghost-text-hover, var(--color-text-primary));
 }.content[data-page="buttons"] .button-example .code-panel,
+.content[data-page="selector"] .button-example .code-panel,
 .content[data-page="inputs"] .button-example .code-panel,
 .content[data-page="navigation"] .button-example .code-panel,
 .content[data-page="game-rails"] .button-example .code-panel,
@@ -5204,6 +5216,7 @@ stretch desktop surface */
 .content[data-page="showroom"] .button-example .code-panel {
   background: var(--black-700);
 }.content[data-page="buttons"] .button-example pre,
+.content[data-page="selector"] .button-example pre,
 .content[data-page="inputs"] .button-example pre,
 .content[data-page="navigation"] .button-example pre,
 .content[data-page="game-rails"] .button-example pre,
@@ -5220,6 +5233,7 @@ stretch desktop surface */
 .content[data-page="showroom"] .button-example pre {
   background: var(--black-700);
 }.content[data-page="buttons"] .button-example .code-reveal-overlay,
+.content[data-page="selector"] .button-example .code-reveal-overlay,
 .content[data-page="inputs"] .button-example .code-reveal-overlay,
 .content[data-page="navigation"] .button-example .code-reveal-overlay,
 .content[data-page="game-rails"] .button-example .code-reveal-overlay,
@@ -7659,4 +7673,9 @@ stretch desktop surface */
   max-width: 34px;
   height: var(--input-control-height);
   box-sizing: border-box;
+}
+.content[data-page="selector"] .is-sessions-selector .component-example-wrapper__preview,
+.content[data-page="selector"] .is-sessions-selector .card-example-preview {
+  width: 410px;
+  max-width: 100%;
 }

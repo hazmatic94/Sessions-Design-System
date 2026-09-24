@@ -34,6 +34,7 @@ export const navGroups = [
       {label: 'Tabs', route: '/components/tabs'},
       {label: 'Cards', route: '/components/cards'},
       {label: 'Rows', route: '/components/rows'},
+      {label: 'Selector', route: '/components/selectors'},
     ],
   },
   {
@@ -546,6 +547,8 @@ export const componentSummaries = {
     'Reusable card patterns group related content, summaries, client profiles, and repeated information.',
   Rows:
     'List rows for clients, appointments, and top services with shared hover and spacing rules.',
+  Selector:
+    'Selectable service rows with default, hover actions, and a green selected outline.',
   Modals:
     'Focused overlays handle confirmations, key decisions and tasks requiring immediate attention.',
   Tables:
