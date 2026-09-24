@@ -11,6 +11,11 @@ export function setupSessionsCalendars() {
     const dateKey = dateButton.dataset.calendarDate;
     if (!calendar || !dateKey) return;
 
+    if (calendar.dataset.calendarSelection === "single") {
+      applySessionsCalendarSelection(calendar, { rangeStart: dateKey, rangeEnd: null });
+      return;
+    }
+
     const currentStart = readCalendarDate(calendar, "rangeStart");
     const currentEnd = readCalendarDate(calendar, "rangeEnd");
 

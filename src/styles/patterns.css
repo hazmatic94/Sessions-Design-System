@@ -5,8 +5,8 @@
   justify-content: center;
   box-sizing: border-box;
   width: 100%;
-  min-height: 120px;
-  height: 120px;
+  min-height: 110px;
+  height: 110px;
   overflow: visible;
   border-bottom: var(--border-width-default) solid var(--color-border-subtle);
   background: var(--color-surface-elevated);
@@ -38,6 +38,7 @@
 }
 
 .sessions-staff-header__name {
+  font-size: var(--text-body-14);
   white-space: nowrap;
 }
 
@@ -85,10 +86,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: 80px;
+  width: var(--spacing-64);
   height: var(--sessions-hour-column-height);
   margin: 0;
-  padding: var(--spacing-4) 0 0;
+  padding: 6px 0 0;
   border: 0;
   border-right: var(--border-width-default) solid var(--color-border-subtle);
   border-bottom: var(--border-width-default) solid var(--color-border-subtle);
@@ -99,28 +100,78 @@
   appearance: none;
 }
 
+.sessions-hour-label__group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
 .sessions-hour-label__time {
   color: var(--joker-white-50);
-  font-size: var(--text-body-b1);
+  font-size: var(--text-body-12);
   font-weight: 700;
-  line-height: var(--text-body-b1-line-height);
-  letter-spacing: var(--text-body-b1-letter-spacing);
+  line-height: var(--text-body-line-height);
+  letter-spacing: var(--text-body-letter-spacing);
   font-variant-numeric: tabular-nums;
+  text-align: right;
   white-space: nowrap;
 }
 
 .sessions-hour-label__period {
   color: var(--joker-white-50);
-  font-size: var(--text-body-b1);
-  font-weight: var(--text-body-b1-weight);
-  line-height: var(--text-body-b1-line-height);
-  letter-spacing: var(--text-body-b1-letter-spacing);
+  font-size: var(--text-body-12);
+  font-weight: var(--text-body-weight);
+  line-height: var(--text-body-line-height);
+  letter-spacing: var(--text-body-letter-spacing);
+  text-align: right;
   white-space: nowrap;
 }
 
 .sessions-hour-label:focus-visible {
   outline: 2px solid var(--color-border-focus);
   outline-offset: 2px;
+}
+
+.sessions-current-time {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  pointer-events: none;
+}
+
+.sessions-current-time__chip {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  padding: 4px 10px;
+  border: var(--border-width-default) solid var(--joker-red-300);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--joker-red-900) 55%, transparent);
+}
+
+.sessions-current-time__label {
+  color: var(--joker-red-300);
+  font-family: var(--font);
+  font-size: var(--text-body-12);
+  font-weight: 700;
+  line-height: var(--text-body-line-height);
+  letter-spacing: var(--text-body-letter-spacing);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.sessions-current-time__line {
+  flex: 1;
+  height: var(--border-width-default);
+  background: var(--joker-red-300);
+}
+
+.sessions-current-time-preview {
+  box-sizing: border-box;
+  width: min(100%, 480px);
+  padding: var(--spacing-24);
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: var(--spacing-8);
+  background: var(--color-surface-elevated);
 }
 
 .sessions-hour-column {
@@ -141,9 +192,30 @@
 }
 
 .sessions-hour-column__slot {
+  position: relative;
   grid-column: 1;
   border-bottom: var(--border-width-default) solid var(--color-border-subtle);
   background-color: transparent;
+}
+
+.sessions-hour-column__hover {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  padding-inline: var(--spacing-8);
+  background: var(--color-selection-bg);
+  color: var(--color-text-brand);
+  font-family: var(--font);
+  font-size: var(--text-body-12);
+  font-weight: var(--text-body-weight);
+  line-height: var(--text-body-line-height);
+  letter-spacing: var(--text-body-letter-spacing);
+  pointer-events: none;
+}
+
+.sessions-hour-column__slot:hover .sessions-hour-column__hover {
+  display: flex;
 }
 
 .sessions-hour-column__slot--outside-hours {
@@ -220,7 +292,7 @@
 
 .sessions-hour-column-preview {
   display: grid;
-  grid-template-columns: 80px minmax(0, 1fr);
+  grid-template-columns: var(--spacing-64) minmax(0, 1fr);
   width: min(100%, 420px);
   max-width: 420px;
 }
@@ -1014,10 +1086,37 @@
 }
 
 .sessions-navigator {
+  position: relative;
   display: inline-flex;
   align-items: stretch;
   width: fit-content;
   max-width: 100%;
+}
+
+.sessions-navigator__calendar {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 8px;
+  z-index: 20;
+}
+
+.sessions-navigator__calendar[hidden] {
+  display: none;
+}
+
+.sessions-navigator__months--single {
+  display: none;
+}
+
+/* ponytail: dual calendar is 794px and starts ~137px into this header, so it clips below 932px. Single month from there until the 768px header swap. Recompute if the navigator moves or the calendar cell size changes. */
+@container calendar-header-row (max-width: 932px) {
+  .sessions-navigator__months--dual {
+    display: none;
+  }
+
+  .sessions-navigator__months--single {
+    display: block;
+  }
 }
 
 .sessions-navigator__control,
@@ -1225,4 +1324,94 @@
   outline: 2px solid var(--color-border-focus);
   outline-offset: 2px;
   z-index: 2;
+}
+
+.sessions-client-row-list {
+  display: grid;
+  gap: 0;
+  width: 100%;
+}
+
+.sessions-client-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-16);
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: var(--spacing-24) 42px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  appearance: none;
+  transition: background-color var(--motion-fast) ease;
+}
+
+.sessions-client-row:hover {
+  background: var(--color-surface-hover);
+}
+
+.sessions-client-row:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.sessions-client-row__details {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  min-width: 0;
+}
+
+.sessions-client-row__name,
+.sessions-client-row__label {
+  margin: 0;
+  min-width: 0;
+  color: var(--joker-white-50);
+  font-family: var(--font);
+  font-size: var(--text-body-b1-medium);
+  font-weight: var(--text-body-b1-medium-weight);
+  line-height: var(--text-body-b1-line-height);
+  letter-spacing: var(--text-body-b1-letter-spacing);
+}
+
+.sessions-client-row__email {
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--black-50);
+  font-family: var(--font);
+  font-size: var(--text-body-b1);
+  font-weight: var(--text-body-b1-weight);
+  line-height: var(--text-body-b1-line-height);
+  letter-spacing: var(--text-body-b1-letter-spacing);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sessions-client-row__icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--avatar-size-sm);
+  height: var(--avatar-size-sm);
+  border: var(--border-width-default) solid var(--green-300);
+  border-radius: 50%;
+  background: transparent;
+}
+
+.sessions-client-row__icon-mark {
+  display: block;
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
+  background: var(--joker-white-50);
+  -webkit-mask: var(--sessions-client-row-icon) center / contain no-repeat;
+  mask: var(--sessions-client-row-icon) center / contain no-repeat;
 }

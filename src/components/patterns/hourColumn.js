@@ -1,5 +1,6 @@
 import { escapeHtml } from "../../utils.js";
 import {
+  formatHourBookingLabel,
   formatHourBookingTimeRange,
   HOUR_QUARTER_MINUTES,
   resolveHourQuarterMinute,
@@ -32,10 +33,11 @@ function resolveOutsideMinutes(outsideMinutes = []) {
   );
 }
 
-function renderHourColumnSlot(minute, row, isOutsideHours) {
+function renderHourColumnSlot(hour, minute, row, isOutsideHours) {
   const outsideClass = isOutsideHours ? " sessions-hour-column__slot--outside-hours" : "";
+  const hover = `<span class="sessions-hour-column__hover">${escapeHtml(formatHourBookingLabel(hour, minute))}</span>`;
 
-  return `<div class="sessions-hour-column__slot${outsideClass}" data-minute="${minute}" data-outside-hours="${isOutsideHours ? "true" : "false"}" style="grid-row: ${row}" aria-hidden="true"></div>`;
+  return `<div class="sessions-hour-column__slot${outsideClass}" data-minute="${minute}" data-outside-hours="${isOutsideHours ? "true" : "false"}" style="grid-row: ${row}" aria-hidden="true">${hover}</div>`;
 }
 
 function renderHourColumnBooking(booking) {
@@ -57,7 +59,7 @@ export function renderSessionsHourColumn({
   const classes = ["sessions-hour-column", className].filter(Boolean).join(" ");
   const outsideMinuteSet = resolveOutsideMinutes(outsideMinutes);
   const slotMarkup = HOUR_QUARTER_MINUTES.map((minute, index) =>
-    renderHourColumnSlot(minute, index + 1, outsideMinuteSet.has(minute)),
+    renderHourColumnSlot(hour, minute, index + 1, outsideMinuteSet.has(minute)),
   ).join("");
   const bookingMarkup = bookings
     .map((booking) => renderHourColumnBooking(normalizeBooking(booking, hour)))

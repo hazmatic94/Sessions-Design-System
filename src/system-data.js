@@ -32,6 +32,7 @@ export const navGroups = [
       {label: 'Modals', route: '/components/modals'},
       {label: 'Chips', route: '/components/chips'},
       {label: 'Cards', route: '/components/cards'},
+      {label: 'Rows', route: '/components/rows'},
     ],
   },
   {
@@ -42,7 +43,6 @@ export const navGroups = [
       {label: 'Metric Row', route: '/patterns/metric-row'},
       {label: 'Legend Item', route: '/patterns/legend-item'},
       {label: 'Chart Grid', route: '/patterns/chart-grid'},
-      {label: 'Appointment Rows', route: '/patterns/appointment-rows'},
       {label: 'Navigator', route: '/patterns/navigator'},
       {label: 'Calendar Header Row', route: '/patterns/calendar-header-row'},
       {label: 'Staff Header', route: '/patterns/staff-header'},
@@ -517,8 +517,6 @@ export const patternSummaries = {
     'A colored dot and label for chart legends and status keys.',
   'Chart Grid':
     'A 7 by 4 chart grid for plotting sales and appointment data.',
-  'Appointment Rows':
-    'Repeatable rows for listing appointments with client, service, time, and status.',
   Navigator:
     'Date stepping controls and a calendar view selector with reset for schedule navigation.',
   'Calendar Header Row':
@@ -541,7 +539,9 @@ export const componentSummaries = {
   Navigation:
     'Shared navigation patterns keep routes, active states and wayfinding consistent.',
   Cards:
-    'Reusable card patterns group related content, summaries and repeated information.',
+    'Reusable card patterns group related content, summaries, client profiles, and repeated information.',
+  Rows:
+    'List rows for clients, appointments, and top services with shared hover and spacing rules.',
   Modals:
     'Focused overlays handle confirmations, key decisions and tasks requiring immediate attention.',
   Tables:

@@ -266,12 +266,12 @@
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
   --ease-in: cubic-bezier(0.4, 0, 1, 1);
   --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
-  --button-height: 52px;
+  --button-height: 42px;
   --button-primary-min-width: calc(
     var(--spacing-64) + var(--spacing-64) + var(--spacing-64) +
       var(--spacing-64) + var(--spacing-16)
   );
-  --button-secondary-height: calc(var(--spacing-40) + var(--spacing-8));
+  --button-secondary-height: var(--button-height);
   --button-primary-radius: 999px;
   --button-icon-only-radius: calc(var(--button-height) / 2);
   --button-icon-only-width: calc(var(--button-height) + var(--spacing-12));
@@ -344,8 +344,8 @@
   --button-hi-lo-text: var(--joker-white-50);
   --button-hi-lo-chevron-down: var(--joker-red-400);
   --button-hi-lo-chevron-up: var(--green-400);
-  --button-hi-lo-skip-height: 52px;
-  --button-cashout-height: 52px;
+  --button-hi-lo-skip-height: var(--button-height);
+  --button-cashout-height: var(--button-height);
   --button-hi-lo-skip-bg: var(--joker-gold-1000);
   --button-hi-lo-skip-bg-hover: var(--joker-gold-900);
   --button-hi-lo-skip-border: var(--joker-gold-800);

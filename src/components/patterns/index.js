@@ -1,7 +1,11 @@
 export {
   renderSessionsAppointmentRow,
   renderSessionsAppointmentRowList,
-} from "./appointmentRow.js";
+  renderSessionsClientRow,
+  renderSessionsClientRowList,
+  renderSessionsTopServiceRow,
+  renderSessionsTopServiceRowList,
+} from "../rows/index.js";
 export { SESSIONS_CHART_COLORS } from "./chartColors.js";
 export { renderSessionsLegendItem } from "./legendItem.js";
 export { renderSessionsChartGrid } from "./chartGrid.js";
@@ -21,6 +25,7 @@ export {
   NAVIGATOR_VIEW_LABEL_SIZING_TEXT,
   renderSessionsCalendarViewNavigator,
   renderSessionsNavigator,
+  setupSessionsNavigators,
 } from "./navigator.js?v=sessions-calendar-header-icons-v1";
 export { renderSessionsFooter } from "./footer.js";
 export { renderSessionsPageHeader } from "./pageHeader.js";
@@ -37,12 +42,11 @@ export {
   renderSessionsHourBooking,
   renderSessionsHourColumn,
   renderSessionsHourLabel,
+  renderSessionsCurrentTimeIndicator,
   resolveHourBlock,
   resolveHourQuarterMinute,
   resolveHourTime,
+  applySessionsCurrentTimeIndicator,
   setupSessionsHourBlocks,
+  setupSessionsCurrentTimeIndicators,
 } from "./hourCalendar.js";
-export {
-  renderSessionsTopServiceRow,
-  renderSessionsTopServiceRowList,
-} from "./topServiceRow.js";

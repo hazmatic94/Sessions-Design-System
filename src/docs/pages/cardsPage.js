@@ -2,10 +2,11 @@ import { componentExampleWrapper, pageHero, section } from "../shell/pageLayout.
 import { renderResponsiveDemo } from "../demo/responsiveDemo.js?v=sessions-responsive-demo-v3";
 import {
   renderSessionsAppointmentActivityCard,
+  renderSessionsClientCard,
   renderSessionsRecentSalesCard,
   renderSessionsTopServicesCard,
   renderSessionsUpcomingAppointmentsCard,
-} from "../../components/cards/index.js?v=sessions-metric-card-view-all-v2";
+} from "../../components/cards/index.js?v=sessions-client-card-v1";
 import { SESSIONS_CHART_COLORS } from "../../components/patterns/chartColors.js";
 
 export function cardExampleCard({
@@ -380,9 +381,22 @@ const TOP_SERVICES_CARD = {
   services: TOP_SERVICES_ROWS,
 };
 
+const CLIENT_CARD = {
+  name: "Luca Harris",
+  email: "lucaharris@email.com",
+  avatarInitial: "L",
+};
+
+const ADD_CLIENT_CARD = {
+  variant: "add",
+  title: "Add client",
+  hint: "Leave empty for walk-ins",
+};
+
 export function renderCardsPage(page) {
   return `
     ${pageHero(page)}
+    ${section("Client Card", "", clientCardExample(), "button-example-section card-example-section")}
     ${section("Recent Sales", "", recentSalesCardExample(), "button-example-section card-example-section")}
     ${section("Upcoming Appointments", "", upcomingAppointmentsCardExample(), "button-example-section card-example-section")}
     ${section("Appointment Activity", "", appointmentActivityCardExample(), "button-example-section card-example-section")}
@@ -434,6 +448,57 @@ function upcomingAppointmentsCardExample() {
       className: "is-sessions-upcoming-appointments-card",
     })}
   `;
+}
+
+function clientCardExample() {
+  return `
+    ${componentExampleWrapper({
+      id: "sessions-client-card-add-example",
+      tocTitle: "Add client",
+      preview: renderSessionsClientCard(ADD_CLIENT_CARD),
+      codeId: "sessions-client-card-add-code",
+      filename: "ClientCardAdd.tsx",
+      code: sampleAddClientCardCode(),
+      className: "is-sessions-client-card",
+    })}
+    ${componentExampleWrapper({
+      id: "sessions-client-card-example",
+      tocTitle: "Default",
+      preview: renderSessionsClientCard(CLIENT_CARD),
+      codeId: "sessions-client-card-code",
+      filename: "ClientCard.tsx",
+      code: sampleClientCardCode(),
+      className: "is-sessions-client-card",
+    })}
+  `;
+}
+
+function sampleAddClientCardCode() {
+  return `import { ClientCard } from "@sessions/design-system";
+
+const addClient = {
+  variant: "add",
+  title: "Add client",
+  hint: "Leave empty for walk-ins",
+};
+
+export function ClientCardAddExample() {
+  return <ClientCard {...addClient} />;
+}`;
+}
+
+function sampleClientCardCode() {
+  return `import { ClientCard } from "@sessions/design-system";
+
+const client = {
+  name: "Luca Harris",
+  email: "lucaharris@email.com",
+  avatarInitial: "L",
+};
+
+export function ClientCardExample() {
+  return <ClientCard {...client} />;
+}`;
 }
 
 function topServicesCardExample() {

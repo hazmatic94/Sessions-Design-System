@@ -106,8 +106,8 @@ function dateExamples() {
     tocTitle: 'Variants',
     preview: `
       <div class="sessions-date-preview-row">
-        ${renderSessionsDate({variant: 'selected'})}
         ${renderSessionsDate({variant: 'current'})}
+        ${renderSessionsDate({variant: 'selected'})}
         ${renderSessionsDate({variant: 'hover'})}
         ${renderSessionsDate({variant: 'default'})}
       </div>
@@ -231,8 +231,8 @@ function sampleDateCode() {
 export function CalendarDateVariants() {
   return (
     <>
-      <Date day={25} variant="selected" />
       <Date day={25} variant="current" />
+      <Date day={25} variant="selected" />
       <Date day={25} variant="hover" />
       <Date day={25} />
     </>

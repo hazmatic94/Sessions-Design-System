@@ -1,4 +1,9 @@
 import { escapeHtml } from "../../utils.js";
+import {
+  applySessionsCalendarSelection,
+  renderSessionsCalendar,
+  renderSessionsDualMonthCalendar,
+} from "../calendar/calendar.js";
 
 const CHEVRON_LEFT_ICON = "/assets/IconChevronLeft.svg";
 const CHEVRON_RIGHT_ICON = "/assets/IconCehvronRight.svg";
@@ -87,7 +92,78 @@ export function renderSessionsNavigator({
   const resolvedDateLabel = dateLabel ?? formatNavigatorDate(dateValue);
   const classes = ["sessions-navigator", className].filter(Boolean).join(" ");
 
-  return `<nav class="${classes}" data-sessions-navigator data-sessions-navigator-value="${escapeHtml(dateValue)}" aria-label="${escapeHtml(ariaLabel)}"><button class="sessions-navigator__control sessions-navigator__control--previous" type="button" data-sessions-navigator-previous aria-label="${escapeHtml(previousLabel)}"${previousDisabled ? " disabled" : ""}>${renderNavigatorIcon("previous")}</button><button class="sessions-navigator__date" type="button" data-sessions-navigator-date aria-haspopup="dialog" aria-label="${escapeHtml(resolvedDateLabel)}"><span class="sessions-navigator__date-sizing" aria-hidden="true">${escapeHtml(NAVIGATOR_DATE_LABEL_SIZING_TEXT)}</span><span class="sessions-navigator__date-label" data-sessions-navigator-date-label>${escapeHtml(resolvedDateLabel)}</span></button><button class="sessions-navigator__control sessions-navigator__control--next" type="button" data-sessions-navigator-next aria-label="${escapeHtml(nextLabel)}"${nextDisabled ? " disabled" : ""}>${renderNavigatorIcon("next")}</button></nav>`;
+  return `<nav class="${classes}" data-sessions-navigator data-sessions-navigator-value="${escapeHtml(dateValue)}" aria-label="${escapeHtml(ariaLabel)}"><button class="sessions-navigator__control sessions-navigator__control--previous" type="button" data-sessions-navigator-previous aria-label="${escapeHtml(previousLabel)}"${previousDisabled ? " disabled" : ""}>${renderNavigatorIcon("previous")}</button><button class="sessions-navigator__date" type="button" data-sessions-navigator-date aria-haspopup="dialog" aria-expanded="false" aria-label="${escapeHtml(resolvedDateLabel)}"><span class="sessions-navigator__date-sizing" aria-hidden="true">${escapeHtml(NAVIGATOR_DATE_LABEL_SIZING_TEXT)}</span><span class="sessions-navigator__date-label" data-sessions-navigator-date-label>${escapeHtml(resolvedDateLabel)}</span></button><button class="sessions-navigator__control sessions-navigator__control--next" type="button" data-sessions-navigator-next aria-label="${escapeHtml(nextLabel)}"${nextDisabled ? " disabled" : ""}>${renderNavigatorIcon("next")}</button>${renderNavigatorCalendar(dateValue)}</nav>`;
+}
+
+function renderNavigatorCalendar(dateValue) {
+  const date = parseNavigatorDate(dateValue);
+  const month = date.getMonth();
+  const year = date.getFullYear();
+  const calendarOptions = {
+    rangeStart: dateValue,
+    selection: "single",
+  };
+
+  return `<div class="sessions-navigator__calendar" data-sessions-navigator-calendar hidden><div class="sessions-navigator__months sessions-navigator__months--dual">${renderSessionsDualMonthCalendar({
+    startMonth: month,
+    startYear: year,
+    ...calendarOptions,
+  })}</div><div class="sessions-navigator__months sessions-navigator__months--single">${renderSessionsCalendar({
+    month,
+    year,
+    ...calendarOptions,
+  })}</div></div>`;
+}
+
+function applyNavigatorDate(navigator, dateKey) {
+  navigator.dataset.sessionsNavigatorValue = dateKey;
+  const label = formatNavigatorDate(dateKey);
+  const dateLabel = navigator.querySelector("[data-sessions-navigator-date-label]");
+  const dateButton = navigator.querySelector("[data-sessions-navigator-date]");
+  if (dateLabel) dateLabel.textContent = label;
+  dateButton?.setAttribute("aria-label", label);
+  navigator.querySelectorAll("[data-sessions-calendar]").forEach((calendar) => {
+    applySessionsCalendarSelection(calendar, { rangeStart: dateKey, rangeEnd: null });
+  });
+}
+
+function setNavigatorCalendarOpen(navigator, open) {
+  const dateButton = navigator.querySelector("[data-sessions-navigator-date]");
+  const calendar = navigator.querySelector("[data-sessions-navigator-calendar]");
+  navigator.classList.toggle("is-open", open);
+  dateButton?.setAttribute("aria-expanded", String(open));
+  if (calendar) calendar.hidden = !open;
+}
+
+export function setupSessionsNavigators(root = document) {
+  root.addEventListener("click", (event) => {
+    const dateButton = event.target.closest("[data-sessions-navigator-date]");
+    if (dateButton) {
+      event.preventDefault();
+      const navigator = dateButton.closest("[data-sessions-navigator]");
+      if (!navigator) return;
+      const open = !navigator.classList.contains("is-open");
+      root.querySelectorAll("[data-sessions-navigator].is-open").forEach((item) => {
+        if (item !== navigator) setNavigatorCalendarOpen(item, false);
+      });
+      setNavigatorCalendarOpen(navigator, open);
+      return;
+    }
+
+    const pickedDate = event.target.closest("[data-sessions-navigator-calendar] .sessions-date");
+    if (pickedDate && !pickedDate.disabled) {
+      const navigator = pickedDate.closest("[data-sessions-navigator]");
+      const dateKey = pickedDate.dataset.calendarDate;
+      if (navigator && dateKey) applyNavigatorDate(navigator, dateKey);
+      return;
+    }
+
+    if (event.target.closest("[data-sessions-navigator-calendar]")) return;
+
+    root.querySelectorAll("[data-sessions-navigator].is-open").forEach((item) => {
+      setNavigatorCalendarOpen(item, false);
+    });
+  });
 }
 
 export function renderSessionsCalendarViewNavigator({

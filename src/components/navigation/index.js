@@ -10,6 +10,7 @@ export {
 export {
   TOP_NAV_ACTIONS,
   renderTopNav,
+  setupSessionsProfileMenu,
 } from "./topNav.js";
 export { renderMobileMenu, renderMobileMenuPanel } from "./mobileMenu.js";
 

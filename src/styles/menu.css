@@ -137,8 +137,8 @@
 .sessions-menu-item__icon {
   display: block;
   flex-shrink: 0;
-  width: var(--icon-size-lg);
-  height: var(--icon-size-lg);
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
   background-color: currentColor;
   -webkit-mask-image: var(--sessions-menu-icon);
   mask-image: var(--sessions-menu-icon);
@@ -170,8 +170,8 @@
 
 .sessions-menu-item__icon--img img {
   display: block;
-  width: var(--icon-size-lg);
-  height: var(--icon-size-lg);
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
 }
 
 .sessions-menu-item__label {

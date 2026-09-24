@@ -10,6 +10,7 @@ const BUTTON_ICONS = {
   plus: "/assets/IconPlus.svg",
   "chevron-right": "/assets/IconCehvronRight.svg",
   "chevron-left": "/assets/IconChevronLeft.svg",
+  "chevron-down": "/assets/IconChevronDown.svg",
   arrow: "/assets/IconArrow.svg",
   edit: "/assets/IconEdit.svg",
   trash: "/assets/IconTrash.svg",

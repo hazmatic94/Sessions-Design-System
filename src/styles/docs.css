@@ -2319,6 +2319,7 @@ pre {
 .content[data-page="showroom"] .page-hero,
 .content[data-page="showroom"] .section-heading,
 .content[data-page="cards"] .page-hero,
+.content[data-page="rows"] .page-hero,
 .content[data-page="modals"] .page-hero,
 .content[data-page="page-header"] .page-hero,
 .content[data-page="navigator"] .page-hero,
@@ -2332,6 +2333,7 @@ pre {
 .content[data-page="legend-item"] .page-hero,
 .content[data-page="chart-grid"] .page-hero,
 .content[data-page="cards"] .section-heading,
+.content[data-page="rows"] .section-heading,
 .content[data-page="modals"] .section-heading,
 .content[data-page="page-header"] .section-heading,
 .content[data-page="navigator"] .section-heading,
@@ -3363,7 +3365,9 @@ then uniform zoom on the set below */
 .content[data-page="cards"] .card-example.is-sessions-appointment-activity-card.button-example.card-example,
 .content[data-page="cards"] .component-example-wrapper.is-sessions-appointment-activity-card.button-example.card-example,
 .content[data-page="cards"] .card-example.is-sessions-top-services-card.button-example.card-example,
-.content[data-page="cards"] .component-example-wrapper.is-sessions-top-services-card.button-example.card-example {
+.content[data-page="cards"] .component-example-wrapper.is-sessions-top-services-card.button-example.card-example,
+.content[data-page="cards"] .card-example.is-sessions-client-card.button-example.card-example,
+.content[data-page="cards"] .component-example-wrapper.is-sessions-client-card.button-example.card-example {
   overflow: visible;
 }.content[data-page="cards"] .card-example.is-sessions-recent-sales-card .card-example-stage,
 .content[data-page="cards"] .card-example.is-sessions-recent-sales-card .component-example-wrapper__stage,
@@ -3382,6 +3386,16 @@ then uniform zoom on the set below */
   min-height: 640px;
   padding: var(--spacing-24);
   overflow: visible;
+}.content[data-page="cards"] .card-example.is-sessions-client-card .card-example-stage,
+.content[data-page="cards"] .card-example.is-sessions-client-card .component-example-wrapper__stage,
+.content[data-page="cards"] .card-example.is-sessions-client-card .button-example-stage {
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  padding: var(--spacing-24);
+  overflow: visible;
 }.content[data-page="cards"] .card-example.is-sessions-recent-sales-card .card-example-preview,
 .content[data-page="cards"] .card-example.is-sessions-recent-sales-card .component-example-wrapper__preview,
 .content[data-page="cards"] .card-example.is-sessions-upcoming-appointments-card .card-example-preview,
@@ -3389,13 +3403,18 @@ then uniform zoom on the set below */
 .content[data-page="cards"] .card-example.is-sessions-appointment-activity-card .card-example-preview,
 .content[data-page="cards"] .card-example.is-sessions-appointment-activity-card .component-example-wrapper__preview,
 .content[data-page="cards"] .card-example.is-sessions-top-services-card .card-example-preview,
-.content[data-page="cards"] .card-example.is-sessions-top-services-card .component-example-wrapper__preview {
+.content[data-page="cards"] .card-example.is-sessions-top-services-card .component-example-wrapper__preview,
+.content[data-page="cards"] .card-example.is-sessions-client-card .card-example-preview,
+.content[data-page="cards"] .card-example.is-sessions-client-card .component-example-wrapper__preview {
   display: flex;
   width: 100%;
   max-width: var(--sessions-card-max-width);
   align-items: flex-start;
   justify-content: center;
   overflow: visible;
+}.content[data-page="cards"] .card-example.is-sessions-client-card .sessions-client-card {
+  width: 396px;
+  max-width: 100%;
 }.card-example-stage {
   display: flex;
   align-items: center;
@@ -4051,6 +4070,28 @@ then uniform zoom on the set below */
   max-width: none;
   align-items: stretch;
   justify-content: stretch;
+}.content[data-page="hour-block"] .card-example.is-sessions-current-time,
+.content[data-page="hour-block"] .component-example-wrapper.is-sessions-current-time.button-example.card-example {
+  --example-stage-height: 120px;
+  height: calc(var(--example-stage-height) + var(--example-code-collapsed-height));
+}.content[data-page="hour-block"] .card-example.is-sessions-current-time .component-example-wrapper__stage,
+.content[data-page="hour-block"] .card-example.is-sessions-current-time .button-example-stage,
+.content[data-page="hour-block"] .card-example.is-sessions-current-time .card-example-stage {
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 var(--example-stage-height);
+  height: var(--example-stage-height);
+  min-height: var(--example-stage-height);
+  max-height: var(--example-stage-height);
+  overflow: visible;
+  padding: var(--spacing-24);
+}.content[data-page="hour-block"] .card-example.is-sessions-current-time .component-example-wrapper__preview,
+.content[data-page="hour-block"] .card-example.is-sessions-current-time .card-example-preview {
+  display: flex;
+  width: min(100%, 480px);
+  max-width: 480px;
+  align-items: center;
+  justify-content: stretch;
 }.content[data-page="hour-block"] .card-example.is-sessions-hour-label,
 .content[data-page="hour-block"] .card-example.is-sessions-hour-booking,
 .content[data-page="hour-block"] .card-example.is-sessions-hour-column,
@@ -4185,12 +4226,22 @@ then uniform zoom on the set below */
   max-width: none;
   align-items: center;
   justify-content: center;
-}.content[data-page="appointment-rows"] .card-example.is-sessions-appointment-row,
-.content[data-page="appointment-rows"] .component-example-wrapper.is-sessions-appointment-row.button-example.card-example {
+}.content[data-page="rows"] .card-example.is-sessions-client-row,
+.content[data-page="rows"] .component-example-wrapper.is-sessions-client-row.button-example.card-example,
+.content[data-page="rows"] .card-example.is-sessions-appointment-row,
+.content[data-page="rows"] .component-example-wrapper.is-sessions-appointment-row.button-example.card-example,
+.content[data-page="rows"] .card-example.is-sessions-top-service-row,
+.content[data-page="rows"] .component-example-wrapper.is-sessions-top-service-row.button-example.card-example {
   height: auto;
-}.content[data-page="appointment-rows"] .card-example.is-sessions-appointment-row .component-example-wrapper__stage,
-.content[data-page="appointment-rows"] .card-example.is-sessions-appointment-row .button-example-stage,
-.content[data-page="appointment-rows"] .card-example.is-sessions-appointment-row .card-example-stage {
+}.content[data-page="rows"] .card-example.is-sessions-client-row .component-example-wrapper__stage,
+.content[data-page="rows"] .card-example.is-sessions-client-row .button-example-stage,
+.content[data-page="rows"] .card-example.is-sessions-client-row .card-example-stage,
+.content[data-page="rows"] .card-example.is-sessions-appointment-row .component-example-wrapper__stage,
+.content[data-page="rows"] .card-example.is-sessions-appointment-row .button-example-stage,
+.content[data-page="rows"] .card-example.is-sessions-appointment-row .card-example-stage,
+.content[data-page="rows"] .card-example.is-sessions-top-service-row .component-example-wrapper__stage,
+.content[data-page="rows"] .card-example.is-sessions-top-service-row .button-example-stage,
+.content[data-page="rows"] .card-example.is-sessions-top-service-row .card-example-stage {
   align-items: center;
   justify-content: center;
   height: auto;
@@ -4198,8 +4249,17 @@ then uniform zoom on the set below */
   max-height: none;
   overflow: visible;
   padding: var(--spacing-24);
-}.content[data-page="appointment-rows"] .card-example.is-sessions-appointment-row .component-example-wrapper__preview,
-.content[data-page="appointment-rows"] .card-example.is-sessions-appointment-row .card-example-preview {
+}.content[data-page="rows"] .card-example.is-sessions-client-row .component-example-wrapper__preview,
+.content[data-page="rows"] .card-example.is-sessions-client-row .card-example-preview {
+  display: flex;
+  width: min(100%, 396px);
+  max-width: 396px;
+  align-items: stretch;
+  justify-content: flex-start;
+}.content[data-page="rows"] .card-example.is-sessions-appointment-row .component-example-wrapper__preview,
+.content[data-page="rows"] .card-example.is-sessions-appointment-row .card-example-preview,
+.content[data-page="rows"] .card-example.is-sessions-top-service-row .component-example-wrapper__preview,
+.content[data-page="rows"] .card-example.is-sessions-top-service-row .card-example-preview {
   display: flex;
   width: min(100%, var(--sessions-card-max-width));
   max-width: var(--sessions-card-max-width);

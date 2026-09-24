@@ -1,12 +1,12 @@
 @import "./tokens.css";
 
 :root {
-  --nav-left-rail-width: 100px;
+  --nav-left-rail-width: 80px;
   --nav-left-rail-padding-block: var(--spacing-24);
   --nav-left-rail-item-gap: 20px;
   --nav-left-rail-bg: var(--color-surface-base);
   --nav-left-rail-border: var(--color-border-subtle);
-  --top-nav-height: 74px;
+  --top-nav-height: 70px;
   --top-nav-avatar-gap: var(--spacing-16);
   --top-nav-padding-inline: var(--spacing-24);
   --mobile-menu-height: 64px;
@@ -82,8 +82,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 52px;
-  height: 52px;
+  width: var(--button-height);
+  height: var(--button-height);
   margin: 0;
   padding: 0;
   border: var(--border-width-default) solid transparent;
@@ -198,6 +198,36 @@
 .top-nav .sessions-avatar {
   --avatar-size: 48px;
   --avatar-fill-color: var(--color-surface-base);
+}
+
+.top-nav__profile {
+  position: relative;
+}
+
+.top-nav__profile-trigger {
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.top-nav__profile-trigger:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+  border-radius: 50%;
+}
+
+.top-nav__profile-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 20;
+}
+
+.top-nav__profile-menu[hidden] {
+  display: none;
 }
 
 .mobile-menu {
@@ -382,7 +412,7 @@
   width: 100%;
   align-items: center;
   gap: var(--spacing-12);
-  min-height: 52px;
+  min-height: var(--button-height);
   margin: 0;
   padding: 0 var(--mobile-menu-padding-inline);
   border: var(--border-width-default) solid transparent;

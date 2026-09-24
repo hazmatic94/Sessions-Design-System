@@ -10,4 +10,5 @@ export * from "./components/input/index.js";
 export * from "./components/menu/index.js";
 export * from "./components/modal/index.js";
 export * from "./components/navigation/index.js";
+export * from "./components/rows/index.js";
 export * from "./components/patterns/index.js";

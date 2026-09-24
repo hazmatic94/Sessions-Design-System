@@ -361,3 +361,108 @@
   }
 }
 
+.sessions-client-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+  width: fit-content;
+  max-width: 100%;
+  padding: var(--spacing-24);
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: var(--spacing-8);
+  background: var(--color-surface-elevated);
+}
+
+.sessions-client-card__profile {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-16);
+  min-width: 0;
+}
+
+.sessions-client-card__details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  min-width: 0;
+}
+
+.sessions-client-card__name {
+  margin: 0;
+  color: var(--joker-white-50);
+  font-family: var(--font);
+  font-size: var(--text-body-big-medium);
+  font-weight: var(--text-body-big-medium-weight);
+  line-height: var(--text-body-line-height);
+  letter-spacing: var(--text-body-big-letter-spacing);
+}
+
+.sessions-client-card__email {
+  margin: 0;
+  color: var(--black-50);
+  font-family: var(--font);
+  font-size: var(--text-body-b1);
+  font-weight: var(--text-body-b1-weight);
+  line-height: var(--text-body-b1-line-height);
+  letter-spacing: var(--text-body-b1-letter-spacing);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sessions-client-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-16);
+}
+
+.sessions-client-card__actions .sessions-button {
+  flex: none;
+}
+
+.sessions-client-card--add {
+  border-color: var(--green-300);
+  background: var(--green-900);
+  color: inherit;
+  cursor: pointer;
+  appearance: none;
+  text-align: left;
+  text-decoration: none;
+  transition:
+    background-color var(--button-secondary-hover-duration) var(--button-secondary-hover-ease),
+    border-color var(--button-secondary-hover-duration) var(--button-secondary-hover-ease);
+}
+
+.sessions-client-card--add:hover {
+  border-color: color-mix(in srgb, var(--green-300) 62%, white);
+  background: color-mix(in srgb, var(--green-900) 94%, white);
+}
+
+.sessions-client-card--add:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.sessions-client-card__icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--avatar-size-md);
+  height: var(--avatar-size-md);
+  border: var(--border-width-default) solid var(--green-300);
+  border-radius: 50%;
+  background: var(--green-900);
+}
+
+.sessions-client-card__icon-mark {
+  display: block;
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
+  background: var(--joker-white-50);
+  -webkit-mask: var(--sessions-client-card-icon) center / contain no-repeat;
+  mask: var(--sessions-client-card-icon) center / contain no-repeat;
+}
+

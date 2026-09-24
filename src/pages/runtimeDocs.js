@@ -16,7 +16,7 @@ import {renderInputsPage} from '../docs/pages/inputsPage.js?v=sessions-page-h2-v
 import {renderModalsPage} from '../docs/pages/modalsPage.js?v=sessions-pages-v1';
 import {renderNavigationPage} from '../docs/pages/navigationPage.js?v=sessions-page-h2-v1';
 import {renderLegendItemPatternPage} from '../docs/pages/patterns/legendItemPage.js?v=sessions-patterns-v1';
-import {renderAppointmentRowsPatternPage} from '../docs/pages/patterns/appointmentRowsPage.js?v=sessions-responsive-demo-v1';
+import {renderRowsPage} from '../docs/pages/rowsPage.js?v=sessions-rows-v1';
 import {renderChartGridPatternPage} from '../docs/pages/patterns/chartGridPage.js?v=sessions-chart-grid-v40';
 import {renderMetricRowPatternPage} from '../docs/pages/patterns/metricRowPage.js?v=sessions-patterns-v1';
 import {renderMetricValuePatternPage} from '../docs/pages/patterns/metricValuePage.js?v=sessions-patterns-v1';
@@ -50,7 +50,9 @@ export const templates = {
             ? renderChipsPage(page)
             : page.title === 'Cards'
               ? renderCardsPage(page)
-              : page.title === 'Modals'
+              : page.title === 'Rows'
+                ? renderRowsPage(page)
+                : page.title === 'Modals'
                 ? renderModalsPage(page)
                 : fallbackComponentPage(page),
 
@@ -88,9 +90,7 @@ export const templates = {
             ? renderLegendItemPatternPage(page)
             : page.title === 'Chart Grid'
               ? renderChartGridPatternPage(page)
-              : page.title === 'Appointment Rows'
-                ? renderAppointmentRowsPatternPage(page)
-                : page.title === 'Navigator'
+              : page.title === 'Navigator'
                   ? renderNavigatorPatternPage(page)
                   : page.title === 'Calendar Header Row'
                     ? renderCalendarHeaderRowPatternPage(page)

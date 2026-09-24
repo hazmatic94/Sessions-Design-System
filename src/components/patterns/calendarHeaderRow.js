@@ -8,7 +8,6 @@ import {
 } from "./navigator.js?v=sessions-calendar-header-icons-v1";
 
 const TEAM_ICON = "/assets/IconTeam.svg";
-const PLUS_ICON = "/assets/IconPlus.svg";
 const CHEVRON_DOWN_ICON = "/assets/IconChevronDown.svg";
 // ponytail: en-US short weekday + day + month; re-pick if mobile format changes
 export const CALENDAR_HEADER_MOBILE_DATE_SIZING_TEXT = "Wed 31 Aug";
@@ -39,7 +38,7 @@ function renderHeaderIconButton({ src, ariaLabel, className = "" }) {
 }
 
 function renderCalendarHeaderAddButton({ label }) {
-  return `<button class="sessions-button sessions-button--primary sessions-button--icon-start sessions-button--icon-end sessions-calendar-header-row__add" type="button">${renderHeaderAssetIcon(PLUS_ICON)}<span class="sessions-button__label">${escapeHtml(label)}</span>${renderHeaderAssetIcon(CHEVRON_DOWN_ICON, "sessions-calendar-header-row__add-chevron")}</button>`;
+  return `<button class="sessions-button sessions-button--primary sessions-button--icon-end sessions-calendar-header-row__add" type="button"><span class="sessions-button__label">${escapeHtml(label)}</span>${renderHeaderAssetIcon(CHEVRON_DOWN_ICON, "sessions-calendar-header-row__add-chevron")}</button>`;
 }
 
 function renderDesktopCalendarHeaderRow({

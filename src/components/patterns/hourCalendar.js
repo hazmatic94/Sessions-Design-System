@@ -19,3 +19,8 @@ export {
   resolveHourBlock,
   setupSessionsHourBlocks,
 } from "./hourBlock.js";
+export {
+  applySessionsCurrentTimeIndicator,
+  renderSessionsCurrentTimeIndicator,
+  setupSessionsCurrentTimeIndicators,
+} from "./currentTimeIndicator.js";

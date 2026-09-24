@@ -26,6 +26,7 @@ export function renderSessionsCalendar({
   rangeStart,
   rangeEnd,
   currentDay,
+  selection = "range",
   interactive = true,
   previousMonthLabel = "Previous month",
   nextMonthLabel = "Next month",
@@ -64,6 +65,7 @@ export function renderSessionsCalendar({
   const calendarAttrs = buildCalendarAttrs({
     className: "sessions-calendar",
     interactive,
+    selection,
     months: [{ month: resolvedMonth, year: resolvedYear }],
     currentDateKey,
     rangeStart: rangeStartKey,
@@ -80,6 +82,7 @@ export function renderSessionsDualMonthCalendar({
   rangeStart,
   rangeEnd,
   currentDay,
+  selection = "range",
   interactive = true,
   previousMonthLabel = "Previous month",
   nextMonthLabel = "Next month",
@@ -116,6 +119,7 @@ export function renderSessionsDualMonthCalendar({
   const calendarAttrs = buildCalendarAttrs({
     className: "sessions-calendar sessions-calendar--dual",
     interactive,
+    selection,
     months: [firstMonth, secondMonth],
     currentDateKey,
     rangeStart: rangeStartKey,
@@ -202,6 +206,7 @@ function renderNavButton(direction, label, iconSrc) {
 function buildCalendarAttrs({
   className,
   interactive,
+  selection,
   months,
   currentDateKey,
   rangeStart,
@@ -211,6 +216,7 @@ function buildCalendarAttrs({
   return [
     `class="${className}"`,
     interactive ? "data-sessions-calendar" : "",
+    selection === "single" ? 'data-calendar-selection="single"' : "",
     `data-calendar-months="${escapeHtml(JSON.stringify(months))}"`,
     currentDateKey ? `data-current-date="${currentDateKey}"` : "",
     rangeStart ? `data-range-start="${rangeStart}"` : "",
