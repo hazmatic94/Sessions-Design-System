@@ -8,9 +8,11 @@
 .sessions-selector {
   --sessions-selector-icon-size: 20px;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-4);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: var(--spacing-24);
+  row-gap: var(--spacing-4);
+  align-items: center;
   width: 100%;
   margin: 0;
   padding: var(--spacing-24);
@@ -43,19 +45,11 @@
   outline-offset: 2px;
 }
 
-.sessions-selector__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-24);
-  min-width: 0;
-  min-height: var(--sessions-selector-icon-size);
-}
-
 .sessions-selector__title {
+  grid-column: 1 / -1;
+  grid-row: 1;
   margin: 0;
   min-width: 0;
-  flex: 1 1 auto;
   color: var(--joker-white-50);
   font-family: var(--font);
   font-size: var(--text-body-b1-medium);
@@ -65,6 +59,8 @@
 }
 
 .sessions-selector__duration {
+  grid-column: 1;
+  grid-row: 2;
   margin: 0;
   min-width: 0;
   color: var(--black-50);
@@ -77,10 +73,16 @@
 
 .sessions-selector__trailing {
   display: grid;
-  flex-shrink: 0;
+  grid-column: 2;
+  grid-row: 2;
   align-items: center;
   justify-items: end;
+  justify-self: end;
   min-height: var(--sessions-selector-icon-size);
+}
+
+.sessions-selector:not(:has(.sessions-selector__duration)) .sessions-selector__trailing {
+  grid-row: 1;
 }
 
 .sessions-selector__price,
@@ -106,7 +108,6 @@
   align-items: center;
   gap: var(--spacing-8);
   opacity: 0;
-  transform: translate3d(4px, 0, 0);
   pointer-events: none;
 }
 

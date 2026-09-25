@@ -1,0 +1,166 @@
+.sessions-notification-card-list {
+  display: grid;
+  gap: var(--spacing-16);
+  width: 100%;
+  min-width: 0;
+}
+
+.sessions-notification-card.is-filtered-out {
+  display: none !important;
+}
+
+.sessions-notification-card {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+  width: 100%;
+  margin: 0;
+  padding: var(--sessions-metric-card-padding-block) var(--sessions-metric-card-padding-inline);
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: var(--radius-card);
+  background: transparent;
+  color: inherit;
+}
+
+button.sessions-notification-card,
+a.sessions-notification-card {
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none;
+  font: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+  transition:
+    background-color var(--motion-fast) var(--ease-out),
+    border-color var(--motion-fast) var(--ease-out);
+}
+
+button.sessions-notification-card:focus-visible,
+a.sessions-notification-card:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.sessions-notification-card--read:is(button, a):hover {
+  background: var(--color-surface-hover);
+}
+
+.sessions-notification-card--unread {
+  background: var(--black-500);
+}
+
+.sessions-notification-card--unread:is(button, a):hover {
+  background: color-mix(in srgb, var(--black-500) 92%, white);
+}
+
+.sessions-notification-card__dot {
+  position: absolute;
+  top: var(--sessions-metric-card-padding-block);
+  right: var(--sessions-metric-card-padding-inline);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-notification-dot);
+}
+
+.sessions-notification-card__header {
+  display: grid;
+  gap: var(--spacing-4);
+  min-width: 0;
+  padding-right: var(--spacing-16);
+}
+
+.sessions-notification-card__title {
+  margin: 0;
+  min-width: 0;
+  color: var(--joker-white-50);
+  font-family: var(--font);
+  font-size: var(--text-body-big-medium);
+  font-weight: var(--text-body-big-medium-weight);
+  line-height: var(--text-body-line-height);
+  letter-spacing: var(--text-body-big-letter-spacing);
+}
+
+.sessions-notification-card__meta,
+.sessions-notification-card__service-meta {
+  margin: 0;
+  min-width: 0;
+  color: var(--black-50);
+  font-family: var(--font);
+  font-size: var(--text-body-b1);
+  font-weight: var(--text-body-b1-weight);
+  line-height: var(--text-body-b1-line-height);
+  letter-spacing: var(--text-body-b1-letter-spacing);
+}
+
+.sessions-notification-card__divider {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-top: var(--border-width-default) solid var(--color-border-default);
+}
+
+.sessions-notification-card__service {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: var(--spacing-24);
+  row-gap: var(--spacing-4);
+  align-items: center;
+  min-width: 0;
+}
+
+.sessions-notification-card__service-copy {
+  display: grid;
+  gap: var(--spacing-4);
+  min-width: 0;
+}
+
+.sessions-notification-card__service-name,
+.sessions-notification-card__price {
+  margin: 0;
+  min-width: 0;
+  color: var(--joker-white-50);
+  font-family: var(--font);
+  font-size: var(--text-body-b1-medium);
+  font-weight: var(--text-body-b1-medium-weight);
+  line-height: var(--text-body-b1-line-height);
+  letter-spacing: var(--text-body-b1-letter-spacing);
+}
+
+.sessions-notification-card__service-name {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.sessions-notification-card__service-meta {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.sessions-notification-card__price {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  justify-self: end;
+  white-space: nowrap;
+}
+
+.sessions-notification-card:not(:has(.sessions-notification-card__service-meta))
+  .sessions-notification-card__price {
+  grid-row: 1 / span 2;
+}
+
+@media (max-width: 860px) {
+  .sessions-notification-card {
+    padding: var(--sessions-metric-card-padding-block-mobile)
+      var(--sessions-metric-card-padding-inline-mobile);
+  }
+
+  .sessions-notification-card__dot {
+    top: var(--sessions-metric-card-padding-block-mobile);
+    right: var(--sessions-metric-card-padding-inline-mobile);
+  }
+}

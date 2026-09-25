@@ -93,7 +93,7 @@ export function renderSessionsSelector({
     .filter(Boolean)
     .join(" ");
 
-  return `<div ${attrs}><div class="sessions-selector__header"><h3 class="sessions-selector__title">${escapeHtml(resolved.name)}</h3><div class="sessions-selector__trailing"><span class="sessions-selector__price">${escapeHtml(resolved.priceLabel)}</span><div class="sessions-selector__actions">${renderActionButton({ action: "edit", label: editLabel, icon: EDIT_ICON })}<span class="sessions-selector__divider" aria-hidden="true"></span>${renderActionButton({ action: "delete", label: deleteLabel, icon: TRASH_ICON })}</div></div></div>${resolved.duration ? `<p class="sessions-selector__duration">${escapeHtml(resolved.duration)}</p>` : ""}</div>`;
+  return `<div ${attrs}><h3 class="sessions-selector__title">${escapeHtml(resolved.name)}</h3>${resolved.duration ? `<p class="sessions-selector__duration">${escapeHtml(resolved.duration)}</p>` : ""}<div class="sessions-selector__trailing"><span class="sessions-selector__price">${escapeHtml(resolved.priceLabel)}</span><div class="sessions-selector__actions">${renderActionButton({ action: "edit", label: editLabel, icon: EDIT_ICON })}<span class="sessions-selector__divider" aria-hidden="true"></span>${renderActionButton({ action: "delete", label: deleteLabel, icon: TRASH_ICON })}</div></div></div>`;
 }
 
 export function renderSessionsSelectorList(selectors = [], { className = "" } = {}) {

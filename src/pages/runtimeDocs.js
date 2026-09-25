@@ -1,6 +1,6 @@
 import {renderAvatarPage} from '../docs/pages/avatarPage.js?v=sessions-avatar-sizes-v3';
 import {renderButtonsPage} from '../docs/pages/buttonsPage.js?v=sessions-button-icons-v2';
-import {renderCardsPage} from '../docs/pages/cardsPage.js?v=sessions-list-card-scroll-v1';
+import {renderCardsPage} from '../docs/pages/cardsPage.js?v=sessions-notification-v2';
 import {renderCoinFlipPage} from '../docs/pages/coinFlipPage.js?v=sessions-pages-v1';
 import {renderGameContainerPage} from '../docs/pages/gameContainerPage.js?v=sessions-pages-v1';
 import {renderRoulettePage} from '../docs/pages/roulettePage.js?v=sessions-pages-v1';

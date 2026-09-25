@@ -59,7 +59,19 @@
   top: calc(100% + var(--spacing-8));
   left: 50%;
   z-index: 8;
+  opacity: 1;
   translate: -50% 0;
+  transition:
+    opacity var(--motion-medium) var(--ease-emphasized),
+    translate var(--motion-medium) var(--ease-emphasized),
+    display var(--motion-medium) allow-discrete;
+}
+
+@starting-style {
+  .sessions-staff-header__menu {
+    opacity: 0;
+    translate: -50% -8px;
+  }
 }
 
 .sessions-staff-header__menu .sessions-menu-panel {
@@ -68,6 +80,8 @@
 
 .sessions-staff-header__menu[hidden] {
   display: none;
+  opacity: 0;
+  translate: -50% -8px;
 }
 
 .sessions-staff-header__option.sessions-menu-item {
@@ -78,6 +92,66 @@
   outline: 2px solid var(--color-border-focus);
   outline-offset: 2px;
   border-radius: var(--radius-sm);
+}
+
+.sessions-calendar-days {
+  display: grid;
+  grid-template-columns: var(--spacing-64) repeat(var(--sessions-calendar-day-count, 3), minmax(0, 1fr));
+  align-items: center;
+  width: 100%;
+  min-height: 56px;
+  border-bottom: var(--border-width-default) solid var(--color-border-subtle);
+}
+
+.sessions-calendar-days__gutter {
+  height: 100%;
+  border-right: var(--border-width-default) solid var(--color-border-subtle);
+}
+
+.sessions-calendar-days__cell {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-8);
+  height: 100%;
+  font-family: var(--font);
+}
+
+.sessions-calendar-days__cell + .sessions-calendar-days__cell {
+  box-shadow: inset 1px 0 0 var(--color-border-subtle);
+}
+
+.sessions-calendar-days__cell.is-selected::before {
+  content: "";
+  position: absolute;
+  inset: var(--spacing-8);
+  border-radius: var(--spacing-12);
+  background: var(--black-700);
+}
+
+.sessions-calendar-days__date {
+  position: relative;
+  color: var(--joker-white-50);
+  font-size: var(--text-body-b1);
+  font-weight: var(--text-body-b1-medium-weight);
+  line-height: var(--text-body-b1-line-height);
+  letter-spacing: var(--text-body-b1-letter-spacing);
+  font-variant-numeric: tabular-nums;
+}
+
+.sessions-calendar-days__weekday {
+  position: relative;
+  color: var(--black-50);
+  font-size: var(--text-body-14);
+  font-weight: var(--text-body-weight);
+  line-height: var(--text-body-line-height);
+  letter-spacing: var(--text-body-letter-spacing);
+}
+
+.sessions-calendar-days__cell.is-selected .sessions-calendar-days__weekday {
+  color: var(--joker-white-50);
 }
 
 .sessions-hour-label {
@@ -145,11 +219,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  padding: 4px 8px;
+  flex: 0 0 var(--spacing-64);
+  width: var(--spacing-64);
+  padding: 4px var(--border-width-default) 4px 0;
   border: var(--border-width-default) solid var(--joker-red-300);
   border-radius: 999px;
-  background: color-mix(in srgb, var(--joker-red-900) 55%, transparent);
+  background: var(--joker-red-900);
 }
 
 .sessions-current-time__label {
@@ -157,9 +232,10 @@
   font-family: var(--font);
   font-size: var(--text-body-12);
   font-weight: 700;
-  line-height: 1;
+  line-height: var(--text-body-line-height);
   letter-spacing: var(--text-body-letter-spacing);
   font-variant-numeric: tabular-nums;
+  text-align: right;
   white-space: nowrap;
 }
 
@@ -184,6 +260,107 @@
   max-width: var(--sessions-surface-width);
   background: var(--color-surface-base);
   border-left: var(--border-width-default) solid var(--color-border-default);
+}
+
+.sessions-surface-scrim {
+  position: fixed;
+  top: var(--top-nav-height);
+  right: 0;
+  bottom: 0;
+  left: var(--nav-left-rail-width);
+  z-index: 30;
+  background: color-mix(in srgb, var(--black-900) 22%, transparent);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  transition:
+    opacity var(--motion-medium) var(--ease-emphasized),
+    display var(--motion-medium) allow-discrete;
+}
+
+@starting-style {
+  .sessions-surface-scrim {
+    opacity: 0;
+  }
+}
+
+.sessions-surface-scrim[hidden] {
+  display: none;
+  opacity: 0;
+}
+
+@media (max-width: 768px) {
+  .sessions-surface-scrim {
+    left: 0;
+  }
+}
+
+.sessions-surface-drawer {
+  position: fixed;
+  top: var(--top-nav-height);
+  right: 0;
+  z-index: 40;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-16);
+  height: calc(100dvh - var(--top-nav-height));
+  transform: translateX(0);
+  transition:
+    transform var(--motion-medium) var(--ease-emphasized),
+    display var(--motion-medium) allow-discrete;
+}
+
+.sessions-surface-drawer .sessions-surface {
+  display: flex;
+  flex-direction: column;
+  width: var(--sessions-surface-width, 480px);
+  max-width: 100%;
+  height: 100%;
+  min-height: 0;
+  flex: 0 0 auto;
+  overflow: hidden;
+}
+
+@starting-style {
+  .sessions-surface-drawer {
+    transform: translateX(100%);
+  }
+}
+
+.sessions-surface-drawer[hidden] {
+  display: none;
+  transform: translateX(100%);
+}
+
+.sessions-button.sessions-surface-close {
+  position: relative;
+  margin-top: var(--spacing-16);
+  flex: 0 0 auto;
+}
+
+.sessions-notifications {
+  box-sizing: border-box;
+  padding: 42px 42px 0;
+}
+
+.sessions-notifications__heading {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+}
+
+.sessions-notifications__tabs {
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--spacing-24);
+}
+
+.sessions-notifications__tabs .sessions-tabs {
+  padding: 0;
+}
+
+.sessions-notifications__list {
+  box-sizing: border-box;
+  padding: 0 var(--spacing-24) var(--spacing-24);
 }
 
 .sessions-hour-column {
@@ -226,8 +403,98 @@
   pointer-events: none;
 }
 
-.sessions-hour-column__slot:hover .sessions-hour-column__hover {
+.sessions-hour-column__slot:hover .sessions-hour-column__hover,
+.sessions-hour-column__slot.is-selected .sessions-hour-column__hover {
   display: flex;
+}
+
+.sessions-hour-column__slot:not(.sessions-hour-column__slot--outside-hours) {
+  cursor: pointer;
+}
+
+.sessions-slot-menu {
+  position: fixed;
+  z-index: 40;
+  opacity: 1;
+  translate: 0 0;
+  transition:
+    opacity var(--motion-medium) var(--ease-emphasized),
+    translate var(--motion-medium) var(--ease-emphasized),
+    display var(--motion-medium) allow-discrete;
+}
+
+@starting-style {
+  .sessions-slot-menu {
+    opacity: 0;
+    translate: 0 -8px;
+  }
+}
+
+.sessions-slot-menu[hidden] {
+  display: none;
+  opacity: 0;
+  translate: 0 -8px;
+}
+
+.sessions-slot-menu.is-add .sessions-slot-menu__header,
+.sessions-slot-menu.is-add .sessions-menu-panel__divider {
+  display: none;
+}
+
+.sessions-slot-menu .sessions-menu-panel {
+  width: 280px;
+  min-width: 280px;
+}
+
+.sessions-slot-menu__header {
+  display: flex;
+  align-items: center;
+  min-height: calc(12px + 24px);
+  padding: var(--spacing-8) calc(12px + 24px + var(--spacing-8)) var(--spacing-4) var(--spacing-12);
+}
+
+.sessions-slot-menu__time {
+  color: var(--joker-white-50);
+  font-family: var(--font);
+  font-size: var(--text-body-b1);
+  font-weight: var(--text-body-b1-medium-weight);
+  line-height: var(--text-body-b1-line-height);
+  letter-spacing: var(--text-body-b1-letter-spacing);
+}
+
+.sessions-slot-menu__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--joker-white-50);
+  cursor: pointer;
+}
+
+.sessions-slot-menu__close-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.sessions-slot-menu__close:hover {
+  opacity: 0.8;
+}
+
+.sessions-slot-menu__close:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--spacing-4);
+}
+
+.sessions-slot-menu__option.sessions-menu-item {
+  width: 100%;
 }
 
 .sessions-hour-column__slot--outside-hours {
@@ -1110,10 +1377,25 @@
   top: calc(100% + 8px);
   left: 8px;
   z-index: 20;
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity var(--motion-medium) var(--ease-emphasized),
+    transform var(--motion-medium) var(--ease-emphasized),
+    display var(--motion-medium) allow-discrete;
+}
+
+@starting-style {
+  .sessions-navigator__calendar {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
 }
 
 .sessions-navigator__calendar[hidden] {
   display: none;
+  opacity: 0;
+  transform: translateY(-8px);
 }
 
 .sessions-navigator__months--single {
@@ -1178,10 +1460,10 @@
   box-shadow:
     inset 1px 0 0 var(--button-secondary-border),
     inset -1px 0 0 var(--button-secondary-border);
-  font-size: var(--text-body-b1-medium);
-  font-weight: var(--text-body-b1-medium-weight);
-  line-height: var(--text-body-b1-line-height);
-  letter-spacing: var(--text-body-b1-letter-spacing);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: var(--button-line-height);
+  letter-spacing: var(--button-letter-spacing);
 }
 
 .sessions-navigator__date-sizing,
@@ -1244,8 +1526,8 @@
 
 .sessions-navigator__icon {
   display: block;
-  width: var(--icon-size-lg);
-  height: var(--icon-size-lg);
+  width: var(--button-icon-size);
+  height: var(--button-icon-size);
 }
 
 .sessions-navigator--calendar-view .sessions-navigator__control--reset {
@@ -1258,6 +1540,109 @@
 
 .sessions-navigator--calendar-view .sessions-navigator__view {
   box-shadow: none;
+}
+
+.sessions-navigator--calendar-view {
+  position: relative;
+}
+
+.sessions-calendar-view-menu {
+  position: absolute;
+  top: calc(100% + var(--spacing-8));
+  right: 0;
+  z-index: 20;
+  opacity: 1;
+  translate: 0 0;
+  transition:
+    opacity var(--motion-medium) var(--ease-emphasized),
+    translate var(--motion-medium) var(--ease-emphasized),
+    display var(--motion-medium) allow-discrete;
+}
+
+@starting-style {
+  .sessions-calendar-view-menu {
+    opacity: 0;
+    translate: 0 -8px;
+  }
+}
+
+.sessions-calendar-view-menu[hidden] {
+  display: none;
+  opacity: 0;
+  translate: 0 -8px;
+}
+
+.sessions-calendar-view-menu .sessions-menu-panel {
+  min-width: 280px;
+}
+
+.sessions-calendar-view-menu__option.sessions-menu-item {
+  width: 100%;
+}
+
+.sessions-team-menu {
+  position: relative;
+}
+
+.sessions-team-menu__panel {
+  position: absolute;
+  top: calc(100% + var(--spacing-8));
+  left: 0;
+  z-index: 20;
+  opacity: 1;
+  translate: 0 0;
+  transition:
+    opacity var(--motion-medium) var(--ease-emphasized),
+    translate var(--motion-medium) var(--ease-emphasized),
+    display var(--motion-medium) allow-discrete;
+}
+
+@starting-style {
+  .sessions-team-menu__panel {
+    opacity: 0;
+    translate: 0 -8px;
+  }
+}
+
+.sessions-team-menu__panel[hidden] {
+  display: none;
+  opacity: 0;
+  translate: 0 -8px;
+}
+
+.sessions-team-menu__panel .sessions-menu-panel {
+  min-width: 280px;
+}
+
+.sessions-team-menu__option.sessions-menu-item {
+  width: 100%;
+}
+
+.sessions-team-menu__member {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  min-height: 56px;
+  align-items: center;
+  gap: var(--spacing-12);
+  margin: 0;
+  padding: 0 20px;
+  color: var(--joker-white-50);
+  cursor: pointer;
+}
+
+.sessions-team-menu__avatar {
+  --avatar-size: 32px;
+  flex-shrink: 0;
+}
+
+.sessions-team-menu__name {
+  min-width: 0;
+  font-family: var(--font);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: var(--button-line-height);
+  letter-spacing: var(--button-letter-spacing);
 }
 
 .sessions-navigator__view {
@@ -1277,10 +1662,10 @@
   color: var(--button-secondary-text);
   box-shadow: inset 1px 0 0 var(--button-secondary-border);
   font-family: var(--font);
-  font-size: var(--text-body-b1-medium);
-  font-weight: var(--text-body-b1-medium-weight);
-  line-height: var(--text-body-b1-line-height);
-  letter-spacing: var(--text-body-b1-letter-spacing);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: var(--button-line-height);
+  letter-spacing: var(--button-letter-spacing);
   cursor: pointer;
   text-decoration: none;
   transition:

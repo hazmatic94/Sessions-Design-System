@@ -1,4 +1,5 @@
 .sessions-menu-panel {
+  position: relative;
   box-sizing: border-box;
   display: flex;
   width: fit-content;
@@ -19,7 +20,6 @@
 }
 
 .sessions-menu-user-header {
-  position: relative;
   box-sizing: border-box;
   display: flex;
   width: 100%;
@@ -137,8 +137,8 @@
 .sessions-menu-item__icon {
   display: block;
   flex-shrink: 0;
-  width: var(--icon-size-md);
-  height: var(--icon-size-md);
+  width: var(--button-icon-size);
+  height: var(--button-icon-size);
   background-color: currentColor;
   -webkit-mask-image: var(--sessions-menu-icon);
   mask-image: var(--sessions-menu-icon);
@@ -170,16 +170,16 @@
 
 .sessions-menu-item__icon--img img {
   display: block;
-  width: var(--icon-size-md);
-  height: var(--icon-size-md);
+  width: var(--button-icon-size);
+  height: var(--button-icon-size);
 }
 
 .sessions-menu-item__label {
   font-family: var(--font);
-  font-size: var(--text-body-b1);
-  font-weight: var(--text-body-b1-medium-weight);
-  line-height: var(--text-body-b1-line-height);
-  letter-spacing: var(--text-body-b1-letter-spacing);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: var(--button-line-height);
+  letter-spacing: var(--button-letter-spacing);
 }
 
 .sessions-menu-item--hover,

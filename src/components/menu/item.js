@@ -11,9 +11,11 @@ const MENU_ICONS = {
   settings: "/assets/IconSettings.svg",
   help: "/assets/IconHelp.svg",
   logout: "/assets/IconLogout.svg",
+  scheduled: "/assets/IconSheduledTeam.svg",
+  team: "/assets/IconTeam.svg",
 };
 
-const MENU_IMG_ICONS = new Set(["logout", "day", "week", "month", "3day"]);
+const MENU_IMG_ICONS = new Set(["logout", "day", "week", "month", "3day", "scheduled", "team"]);
 
 export const MENU_ITEM_STATES = ["default", "hover", "pressed", "selected", "disabled"];
 

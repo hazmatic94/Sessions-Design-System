@@ -22,10 +22,10 @@
   min-height: var(--button-height);
   padding: 0 var(--button-padding-inline) 1px;
   border-radius: var(--button-primary-radius);
-  font-size: var(--text-body-b1-medium);
-  font-weight: var(--text-body-b1-medium-weight);
-  line-height: var(--text-body-b1-line-height);
-  letter-spacing: var(--text-body-b1-letter-spacing);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: var(--button-line-height);
+  letter-spacing: var(--button-letter-spacing);
 }
 
 .sessions-button--icon-only {
@@ -147,8 +147,8 @@
   position: absolute;
   inset: 0;
   margin: auto;
-  width: 22px;
-  height: 22px;
+  width: var(--button-icon-size);
+  height: var(--button-icon-size);
 }
 
 .sessions-button--full-width {
@@ -162,8 +162,8 @@
 .sessions-button__icon {
   display: block;
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
+  width: var(--button-icon-size);
+  height: var(--button-icon-size);
   background-color: currentColor;
   -webkit-mask-image: var(--sessions-button-icon);
   mask-image: var(--sessions-button-icon);

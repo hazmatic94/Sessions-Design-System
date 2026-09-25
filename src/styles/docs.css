@@ -1157,6 +1157,7 @@ p {
   display: block;
 }.home-intro .page-hero-text {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
@@ -1165,19 +1166,23 @@ p {
   display: grid;
   gap: 12px;
   min-width: 0;
-  flex: 1;
+  flex: 1 1 360px;
 }.home-intro__text h2 {
   max-width: none;
-  white-space: nowrap;
+  white-space: normal;
 }.home-intro__cta {
-  flex: none;
+  flex: 0 0 auto;
   align-self: center;
   text-decoration: none;
 }@media (max-width: 672px) {
   .home-intro .page-hero-text {
     flex-direction: column;
     align-items: flex-start;
-    gap: 24px;
+  }
+
+  .home-intro__text {
+    flex: none;
+    width: 100%;
   }
 
   .home-intro__cta {
@@ -4311,6 +4316,13 @@ then uniform zoom on the set below */
   justify-content: flex-start;
 }.content[data-page="selector"] .card-example.is-sessions-selector .component-example-wrapper__preview,
 .content[data-page="selector"] .card-example.is-sessions-selector .card-example-preview {
+  display: flex;
+  width: 410px;
+  max-width: 100%;
+  align-items: stretch;
+  justify-content: flex-start;
+}.content[data-page="cards"] .card-example.is-sessions-notification-card .component-example-wrapper__preview,
+.content[data-page="cards"] .card-example.is-sessions-notification-card .card-example-preview {
   display: flex;
   width: 410px;
   max-width: 100%;

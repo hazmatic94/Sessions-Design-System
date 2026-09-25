@@ -266,6 +266,11 @@
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
   --ease-in: cubic-bezier(0.4, 0, 1, 1);
   --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --button-font-size: var(--body-14);
+  --button-font-weight: var(--text-body-b1-medium-weight);
+  --button-line-height: var(--text-body-b1-line-height);
+  --button-letter-spacing: var(--text-body-b1-letter-spacing);
+  --button-icon-size: var(--icon-size-sm);
   --button-height: 42px;
   --button-primary-min-width: calc(
     var(--spacing-64) + var(--spacing-64) + var(--spacing-64) +

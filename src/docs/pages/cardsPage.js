@@ -3,10 +3,11 @@ import { renderResponsiveDemo } from "../demo/responsiveDemo.js?v=sessions-respo
 import {
   renderSessionsAppointmentActivityCard,
   renderSessionsClientCard,
+  renderSessionsNotificationCard,
   renderSessionsRecentSalesCard,
   renderSessionsTopServicesCard,
   renderSessionsUpcomingAppointmentsCard,
-} from "../../components/cards/index.js?v=sessions-client-card-v1";
+} from "../../components/cards/index.js?v=sessions-notification-v1";
 import { SESSIONS_CHART_COLORS } from "../../components/patterns/chartColors.js";
 
 export function cardExampleCard({
@@ -393,9 +394,19 @@ const ADD_CLIENT_CARD = {
   hint: "Leave empty for walk-ins",
 };
 
+const NOTIFICATION_CARD = {
+  title: "Appointment",
+  meta: "Thu, Sep 1 at 2:30pm • Motion",
+  serviceName: "Taper fade",
+  duration: "45min",
+  staffName: "Harry Maher",
+  price: 60,
+};
+
 export function renderCardsPage(page) {
   return `
     ${pageHero(page)}
+    ${section("Notification Card", "", notificationCardExample(), "button-example-section card-example-section")}
     ${section("Client Card", "", clientCardExample(), "button-example-section card-example-section")}
     ${section("Recent Sales", "", recentSalesCardExample(), "button-example-section card-example-section")}
     ${section("Upcoming Appointments", "", upcomingAppointmentsCardExample(), "button-example-section card-example-section")}
@@ -448,6 +459,73 @@ function upcomingAppointmentsCardExample() {
       className: "is-sessions-upcoming-appointments-card",
     })}
   `;
+}
+
+function notificationCardExample() {
+  return `
+    ${componentExampleWrapper({
+      id: "sessions-notification-card-unread-example",
+      tocTitle: "Unread",
+      preview: renderSessionsNotificationCard({
+        ...NOTIFICATION_CARD,
+        id: "appointment-notification",
+        unread: true,
+      }),
+      codeId: "sessions-notification-card-unread-code",
+      filename: "NotificationCardUnread.tsx",
+      code: sampleNotificationCardUnreadCode(),
+      className: "is-sessions-notification-card",
+    })}
+    ${componentExampleWrapper({
+      id: "sessions-notification-card-read-example",
+      tocTitle: "Read",
+      preview: renderSessionsNotificationCard({
+        ...NOTIFICATION_CARD,
+        id: "appointment-notification-read",
+        unread: false,
+      }),
+      codeId: "sessions-notification-card-read-code",
+      filename: "NotificationCardRead.tsx",
+      code: sampleNotificationCardReadCode(),
+      className: "is-sessions-notification-card",
+    })}
+  `;
+}
+
+function sampleNotificationCardUnreadCode() {
+  return `import { NotificationCard } from "@sessions/design-system";
+
+const notification = {
+  title: "Appointment",
+  meta: "Thu, Sep 1 at 2:30pm • Motion",
+  serviceName: "Taper fade",
+  duration: "45min",
+  staffName: "Harry Maher",
+  price: 60,
+  unread: true,
+};
+
+export function NotificationCardUnreadExample() {
+  return <NotificationCard {...notification} />;
+}`;
+}
+
+function sampleNotificationCardReadCode() {
+  return `import { NotificationCard } from "@sessions/design-system";
+
+const notification = {
+  title: "Appointment",
+  meta: "Thu, Sep 1 at 2:30pm • Motion",
+  serviceName: "Taper fade",
+  duration: "45min",
+  staffName: "Harry Maher",
+  price: 60,
+  unread: false,
+};
+
+export function NotificationCardReadExample() {
+  return <NotificationCard {...notification} />;
+}`;
 }
 
 function clientCardExample() {

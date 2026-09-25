@@ -44,7 +44,8 @@
   background: var(--avatar-ring-color);
   color: inherit;
   text-decoration: none;
-  cursor: default;
+  cursor: pointer;
+  transition: border-color var(--motion-medium) var(--ease-emphasized);
 }
 
 button.sessions-avatar,
@@ -80,6 +81,17 @@ a.sessions-avatar {
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform var(--motion-medium) var(--ease-emphasized);
+}
+
+.sessions-avatar:hover {
+  border-color: var(--green-300);
+}
+
+.sessions-avatar:hover .sessions-avatar__image {
+  transform: scale(1.06);
 }
 
 .sessions-avatar:focus-visible {

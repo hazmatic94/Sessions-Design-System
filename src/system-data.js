@@ -544,7 +544,7 @@ export const componentSummaries = {
   Navigation:
     'Shared navigation patterns keep routes, active states and wayfinding consistent.',
   Cards:
-    'Reusable card patterns group related content, summaries, client profiles, and repeated information.',
+    'Reusable card patterns group related content, summaries, client profiles, notifications, and repeated information.',
   Rows:
     'List rows for clients, appointments, and top services with shared hover and spacing rules.',
   Selector:
