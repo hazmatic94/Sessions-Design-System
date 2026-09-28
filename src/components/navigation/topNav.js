@@ -83,7 +83,7 @@ function renderNotificationsIntro() {
     renderSessionsNotificationCardList(notifications, { className: "sessions-notifications__list" }),
   );
 
-  return `<div class="sessions-notifications"><div class="sessions-notifications__heading">${renderSessionsPageHeader({ title: "Notifications" })}${renderSessionsChip({ label: String(notifications.length) })}</div></div><div class="sessions-notifications__tabs">${tabs}</div>${list}`;
+  return `<div class="sessions-notifications"><div class="sessions-notifications__heading">${renderSessionsPageHeader({ title: "Notifications" })}${renderSessionsChip({ label: String(notifications.length), className: "sessions-notifications__count" })}</div></div><div class="sessions-notifications__tabs">${tabs}</div>${list}`;
 }
 
 function renderProfileMenu(avatar) {

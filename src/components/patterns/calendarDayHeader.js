@@ -1,12 +1,12 @@
 import { escapeHtml } from "../../utils.js";
 import { addNavigatorDays, parseNavigatorDate, toNavigatorDateValue } from "./navigator.js";
 
-function formatDayParts(value) {
+function formatDayParts(value, short) {
   const date = parseNavigatorDate(value);
 
   return {
     date: String(date.getDate()),
-    weekday: date.toLocaleDateString("en-US", { weekday: "long" }),
+    weekday: date.toLocaleDateString("en-US", { weekday: short ? "short" : "long" }),
   };
 }
 
@@ -27,10 +27,10 @@ export function renderSessionsCalendarDayHeader({
   const dayCount = week ? 7 : count;
   const days = Array.from({ length: dayCount }, (_, index) => {
     const value = addNavigatorDays(startValue, index);
-    const { date, weekday } = formatDayParts(value);
+    const { date, weekday } = formatDayParts(value, week);
     const isSelected = value === selectedValue;
 
-    return `<div class="sessions-calendar-days__cell${isSelected ? " is-selected" : ""}" data-sessions-calendar-day="${escapeHtml(value)}"><span class="sessions-calendar-days__date">${escapeHtml(date)}</span><span class="sessions-calendar-days__weekday">${escapeHtml(weekday)}</span></div>`;
+    return `<div class="sessions-calendar-days__cell${isSelected ? " is-selected" : ""}" data-sessions-calendar-day="${escapeHtml(value)}"><span class="sessions-calendar-days__label"><span class="sessions-calendar-days__date">${escapeHtml(date)}</span><span class="sessions-calendar-days__weekday">${escapeHtml(weekday)}</span></span></div>`;
   }).join("");
 
   return `<div class="sessions-calendar-days" data-sessions-calendar-days style="--sessions-calendar-day-count: ${dayCount}"><div class="sessions-calendar-days__gutter" aria-hidden="true"></div>${days}</div>`;

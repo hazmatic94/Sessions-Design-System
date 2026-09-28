@@ -15,6 +15,8 @@ const BUTTON_ICONS = {
   edit: "/assets/IconEdit.svg",
   trash: "/assets/IconTrash.svg",
   search: "/assets/IconSearch.svg",
+  sort: "/assets/IconSort.svg",
+  filters: "/assets/IconFilters.svg",
   close: "/assets/IconClose.svg",
 };
 

@@ -30,7 +30,9 @@ export {
 export { renderSessionsFooter } from "./footer.js";
 export { renderSessionsSurface } from "./surface.js";
 export { renderSessionsPageHeader } from "./pageHeader.js";
+export { renderSessionsFilterBar } from "./filterBar.js";
 export { renderSessionsStaffHeader, setupSessionsStaffHeaders } from "./staffHeader.js";
+export { renderSessionsStaffDayBoard } from "./staffDayBoard.js";
 export {
   applySessionsHourBlock,
   applySessionsHourLabel,

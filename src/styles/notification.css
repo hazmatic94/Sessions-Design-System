@@ -1,3 +1,14 @@
+.sessions-notifications__count.sessions-chip {
+  padding: var(--spacing-4);
+  border-color: var(--color-notification-dot);
+  background: var(--color-notification-dot);
+  color: var(--joker-white-50);
+  font-size: var(--text-body-12);
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
 .sessions-notification-card-list {
   display: grid;
   gap: var(--spacing-16);
@@ -14,7 +25,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-24);
+  gap: var(--spacing-16);
   width: 100%;
   margin: 0;
   padding: var(--sessions-metric-card-padding-block) var(--sessions-metric-card-padding-inline);
@@ -77,10 +88,10 @@ a.sessions-notification-card:focus-visible {
   min-width: 0;
   color: var(--joker-white-50);
   font-family: var(--font);
-  font-size: var(--text-body-big-medium);
-  font-weight: var(--text-body-big-medium-weight);
-  line-height: var(--text-body-line-height);
-  letter-spacing: var(--text-body-big-letter-spacing);
+  font-size: var(--text-body-b1-medium);
+  font-weight: var(--text-body-b1-medium-weight);
+  line-height: var(--text-body-b1-line-height);
+  letter-spacing: var(--text-body-b1-letter-spacing);
 }
 
 .sessions-notification-card__meta,

@@ -10,8 +10,8 @@ const CHEVRON_LEFT_ICON = "/assets/IconChevronLeft.svg";
 const CHEVRON_RIGHT_ICON = "/assets/IconCehvronRight.svg";
 const CHEVRON_DOWN_ICON = "/assets/IconChevronDown.svg";
 const REFRESH_ICON = "/assets/IconRefresh.svg";
-// ponytail: en-US short weekday/month only; re-pick if format/locale changes
-export const NAVIGATOR_DATE_LABEL_SIZING_TEXT = "Wed, Aug 31";
+// ponytail: widest en-US short date (Wed + Sep + 30). Re-measure if the font or format changes.
+export const NAVIGATOR_DATE_LABEL_SIZING_TEXT = "Wed, Sep 30";
 export const NAVIGATOR_VIEW_LABEL_SIZING_TEXT = "3 day";
 
 const CALENDAR_VIEW_LABELS = {
@@ -185,7 +185,10 @@ export function setupSessionsNavigators(root = document) {
     if (pickedDate && !pickedDate.disabled) {
       const navigator = pickedDate.closest("[data-sessions-navigator]");
       const dateKey = pickedDate.dataset.calendarDate;
-      if (navigator && dateKey) applyNavigatorDate(navigator, dateKey);
+      if (navigator && dateKey) {
+        applyNavigatorDate(navigator, dateKey);
+        setNavigatorCalendarOpen(navigator, false);
+      }
       return;
     }
 
