@@ -118,7 +118,7 @@ function renderTeamMenu({ team, youName }) {
 }
 
 function renderTeamMenuButton({ team, youName, teamAriaLabel }) {
-  return `<div class="sessions-team-menu" data-sessions-team-menu>${renderHeaderIconButton({
+  return `<div class="sessions-team-menu" data-sessions-team-menu data-sessions-team-you="${escapeHtml(youName)}">${renderHeaderIconButton({
     src: TEAM_ICON,
     ariaLabel: teamAriaLabel,
     className: "sessions-calendar-header-row__team",
@@ -212,16 +212,66 @@ function syncTeamAllCheckbox(menu) {
   if (all) all.checked = members.length > 0 && members.every((input) => input.checked);
 }
 
+function teamMemberNames(menu) {
+  return [...menu.querySelectorAll("[data-sessions-team-member]")].map(
+    (input) => input.dataset.sessionsTeamMember,
+  );
+}
+
+function checkedTeamNames(menu) {
+  return [...menu.querySelectorAll("[data-sessions-team-member]")]
+    .filter((input) => input.checked)
+    .map((input) => input.dataset.sessionsTeamMember);
+}
+
+function applyTeamChecks(menu, names) {
+  const selected = new Set(names);
+  menu.querySelectorAll("[data-sessions-team-member]").forEach((input) => {
+    input.checked = selected.has(input.dataset.sessionsTeamMember);
+  });
+  syncTeamAllCheckbox(menu);
+}
+
+function keepSomeoneSelected(menu, preferred) {
+  const members = [...menu.querySelectorAll("[data-sessions-team-member]")];
+  if (members.some((input) => input.checked)) return;
+  const you = menu.dataset.sessionsTeamYou;
+  const keep =
+    members.find((input) => input === preferred) ??
+    members.find((input) => input.dataset.sessionsTeamMember === you) ??
+    members[0];
+  if (keep) keep.checked = true;
+}
+
+function publishTeamSelection(root, menu, preferred) {
+  keepSomeoneSelected(menu, preferred);
+  syncTeamAllCheckbox(menu);
+  const names = checkedTeamNames(menu);
+  root.querySelectorAll("[data-sessions-team-menu]").forEach((other) => {
+    if (other !== menu) applyTeamChecks(other, names);
+  });
+  menu.dispatchEvent(
+    new CustomEvent("sessions:team-selection", { bubbles: true, detail: { names } }),
+  );
+}
+
 export function setupSessionsTeamMenus(root = document) {
   root.addEventListener("click", (event) => {
     const filter = event.target.closest("[data-sessions-team-filter]");
     if (filter) {
       const menu = filter.closest("[data-sessions-team-menu]");
-      menu?.querySelectorAll("[data-sessions-team-filter]").forEach((item) => {
+      if (!menu) return;
+      const mode = filter.dataset.sessionsTeamFilter;
+      const you = menu.dataset.sessionsTeamYou;
+      // ponytail: no shift data, so Scheduled team shows everyone until a roster exists
+      const names = teamMemberNames(menu).filter((name) => mode !== "you" || name === you);
+      applyTeamChecks(menu, names);
+      menu.querySelectorAll("[data-sessions-team-filter]").forEach((item) => {
         const selected = item === filter;
         item.classList.toggle("is-selected", selected);
         item.setAttribute("aria-pressed", String(selected));
       });
+      publishTeamSelection(root, menu);
       return;
     }
 
@@ -249,13 +299,18 @@ export function setupSessionsTeamMenus(root = document) {
     const all = event.target.closest("[data-sessions-team-all]");
     if (all) {
       const menu = all.closest("[data-sessions-team-menu]");
-      menu?.querySelectorAll("[data-sessions-team-member]").forEach((input) => {
+      if (!menu) return;
+      menu.querySelectorAll("[data-sessions-team-member]").forEach((input) => {
         input.checked = all.checked;
       });
+      publishTeamSelection(root, menu);
       return;
     }
 
     const member = event.target.closest("[data-sessions-team-member]");
-    if (member) syncTeamAllCheckbox(member.closest("[data-sessions-team-menu]"));
+    if (!member) return;
+    const menu = member.closest("[data-sessions-team-menu]");
+    if (!menu) return;
+    publishTeamSelection(root, menu, member);
   });
 }

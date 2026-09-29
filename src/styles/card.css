@@ -361,17 +361,55 @@
   }
 }
 
+@property --sessions-client-card-trace-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0turn;
+}
+
 .sessions-client-card {
+  --sessions-client-card-trace-angle: 0turn;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-24);
+  gap: var(--spacing-16);
   width: fit-content;
   max-width: 100%;
   padding: var(--spacing-24);
-  border: var(--border-width-default) solid var(--color-border-default);
+  border: var(--border-width-default) solid transparent;
   border-radius: var(--spacing-8);
-  background: var(--color-surface-elevated);
+  box-shadow: var(--shadow-2);
+  background:
+    linear-gradient(var(--color-surface-elevated), var(--color-surface-elevated)) padding-box,
+    conic-gradient(
+      from var(--sessions-client-card-trace-angle),
+      var(--color-border-default) 0%,
+      color-mix(in srgb, var(--color-border-default) 88%, var(--joker-white-50)) 10%,
+      color-mix(in srgb, var(--color-border-default) 72%, var(--joker-white-50)) 16%,
+      color-mix(in srgb, var(--color-border-default) 88%, var(--joker-white-50)) 22%,
+      var(--color-border-default) 30% 100%
+    )
+    border-box;
+  animation: sessions-client-card-trace calc(var(--motion-slow) * 12) linear infinite;
+}
+
+@keyframes sessions-client-card-trace {
+  to {
+    --sessions-client-card-trace-angle: 1turn;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sessions-client-card {
+    animation: none;
+    border-color: var(--color-border-default);
+    background: var(--color-surface-elevated);
+  }
+
+  .sessions-client-card--add {
+    border-color: var(--green-300);
+    background: var(--green-900);
+  }
 }
 
 .sessions-client-card__profile {
@@ -423,6 +461,7 @@
 }
 
 .sessions-client-card--add {
+  animation: none;
   border-color: var(--green-300);
   background: var(--green-900);
   color: inherit;

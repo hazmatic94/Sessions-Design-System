@@ -408,6 +408,68 @@
   transform: translateX(100%);
 }
 
+.sessions-surface-drawer [data-sessions-client-profile-body] {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sessions-client-profile {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: var(--spacing-24);
+}
+
+.sessions-client-profile > * + * {
+  margin-top: var(--spacing-16);
+}
+
+.sessions-client-profile .sessions-client-card {
+  width: 100%;
+  margin-top: var(--spacing-24);
+}
+
+.sessions-client-profile .sessions-notification-card {
+  gap: var(--spacing-12);
+  padding: var(--spacing-16);
+}
+
+.sessions-client-profile .sessions-notification-card__divider {
+  display: none;
+}
+
+.sessions-client-profile .sessions-notification-card__status {
+  top: var(--spacing-16);
+  right: var(--spacing-16);
+}
+
+.sessions-client-profile .sessions-client-card__email {
+  text-decoration: underline;
+}
+
+.sessions-client-profile__upcoming {
+  margin: 0;
+  color: var(--joker-white-50);
+  font-family: var(--font);
+  font-size: var(--body-big);
+  font-weight: var(--text-body-b1-medium-weight);
+  line-height: var(--text-body-line-height);
+}
+
+.sessions-client-profile__upcoming-section,
+.sessions-client-profile__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+}
+
+.sessions-client-profile__upcoming-section {
+  margin-top: var(--spacing-24);
+}
+
 .sessions-button.sessions-surface-close {
   position: relative;
   margin-top: var(--spacing-16);
@@ -423,6 +485,80 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-8);
+}
+
+[data-sessions-add-client] .sessions-notifications {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  gap: var(--spacing-32);
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.sessions-add-client__actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: var(--spacing-16);
+  padding: 42px;
+}
+
+.sessions-add-client__actions .sessions-button {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.sessions-add-client__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+  min-width: 0;
+}
+
+.sessions-add-client__names,
+.sessions-add-client__phone-row {
+  display: grid;
+  gap: var(--spacing-16);
+  min-width: 0;
+}
+
+.sessions-add-client__names {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.sessions-add-client__phone {
+  display: flex;
+  flex-direction: column;
+  gap: var(--input-field-gap);
+  min-width: 0;
+}
+
+.sessions-add-client__phone-row {
+  grid-template-columns: 120px minmax(0, 1fr);
+  align-items: end;
+}
+
+[data-sessions-add-client] .sessions-input {
+  width: 100%;
+  min-width: 0;
+}
+
+[data-sessions-add-client] .sessions-input__label {
+  color: var(--joker-white-50);
+}
+
+[data-sessions-add-client] .sessions-add-client__code {
+  width: 120px;
+}
+
+[data-sessions-add-client] .sessions-add-client__code select {
+  color: var(--joker-white-50);
+  cursor: pointer;
+  background-color: transparent;
+  background-image: url("/assets/IconChevronDown.svg");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 20px 20px;
 }
 
 .sessions-notifications__tabs {
@@ -1946,6 +2082,10 @@
   box-sizing: border-box;
   padding: var(--spacing-16);
   border-bottom: var(--border-width-default) solid var(--color-border-subtle);
+}
+
+.sessions-client-list__row:not(.sessions-client-list__head) {
+  cursor: pointer;
 }
 
 .sessions-client-list__row:not(.sessions-client-list__head):hover,

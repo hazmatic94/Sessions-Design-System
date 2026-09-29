@@ -1,3 +1,4 @@
+import { renderSessionsChip } from "../chip/chip.js";
 import { escapeHtml } from "../../utils.js";
 
 function formatPrice({ price, currency, priceLabel }) {
@@ -20,9 +21,12 @@ function renderNotificationCardContent({
   resolvedServiceMeta,
   resolvedPrice,
   unread,
+  status,
+  footer,
 }) {
   return `
     ${unread ? '<span class="sessions-notification-card__dot" aria-hidden="true"></span>' : ""}
+    ${status ? `<span class="sessions-notification-card__status">${renderSessionsChip({ label: status })}</span>` : ""}
     <div class="sessions-notification-card__header">
       <h3 class="sessions-notification-card__title">${escapeHtml(title)}</h3>
       ${meta ? `<p class="sessions-notification-card__meta">${escapeHtml(meta)}</p>` : ""}
@@ -35,6 +39,7 @@ function renderNotificationCardContent({
       </div>
       ${resolvedPrice ? `<p class="sessions-notification-card__price">${escapeHtml(resolvedPrice)}</p>` : ""}
     </div>
+    ${footer ? `<div class="sessions-notification-card__footer">${footer}</div>` : ""}
   `;
 }
 
@@ -49,6 +54,8 @@ export function renderSessionsNotificationCard({
   currency = "A$",
   priceLabel = "",
   unread = false,
+  status = "",
+  footer = "",
   href = "",
   id = "",
   interactive = true,
@@ -70,6 +77,8 @@ export function renderSessionsNotificationCard({
     resolvedServiceMeta,
     resolvedPrice,
     unread,
+    status,
+    footer,
   });
   const attrs = [
     `class="${classes}"`,

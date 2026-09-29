@@ -66,6 +66,16 @@ a.sessions-notification-card:focus-visible {
   background: color-mix(in srgb, var(--black-500) 92%, white);
 }
 
+.sessions-notification-card__status {
+  position: absolute;
+  top: var(--sessions-metric-card-padding-block);
+  right: var(--sessions-metric-card-padding-inline);
+}
+
+.sessions-notification-card__footer {
+  display: flex;
+}
+
 .sessions-notification-card__dot {
   position: absolute;
   top: var(--sessions-metric-card-padding-block);

@@ -30,7 +30,7 @@ export function renderSessionsClientListRow({
     attributes: { "aria-label": `Select ${name}` },
   });
 
-  return `<div class="sessions-client-list__row${checked ? " is-selected" : ""}">${checkbox}${renderClientIdentity({
+  return `<div class="sessions-client-list__row${checked ? " is-selected" : ""}" data-sessions-client-row data-sessions-client-name="${escapeHtml(name)}">${checkbox}${renderClientIdentity({
     name,
     email,
     avatarSrc,
