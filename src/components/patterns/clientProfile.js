@@ -36,10 +36,10 @@ function renderUpcomingAppointment(appointment) {
 export function renderSessionsClientProfile({ client, appointments = UPCOMING } = {}) {
   const cards = appointments.map((appointment) => renderUpcomingAppointment(appointment)).join("");
 
-  return `<div class="sessions-client-profile">${renderSessionsPageHeader({
+  return `<div class="sessions-client-profile"><div class="sessions-client-profile__header">${renderSessionsPageHeader({
     title: "Client profile",
     body: "View, add, edit and delete client details.",
-  })}${renderSessionsClientCard({
+  })}</div>${renderSessionsClientCard({
     name: client.name,
     email: client.email,
     avatarSrc: client.avatarSrc,
@@ -66,14 +66,47 @@ function setClientProfileOpen(root, open) {
   if (scrim) scrim.hidden = !open;
 }
 
+function setClientActionsOpen(actions, open) {
+  const trigger = actions.querySelector(".sessions-button");
+  const menu = actions.querySelector(".sessions-client-card__menu");
+  actions.classList.toggle("is-open", open);
+  trigger?.setAttribute("aria-expanded", String(open));
+  if (menu) menu.hidden = !open;
+}
+
+function closeClientActions(root) {
+  root.querySelectorAll("[data-sessions-client-actions].is-open").forEach((actions) => {
+    setClientActionsOpen(actions, false);
+  });
+}
+
 export function setupSessionsClientProfiles(root, { clients = [] } = {}) {
   const findClient = (name) => clients.find((client) => client.name === name);
 
   root.addEventListener("click", (event) => {
     if (event.target.closest("[data-sessions-client-profile-close], [data-sessions-client-profile-scrim]")) {
+      closeClientActions(root);
       setClientProfileOpen(root, false);
       return;
     }
+
+    const trigger = event.target.closest("[data-sessions-client-actions] > .sessions-button");
+    if (trigger) {
+      event.preventDefault();
+      const actions = trigger.closest("[data-sessions-client-actions]");
+      const open = actions.classList.contains("is-open");
+      closeClientActions(root);
+      setClientActionsOpen(actions, !open);
+      return;
+    }
+
+    if (event.target.closest("[data-sessions-client-action]")) {
+      event.preventDefault();
+      closeClientActions(root);
+      return;
+    }
+
+    if (!event.target.closest(".sessions-client-card__menu")) closeClientActions(root);
 
     const row = event.target.closest("[data-sessions-client-row]");
     if (!row || event.target.closest(".sessions-checkbox")) return;
@@ -85,6 +118,11 @@ export function setupSessionsClientProfiles(root, { clients = [] } = {}) {
   });
 
   root.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") setClientProfileOpen(root, false);
+    if (event.key !== "Escape") return;
+    if (root.querySelector("[data-sessions-client-actions].is-open")) {
+      closeClientActions(root);
+      return;
+    }
+    setClientProfileOpen(root, false);
   });
 }

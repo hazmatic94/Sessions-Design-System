@@ -3,6 +3,7 @@ import { escapeHtml } from "../../utils.js";
 const RAIL_ICONS = {
   home: "/assets/IconHome.svg?v=sessions-rail-v2",
   calendar: "/assets/IconCalendar.svg?v=sessions-rail-v2",
+  services: "/assets/IconServices.svg?v=sessions-rail-v2",
   clients: "/assets/IconClients.svg?v=sessions-rail-v2",
   team: "/assets/IconTeam.svg?v=sessions-rail-v2",
   settings: "/assets/IconSettings.svg?v=sessions-rail-v2",
@@ -12,7 +13,7 @@ const RAIL_ICONS = {
   logout: "/assets/IconLogout.svg?v=sessions-rail-v2",
 };
 
-export const RAIL_MAIN_ITEMS = ["home", "calendar", "clients", "team"];
+export const RAIL_MAIN_ITEMS = ["home", "calendar", "services", "clients", "team"];
 export const RAIL_ITEM_ICONS = [...RAIL_MAIN_ITEMS, "settings"];
 export const RAIL_NAV_ITEMS = [...RAIL_MAIN_ITEMS, "settings"];
 

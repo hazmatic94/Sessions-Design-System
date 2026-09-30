@@ -1,5 +1,7 @@
 import { renderSessionsAvatar } from "../avatar/avatar.js";
 import { renderSecondaryButton } from "../button/button.js";
+import { renderSessionsMenuItem } from "../menu/item.js";
+import { renderSessionsMenuPanel } from "../menu/panel.js";
 import { sessionsAsset } from "../../assetBase.js";
 import { escapeHtml } from "../../utils.js";
 
@@ -9,6 +11,37 @@ function renderAddIcon() {
   const plusIcon = sessionsAsset(PLUS_ICON);
 
   return `<span class="sessions-client-card__icon" aria-hidden="true"><span class="sessions-client-card__icon-mark" style="--sessions-client-card-icon: url('${plusIcon}')"></span></span>`;
+}
+
+const CLIENT_ACTIONS = [
+  { value: "edit", label: "Edit client details" },
+  { value: "block", label: "Block client" },
+  { value: "delete", label: "Delete client", danger: true },
+];
+
+function renderClientActions(actionsLabel) {
+  const items = CLIENT_ACTIONS.map((item) =>
+    renderSessionsMenuItem({
+      icon: "",
+      label: item.label,
+      className: item.danger
+        ? "sessions-client-card__option sessions-client-card__option--danger"
+        : "sessions-client-card__option",
+      attributes: {
+        role: "menuitem",
+        "data-sessions-client-action": item.value,
+      },
+    }),
+  ).join("");
+  const button = renderSecondaryButton({
+    label: actionsLabel,
+    icon: "chevron-down",
+    iconPosition: "end",
+    className: "sessions-client-card__action",
+    ariaExpanded: false,
+  }).replace("<button ", '<button aria-haspopup="menu" ');
+
+  return `<div class="sessions-client-card__menu-wrap" data-sessions-client-actions>${button}<div class="sessions-client-card__menu" role="menu" hidden>${renderSessionsMenuPanel({ children: items })}</div></div>`;
 }
 
 function renderDefaultClientCard({
@@ -37,13 +70,7 @@ function renderDefaultClientCard({
       </div>
     </div>
     <div class="sessions-client-card__actions">
-      ${renderSecondaryButton({
-        label: actionsLabel,
-        icon: "chevron-down",
-        iconPosition: "end",
-        className: "sessions-client-card__action",
-        ariaExpanded: false,
-      })}
+      ${renderClientActions(actionsLabel)}
       ${renderSecondaryButton({
         label: editProfileLabel,
         href: editProfileHref,

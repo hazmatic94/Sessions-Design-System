@@ -39,7 +39,7 @@
   min-height: var(--input-control-height);
   padding: 0 var(--input-control-padding-inline);
   border: var(--input-control-border-width) solid var(--input-control-border);
-  border-radius: var(--radius-sm);
+  border-radius: var(--spacing-8);
   background: var(--input-control-bg);
   transition:
     background-color var(--motion-fast) var(--ease-standard),
@@ -95,7 +95,7 @@
 }
 
 .sessions-input:focus-within .sessions-input__control {
-  outline: 2px solid var(--color-border-focus);
+  outline: 2px solid var(--green-200);
   outline-offset: 2px;
 }
 
