@@ -1317,6 +1317,16 @@ p {
 }.joker-showroom-card--home .color-swatch-card--home-showroom .color-swatch-card__meta {
   flex: 0 0 auto;
   padding: var(--spacing-12) var(--spacing-16);
+}.joker-showroom-card--home .home-showroom-card__components-demo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-12);
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 160px;
+  padding: var(--spacing-24);
 }.joker-showroom-card--home .home-showroom-card__bet-input-demo {
   display: flex;
   align-items: center;

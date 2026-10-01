@@ -2,7 +2,7 @@
 
 :root {
   --avatar-size-sm: 48px;
-  --avatar-size-md: 62px;
+  --avatar-size-md: 66px;
   --avatar-size-lg: 88px;
   --avatar-size: var(--avatar-size-md);
   --avatar-initial-size: var(--text-heading-h3);

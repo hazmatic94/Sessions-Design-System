@@ -80,7 +80,29 @@ function closeClientActions(root) {
   });
 }
 
-export function setupSessionsClientProfiles(root, { clients = [] } = {}) {
+function clientFromListRow(row) {
+  const name = row.dataset.sessionsClientName || "";
+  const email = row.querySelector(".sessions-client-list__email")?.textContent?.trim() || "";
+  const avatarImg = row.querySelector(".sessions-avatar img");
+  const avatarInitial = row.querySelector(".sessions-avatar__initial")?.textContent?.trim();
+
+  return {
+    name,
+    email,
+    avatarSrc: avatarImg?.getAttribute("src") || "",
+    avatarInitial,
+  };
+}
+
+function clientProfileBindingEl(root) {
+  return root === document ? document.documentElement : root;
+}
+
+export function setupSessionsClientProfiles(root = document, { clients = [] } = {}) {
+  const binding = clientProfileBindingEl(root);
+  if (binding.dataset.sessionsClientProfilesBound === "true") return;
+  binding.dataset.sessionsClientProfilesBound = "true";
+
   const findClient = (name) => clients.find((client) => client.name === name);
 
   root.addEventListener("click", (event) => {
@@ -110,9 +132,11 @@ export function setupSessionsClientProfiles(root, { clients = [] } = {}) {
 
     const row = event.target.closest("[data-sessions-client-row]");
     if (!row || event.target.closest(".sessions-checkbox")) return;
-    const client = findClient(row.dataset.sessionsClientName);
     const body = root.querySelector("[data-sessions-client-profile-body]");
-    if (!client || !body) return;
+    if (!body) return;
+    const client =
+      findClient(row.dataset.sessionsClientName) ?? clientFromListRow(row);
+    if (!client.name) return;
     body.innerHTML = renderSessionsClientProfile({ client });
     setClientProfileOpen(root, true);
   });

@@ -10,7 +10,7 @@ import {
   sidebarClose,
   sidebarToggle,
 } from '../shell/dom.js?v=mobile-sidebar-close-v2';
-import {navigateToRoute} from '../shell/routes.js?v=sessions-clean-v1';
+import {navigateToRoute} from '../shell/routes.js?v=sessions-client-profile-v1';
 import {copyText} from './copyText.js';
 
 function getCodeDrawerMetrics(panel) {
@@ -113,7 +113,7 @@ export function setupInteractions() {
 
   document.addEventListener('click', async event => {
     const docsRouteLink = event.target.closest(
-      '.nav-link, .brand-logo, .page-sequence-link, .doc-card, .joker-showroom-card-home-stretched-link, .home-intro__cta',
+      '.nav-link, .brand-logo, .page-sequence-link, .doc-card, .joker-showroom-card-home-stretched-link, .home-intro__cta, .sessions-appointment-activity-card__empty-link',
     );
     const docsRouteHref = docsRouteLink?.getAttribute('href');
     if (docsRouteHref?.startsWith('#/')) {

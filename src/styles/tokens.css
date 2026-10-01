@@ -192,6 +192,7 @@
   --heading-h3: 24px;
   --body-big: 20px;
   --body-b1: 16px;
+  --body-b2: 14px;
   --body-18: 18px;
   --body-16: 16px;
   --body-14: 14px;
@@ -214,6 +215,12 @@
   --text-body-b1-medium-weight: 500;
   --text-body-b1-line-height: normal;
   --text-body-b1-letter-spacing: 0.045em;
+  --text-body-b2: var(--body-b2);
+  --text-body-b2-medium: var(--body-b2);
+  --text-body-b2-weight: 400;
+  --text-body-b2-medium-weight: 500;
+  --text-body-b2-line-height: normal;
+  --text-body-b2-letter-spacing: 0.045em;
   --text-body-18: var(--body-18);
   --text-body-16: var(--text-body-b1);
   --text-body-14: var(--body-14);

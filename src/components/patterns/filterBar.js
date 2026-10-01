@@ -95,9 +95,14 @@ function applyFilterSort(sort, value) {
   );
 }
 
+function filterBarBindingEl(root) {
+  return root === document ? document.documentElement : root;
+}
+
 export function setupSessionsFilterBars(root = document) {
-  if (root.dataset.sessionsFilterBarsBound === "true") return;
-  root.dataset.sessionsFilterBarsBound = "true";
+  const binding = filterBarBindingEl(root);
+  if (binding.dataset.sessionsFilterBarsBound === "true") return;
+  binding.dataset.sessionsFilterBarsBound = "true";
 
   root.addEventListener("click", (event) => {
     const trigger = event.target.closest("[data-sessions-filter-sort] > .sessions-button");

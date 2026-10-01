@@ -336,7 +336,7 @@
 }
 
 .sessions-surface {
-  --sessions-surface-width: 480px;
+  --sessions-surface-width: 460px;
   box-sizing: border-box;
   width: min(100%, var(--sessions-surface-width));
   max-width: var(--sessions-surface-width);
@@ -394,7 +394,7 @@
 .sessions-surface-drawer .sessions-surface {
   display: flex;
   flex-direction: column;
-  width: var(--sessions-surface-width, 480px);
+  width: var(--sessions-surface-width, 460px);
   max-width: 100%;
   height: 100%;
   min-height: 0;
@@ -451,6 +451,7 @@
 .sessions-client-profile .sessions-notification-card {
   gap: var(--spacing-24);
   padding: var(--spacing-24);
+  background: var(--black-500);
 }
 
 .sessions-client-profile .sessions-notification-card__divider {
@@ -2185,7 +2186,7 @@
   align-items: center;
   gap: var(--spacing-16);
   box-sizing: border-box;
-  padding: var(--spacing-16);
+  padding: var(--spacing-24);
   border-bottom: var(--border-width-default) solid var(--color-border-subtle);
 }
 
@@ -2292,7 +2293,7 @@
   column-gap: var(--spacing-16);
   align-items: center;
   box-sizing: border-box;
-  padding: var(--spacing-16);
+  padding: var(--spacing-24);
   border-bottom: var(--border-width-default) solid var(--color-border-subtle);
 }
 
@@ -2322,6 +2323,10 @@
 
 .sessions-team-list__option.sessions-menu-item {
   width: 100%;
+}
+
+.sessions-team-list__row:not(.sessions-team-list__head) {
+  cursor: pointer;
 }
 
 .sessions-team-list__row:not(.sessions-team-list__head):hover,
@@ -2417,7 +2422,7 @@
   align-items: center;
   gap: var(--spacing-16);
   box-sizing: border-box;
-  padding: var(--spacing-16);
+  padding: var(--spacing-24);
   border-bottom: var(--border-width-default) solid var(--color-border-subtle);
 }
 

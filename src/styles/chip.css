@@ -23,6 +23,20 @@
   margin-inline-start: var(--spacing-12);
 }
 
+.sessions-chip--count {
+  min-width: calc(var(--text-body-12) + (var(--spacing-4) + 2px) * 2 + var(--border-width-default) * 2);
+  padding: calc(var(--spacing-4) + 2px);
+  border-color: var(--color-border-default);
+  border-radius: var(--spacing-4);
+  background: var(--color-surface-elevated);
+  color: var(--joker-white-50);
+  font-size: var(--text-body-12);
+  font-weight: var(--text-body-b1-medium-weight);
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
 .sessions-chip--cancelled {
   border-color: #684748;
   background: #483030;

@@ -13,10 +13,18 @@
   border-radius: var(--radius-pill);
   background: transparent;
   color: var(--joker-white-50);
+  transition:
+    background-color var(--motion-fast) var(--ease-standard),
+    border-color var(--motion-fast) var(--ease-standard);
+}
+
+.sessions-search:hover {
+  background: var(--input-control-bg-hover);
 }
 
 .sessions-search:focus-within {
-  border-color: var(--color-border-focus);
+  outline: 2px solid var(--green-200);
+  outline-offset: 2px;
 }
 
 .sessions-search__icon {

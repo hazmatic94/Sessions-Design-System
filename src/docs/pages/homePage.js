@@ -1,5 +1,8 @@
 import {homeShowroomCardMarkup} from '../markup/homeShowroomCardMarkup.js?v=sessions-clean-v1';
-import {renderPrimaryButton} from '../../components/button/index.js?v=sessions-docs-cta-v1';
+import {
+  renderPrimaryButton,
+  renderSecondaryButton,
+} from '../../components/button/index.js?v=sessions-docs-cta-v1';
 
 const HOME_TICKER_ITEMS = [
   'Sessions',
@@ -32,9 +35,9 @@ const HOME_SHOWROOM_CARDS = [
     href: '#/components/buttons',
     icon: 'box',
     innerMedia: `
-      <div class="home-showroom-card__empty-slot">
-        <span data-lucide="plus" aria-hidden="true"></span>
-        <strong>Empty preview frames</strong>
+      <div class="home-showroom-card__components-demo" aria-hidden="true">
+        ${renderPrimaryButton({ label: 'Confirm', type: 'button' })}
+        ${renderSecondaryButton({ label: 'Cancel', type: 'button' })}
       </div>
     `,
   },

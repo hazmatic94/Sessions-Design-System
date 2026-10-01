@@ -1,4 +1,4 @@
-import {bootstrapDocsApp} from './src/docs/shell/bootstrap.js?v=sessions-notification-v1';
+import {bootstrapDocsApp} from './src/docs/shell/bootstrap.js?v=sessions-client-profile-v1';
 
 bootstrapDocsApp().catch(error => {
   console.error(error);

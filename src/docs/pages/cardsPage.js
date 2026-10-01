@@ -293,7 +293,7 @@ const APPOINTMENT_ACTIVITY_EMPTY_CARD = {
   title: "Appointment activity",
   period: "Most recent",
   appointments: [],
-  clientLinkHref: "#",
+  clientLinkHref: "#/components/cards",
 };
 
 const TOP_SERVICES_ROWS = [

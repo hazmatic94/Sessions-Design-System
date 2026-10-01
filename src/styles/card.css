@@ -431,20 +431,20 @@
   margin: 0;
   color: var(--joker-white-50);
   font-family: var(--font);
-  font-size: var(--text-body-big-medium);
-  font-weight: var(--text-body-big-medium-weight);
-  line-height: var(--text-body-line-height);
-  letter-spacing: var(--text-body-big-letter-spacing);
+  font-size: var(--text-body-b1-medium);
+  font-weight: var(--text-body-b1-medium-weight);
+  line-height: var(--text-body-b1-line-height);
+  letter-spacing: var(--text-body-b1-letter-spacing);
 }
 
 .sessions-client-card__email {
   margin: 0;
   color: var(--black-50);
   font-family: var(--font);
-  font-size: var(--text-body-b1);
-  font-weight: var(--text-body-b1-weight);
-  line-height: var(--text-body-b1-line-height);
-  letter-spacing: var(--text-body-b1-letter-spacing);
+  font-size: var(--text-body-b2);
+  font-weight: var(--text-body-b2-weight);
+  line-height: var(--text-body-b2-line-height);
+  letter-spacing: var(--text-body-b2-letter-spacing);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
