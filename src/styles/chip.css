@@ -37,6 +37,11 @@
   text-transform: none;
 }
 
+.sessions-chip--booked {
+  border-color: var(--green-400);
+  background: var(--green-900);
+}
+
 .sessions-chip--cancelled {
   border-color: #684748;
   background: #483030;

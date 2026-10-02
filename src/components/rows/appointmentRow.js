@@ -33,6 +33,7 @@ function renderContent({ serviceName, status, dateTime, metadata }) {
           className: [
             "sessions-appointment-row__status",
             String(status).toUpperCase() === "CANCELLED" ? "sessions-chip--cancelled" : "",
+            String(status).toUpperCase() === "BOOKED" ? "sessions-chip--booked" : "",
           ]
             .filter(Boolean)
             .join(" "),

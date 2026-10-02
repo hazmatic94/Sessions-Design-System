@@ -1,6 +1,8 @@
-import { renderSessionsButton, renderSecondaryButton } from "../button/button.js";
+import { renderSessionsButton, renderGhostButton, renderSecondaryButton } from "../button/button.js";
+import { renderSessionsAvatar } from "../avatar/avatar.js";
 import { renderSessionsClientCard } from "../cards/clientCard.js";
 import { renderSessionsNotificationCard } from "../cards/notificationCard.js";
+import { renderSessionsClientForm } from "./addClient.js";
 import { renderSessionsPageHeader } from "./pageHeader.js";
 import { renderSessionsSurface } from "./surface.js";
 
@@ -31,6 +33,55 @@ function renderUpcomingAppointment(appointment) {
     interactive: false,
     footer: renderSecondaryButton({ label: "Checkout" }),
   });
+}
+
+function splitClientName(name = "") {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  return { firstName: parts[0] || "", lastName: parts.slice(1).join(" ") };
+}
+
+function splitClientPhone(phone = "") {
+  const match = phone.trim().match(/^(\+\d+)\s*(.*)$/);
+  if (!match) return { countryCode: "+61", phone: phone.trim() };
+  return { countryCode: match[1], phone: match[2] };
+}
+
+function renderClientEdit(client) {
+  const { firstName, lastName } = splitClientName(client.name);
+  const { countryCode, phone } = splitClientPhone(client.phone || "");
+  const back = renderGhostButton({
+    label: "Back",
+    icon: "chevron-left",
+    className: "sessions-client-edit__back",
+  }).replace("<button ", '<button data-sessions-edit-client-cancel ');
+  const cancel = renderSessionsButton({
+    variant: "secondary",
+    label: "Cancel",
+  }).replace("<button ", '<button data-sessions-edit-client-cancel ');
+  const save = renderSessionsButton({
+    variant: "primary",
+    label: "Save",
+    type: "submit",
+  }).replace("<button ", '<button form="sessions-edit-client-form" ');
+
+  return `<div class="sessions-client-edit" data-sessions-edit-client><div class="sessions-notifications">${back}<div class="sessions-notifications__heading">${renderSessionsPageHeader({
+    title: "Profile",
+    body: "Manage your client's personal profile",
+  })}</div>${renderSessionsAvatar({
+    src: client.avatarSrc,
+    name: client.name,
+    initial: client.avatarInitial,
+    size: "large",
+  })}${renderSessionsClientForm({
+    idPrefix: "edit-client",
+    formId: "sessions-edit-client-form",
+    formAttribute: "data-sessions-edit-client-form",
+    firstName,
+    lastName,
+    email: client.email,
+    phone,
+    countryCode,
+  })}<div class="sessions-client-edit__actions">${cancel}${save}</div></div></div>`;
 }
 
 export function renderSessionsClientProfile({ client, appointments = UPCOMING } = {}) {
@@ -104,8 +155,21 @@ export function setupSessionsClientProfiles(root = document, { clients = [] } = 
   binding.dataset.sessionsClientProfilesBound = "true";
 
   const findClient = (name) => clients.find((client) => client.name === name);
+  let currentClient = null;
+
+  const showProfile = () => {
+    const body = root.querySelector("[data-sessions-client-profile-body]");
+    if (!currentClient || !body) return;
+    body.innerHTML = renderSessionsClientProfile({ client: currentClient });
+  };
 
   root.addEventListener("click", (event) => {
+    if (event.target.closest("[data-sessions-edit-client-cancel]")) {
+      event.preventDefault();
+      showProfile();
+      return;
+    }
+
     if (event.target.closest("[data-sessions-client-profile-close], [data-sessions-client-profile-scrim]")) {
       closeClientActions(root);
       setClientProfileOpen(root, false);
@@ -122,9 +186,14 @@ export function setupSessionsClientProfiles(root = document, { clients = [] } = 
       return;
     }
 
-    if (event.target.closest("[data-sessions-client-action]")) {
+    const action = event.target.closest("[data-sessions-client-action]");
+    if (action) {
       event.preventDefault();
       closeClientActions(root);
+      if (action.dataset.sessionsClientAction === "edit") {
+        const body = root.querySelector("[data-sessions-client-profile-body]");
+        if (currentClient && body) body.innerHTML = renderClientEdit(currentClient);
+      }
       return;
     }
 
@@ -137,6 +206,7 @@ export function setupSessionsClientProfiles(root = document, { clients = [] } = 
     const client =
       findClient(row.dataset.sessionsClientName) ?? clientFromListRow(row);
     if (!client.name) return;
+    currentClient = client;
     body.innerHTML = renderSessionsClientProfile({ client });
     setClientProfileOpen(root, true);
   });
@@ -147,6 +217,14 @@ export function setupSessionsClientProfiles(root = document, { clients = [] } = 
       closeClientActions(root);
       return;
     }
+    if (root.querySelector("[data-sessions-edit-client]")) {
+      showProfile();
+      return;
+    }
     setClientProfileOpen(root, false);
+  });
+
+  root.addEventListener("submit", (event) => {
+    if (event.target.closest("[data-sessions-edit-client-form]")) event.preventDefault();
   });
 }

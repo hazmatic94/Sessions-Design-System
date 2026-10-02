@@ -29,50 +29,69 @@ export function renderSessionsAddClientDrawer() {
   return `<div class="sessions-surface-scrim" data-sessions-add-client-scrim hidden></div><div class="sessions-surface-drawer" data-sessions-add-client role="dialog" aria-label="Add new client" hidden>${close}${renderSessionsSurface({ children: body })}</div>`;
 }
 
-function renderAddClientForm() {
+function renderAddClientForm({
+  idPrefix = "add-client",
+  formId = "sessions-add-client-form",
+  formAttribute = "data-sessions-add-client-form",
+  firstName = "",
+  lastName = "",
+  email = "",
+  phone = "",
+  countryCode = "+61",
+  note = "",
+} = {}) {
   const first = renderSessionsInput({
     label: "First name",
     placeholder: "e.g. James",
     name: "firstName",
-    id: "add-client-first-name",
+    id: `${idPrefix}-first-name`,
+    value: firstName,
   });
   const last = renderSessionsInput({
     label: "Last name",
     placeholder: "e.g. Ederveen",
     name: "lastName",
-    id: "add-client-last-name",
+    id: `${idPrefix}-last-name`,
+    value: lastName,
   });
-  const email = renderSessionsInput({
+  const emailField = renderSessionsInput({
     label: "Email",
     placeholder: "e.g. James",
     name: "email",
     type: "email",
-    id: "add-client-email",
+    id: `${idPrefix}-email`,
+    value: email,
     fullWidth: true,
   });
-  const phone = renderSessionsInput({
+  const phoneField = renderSessionsInput({
     label: "",
     placeholder: "e.g. 0461455500",
     name: "phone",
     type: "tel",
-    id: "add-client-phone",
+    id: `${idPrefix}-phone`,
+    value: phone,
     ariaLabel: "Phone number",
   });
-  const note = renderSessionsInput({
+  const noteField = renderSessionsInput({
     label: "Note",
     placeholder: "Add your note here",
     name: "note",
-    id: "add-client-note",
+    id: `${idPrefix}-note`,
+    value: note,
     multiline: true,
     fullWidth: true,
   });
 
-  return `<form class="sessions-add-client__form" id="sessions-add-client-form" data-sessions-add-client-form><div class="sessions-add-client__names">${first}${last}</div>${email}<div class="sessions-add-client__phone"><span class="sessions-input__label">Phone</span><div class="sessions-add-client__phone-row">${renderCountryCode()}${phone}</div></div>${note}</form>`;
+  return `<form class="sessions-add-client__form" id="${formId}" ${formAttribute}><div class="sessions-add-client__names">${first}${last}</div>${emailField}<div class="sessions-add-client__phone"><span class="sessions-input__label">Phone</span><div class="sessions-add-client__phone-row">${renderCountryCode(countryCode)}${phoneField}</div></div>${noteField}</form>`;
 }
 
-function renderCountryCode() {
+export function renderSessionsClientForm(options) {
+  return renderAddClientForm(options);
+}
+
+function renderCountryCode(selected = "+61") {
   const options = COUNTRY_CODES.map(
-    (code) => `<option value="${code}"${code === "+61" ? " selected" : ""}>${code}</option>`,
+    (code) => `<option value="${code}"${code === selected ? " selected" : ""}>${code}</option>`,
   ).join("");
 
   return `<label class="sessions-input sessions-add-client__code"><span class="sessions-input__control"><select class="sessions-input__field" name="countryCode" aria-label="Country code">${options}</select></span></label>`;

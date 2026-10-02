@@ -1,5 +1,5 @@
 import { renderSessionsAvatar } from "../avatar/avatar.js";
-import { renderSecondaryButton } from "../button/button.js";
+import { renderPrimaryButton, renderSecondaryButton } from "../button/button.js";
 import { renderSessionsMenuItem } from "../menu/item.js";
 import { renderSessionsMenuPanel } from "../menu/panel.js";
 import { sessionsAsset } from "../../assetBase.js";
@@ -71,7 +71,7 @@ function renderDefaultClientCard({
     </div>
     <div class="sessions-client-card__actions">
       ${renderClientActions(actionsLabel)}
-      ${renderSecondaryButton({
+      ${renderPrimaryButton({
         label: editProfileLabel,
         href: editProfileHref,
         className: "sessions-client-card__edit",
@@ -113,7 +113,7 @@ export function renderSessionsClientCard({
   avatarSrc = "",
   avatarInitial,
   actionsLabel = "Actions",
-  editProfileLabel = "Edit profile",
+  editProfileLabel = "Book now",
   editProfileHref = "#",
   href = "",
   className = "",

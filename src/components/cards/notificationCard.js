@@ -26,7 +26,7 @@ function renderNotificationCardContent({
 }) {
   return `
     ${unread ? '<span class="sessions-notification-card__dot" aria-hidden="true"></span>' : ""}
-    ${status ? `<span class="sessions-notification-card__status">${renderSessionsChip({ label: status })}</span>` : ""}
+    ${status ? `<span class="sessions-notification-card__status">${renderSessionsChip({ label: status, className: String(status).toUpperCase() === "BOOKED" ? "sessions-chip--booked" : "" })}</span>` : ""}
     <div class="sessions-notification-card__header">
       <h3 class="sessions-notification-card__title">${escapeHtml(title)}</h3>
       ${meta ? `<p class="sessions-notification-card__meta">${escapeHtml(meta)}</p>` : ""}

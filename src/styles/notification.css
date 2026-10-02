@@ -110,10 +110,10 @@ a.sessions-notification-card:focus-visible {
   min-width: 0;
   color: var(--black-50);
   font-family: var(--font);
-  font-size: var(--text-body-b1);
-  font-weight: var(--text-body-b1-weight);
-  line-height: var(--text-body-b1-line-height);
-  letter-spacing: var(--text-body-b1-letter-spacing);
+  font-size: var(--text-body-b2);
+  font-weight: var(--text-body-b2-weight);
+  line-height: var(--text-body-b2-line-height);
+  letter-spacing: var(--text-body-b2-letter-spacing);
 }
 
 .sessions-notification-card__divider {
