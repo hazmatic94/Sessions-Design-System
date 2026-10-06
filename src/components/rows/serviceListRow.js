@@ -29,8 +29,10 @@ function renderServiceActions(name) {
     }),
   ).join("");
   const button = renderSecondaryButton({
-    iconSrc: "/assets/IconMore.svg",
-    ariaLabel: `More actions for ${name}`,
+    label: "Actions",
+    icon: "chevron-down",
+    iconPosition: "end",
+    ariaLabel: `Actions for ${name}`,
   }).replace("<button ", '<button aria-haspopup="menu" aria-expanded="false" ');
 
   return `<div class="sessions-service-list__actions" data-sessions-service-actions>${button}<div class="sessions-service-list__menu" role="menu" hidden>${renderSessionsMenuPanel({ children: items })}</div></div>`;
