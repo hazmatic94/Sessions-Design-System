@@ -63,10 +63,10 @@ function renderTeamMemberRow({ person, checked = true }) {
         className: "sessions-team-menu__avatar",
       });
 
-  return `<label class="sessions-team-menu__member">${renderSessionsCheckbox({
+  return `<label class="sessions-menu-item sessions-team-menu__member">${renderSessionsCheckbox({
     checked,
     attributes: { "data-sessions-team-member": person.name },
-  })}${avatar}<span class="sessions-team-menu__name">${escapeHtml(person.name)}</span></label>`;
+  })}${avatar}<span class="sessions-menu-item__label">${escapeHtml(person.name)}</span></label>`;
 }
 
 function renderTeamMenu({ team, youName }) {
@@ -103,10 +103,10 @@ function renderTeamMenu({ team, youName }) {
     : "";
   const youRow = `<button class="sessions-menu-item is-selected sessions-team-menu__option" type="button" data-sessions-team-filter="you" aria-pressed="true">${youAvatar}<span class="sessions-menu-item__label">${escapeHtml(youLabel)}</span></button>`;
   const members = [
-    `<label class="sessions-team-menu__member">${renderSessionsCheckbox({
+    `<label class="sessions-menu-item sessions-team-menu__member">${renderSessionsCheckbox({
       checked: false,
       attributes: { "data-sessions-team-all": "" },
-    })}<span class="sessions-team-menu__name">All team members</span></label>`,
+    })}<span class="sessions-team-menu__avatar" aria-hidden="true"></span><span class="sessions-menu-item__label">All team members</span></label>`,
     ...team.map((person) =>
       renderTeamMemberRow({ person, checked: person.name === you?.name }),
     ),

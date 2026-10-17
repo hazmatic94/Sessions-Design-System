@@ -134,6 +134,35 @@
     border-color var(--button-primary-hover-duration) var(--button-primary-hover-ease);
 }
 
+@media (min-width: 769px) {
+  .sessions-menu-item {
+    height: auto;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  .sessions-menu-item .sessions-avatar,
+  .sessions-menu-item .sessions-team-menu__avatar,
+  .sessions-menu-item .sessions-checkbox,
+  .sessions-menu-item .sessions-checkbox__control {
+    width: var(--button-icon-size);
+    height: var(--button-icon-size);
+  }
+
+  .sessions-menu-item .sessions-avatar,
+  .sessions-menu-item .sessions-team-menu__avatar {
+    --avatar-size: var(--button-icon-size);
+    --avatar-padding: 1px;
+  }
+
+  .sessions-menu-item .sessions-checkbox__input:checked + .sessions-checkbox__control::after {
+    top: 1px;
+    left: 5px;
+    width: 4px;
+    height: 8px;
+  }
+}
+
 .sessions-menu-item__icon {
   display: block;
   flex-shrink: 0;
