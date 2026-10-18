@@ -2018,6 +2018,11 @@
   width: 100%;
 }
 
+.sessions-team-menu__member.sessions-menu-item:hover:not(:disabled):not(.is-selected),
+.sessions-team-menu__member.sessions-menu-item:active:not(:disabled):not(.is-selected) {
+  background: transparent;
+}
+
 .sessions-team-menu__avatar {
   --avatar-size: 32px;
   flex-shrink: 0;
